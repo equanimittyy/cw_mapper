@@ -3,3 +3,5 @@
 *.tsv
 *.rar
 *.zip
+build/
+dist/
