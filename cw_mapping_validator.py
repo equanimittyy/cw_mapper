@@ -176,15 +176,15 @@ df_maa = pd.concat([df_maa,pd.DataFrame(maa_rows)],ignore_index=True)
 
 # Join df from CW and Attila/CK3, and produce reports
 df_maa = pd.merge(df_maa,df_attila, on='attila_map_key', how ='left')
-df_maa.to_csv('report_maa.csv')
+df_maa.to_csv('report_cw_maa.csv')
 df_maa_error = pd.DataFrame(df_maa[df_maa['attila_source'].isna()])
-df_maa_error.to_csv('report_maa_errors.csv')
+df_maa_error.to_csv('report_cw_maa_errors.csv')
 print(f'Report produced for man at arms files.')
 
 df_cultures = pd.merge(df_cultures,df_ck3_cultures, on='ck3_culture', how ='left')
-df_cultures.to_csv('report_cultures.csv')
+df_cultures.to_csv('report_cw_cultures.csv')
 df_cultures_error = pd.DataFrame(df_cultures[df_cultures['ck3_source'].isna()])
-df_cultures_error.to_csv('report_cultures_error.csv')
+df_cultures_error.to_csv('report_cw_cultures_error.csv')
 print(f'Report produced for culture files.')
 
 df_attila = pd.merge(df_attila,df_maa, on='attila_map_key', how ='left', suffixes=('','df_maa'))
