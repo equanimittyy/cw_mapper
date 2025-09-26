@@ -174,10 +174,12 @@ for mapping in os.listdir(mapper_dir):
 df_cultures = pd.concat([df_cultures,pd.DataFrame(cultures_rows)],ignore_index=True)
 df_maa = pd.concat([df_maa,pd.DataFrame(maa_rows)],ignore_index=True)
 
-
-# Validate df from CW and Attila, and produce report/log
-df_attila.to_csv('source_merged_attila_mapping.csv')
-df_ck3_cultures.to_csv('source_merged_ck3_cultures.csv')
+# Join df from CW and Attila/CK3, and produce reports
+df_maa = pd.merge(df_maa,df_attila, on='attila_map_key', how ='left')
+df_maa.to_csv('report_maa.csv')
+df_maa_error = pd.DataFrame(df_maa[df_maa['attila_source'].isna()])
+df_maa_error.to_csv('report_maa_errors.csv')
+print(f'Report produced for man at arms files.')
 
 df_cultures = pd.merge(df_cultures,df_ck3_cultures, on='ck3_culture', how ='left')
 df_cultures.to_csv('report_cultures.csv')
@@ -185,11 +187,15 @@ df_cultures_error = pd.DataFrame(df_cultures[df_cultures['ck3_source'].isna()])
 df_cultures_error.to_csv('report_cultures_error.csv')
 print(f'Report produced for culture files.')
 
-df_maa = pd.merge(df_maa,df_attila, on='attila_map_key', how ='left')
-df_maa.to_csv('report_maa.csv')
-df_maa_error = pd.DataFrame(df_maa[df_maa['attila_source'].isna()])
-df_maa_error.to_csv('report_maa_errors.csv')
-print(f'Report produced for man at arms files.')
+df_attila = pd.merge(df_attila,df_maa, on='attila_map_key', how ='left', suffixes=('','df_maa'))
+df_attila['used_in_cw'] = df_attila['cw_unit'].notna()
+df_attila = pd.DataFrame(df_attila[['attila_map_key','attila_source','used_in_cw']])
+df_attila.to_csv('source_attila_mapping.csv')
+
+df_ck3_cultures = pd.merge(df_ck3_cultures,df_cultures, on='ck3_culture', how ='left', suffixes=('','df_cultures'))
+df_ck3_cultures['used_in_cw'] = df_ck3_cultures['cw_culture'].notna()
+df_ck3_cultures = pd.DataFrame(df_ck3_cultures[['ck3_culture','ck3_source','used_in_cw']])
+df_ck3_cultures.to_csv('source_ck3_cultures.csv')
 
 input("Press Enter to quit...")
 quit()
