@@ -177,7 +177,7 @@ df_maa = pd.concat([df_maa,pd.DataFrame(maa_rows)],ignore_index=True)
 # Join df from CW and Attila/CK3, and produce reports
 df_maa = pd.merge(df_maa,df_attila, on='attila_map_key', how ='left')
 df_maa.to_csv('report_cw_maa.csv')
-print(f'Report produced for man at arms files.')
+print(f'Report produced for man-at-arms files.')
 
 df_cultures = pd.merge(df_cultures,df_ck3_cultures, on='ck3_culture', how ='left')
 df_cultures.to_csv('report_cw_cultures.csv')
