@@ -35,3 +35,6 @@ This may be because:
 
 source_attila_mapping = The source information from the "attila_exports" folder, presumably exported by you from Attila using PFM/RPFM.
 ⚠ If the ['used_in_cw'] field is False, it means the Attila unit key is not found in any CW mapping presets. (Not necessarily bad, since not all units from Attila are being used by CW.)
+
+source_ck3_maa = The source information from the CK3 installation.
+⚠ If the ['used_in_cw'] field is False, it means the MAA from CK3 is not found in any CW mapping presets.
