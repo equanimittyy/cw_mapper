@@ -97,6 +97,29 @@ for file in os.listdir(ck3_culture_dir):
         
 df_ck3_cultures = pd.concat([df_ck3_cultures,pd.DataFrame(ck3_rows)],ignore_index=True)
 
+# Declare data frame for maa from Crusader Kings 3 and obtain maa from Crusader Kings installation, and merge
+df_ck3_maa = pd.DataFrame() 
+ck3_maa_dir = os.path.join(ck3_dir_path,'game','common','men_at_arms_types')
+ck3_rows = []
+print(f'== Found CK3 maa files: {os.listdir(ck3_maa_dir)} ==')
+print()
+for file in os.listdir(ck3_maa_dir):
+    if file.endswith('.txt'):
+        source_file = os.path.join(ck3_maa_dir,file)
+        source_name = os.path.basename(source_file)
+
+        with open (source_file, 'r', encoding="utf-8-sig") as maa_txt_file:
+            data = maa_txt_file.read()
+
+        maa_txt = re.findall(r"^(\w+)\s*=", data, re.M)
+        for maa in maa_txt:
+            ck3_rows.append({
+                "ck3_maa":maa,
+                "ck3_source":source_name
+            })
+
+df_ck3_maa = pd.concat([df_ck3_maa,pd.DataFrame(ck3_rows)],ignore_index=True)
+
 # == BEGIN MAPPING ==
 # Declare data frame for processed cw mapping
 df_cultures = pd.DataFrame()
@@ -185,13 +208,19 @@ print(f'Report produced for culture files.')
 
 df_attila = pd.merge(df_attila,df_maa, on='attila_map_key', how ='left', suffixes=('','df_maa'))
 df_attila['used_in_cw'] = df_attila['cw_unit'].notna()
-df_attila = pd.DataFrame(df_attila[['attila_map_key','attila_source','used_in_cw']])
-df_attila.to_csv('source_attila_mapping.csv')
+df_attila = pd.DataFrame(df_attila[['attila_map_key','attila_source','used_in_cw']]).drop_duplicates().reset_index(drop=True)
+df_attila.to_csv('source_attila_keys.csv')
 
 df_ck3_cultures = pd.merge(df_ck3_cultures,df_cultures, on='ck3_culture', how ='left', suffixes=('','df_cultures'))
 df_ck3_cultures['used_in_cw'] = df_ck3_cultures['cw_culture'].notna()
-df_ck3_cultures = pd.DataFrame(df_ck3_cultures[['ck3_culture','ck3_source','used_in_cw']])
+df_ck3_cultures = pd.DataFrame(df_ck3_cultures[['ck3_culture','ck3_source','used_in_cw']]).drop_duplicates().reset_index(drop=True)
 df_ck3_cultures.to_csv('source_ck3_cultures.csv')
+
+df_ck3_maa = pd.merge(df_ck3_maa,df_maa, left_on='ck3_maa', right_on='cw_unit', how ='left', suffixes=('','df_maa'))
+df_ck3_maa['used_in_cw'] = df_ck3_maa['cw_unit'].notna()
+df_ck3_maa = pd.DataFrame(df_ck3_maa[['ck3_maa','ck3_source','used_in_cw']]).drop_duplicates().reset_index(drop=True)
+df_ck3_maa.to_csv('source_ck3_maa.csv')
+print(f'Report produced for source files.')
 
 input("Press Enter to quit...")
 quit()
