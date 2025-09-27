@@ -1,6 +1,6 @@
 // An executible to validate Crusader Wars (CW) Unit Mappers. //
 
-## ⚠ ENSURE THE 'cw_mapping_validator' FOLDER IS PLACED IN THE CW INSTALLATION FOLDER
+## ⚠ ENSURE THE 'cw_mapping_validator' FOLDER IS PLACED IN THE CW/TOOLS FOLDER
 
 # Workflow
 1. Use PFM/RPFM to export the unit db's from Attila as .tsv, and place in the "attila_exports" folder, allowing it to create subfolders as necessary. 

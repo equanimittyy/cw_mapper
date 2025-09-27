@@ -15,8 +15,8 @@ elif __file__:
 # Identify working directories
 working_dir = application_path
 attila_export_dir = os.path.join(working_dir, 'attila_exports','db','main_units_tables')
-mapper_dir = '../unit mappers/attila'
-settings_dir = '../data/settings'
+mapper_dir = '../../unit mappers/attila'
+settings_dir = '../../data/settings'
 
 # Handle improper .ini structure and pass through configparser
 settings_paths_file = os.path.join(settings_dir,'GamePaths.ini')
