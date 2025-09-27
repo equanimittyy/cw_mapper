@@ -89,6 +89,7 @@ while True:
     ck3_mods[key_input] = value_input
 print()
 print(f'== CK3 mods to check: {ck3_mods} ==')
+print()
 
 df_ck3_cultures = pd.DataFrame() 
 ck3_culture_dir = os.path.join(ck3_dir_path,'game','common','culture','cultures')
