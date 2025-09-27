@@ -1,8 +1,11 @@
+import configparser
+from io import StringIO
 import os
-import pandas as pd
-import xml.etree.ElementTree as ET
-import sys
 import re
+import sys
+import xml.etree.ElementTree as ET
+
+import pandas as pd
 
 if getattr(sys, 'frozen', False):
     application_path = os.path.dirname(sys.executable)
@@ -12,9 +15,18 @@ elif __file__:
 # Identify working directories
 working_dir = application_path
 attila_export_dir = os.path.join(working_dir, 'attila_exports','db','main_units_tables')
-mapper_dir = '../unit mappers'
-settings_dir = '../settings'
-settings_paths_file = os.path.join(settings_dir,'Paths.xml')
+mapper_dir = '../unit mappers/attila'
+settings_dir = '../data/settings'
+
+# Handle improper .ini structure and pass through configparser
+settings_paths_file = os.path.join(settings_dir,'GamePaths.ini')
+with open (settings_paths_file,'r') as f:
+    content = f.read()
+    settings_content = '[GamePaths]\n' + content.replace('::','=')
+    settings_file = StringIO(settings_content)
+config = configparser.ConfigParser()
+config.read_file(settings_file)
+
 os.chdir(working_dir)
 
 if os.path.exists(attila_export_dir):
@@ -22,6 +34,7 @@ if os.path.exists(attila_export_dir):
         print(f'== Mapping directory exists, but no .tsv mapping were files found! ==')
         print(f'DEBUG: CWD = {working_dir}')
         print(f'DEBUG: ATTILA_EXPORT_DIR = {attila_export_dir}')
+        print(f'PLEASE READ THE README.TXT!!!')
         input("Press Enter to quit...")
         quit()
     else:
@@ -30,6 +43,7 @@ else:
     print(f'== No attila export files directory found in attila_exports. Please ensure you export .tsv files from RPFM/PFM to "attila_exports/db/main_units_tables" ==')
     print(f'DEBUG: CWD = {working_dir}')
     print(f'DEBUG: ATTILA_EXPORT_DIR = {attila_export_dir}')
+    print(f'PLEASE READ THE README.TXT!!!')
     input("Press Enter to quit...")
     quit()
 
@@ -52,9 +66,31 @@ print()
 print(f'== Found mapping directories: {os.listdir(mapper_dir)} ==')
 print()
 
-# Declare data frame for cultures from Crusader Kings 3 and obtain cultures from Crusader Kings installation, and merge
+# Declare directories and data frame for cultures from Crusader Kings 3 and obtain cultures from Crusader Kings installation, and merge
+ck3_dir_path = os.path.dirname(os.path.dirname(config.get('GamePaths','CRUSADERKINGS3')))
+ck3_mod_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(config.get('GamePaths','CRUSADERKINGS3')))))),'steamapps','workshop','content','1158310')
+ck3_mods = {
+    'Africa Plus' : '3401420817',
+    'Buffed Mongol Invasion' : '2796578078',
+    'Cultures Expanded' : '2829397295',
+    'More Traditions v2' : '2893793966',
+    'Muslim Enhancements' : '2241658518',
+    'RICE' : '2273832430',
+    'Fallen Eagle' : '2243307127',
+    'Realms in Exile' : '2291024373',
+    'AGOT' : '2962333032'
+}
+while True:
+    key_input = input("Enter any additional CK3 mods you wish to check (or type 'stop' to finish): ")
+    if key_input.lower() == 'stop':
+        print('No further mod input.')
+        break
+    value_input = input(f"Enter the mod steam id for '{key_input}': ")
+    ck3_mods[key_input] = value_input
+print()
+print(f'== CK3 mods to check: {ck3_mods} ==')
+
 df_ck3_cultures = pd.DataFrame() 
-ck3_dir_path = os.path.dirname(os.path.dirname(ET.parse(settings_paths_file).getroot().find('CrusaderKings').attrib.get('path')))
 ck3_culture_dir = os.path.join(ck3_dir_path,'game','common','culture','cultures')
 ck3_rows = []
 print(f'== Found CK3 culture files: {os.listdir(ck3_culture_dir)} ==')
@@ -71,10 +107,9 @@ for file in os.listdir(ck3_culture_dir):
         for culture in culture_txt:
             ck3_rows.append({
                 "ck3_culture":culture,
-                "ck3_source":source_name
+                "ck3_source_file":source_name,
+                "ck3_source":"CK3"
             })
-        
-df_ck3_cultures = pd.concat([df_ck3_cultures,pd.DataFrame(ck3_rows)],ignore_index=True)
 
 # Obtain additional cultures from hybrid and creation names
 ck3_culture_dir = os.path.join(ck3_dir_path,'game','common','culture','creation_names')
@@ -92,15 +127,53 @@ for file in os.listdir(ck3_culture_dir):
         for culture in culture_txt:
             ck3_rows.append({
                 "ck3_culture":culture,
-                "ck3_source":source_name
+                "ck3_source_file":source_name,
+                "ck3_source":"CK3"
             })
-        
+
+# Obtain additional cultures from CK3 mods
+for folders in os.scandir(ck3_mod_dir):
+    if folders.name in ck3_mods.values():
+        print(f'== Mod files found in: {folders.name} ==')
+        for file in os.listdir(os.path.join(ck3_mod_dir,folders.name,'common','culture','cultures')):
+            if file.endswith('.txt'):
+                source_file = os.path.join(ck3_mod_dir,folders.name,'common','culture','cultures',file)
+                source_name = os.path.basename(source_file)
+
+                with open (source_file, 'r', encoding="utf-8-sig") as culture_txt_file:
+                    data = culture_txt_file.read()
+
+                culture_txt = re.findall(r"^(\w+)\s*=", data, re.M)
+                for culture in culture_txt:
+                    ck3_rows.append({
+                        "ck3_culture":culture,
+                        "ck3_source_file":source_name,
+                        "ck3_source":list(ck3_mods.keys())[list(ck3_mods.values()).index(folders.name)] + ', ' + folders.name
+                    })
+
+        for file in os.listdir(os.path.join(ck3_mod_dir,folders.name,'common','culture','creation_names')):
+            if file.endswith('.txt'):
+                source_file = os.path.join(ck3_mod_dir,folders.name,'common','culture','creation_names',file)
+                source_name = os.path.basename(source_file)
+
+                with open (source_file, 'r', encoding="utf-8-sig") as culture_txt_file:
+                    data = culture_txt_file.read()
+
+                culture_txt = re.findall(r"^(\w+)\s*=", data, re.M)
+                for culture in culture_txt:
+                    ck3_rows.append({
+                        "ck3_culture":culture,
+                        "ck3_source_file":source_name,
+                        "ck3_source":list(ck3_mods.keys())[list(ck3_mods.values()).index(folders.name)] + ', ' + folders.name
+                    })
+
 df_ck3_cultures = pd.concat([df_ck3_cultures,pd.DataFrame(ck3_rows)],ignore_index=True)
 
 # Declare data frame for maa from Crusader Kings 3 and obtain maa from Crusader Kings installation, and merge
 df_ck3_maa = pd.DataFrame() 
 ck3_maa_dir = os.path.join(ck3_dir_path,'game','common','men_at_arms_types')
 ck3_rows = []
+print()
 print(f'== Found CK3 maa files: {os.listdir(ck3_maa_dir)} ==')
 print()
 for file in os.listdir(ck3_maa_dir):
@@ -115,8 +188,28 @@ for file in os.listdir(ck3_maa_dir):
         for maa in maa_txt:
             ck3_rows.append({
                 "ck3_maa":maa,
-                "ck3_source":source_name
+                "ck3_source_file":source_name,
+                "ck3_source":"CK3"
             })
+
+# Obtain additional maa from CK3 mods
+for folders in os.scandir(ck3_mod_dir):
+    if folders.name in ck3_mods.values():
+        for file in os.listdir(os.path.join(ck3_mod_dir,folders.name,'common','men_at_arms_types')):
+            if file.endswith('.txt'):
+                source_file = os.path.join(ck3_mod_dir,folders.name,'common','men_at_arms_types',file)
+                source_name = os.path.basename(source_file)
+
+                with open (source_file, 'r', encoding="utf-8-sig") as maa_txt_file:
+                    data = maa_txt_file.read()
+
+                maa_txt = re.findall(r"^(\w+)\s*=", data, re.M)
+                for maa in maa_txt:
+                    ck3_rows.append({
+                        "ck3_maa":maa,
+                        "ck3_source_file":source_name,
+                        "ck3_source":list(ck3_mods.keys())[list(ck3_mods.values()).index(folders.name)] + ', ' + folders.name
+                    })
 
 df_ck3_maa = pd.concat([df_ck3_maa,pd.DataFrame(ck3_rows)],ignore_index=True)
 
@@ -213,7 +306,7 @@ df_attila.to_csv('source_attila_keys.csv')
 
 df_ck3_cultures = pd.merge(df_ck3_cultures,df_cultures, on='ck3_culture', how ='left', suffixes=('','df_cultures'))
 df_ck3_cultures['used_in_cw'] = df_ck3_cultures['cw_culture'].notna()
-df_ck3_cultures = pd.DataFrame(df_ck3_cultures[['ck3_culture','ck3_source','used_in_cw']]).drop_duplicates().reset_index(drop=True)
+df_ck3_cultures = pd.DataFrame(df_ck3_cultures[['ck3_culture','ck3_source_file','ck3_source','used_in_cw']]).drop_duplicates().reset_index(drop=True)
 df_ck3_cultures.to_csv('source_ck3_cultures.csv')
 
 df_ck3_maa = pd.merge(df_ck3_maa,df_maa, left_on='ck3_maa', right_on='cw_unit', how ='left', suffixes=('','df_maa'))
