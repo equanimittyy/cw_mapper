@@ -11,8 +11,10 @@ You may need to rename the .tsv's to ensure you don't overwrite it when you repe
 2. Run 'cw_mapping_validator.exe'. It will process all of the Attila unit key .tsv's you exported, and compare that to the mapping files in the 
 CW installation directory, as well as the CK3 installation directory.
 
-3. It will ask for input for additional CK3 mods you would like to check. This is for custom mappers to validate additional cultures or MAA outside of CW endorsed mods.
-You may simply type "stop" to end the input.
+3. It will ask for input for additional CK3 mods you would like to check. This is for custom mappers to validate additional cultures or MAA outside of the CW endorsed mods.
+You may simply type "stop" to end the input to either skipthis step, or when finished with adding additional mods to check.
+
+4. The program will export various reports, which are explained below.
 
 
 ============================================================================================================================
