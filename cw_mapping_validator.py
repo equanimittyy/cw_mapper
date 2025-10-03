@@ -141,22 +141,24 @@ for file in os.listdir(ck3_culture_dir):
 for folders in os.scandir(ck3_mod_dir):
     if folders.name in ck3_mods.values():
         print(f'== Mod files found in: {folders.name} ==')
-        for file in os.listdir(os.path.join(ck3_mod_dir,folders.name,'common','culture','cultures')):
-            if file.endswith('.txt'):
-                source_file = os.path.join(ck3_mod_dir,folders.name,'common','culture','cultures',file)
-                source_name = os.path.basename(source_file)
+        if os.path.exists(os.path.join(ck3_mod_dir,folders.name,'common','culture','cultures')):
+            for file in os.listdir(os.path.join(ck3_mod_dir,folders.name,'common','culture','cultures')):
+                if file.endswith('.txt'):
+                    source_file = os.path.join(ck3_mod_dir,folders.name,'common','culture','cultures',file)
+                    source_name = os.path.basename(source_file)
 
-                with open (source_file, 'r', encoding="utf-8-sig") as culture_txt_file:
-                    data = culture_txt_file.read()
+                    with open (source_file, 'r', encoding="utf-8-sig") as culture_txt_file:
+                        data = culture_txt_file.read()
 
-                culture_txt = re.findall(r"^(\w+)\s*=", data, re.M)
-                for culture in culture_txt:
-                    ck3_rows.append({
-                        "ck3_culture":culture,
-                        "ck3_source_file":source_name,
-                        "ck3_source":list(ck3_mods.keys())[list(ck3_mods.values()).index(folders.name)] + ', ' + folders.name
-                    })
-
+                    culture_txt = re.findall(r"^(\w+)\s*=", data, re.M)
+                    for culture in culture_txt:
+                        ck3_rows.append({
+                            "ck3_culture":culture,
+                            "ck3_source_file":source_name,
+                            "ck3_source":list(ck3_mods.keys())[list(ck3_mods.values()).index(folders.name)] + ', ' + folders.name
+                        })
+                        
+    if os.path.exists(os.path.join(ck3_mod_dir,folders.name,'common','culture','creation_names')):
         for file in os.listdir(os.path.join(ck3_mod_dir,folders.name,'common','culture','creation_names')):
             if file.endswith('.txt'):
                 source_file = os.path.join(ck3_mod_dir,folders.name,'common','culture','creation_names',file)
@@ -201,21 +203,22 @@ for file in os.listdir(ck3_maa_dir):
 # Obtain additional maa from CK3 mods
 for folders in os.scandir(ck3_mod_dir):
     if folders.name in ck3_mods.values():
-        for file in os.listdir(os.path.join(ck3_mod_dir,folders.name,'common','men_at_arms_types')):
-            if file.endswith('.txt'):
-                source_file = os.path.join(ck3_mod_dir,folders.name,'common','men_at_arms_types',file)
-                source_name = os.path.basename(source_file)
+        if os.path.exists(os.path.join(ck3_mod_dir,folders.name,'common','men_at_arms_types')):
+            for file in os.listdir(os.path.join(ck3_mod_dir,folders.name,'common','men_at_arms_types')):
+                if file.endswith('.txt'):
+                    source_file = os.path.join(ck3_mod_dir,folders.name,'common','men_at_arms_types',file)
+                    source_name = os.path.basename(source_file)
 
-                with open (source_file, 'r', encoding="utf-8-sig") as maa_txt_file:
-                    data = maa_txt_file.read()
+                    with open (source_file, 'r', encoding="utf-8-sig") as maa_txt_file:
+                        data = maa_txt_file.read()
 
-                maa_txt = re.findall(r"^(\w+)\s*=", data, re.M)
-                for maa in maa_txt:
-                    ck3_rows.append({
-                        "ck3_maa":maa,
-                        "ck3_source_file":source_name,
-                        "ck3_source":list(ck3_mods.keys())[list(ck3_mods.values()).index(folders.name)] + ', ' + folders.name
-                    })
+                    maa_txt = re.findall(r"^(\w+)\s*=", data, re.M)
+                    for maa in maa_txt:
+                        ck3_rows.append({
+                            "ck3_maa":maa,
+                            "ck3_source_file":source_name,
+                            "ck3_source":list(ck3_mods.keys())[list(ck3_mods.values()).index(folders.name)] + ', ' + folders.name
+                        })
 
 df_ck3_maa = pd.concat([df_ck3_maa,pd.DataFrame(ck3_rows)],ignore_index=True)
 
