@@ -20,30 +20,30 @@ settings_dir = '../../data/settings'
 
 # Handle improper .ini structure and pass through configparser
 settings_paths_file = os.path.join(settings_dir,'GamePaths.ini')
-with open (settings_paths_file,'r') as f:
-    content = f.read()
-    settings_content = '[GamePaths]\n' + content.replace('::','=')
-    settings_file = StringIO(settings_content)
-config = configparser.ConfigParser()
-config.read_file(settings_file)
+if os.path.exists(settings_paths_file):
+    with open (settings_paths_file,'r') as f:
+        content = f.read()
+        settings_content = '[GamePaths]\n' + content.replace('::','=')
+        settings_file = StringIO(settings_content)
+    config = configparser.ConfigParser()
+    config.read_file(settings_file)
+else:
+    print(f"== Could not find GamePaths.ini! Please ensure you place the cw_mapping_validator folder in the 'tools' folder of the Crusader Wars directory.")
+    input(f"Press Enter to quit...")
+    quit()
 
 os.chdir(working_dir)
-
 if os.path.exists(attila_export_dir):
     if not any(file.endswith('.tsv') for file in os.listdir(attila_export_dir)):
         print(f'== Mapping directory exists, but no .tsv mapping were files found! ==')
-        print(f'DEBUG: CWD = {working_dir}')
-        print(f'DEBUG: ATTILA_EXPORT_DIR = {attila_export_dir}')
-        print(f'PLEASE READ THE README.TXT!!!')
+        print(f'Please read the readme.txt!')
         input("Press Enter to quit...")
         quit()
     else:
         print(f'== Mapping files found! ==')
 else:
     print(f'== No attila export files directory found in attila_exports. Please ensure you export .tsv files from RPFM/PFM to "attila_exports/db/main_units_tables" ==')
-    print(f'DEBUG: CWD = {working_dir}')
-    print(f'DEBUG: ATTILA_EXPORT_DIR = {attila_export_dir}')
-    print(f'PLEASE READ THE README.TXT!!!')
+    print(f'Please read the readme.txt!')
     input("Press Enter to quit...")
     quit()
 
@@ -68,6 +68,11 @@ print()
 
 # Declare directories and data frame for cultures from Crusader Kings 3 and obtain cultures from Crusader Kings installation, and merge
 ck3_dir_path = os.path.dirname(os.path.dirname(config.get('GamePaths','CRUSADERKINGS3')))
+if ck3_dir_path == "":
+    print(f"== The Crusader Kings 3 directory path was not found! Please ensure you configure your game paths in Crusader Wars.")
+    input("Press Enter to quit...")
+    quit()
+
 ck3_mod_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(config.get('GamePaths','CRUSADERKINGS3')))))),'steamapps','workshop','content','1158310')
 ck3_mods = {
     'Africa Plus' : '3401420817',
