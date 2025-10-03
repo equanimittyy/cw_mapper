@@ -320,7 +320,7 @@ df_ck3_cultures.to_csv('source_ck3_cultures.csv')
 
 df_ck3_maa = pd.merge(df_ck3_maa,df_maa, left_on='ck3_maa', right_on='cw_unit', how ='left', suffixes=('','df_maa'))
 df_ck3_maa['used_in_cw'] = df_ck3_maa['cw_unit'].notna()
-df_ck3_maa = pd.DataFrame(df_ck3_maa[['ck3_maa','ck3_source','used_in_cw']]).drop_duplicates().reset_index(drop=True)
+df_ck3_maa = pd.DataFrame(df_ck3_maa[['ck3_maa','ck3_source_file','ck3_source','used_in_cw']]).drop_duplicates().reset_index(drop=True)
 df_ck3_maa.to_csv('source_ck3_maa.csv')
 print(f'Report produced for source files.')
 
