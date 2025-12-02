@@ -32,7 +32,7 @@ The program will generate several **`.csv` report files** (explained below) to h
 ### CULTURE MAPPING REPORTS ###
 
 Report File: report_cw_cultures
-Purpose: Shows Crusader Wars (CW) cultures mapped against Crusader Kings III (CK3) cultures.
+Purpose: Shows CW cultures mapped against Crusader Kings III (CK3) cultures.
 Warning: If ['ck3_source'] field is EMPTY, CW has culture(s) not found in CK3.
 
 Report File: source_ck3_cultures_keys
