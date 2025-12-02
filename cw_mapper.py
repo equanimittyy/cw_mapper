@@ -69,7 +69,14 @@ class CWValidator:
             print(f'== No CW mapping files were found in {MAPPER_DIR}... ==')
             input("Press Enter to quit...")
             exit(0) # Exit as a success, as no mapping files were found
-
+        
+        ck3_dir_path = os.path.dirname(os.path.dirname(self.config.get('GamePaths','CRUSADERKINGS3')))
+        if ck3_dir_path == "":
+            print(f"== The Crusader Kings 3 directory path was not found! Please ensure you configure your game paths in Crusader Wars.")
+            input("Press Enter to quit...")
+            exit(1) # Exit with an error
+        ck3_mod_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(self.config.get('GamePaths','CRUSADERKINGS3')))))),'steamapps','workshop','content','1158310')
+    
         # TW:ATTILA UNIT KEYS
         os.makedirs(ATTILA_EXPORT_DIR, exist_ok=True)
         if not any(file.endswith('.tsv') for file in os.listdir(ATTILA_EXPORT_DIR)):
@@ -97,13 +104,6 @@ class CWValidator:
                 df_attila = pd.concat([df_attila, df])
 
         # CK3 + MODS CULTURE KEYS
-        ck3_dir_path = os.path.dirname(os.path.dirname(self.config.get('GamePaths','CRUSADERKINGS3')))
-        if ck3_dir_path == "":
-            print(f"== The Crusader Kings 3 directory path was not found! Please ensure you configure your game paths in Crusader Wars.")
-            input("Press Enter to quit...")
-            exit(1) # Exit with an error
-        ck3_mod_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(self.config.get('GamePaths','CRUSADERKINGS3')))))),'steamapps','workshop','content','1158310')
-        
         while True:
             key_input = input("Enter the name of any additional CK3 mods you wish to check (or press Enter to continue): ")
             if key_input.strip() == '':
@@ -116,9 +116,11 @@ class CWValidator:
         print()
         
         ck3_culture_dir = os.path.join(ck3_dir_path,'game','common','culture','cultures')
-        ck3_culture_files = []
+        ck3_culture_dir_hybrid = os.path.join(ck3_dir_path,'game','common','culture','creation_names')
         ck3_rows = []
-        print(f'== Found CK3 culture files: {os.listdir(ck3_culture_dir)} ==')
+
+        # Obtain vanilla cultures from CK3
+        print(f'== Finding CK3 culture files: {os.listdir(ck3_culture_dir)} ==')
         print()
         for file in os.listdir(ck3_culture_dir):
             if file.endswith('.txt'):
@@ -137,12 +139,11 @@ class CWValidator:
                     })
 
         # Obtain additional cultures from hybrid and creation names
-        ck3_culture_dir = os.path.join(ck3_dir_path,'game','common','culture','creation_names')
-        print(f'== Found CK3 culture files:{os.listdir(ck3_culture_dir)} ==')
+        print(f'== Finding CK3 hybrid and creation culture files: {os.listdir(ck3_culture_dir_hybrid)} ==')
         print()
-        for file in os.listdir(ck3_culture_dir):
+        for file in os.listdir(ck3_culture_dir_hybrid):
             if file.endswith('.txt'):
-                source_file = os.path.join(ck3_culture_dir,file)
+                source_file = os.path.join(ck3_culture_dir_hybrid,file)
                 source_name = os.path.basename(source_file)
 
                 with open (source_file, 'r', encoding="utf-8-sig") as culture_txt_file:
@@ -155,15 +156,18 @@ class CWValidator:
                         "ck3_source_file":source_name,
                         "ck3_source":"CK3"
                     })
+        
+        ck3_mod_culture_dir = os.path.join(ck3_mod_dir,folders.name,'common','culture','cultures')
+        ck3_mod_culture_dir_hybrid = os.path.join(ck3_mod_dir,folders.name,'common','culture','creation_names')
 
         # Obtain additional cultures from CK3 mods
         for folders in os.scandir(ck3_mod_dir):
             if folders.name in CK3_MODS.values():
                 print(f'== Mod files found in: {folders.name} ==')
-                if os.path.exists(os.path.join(ck3_mod_dir,folders.name,'common','culture','cultures')):
-                    for file in os.listdir(os.path.join(ck3_mod_dir,folders.name,'common','culture','cultures')):
+                if os.path.exists(ck3_mod_culture_dir):
+                    for file in os.listdir(ck3_mod_culture_dir):
                         if file.endswith('.txt'):
-                            source_file = os.path.join(ck3_mod_dir,folders.name,'common','culture','cultures',file)
+                            source_file = os.path.join(ck3_mod_culture_dir,file)
                             source_name = os.path.basename(source_file)
 
                             with open (source_file, 'r', encoding="utf-8-sig") as culture_txt_file:
@@ -177,11 +181,11 @@ class CWValidator:
                                     "ck3_source":list(CK3_MODS.keys())[list(CK3_MODS.values()).index(folders.name)] + ', ' + folders.name
                                 })
 
-            # Obtain additional cultures from hybrid and creation names                   
-            if os.path.exists(os.path.join(ck3_mod_dir,folders.name,'common','culture','creation_names')):
-                for file in os.listdir(os.path.join(ck3_mod_dir,folders.name,'common','culture','creation_names')):
+            # Obtain additional cultures from hybrid and creation names                
+            if os.path.exists(ck3_mod_culture_dir_hybrid):
+                for file in os.listdir(ck3_mod_culture_dir_hybrid):
                     if file.endswith('.txt'):
-                        source_file = os.path.join(ck3_mod_dir,folders.name,'common','culture','creation_names',file)
+                        source_file = os.path.join(ck3_mod_culture_dir_hybrid,file)
                         source_name = os.path.basename(source_file)
 
                         with open (source_file, 'r', encoding="utf-8-sig") as culture_txt_file:
