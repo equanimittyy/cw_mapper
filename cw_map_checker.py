@@ -365,7 +365,7 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
     exit(0) # Exit as a success
 
 def summary():
-    with open('summary_log.txt', 'w') as f:
+    with open('summary_log.txt', 'w', encoding="utf-8-sig") as f:
         # Check if mapping files and reports exists
         if os.listdir(MAPPER_DIR):
             print()
