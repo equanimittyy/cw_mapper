@@ -19,6 +19,7 @@ WORKING_DIR = application_path
 ATTILA_EXPORT_DIR = os.path.join(WORKING_DIR, 'attila_exports','db','main_units_tables')
 MAPPER_DIR = '../../unit mappers/attila'
 SETTINGS_DIR = '../../data/settings'
+REPORT_OUTPUT_DIR = 'reports'
 
 CK3_MODS = {
             'Africa Plus' : '3401420817',
@@ -52,24 +53,14 @@ class CWValidator:
             input(f"Press Enter to quit...")
             exit(1) # Exit with an error
 
-    def mapping_validate(self):
+    def get_keys(self):
         CWValidator.game_paths()
 
         # Declare the necessary data frames for validation
         df_attila = pd.DataFrame() # TW:Attila unit keys
         df_ck3_cultures = pd.DataFrame() # CK3 culture keys
-
-        # CW MAPPERS
-        if os.listdir(MAPPER_DIR):
-            print()
-            print(f'== Found mapping directories: {os.listdir(MAPPER_DIR)} ==')
-            print()
-        else:
-            print()
-            print(f'== No CW mapping files were found in {MAPPER_DIR}... ==')
-            input("Press Enter to quit...")
-            exit(0) # Exit as a success, as no mapping files were found
-        
+        df_ck3_maa = pd.DataFrame()  # CK3 man at arms keys
+ 
         ck3_dir_path = os.path.dirname(os.path.dirname(self.config.get('GamePaths','CRUSADERKINGS3')))
         if ck3_dir_path == "":
             print(f"== The Crusader Kings 3 directory path was not found! Please ensure you configure your game paths in Crusader Wars.")
@@ -120,7 +111,7 @@ class CWValidator:
         ck3_rows = []
 
         # Obtain vanilla cultures from CK3
-        print(f'== Finding CK3 culture files: {os.listdir(ck3_culture_dir)} ==')
+        print(f'== Finding CK3 culture files in: {os.listdir(ck3_culture_dir)} ==')
         print()
         for file in os.listdir(ck3_culture_dir):
             if file.endswith('.txt'):
@@ -139,7 +130,7 @@ class CWValidator:
                     })
 
         # Obtain additional cultures from hybrid and creation names
-        print(f'== Finding CK3 hybrid and creation culture files: {os.listdir(ck3_culture_dir_hybrid)} ==')
+        print(f'== Finding CK3 hybrid and creation culture files in: {os.listdir(ck3_culture_dir_hybrid)} ==')
         print()
         for file in os.listdir(ck3_culture_dir_hybrid):
             if file.endswith('.txt'):
@@ -156,14 +147,15 @@ class CWValidator:
                         "ck3_source_file":source_name,
                         "ck3_source":"CK3"
                     })
-        
-        ck3_mod_culture_dir = os.path.join(ck3_mod_dir,folders.name,'common','culture','cultures')
-        ck3_mod_culture_dir_hybrid = os.path.join(ck3_mod_dir,folders.name,'common','culture','creation_names')
 
         # Obtain additional cultures from CK3 mods
         for folders in os.scandir(ck3_mod_dir):
             if folders.name in CK3_MODS.values():
-                print(f'== Mod files found in: {folders.name} ==')
+                ck3_mod_culture_dir = os.path.join(ck3_mod_dir,folders.name,'common','culture','cultures')
+                ck3_mod_culture_dir_hybrid = os.path.join(ck3_mod_dir,folders.name,'common','culture','creation_names')
+                mod_name = list(CK3_MODS.keys())[list(CK3_MODS.values()).index(folders.name)] + ', ' + folders.name
+                print(f'== Finding mod culture files in: {folders.name} ==')
+
                 if os.path.exists(ck3_mod_culture_dir):
                     for file in os.listdir(ck3_mod_culture_dir):
                         if file.endswith('.txt'):
@@ -178,7 +170,7 @@ class CWValidator:
                                 ck3_rows.append({
                                     "ck3_culture":culture,
                                     "ck3_source_file":source_name,
-                                    "ck3_source":list(CK3_MODS.keys())[list(CK3_MODS.values()).index(folders.name)] + ', ' + folders.name
+                                    "ck3_source": mod_name
                                 })
 
             # Obtain additional cultures from hybrid and creation names                
@@ -196,17 +188,16 @@ class CWValidator:
                             ck3_rows.append({
                                 "ck3_culture":culture,
                                 "ck3_source_file":source_name,
-                                "ck3_source":list(CK3_MODS.keys())[list(CK3_MODS.values()).index(folders.name)] + ', ' + folders.name
+                                "ck3_source":mod_name
                             })
 
         df_ck3_cultures = pd.concat([df_ck3_cultures,pd.DataFrame(ck3_rows)],ignore_index=True)
 
-        # Declare data frame for maa from Crusader Kings 3 and obtain maa from Crusader Kings installation, and merge
-        df_ck3_maa = pd.DataFrame() 
+        # CK3 + MODS MAN AT ARMS KEYS
         ck3_maa_dir = os.path.join(ck3_dir_path,'game','common','men_at_arms_types')
         ck3_rows = []
         print()
-        print(f'== Found CK3 maa files: {os.listdir(ck3_maa_dir)} ==')
+        print(f'== Finding CK3 maa files in: {os.listdir(ck3_maa_dir)} ==')
         print()
         for file in os.listdir(ck3_maa_dir):
             if file.endswith('.txt'):
@@ -225,12 +216,14 @@ class CWValidator:
                     })
 
         # Obtain additional maa from CK3 mods
-        for folders in os.scandir(ck3_mod_dir):
+        for folders in os.scandir(ck3_mod_dir):      
             if folders.name in CK3_MODS.values():
-                if os.path.exists(os.path.join(ck3_mod_dir,folders.name,'common','men_at_arms_types')):
-                    for file in os.listdir(os.path.join(ck3_mod_dir,folders.name,'common','men_at_arms_types')):
+                ck3_mod_maa_dir = os.path.join(ck3_mod_dir,folders.name,'common','men_at_arms_types')
+                mod_name = list(CK3_MODS.keys())[list(CK3_MODS.values()).index(folders.name)] + ', ' + folders.name
+                if os.path.exists(ck3_mod_maa_dir):
+                    for file in os.listdir(ck3_mod_maa_dir):
                         if file.endswith('.txt'):
-                            source_file = os.path.join(ck3_mod_dir,folders.name,'common','men_at_arms_types',file)
+                            source_file = os.path.join(ck3_mod_maa_dir,file)
                             source_name = os.path.basename(source_file)
 
                             with open (source_file, 'r', encoding="utf-8-sig") as maa_txt_file:
@@ -241,17 +234,31 @@ class CWValidator:
                                 ck3_rows.append({
                                     "ck3_maa":maa,
                                     "ck3_source_file":source_name,
-                                    "ck3_source":list(CK3_MODS.keys())[list(CK3_MODS.values()).index(folders.name)] + ', ' + folders.name
+                                    "ck3_source":mod_name
                                 })
 
         df_ck3_maa = pd.concat([df_ck3_maa,pd.DataFrame(ck3_rows)],ignore_index=True)
 
+        return df_ck3_cultures, df_ck3_maa, df_attila
+
+    def mapping_validation(self):
         # == BEGIN MAPPING ==
         # Declare data frame for processed cw mapping
         df_cultures = pd.DataFrame()
-        cultures_rows = []
         df_maa = pd.DataFrame()
+        cultures_rows = []
         maa_rows = []
+
+        # CW MAPPERS
+        if os.listdir(MAPPER_DIR):
+            print()
+            print(f'== Found mapping directories: {os.listdir(MAPPER_DIR)} ==')
+            print()
+        else:
+            print()
+            print(f'== No CW mapping files were found in {MAPPER_DIR}... ==')
+            input("Press Enter to quit...")
+            exit(1) # Exit with an error
 
         for mapping in os.listdir(MAPPER_DIR):
                 cultures = os.path.join(MAPPER_DIR,mapping,'Cultures')
@@ -325,28 +332,28 @@ class CWValidator:
 
         # Join df from CW and Attila/CK3, and produce reports
         df_maa = pd.merge(df_maa,df_attila, on='attila_map_key', how ='left')
-        df_maa.to_csv('report_cw_maa.csv')
+        df_maa.to_csv(os.path.join(REPORT_OUTPUT_DIR,'report_cw_maa.csv'))
         print(f'Report produced for man-at-arms files.')
 
         df_cultures = pd.merge(df_cultures,df_ck3_cultures, on='ck3_culture', how ='left')
-        df_cultures.to_csv('report_cw_cultures.csv')
+        df_cultures.to_csv(os.path.join(REPORT_OUTPUT_DIR,'report_cw_cultures.csv'))
         print(f'Report produced for culture files.')
 
         df_attila = pd.merge(df_attila,df_maa, on='attila_map_key', how ='left', suffixes=('','df_maa'))
         df_attila['used_in_cw'] = df_attila['cw_unit'].notna()
         df_attila = pd.DataFrame(df_attila[['attila_map_key','attila_source','used_in_cw']]).drop_duplicates().reset_index(drop=True)
-        df_attila.to_csv('source_attila_keys.csv')
+        df_attila.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_attila_keys.csv'))
 
         df_ck3_cultures = pd.merge(df_ck3_cultures,df_cultures, on='ck3_culture', how ='left', suffixes=('','df_cultures'))
         df_ck3_cultures['used_in_cw'] = df_ck3_cultures['cw_culture'].notna()
         df_ck3_cultures = pd.DataFrame(df_ck3_cultures[['ck3_culture','ck3_source_file','ck3_source','used_in_cw']]).drop_duplicates().reset_index(drop=True)
-        df_ck3_cultures.to_csv('source_ck3_cultures.csv')
+        df_ck3_cultures.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_cultures.csv'))
 
         df_ck3_maa = pd.merge(df_ck3_maa,df_maa, left_on='ck3_maa', right_on='cw_unit', how ='left', suffixes=('','df_maa'))
         df_ck3_maa['used_in_cw'] = df_ck3_maa['cw_unit'].notna()
         df_ck3_maa = pd.DataFrame(df_ck3_maa[['ck3_maa','ck3_source_file','ck3_source','used_in_cw']]).drop_duplicates().reset_index(drop=True)
-        df_ck3_maa.to_csv('source_ck3_maa.csv')
+        df_ck3_maa.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_maa.csv'))
         print(f'Report produced for source files.')
 
         input("Press Enter to quit...")
-        quit()
+        exit(0) # Exit as a success
