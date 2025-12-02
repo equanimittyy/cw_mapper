@@ -1,6 +1,8 @@
 import os
 import json
 
+from typing import List, Tuple
+
 CONFIG_DIR = os.path.join('config')
 MAP_CONFIG = os.path.join(CONFIG_DIR,'mapper_config.json')
 
@@ -42,7 +44,7 @@ def init_map_config():
             print('Error: {e}')
             exit(1) # Exit with an error
 
-def add_map_config(mapper_key, mapper_config):
+def add_map_config(mapper_key, mapper_config: List[Tuple[str,int]]):
     # Open the config, and initialise if missing
     try:
         with open (MAP_CONFIG, 'r') as f:
