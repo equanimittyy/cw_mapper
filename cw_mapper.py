@@ -219,7 +219,7 @@ def get_keys(cw_config):
             ck3_mod_maa_dir = os.path.join(ck3_mod_dir,folders.name,'common','men_at_arms_types')
             mod_name = list(CK3_MODS.keys())[list(CK3_MODS.values()).index(folders.name)] + ', ' + folders.name
             print(f'== Finding mod maa files in: {folders.name} ==')
-            
+
             if os.path.exists(ck3_mod_maa_dir):
                 for file in os.listdir(ck3_mod_maa_dir):
                     if file.endswith('.txt'):
@@ -331,6 +331,7 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
                                     "cw_source_folder": mapping
                                 })     
 
+    os.makedirs(REPORT_OUTPUT_DIR,exist_ok=True)
     # Append processing results to df
     df_cultures = pd.concat([df_cultures,pd.DataFrame(cultures_rows)],ignore_index=True)
     df_maa = pd.concat([df_maa,pd.DataFrame(maa_rows)],ignore_index=True)
