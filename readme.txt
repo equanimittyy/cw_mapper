@@ -1,45 +1,61 @@
-// An executible to validate Crusader Wars (CW) Unit Mappers. //
+## ⚔️ Crusader Wars (CW) Unit Mapper Validator Readme
 
-## ⚠ ENSURE THE 'cw_mapping_validator' FOLDER IS PLACED IN THE CW/TOOLS FOLDER
+This executable validates the unit mapping files used by the Crusader Wars mod. It compares unit keys exported from **Total War: Attila** against culture and Man-at-Arms (MAA) definitions found in **Crusader Kings III (CK3)** and its mods.
 
-# Workflow
-1. Use PFM/RPFM to export the unit db's from Attila as .tsv, and place in the "attila_exports" folder, allowing it to create subfolders as necessary. 
-You may need to rename the .tsv's to ensure you don't overwrite it when you repeat it for each of the Attila sources for unit keys.
-    The file structure should look like:
-    /attila_exports/db/main_units_tables/*.tsv
+---
 
-2. Run 'cw_mapping_validator.exe'. It will process all of the Attila unit key .tsv's you exported, and compare that to the mapping files in the 
-CW installation directory, as well as the CK3 installation directory.
+## 🛠️ Setup and Workflow
 
-3. It will ask for input for additional CK3 mods you would like to check. This is for custom mappers to validate additional cultures or MAA outside of the CW endorsed mods.
-You may simply type "stop" to end the input to either skipthis step, or when finished with adding additional mods to check.
+### 1. Setup
+> **Location:** Ensure the `cw_mapper` folder is placed inside your **CW/TOOLS** directory.
 
-4. The program will export various reports, which are explained below.
+### 2. Attila Data Export
+1.  Use a tool like **PFM/RPFM** to export the unit database files (`db/main_units_tables`) from **Attila** as **`.tsv`** files.
+2.  Place these exported `.tsv` files into the tool's subfolder: **`attila_exports/db/main_units_tables/`**.
+    You may need to create this subfolder.
+    > **Tip:** You may need to rename the `.tsv` files if you export from multiple Attila sources to prevent overwriting.
 
+### 3. Execution
+1.  Run **`cw_mapper.exe`**.
+2.  The program will automatically process the exported Attila unit keys and compare them against the mapping files in the CW and CK3 installation directories.
+3.  **Optional Mod Check:** The program will prompt you to enter the names of any **additional CK3 mods** you want to validate custom mappers for.
 
-============================================================================================================================
+### 4. Output
+The program will generate several **`.csv` report files** (explained below) to help you identify broken or missing keys in both games.
 
+================================================================================
 
-## Explanation on the reports
-The purpose of the report .csv's is to assist you in finding broken or missing keys in either Attila or CK3.
+                                 REPORT EXPLANATIONS
 
-# For culture mapping:
-report_cw_cultures = Attempts to map the current cultures found in CW to files found in CK3. 
-⚠ If the ['ck3_source'] field is empty, it means CW has additional culture(s) not found in CK3.
+================================================================================
 
-source_ck3_cultures = The source information from CK3. 
-⚠ If the ['used_in_cw'] field is False, it means this culture is not found in any CW mapping preset.
+### CULTURE MAPPING REPORTS ###
 
+Report File: report_cw_cultures
+Purpose: Shows Crusader Wars (CW) cultures mapped against Crusader Kings III (CK3) cultures.
+Warning: If ['ck3_source'] field is EMPTY, CW has culture(s) not found in CK3.
 
-# For man-at-arms mapping:
-report_cw_maa = Attempts to map the current MAA found in CW to files found in the "attila_exports" folder (follow the structure mentioned above). 
-⚠ If the ['attila_source'] field is empty, it means the ['attila_map_key'] was not found in the exported files from Attila.
-This may be because:
-    > The unit key has changed in Attila.
-    > You didn't export all of the files from Attila.
+Report File: source_ck3_cultures_keys
+Purpose: Lists all culture data found in CK3.
+Warning: If ['used_in_cw'] field is FALSE, that CK3 culture is not used in any CW mapping preset.
 
-source_attila_mapping = The source information from the "attila_exports" folder, presumably exported by you from Attila using PFM/RPFM.
-⚠ If the ['used_in_cw'] field is False, it means the Attila unit key is not found in any CW mapping presets. (Not necessarily bad, since not all units from Attila are being used by CW.)
+--------------------------------------------------------------------------------
 
-source_ck3_maa = The source information from the CK3 installation.
-⚠ If the ['used_in_cw'] field is False, it means the MAA from CK3 is not found in any CW mapping presets.
+### MAN-AT-ARMS (MAA) MAPPING REPORTS ###
+
+Report File: report_cw_maa
+Purpose: Shows CW MAA keys mapped against the Attila exported files.
+Warning: If ['attila_source'] field is EMPTY, the Attila unit key was not found.
+         This may mean: 1) The unit key has changed in Attila, or 2) You didn't export all necessary files.
+
+Report File: source_attila_mapping_keys
+Purpose: Lists all unit key data found in your 'attila_exports' folder.
+Warning: If ['used_in_cw'] field is FALSE, the Attila unit key is not used by CW.
+         (This is often expected, as CW doesn't use all Attila units).
+
+Report File: source_ck3_maa_keys
+Purpose: Lists all MAA data found in CK3.
+Warning: If ['used_in_cw'] field is FALSE, the MAA from CK3 is not found in any CW mapping preset.
+
+================================================================================
+```
