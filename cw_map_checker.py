@@ -305,8 +305,8 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
                                 maa_rows.append({
                                     "cw_type": faction_child.tag,
                                     "cw_category": 'Faction',
-                                    "cw_unit_parent": faction_parent.attrib.get('name'),
-                                    "cw_unit": faction_child.attrib.get('type'),
+                                    "cw_maa_parent": faction_parent.attrib.get('name'),
+                                    "cw_maa": faction_child.attrib.get('type'),
                                     "attila_map_key": faction_child.attrib.get('key'),
                                     "cw_source_file": x,
                                     "cw_source_folder": mapping
@@ -326,8 +326,8 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
                                 maa_rows.append({
                                     "cw_type": titles_child.tag,
                                     "cw_category": 'Title',
-                                    "cw_unit_parent": titles_parent.attrib.get('name'),
-                                    "cw_unit": titles_child.attrib.get('type'),
+                                    "cw_maa_parent": titles_parent.attrib.get('name'),
+                                    "cw_maa": titles_child.attrib.get('type'),
                                     "attila_map_key": titles_child.attrib.get('key'),
                                     "cw_source_file": x,
                                     "cw_source_folder": mapping
@@ -343,7 +343,7 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
             print(f'// 🕮  Report produced for man-at-arms files for mapper: {mapping}.')
 
             df_cultures = pd.merge(df_cultures,df_ck3_cultures, on='ck3_culture', how ='left')
-            df_cultures.to_csv(os.path.join(REPORT_OUTPUT_DIR,'report_cw_cultures.csv'))
+            df_cultures.to_csv(os.path.join(REPORT_OUTPUT_DIR,mapping,'report_cw_cultures.csv'))
             print(f'// 🕮  Report produced for culture files for mapper: {mapping}.')
 
             df_cultures = None

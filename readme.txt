@@ -37,7 +37,6 @@ Warning: If ['ck3_source'] field is EMPTY, CW has culture(s) not found in CK3.
 
 Report File: source_ck3_cultures_keys
 Purpose: Lists all culture data found in CK3.
-Warning: If ['used_in_cw'] field is FALSE, that CK3 culture is not used in any CW mapping preset.
 
 --------------------------------------------------------------------------------
 
@@ -50,12 +49,9 @@ Warning: If ['attila_source'] field is EMPTY, the Attila unit key was not found.
 
 Report File: source_attila_mapping_keys
 Purpose: Lists all unit key data found in your 'attila_exports' folder.
-Warning: If ['used_in_cw'] field is FALSE, the Attila unit key is not used by CW.
-         (This is often expected, as CW doesn't use all Attila units).
 
 Report File: source_ck3_maa_keys
 Purpose: Lists all MAA data found in CK3.
-Warning: If ['used_in_cw'] field is FALSE, the MAA from CK3 is not found in any CW mapping preset.
 
 ================================================================================
 ```
