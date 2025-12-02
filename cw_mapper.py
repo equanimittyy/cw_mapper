@@ -43,18 +43,18 @@ def get_cw_config():
             settings_content = '[GamePaths]\n' + content.replace('::','=')
             settings_file = StringIO(settings_content)
         config = configparser.ConfigParser()
-        cw_config = config.read_file(settings_file)
+        config.read_file(settings_file)
     else:
         print(f"== Could not find GamePaths.ini! Please ensure you place the cw_mapper folder in the 'tools' folder of the Crusader Wars directory.")
         input(f"Press Enter to quit...")
         exit(1) # Exit with an error
 
-    ck3_dir_path = os.path.dirname(os.path.dirname(cw_config.get('GamePaths','CRUSADERKINGS3')))
+    ck3_dir_path = os.path.dirname(os.path.dirname(config.get('GamePaths','CRUSADERKINGS3')))
     if ck3_dir_path == "":
         print(f"== The Crusader Kings 3 directory path was not found! Please ensure you configure your game paths in Crusader Wars.")
         input("Press Enter to quit...")
         exit(1) # Exit with an error
-    return cw_config
+    return config
 
 def get_keys(cw_config):
 
