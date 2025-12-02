@@ -270,6 +270,7 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
             cultures = os.path.join(MAPPER_DIR,mapping,'Cultures')
             factions = os.path.join(MAPPER_DIR,mapping,'Factions')
             titles = os.path.join(MAPPER_DIR,mapping,'Titles')
+            os.makedirs(os.path.join(REPORT_OUTPUT_DIR,mapping),exist_ok=True) # Ensure the report directory exists
 
             # Processing loop for cultures
             if os.path.exists(cultures):
@@ -332,34 +333,26 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
                                     "cw_source_folder": mapping
                                 })     
 
-    # Append processing results to df
-    df_cultures = pd.concat([df_cultures,pd.DataFrame(cultures_rows)],ignore_index=True)
-    df_maa = pd.concat([df_maa,pd.DataFrame(maa_rows)],ignore_index=True)
+            # Append processing results to df
+            df_cultures = pd.concat([df_cultures,pd.DataFrame(cultures_rows)],ignore_index=True)
+            df_maa = pd.concat([df_maa,pd.DataFrame(maa_rows)],ignore_index=True)
 
-    # Join df from CW and Attila/CK3, and produce reports
-    df_maa = pd.merge(df_maa,df_attila, on='attila_map_key', how ='left')
-    df_maa.to_csv(os.path.join(REPORT_OUTPUT_DIR,'report_cw_maa.csv'))
-    print(f'Report produced for man-at-arms files.')
+            # Join df from CW and Attila/CK3, and produce reports
+            df_maa = pd.merge(df_maa,df_attila, on='attila_map_key', how ='left')
+            df_maa.to_csv(os.path.join(REPORT_OUTPUT_DIR,mapping,'report_cw_maa.csv'))
+            print(f'// 🕮  Report produced for man-at-arms files for mapper: {mapping}.')
 
-    df_cultures = pd.merge(df_cultures,df_ck3_cultures, on='ck3_culture', how ='left')
-    df_cultures.to_csv(os.path.join(REPORT_OUTPUT_DIR,'report_cw_cultures.csv'))
-    print(f'Report produced for culture files.')
+            df_cultures = pd.merge(df_cultures,df_ck3_cultures, on='ck3_culture', how ='left')
+            df_cultures.to_csv(os.path.join(REPORT_OUTPUT_DIR,'report_cw_cultures.csv'))
+            print(f'// 🕮  Report produced for culture files for mapper: {mapping}.')
 
-    df_attila = pd.merge(df_attila,df_maa, on='attila_map_key', how ='left', suffixes=('','df_maa'))
-    df_attila['used_in_cw'] = df_attila['cw_unit'].notna()
-    df_attila = pd.DataFrame(df_attila[['attila_map_key','attila_source','used_in_cw']]).drop_duplicates().reset_index(drop=True)
+            df_cultures = None
+            df_maa = None
+
     df_attila.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_attila_keys.csv'))
-
-    df_ck3_cultures = pd.merge(df_ck3_cultures,df_cultures, on='ck3_culture', how ='left', suffixes=('','df_cultures'))
-    df_ck3_cultures['used_in_cw'] = df_ck3_cultures['cw_culture'].notna()
-    df_ck3_cultures = pd.DataFrame(df_ck3_cultures[['ck3_culture','ck3_source_file','ck3_source','used_in_cw']]).drop_duplicates().reset_index(drop=True)
     df_ck3_cultures.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_cultures_keys.csv'))
-
-    df_ck3_maa = pd.merge(df_ck3_maa,df_maa, left_on='ck3_maa', right_on='cw_unit', how ='left', suffixes=('','df_maa'))
-    df_ck3_maa['used_in_cw'] = df_ck3_maa['cw_unit'].notna()
-    df_ck3_maa = pd.DataFrame(df_ck3_maa[['ck3_maa','ck3_source_file','ck3_source','used_in_cw']]).drop_duplicates().reset_index(drop=True)
     df_ck3_maa.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_maa_keys.csv'))
-    print(f'Report produced for source files.')
+    print(f'Report produced for source key files.')
 
     input("Press Enter to quit...")
     exit(0) # Exit as a success
@@ -368,27 +361,31 @@ def summary():
     with open('summary_log.txt', 'w', encoding="utf-8-sig") as f:
         # Check if mapping files and reports exists
         if os.listdir(MAPPER_DIR):
-            print()
             print(f'== Found mappers in directory: {MAPPER_DIR} ==')
             print()
         else:
-            print()
             print(f'== No CW mapping files were found in {MAPPER_DIR}... ==')
+            print()
             input("Press Enter to quit...")
             exit(1) # Exit with an error
 
         if os.listdir(REPORT_OUTPUT_DIR):
-            print()
             print(f'== Found reports in report directory ==')
-        else:
             print()
+        else:
             print(f'== No reports were found in {REPORT_OUTPUT_DIR}. No summary can be made until reports are produced based on your CK3/Attila install... ==')
+            print()
             input("Press Enter to quit...")
             # Could potentially in future add a functionality to run a report from here.
             exit(1) # Exit with an error        
 
         for mapping in os.listdir(MAPPER_DIR):
-            print('↳ '+mapping, file=f)
+            print('▶ '+mapping, file=f)
+            # Key things that need to be summarised:
+            # - The 
+
+
+
             # cultures = os.path.join(MAPPER_DIR,mapping,'Cultures')
             # factions = os.path.join(MAPPER_DIR,mapping,'Factions')
             # titles = os.path.join(MAPPER_DIR,mapping,'Titles')
