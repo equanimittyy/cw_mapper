@@ -1,8 +1,7 @@
-# Crusader-Wars-mapping-validation
+# CW Mapper
 A tool to validate the Crusader Wars unit mapping.
 
-===
-# 📝 To-Do List
+## 📝 To-Do List
 ☐ Revamp the validation code, splitting the code into cleaner components
 ↳ ☐ Move the reports into it's own contained folder
 ↳ ☐ Provide a summary/log.txt which can be fed into a UI.

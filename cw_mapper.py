@@ -28,7 +28,7 @@ if os.path.exists(settings_paths_file):
     config = configparser.ConfigParser()
     config.read_file(settings_file)
 else:
-    print(f"== Could not find GamePaths.ini! Please ensure you place the cw_mapping_validator folder in the 'tools' folder of the Crusader Wars directory.")
+    print(f"== Could not find GamePaths.ini! Please ensure you place the cw_mapper folder in the 'tools' folder of the Crusader Wars directory.")
     input(f"Press Enter to quit...")
     quit()
 
