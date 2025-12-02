@@ -20,6 +20,7 @@ ATTILA_EXPORT_DIR = os.path.join(WORKING_DIR, 'attila_exports','db','main_units_
 MAPPER_DIR = '../../unit mappers/attila'
 SETTINGS_DIR = '../../data/settings'
 REPORT_OUTPUT_DIR = 'reports'
+os.makedirs(REPORT_OUTPUT_DIR,exist_ok=True) # Ensure the report directory exists
 
 CK3_MODS = {
             'Africa Plus' : '3401420817',
@@ -331,7 +332,6 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
                                     "cw_source_folder": mapping
                                 })     
 
-    os.makedirs(REPORT_OUTPUT_DIR,exist_ok=True)
     # Append processing results to df
     df_cultures = pd.concat([df_cultures,pd.DataFrame(cultures_rows)],ignore_index=True)
     df_maa = pd.concat([df_maa,pd.DataFrame(maa_rows)],ignore_index=True)
@@ -363,3 +363,32 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
 
     input("Press Enter to quit...")
     exit(0) # Exit as a success
+
+    def summary():
+        # Check if mapping files and reports exists
+        if os.listdir(MAPPER_DIR):
+            print()
+            print(f'== Found mapping directories: {os.listdir(MAPPER_DIR)} ==')
+            print()
+        else:
+            print()
+            print(f'== No CW mapping files were found in {MAPPER_DIR}... ==')
+            input("Press Enter to quit...")
+        exit(1) # Exit with an error
+
+        if os.listdir(REPORT_OUTPUT_DIR):
+            print()
+            print(f'== Found report directory: {REPORT_OUTPUT_DIR} ==')
+            print()
+        else:
+            print()
+            print(f'== Reports were found in {REPORT_OUTPUT_DIR}. No summary can be made until reports are produced based on your CK3/Attila install... ==')
+            input("Press Enter to quit...")
+            # Could potentially in future add a functionality to run a report from here.
+        exit(1) # Exit with an error        
+
+        for mapping in os.listdir(MAPPER_DIR):
+            print(mapping)
+            # cultures = os.path.join(MAPPER_DIR,mapping,'Cultures')
+            # factions = os.path.join(MAPPER_DIR,mapping,'Factions')
+            # titles = os.path.join(MAPPER_DIR,mapping,'Titles')
