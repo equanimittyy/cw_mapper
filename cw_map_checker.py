@@ -339,11 +339,11 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
 
             # Join df from CW and Attila/CK3, and produce reports
             df_maa = pd.merge(df_maa,df_attila, on='attila_map_key', how ='left')
-            df_maa.to_csv(os.path.join(REPORT_OUTPUT_DIR,mapping,'report_cw_maa.csv'))
+            df_maa.to_csv(os.path.join(REPORT_OUTPUT_DIR,mapping,f'{mapping}_cw_maa.csv'))
             print(f'// 🕮  Report produced for man-at-arms files for mapper: {mapping}.')
 
             df_cultures = pd.merge(df_cultures,df_ck3_cultures, on='ck3_culture', how ='left')
-            df_cultures.to_csv(os.path.join(REPORT_OUTPUT_DIR,mapping,'report_cw_cultures.csv'))
+            df_cultures.to_csv(os.path.join(REPORT_OUTPUT_DIR,mapping,f'{mapping}_cw_cultures.csv'))
             print(f'// 🕮  Report produced for culture files for mapper: {mapping}.')
 
             df_cultures = None
