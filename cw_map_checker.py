@@ -493,8 +493,9 @@ def summary():
                                     print(formatted_row)
                                 print()
                             else:
-                                print(f'No missing Attila keys were found for {file}')
-                                print()
+                                if file.endswith('maa.csv'):
+                                    print(f'No missing Attila keys were found for {file}')
+                                    print()
                         else:
                             print(f'⚠ Missing mod files for keys: {file}. Skipping...')
                             print()
