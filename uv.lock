@@ -17,15 +17,24 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "configparser" },
+    { name = "freesimplegui" },
     { name = "pandas" },
-    { name = "pysimplegui" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "configparser", specifier = ">=7.2.0" },
+    { name = "freesimplegui", specifier = ">=5.2.0.post1" },
     { name = "pandas", specifier = ">=2.3.3" },
-    { name = "pysimplegui", specifier = ">=5.0.8.3" },
+]
+
+[[package]]
+name = "freesimplegui"
+version = "5.2.0.post1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/97/41/8a56f3d4a3760fec6b1f63ff48fa57620f0552eb5f0986fb4aa35f4119f1/freesimplegui-5.2.0.post1.tar.gz", hash = "sha256:e58a0e6758e9a9e87152256911f94fcc3998356d1309973a9f4d9df2dc55f98a", size = 718668, upload-time = "2025-03-17T17:50:24.402Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/73/b4/ce89b4b40d1d2f726583b4d00b99589ba37580012890a8bc4b88d1d2a239/freesimplegui-5.2.0.post1-py3-none-any.whl", hash = "sha256:3d61eb519324503232f86b2f1bd7f5c6813ce225f6e189d0fd737ddb036af4d5", size = 733618, upload-time = "2025-03-17T17:50:22.559Z" },
 ]
 
 [[package]]
@@ -118,15 +127,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/a4/1e/1bac1a839d12e6a82ec6cb40cda2edde64a2013a66963293696bbf31fbbb/pandas-2.3.3-cp314-cp314t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:2e3ebdb170b5ef78f19bfb71b0dc5dc58775032361fa188e814959b74d726dd5", size = 12121582, upload-time = "2025-09-29T23:30:43.391Z" },
     { url = "https://files.pythonhosted.org/packages/44/91/483de934193e12a3b1d6ae7c8645d083ff88dec75f46e827562f1e4b4da6/pandas-2.3.3-cp314-cp314t-musllinux_1_2_aarch64.whl", hash = "sha256:d051c0e065b94b7a3cea50eb1ec32e912cd96dba41647eb24104b6c6c14c5788", size = 12699963, upload-time = "2025-09-29T23:31:10.009Z" },
     { url = "https://files.pythonhosted.org/packages/70/44/5191d2e4026f86a2a109053e194d3ba7a31a2d10a9c2348368c63ed4e85a/pandas-2.3.3-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:3869faf4bd07b3b66a9f462417d0ca3a9df29a9f6abd5d0d0dbab15dac7abe87", size = 13202175, upload-time = "2025-09-29T23:31:59.173Z" },
-]
-
-[[package]]
-name = "pysimplegui"
-version = "5.0.8.3"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/b8/ee/c7015ee3d5723aec4335608450a5efb96f53953d65d7acd6227b389e905d/pysimplegui-5.0.8.3.tar.gz", hash = "sha256:4c77436f527b6ee5c6e097a07028c83d85dc2513bcb51b78c9bfcc1b55123bd1", size = 15686, upload-time = "2025-04-02T13:25:19.096Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/4d/d9/3de4b7ca71a7779e4f4a160088621b072a29d9b814a7fa9b5411571f4849/pysimplegui-5.0.8.3-py3-none-any.whl", hash = "sha256:67e35ad6dd76e9369051261114f4711308e87815a0488f7fa28b37c29a546f8b", size = 16347, upload-time = "2025-04-02T13:25:17.973Z" },
 ]
 
 [[package]]
