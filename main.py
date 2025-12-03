@@ -9,6 +9,8 @@ import cw_map_checker
 ASCII_ART = os.path.join('ascii-art-text.png')
 SUMMARY_LOG = os.path.join("summary_log.txt")
 
+MOD_LIST = []
+
 if os.path.exists(SUMMARY_LOG):
     with open(SUMMARY_LOG, 'r', encoding="utf-8-sig") as f:
         TEXT = f.read()
@@ -17,20 +19,33 @@ else:
 
 def main_window():
     layout = [
-        [sg.Image(ASCII_ART)],
-        [[sg.Button('Validate and Refresh',key="VALIDATE_KEY")],
-        [sg.Multiline(
+    [sg.Image(ASCII_ART)],
+    
+    # --- Control and Input Row ---
+    [
+        sg.Button('Validate and Refresh', key='VALIDATE_KEY'),
+        sg.Text('Mod Name:'), 
+        sg.Input(key='MOD_NAME_KEY', size=(20, 1)), # Input for the Mod Name
+        sg.Text('Mod ID:'), 
+        sg.Input(key='MOD_ID_KEY', size=(10, 1)),   # Input for the Mod ID
+        sg.Button('Add Mod', key='ADD_MOD_KEY')     # Button to trigger the addition
+    ],
+    
+    # --- Output Multiline Field ---
+    [
+        sg.Multiline(
             TEXT,
             enable_events=False,
-            size=(80, 25),              # Set a large initial size
-            font=('Courier New', 10),   # 1. Monospace Font
-            horizontal_scroll=True,     # 2. Enables Horizontal Scrolling
-            expand_x=True,              # Allows it to stretch horizontally on resize
-            expand_y=True,              # Allows it to stretch vertically on resize
+            size=(80, 25),
+            font=('Courier New', 10),
+            horizontal_scroll=True,
+            expand_x=True,
+            expand_y=True,
             disabled=True,
-            key="MLINE_KEY")]
-        ]
+            key='MLINE_KEY'
+        )
     ]
+]
 
     window = sg.Window('Crusader Wars Mapper', layout, resizable=True).Finalize()
 
@@ -39,9 +54,29 @@ def main_window():
 
         if event == sg.WIN_CLOSED or event == 'Exit':
             break
+        
+        elif event == 'ADD_MOD_KEY':
+            window['MLINE_KEY'].update('')
+            mod_name = values['MOD_NAME_KEY'].strip()
+            mod_id = values['MOD_ID_KEY'].strip()
+        
+            if mod_name and mod_id:
+                MOD_LIST.append((mod_name, mod_id))
+                window['MOD_NAME_KEY'].update('') # Clear the input field
+                window['MOD_ID_KEY'].update('')   # Clear the input field
+                
+                # Log the addition to the Multiline
+                window["MLINE_KEY"].update(f'Added Mod: {mod_name} (ID: {mod_id})\n', append=True)
+                window["MLINE_KEY"].update(f'{MOD_LIST}', append=True)
+            else:
+                window["MLINE_KEY"].update('ERROR: Both Mod Name and Mod ID must be entered.\n', append=True)
+                window["MLINE_KEY"].update(f'{MOD_LIST}', append=True)
+
         elif event == 'VALIDATE_KEY':
-            window["MLINE_KEY"].update('')
-            window["VALIDATE_KEY"].update(disabled=True)
+            window['MLINE_KEY'].update('')
+            window['VALIDATE_KEY'].update(disabled=True)
+
+            window['MLINE_KEY'].update(f'Validating mappers with additional mods: {MOD_LIST}')
 
     window.close()
 
