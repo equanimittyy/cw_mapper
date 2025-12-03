@@ -22,6 +22,12 @@ SETTINGS_DIR = '../../data/settings'
 REPORT_OUTPUT_DIR = 'reports'
 os.makedirs(REPORT_OUTPUT_DIR,exist_ok=True) # Ensure the report directory exists
 
+CONFIG_DIR = os.path.join('config')
+MAP_CONFIG = os.path.join(CONFIG_DIR,'mapper_config.json')
+
+with open("ascii.txt", 'r') as f:
+    ASCII = f.read()
+
 CK3_MODS = {
             'Africa Plus' : '3401420817',
             'Buffed Mongol Invasion' : '2796578078',
@@ -364,20 +370,20 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
     exit(0) # Exit as a success
 
 def summary():
-    with open('summary_log.txt', 'w', encoding="utf-8-sig") as f:
-        # Check if mapping files and reports exists
-        if os.listdir(MAPPER_DIR):
-            print(f'== Found mappers in directory: {MAPPER_DIR} ==')
-            print()
-        else:
-            print(f'== No CW mapping files were found in {MAPPER_DIR}... ==')
-            print()
-            input("Press Enter to quit...")
-            exit(1) # Exit with an error
+    vanilla_mappers = ["OfficialCW_EarlyMedieval_919Mod", "OfficialCW_HighMedieval_MK1212Mod","OfficialCW_LateMedieval_MK1212Mod","OfficialCW_Rennaisance_MK1212Mod"]
 
+    ck3_culture_keys = os.path.join(REPORT_OUTPUT_DIR,'source_ck3_cultures_keys.csv')
+    ck3_maa_keys = os.path.join(REPORT_OUTPUT_DIR,'source_ck3_maa_keys.csv')
+    attila_keys = os.path.join(REPORT_OUTPUT_DIR,'source_attila_keys.csv')
+
+    original_stdout = sys.stdout
+
+    with open('summary_log.txt', 'w', encoding="utf-8-sig") as f:
+        sys.stdout = f
+        # Check if reports exists
+        print(ASCII)
         if os.listdir(REPORT_OUTPUT_DIR):
             print(f'== Found reports in report directory ==')
-            print()
         else:
             print(f'== No reports were found in {REPORT_OUTPUT_DIR}. No summary can be made until reports are produced based on your CK3/Attila install... ==')
             print()
@@ -385,13 +391,16 @@ def summary():
             # Could potentially in future add a functionality to run a report from here.
             exit(1) # Exit with an error        
 
-        for mapping in os.listdir(MAPPER_DIR):
-            print('▶ '+mapping, file=f)
+        for mapping in os.listdir(REPORT_OUTPUT_DIR):
             # Key things that need to be summarised:
-            # - The 
-
-
-
+            # - Whether the mapper has all the MAA and cultures from Vanilla or MOD, based on the mapper_config.json
+            # - Whether the mapper has a valid attila unit key
+            if os.path.isdir(os.path.join(REPORT_OUTPUT_DIR,mapping)):
+                print('▶ '+mapping)
+                for file in mapping:
+                    if file.endswith('.csv'):
+                        print(f'- {file} -')
+            
             # cultures = os.path.join(MAPPER_DIR,mapping,'Cultures')
             # factions = os.path.join(MAPPER_DIR,mapping,'Factions')
             # titles = os.path.join(MAPPER_DIR,mapping,'Titles')
