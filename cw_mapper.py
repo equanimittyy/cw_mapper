@@ -7,9 +7,8 @@ CONFIG_DIR = os.path.join('config')
 MAP_CONFIG = os.path.join(CONFIG_DIR,'mapper_config.json')
 
 DEFAULT_CONFIG_PATH = os.path.join('config',"default.json")
-DEFAULT_CONFIG = []
 with open(DEFAULT_CONFIG_PATH, 'r') as f:
-    json.dump(DEFAULT_CONFIG, f, indent=4)
+    DEFAULT_CONFIG = json.load(f)
 
 def init_map_config():
     # Initialise the default config, if none present
