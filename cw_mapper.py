@@ -6,32 +6,10 @@ from typing import List, Tuple
 CONFIG_DIR = os.path.join('config')
 MAP_CONFIG = os.path.join(CONFIG_DIR,'mapper_config.json')
 
-DEFAULT_CONFIG = {
-    "CW_VANILLA": [
-        ['CK3 Vanilla', 0],
-        ['Africa Plus', 3401420817],
-        ['Buffed Mongol Invasion', 2796578078],
-        ['Cultures Expanded', 2829397295],
-        ['More Traditions v2', 2893793966],
-        ['Muslim Enhancements', 2241658518],
-        ['RICE', 2273832430],
-    ],
-    "OfficialCW_FallenEagle_Fireforged-Empire": [
-        ['The Fallen Eagle', 2243307127]
-    ],
-    "OfficialCW_FallenEagle_AgeOfJustinian": [
-        ['The Fallen Eagle', 2243307127]
-    ],
-    "7K_AGOT_ARR": [
-        ['A Game of Thrones', 2962333032]
-    ],
-    "7K_AGOT_BRR": [
-        ['A Game of Thrones', 2962333032]
-    ],
-    "OfficialCW_RealmsInExile_TheDawnlessDays": [
-        ['Realms In Exile', 2291024373]
-    ],
-}
+DEFAULT_CONFIG_PATH = os.path.join('config',"default.json")
+DEFAULT_CONFIG = []
+with open(DEFAULT_CONFIG_PATH, 'r') as f:
+    json.dump(DEFAULT_CONFIG, f, indent=4)
 
 def init_map_config():
     # Initialise the default config, if none present
