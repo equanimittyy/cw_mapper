@@ -416,30 +416,35 @@ def summary():
 
 
                 print(f'🛠 Mods: {target_config}')
-                print('')
 
                 # Set up list of expected culture and MAA keys
                 expected_culture_keys = []
                 expected_maa_keys = []
                 source_attila_keys = []
-
+                found_mods = []
 
                 with open(ck3_culture_key_file, 'r') as f:
                     key_data = csv.DictReader(f)
                     for key in key_data:
                         if key.get("mod_id") in source_ids:
                             expected_culture_keys.append(key)
+                            found_mods.append(key.get("mod_id"))
 
                 with open(ck3_maa_key_file, 'r') as f:
                     key_data = csv.DictReader(f)
                     for key in key_data:
                         if key.get("mod_id") in source_ids:
                             expected_maa_keys.append(key)
+                            found_mods.append(key.get("mod_id"))
                 
                 with open(attila_key_file, 'r') as f:
                     key_data = csv.DictReader(f)
                     for key in key_data:
                         source_attila_keys.append(key)
+                
+                missing_mods = set(source_ids) - set(found_mods)
+                print(f'⚠ Mods missing: {missing_mods}')
+                print('')
 
                 # Compare reports to expected keys
                 files = os.listdir(map_folder)
