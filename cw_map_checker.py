@@ -472,20 +472,20 @@ def summary():
                                 report_attila_keys = [d["attila_map_key"] for d in report_data]
                                 expected_attila_keys = [d["attila_map_key"] for d in source_attila_keys]
                                 missing_attila_keys = sorted(set(report_attila_keys)-set(expected_attila_keys))
-                            
-                        if missing_keys:
-                            if expected_attila_keys and expected_culture_keys:
-                                print(f'⚠ Missing keys: {len(missing_keys)} missing keys')
-                                for i in range(0, len(missing_keys), output_columns):
-                                    row = missing_keys[i:i + output_columns]
-                                    formatted_row = " ".join(key.ljust(30) for key in row)
-                                    print(formatted_row)
-                                print()
+
+                        if expected_culture_keys and expected_maa_keys:
+                            if missing_keys:
+                                    print(f'⚠ Missing keys: {len(missing_keys)} missing keys')
+                                    for i in range(0, len(missing_keys), output_columns):
+                                        row = missing_keys[i:i + output_columns]
+                                        formatted_row = " ".join(key.ljust(30) for key in row)
+                                        print(formatted_row)
+                                    print()
                             else:
-                                print(f'⚠ Missing mod files for keys: {file}. Skipping')
+                                print(f'No missing keys found for {file}')
                                 print()
                         else:
-                            print(f'No missing keys found for {file}')
+                            print(f'⚠ Missing mod files for keys: {file}. Skipping')
                             print()
 
                         if missing_attila_keys:
