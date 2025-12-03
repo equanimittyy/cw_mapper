@@ -2,7 +2,6 @@ import os
 import re
 import sys
 import csv
-import json
 import webbrowser
 import xml.etree.ElementTree as ET
 
