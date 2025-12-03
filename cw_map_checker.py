@@ -1,6 +1,8 @@
 import os
 import re
 import sys
+import csv
+import json
 import webbrowser
 import xml.etree.ElementTree as ET
 
@@ -360,6 +362,8 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
 
             df_cultures = None
             df_maa = None
+            cultures_rows = []
+            maa_rows = []
 
     df_attila.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_attila_keys.csv'))
     df_ck3_cultures.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_cultures_keys.csv'))
@@ -370,11 +374,19 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
     exit(0) # Exit as a success
 
 def summary():
+    output_columns = 4
     vanilla_mappers = ["OfficialCW_EarlyMedieval_919Mod", "OfficialCW_HighMedieval_MK1212Mod","OfficialCW_LateMedieval_MK1212Mod","OfficialCW_Rennaisance_MK1212Mod"]
 
-    ck3_culture_keys = os.path.join(REPORT_OUTPUT_DIR,'source_ck3_cultures_keys.csv')
-    ck3_maa_keys = os.path.join(REPORT_OUTPUT_DIR,'source_ck3_maa_keys.csv')
-    attila_keys = os.path.join(REPORT_OUTPUT_DIR,'source_attila_keys.csv')
+    ck3_culture_key_file = os.path.join(REPORT_OUTPUT_DIR,'source_ck3_cultures_keys.csv')
+    ck3_maa_key_file = os.path.join(REPORT_OUTPUT_DIR,'source_ck3_maa_keys.csv')
+    attila_key_file = os.path.join(REPORT_OUTPUT_DIR,'source_attila_keys.csv')
+
+    with open(ck3_culture_key_file, 'r') as f:
+        culture_keys = f.read()
+    with open(ck3_maa_key_file, 'r') as f:
+        maa_keys = f.read()
+    with open(attila_key_file, 'r') as f:
+        attila_keys = f.read()
 
     original_stdout = sys.stdout
 
@@ -384,6 +396,7 @@ def summary():
         print(ASCII)
         if os.listdir(REPORT_OUTPUT_DIR):
             print(f'== Found reports in report directory ==')
+            print('==================================================')
         else:
             print(f'== No reports were found in {REPORT_OUTPUT_DIR}. No summary can be made until reports are produced based on your CK3/Attila install... ==')
             print()
@@ -392,15 +405,88 @@ def summary():
             exit(1) # Exit with an error        
 
         for mapping in os.listdir(REPORT_OUTPUT_DIR):
+            map_folder = os.path.join(REPORT_OUTPUT_DIR,mapping)
+
             # Key things that need to be summarised:
             # - Whether the mapper has all the MAA and cultures from Vanilla or MOD, based on the mapper_config.json
             # - Whether the mapper has a valid attila unit key
-            if os.path.isdir(os.path.join(REPORT_OUTPUT_DIR,mapping)):
-                print('▶ '+mapping)
-                for file in mapping:
-                    if file.endswith('.csv'):
-                        print(f'- {file} -')
             
-            # cultures = os.path.join(MAPPER_DIR,mapping,'Cultures')
-            # factions = os.path.join(MAPPER_DIR,mapping,'Factions')
-            # titles = os.path.join(MAPPER_DIR,mapping,'Titles')
+            # Check if mapping directory, and load map to mod config
+            if os.path.isdir(map_folder):
+                print('▶ '+mapping)
+                if mapping not in MAP_CONFIG:
+                    if mapping in vanilla_mappers:
+                        target_config = "CW_VANILLA"
+                    else:
+                        target_config = mapping
+            
+                with open(MAP_CONFIG, 'r') as f:
+                    config = json.load(f)
+
+                map_config = config.get(target_config)
+                source_ids = []
+                for mods in map_config:
+                    id = str(mods[1])
+                    source_ids.append(id)
+
+
+                print(f'🛠 Mods: {map_config}')
+                print('')
+
+                # Set up list of expected culture and MAA keys
+                expected_culture_keys = []
+                expected_maa_keys = []
+
+
+                with open(ck3_culture_key_file, 'r') as f:
+                    key_data = csv.DictReader(f)
+                    for key in key_data:
+                        if key.get("mod_id") in source_ids:
+                            expected_culture_keys.append(key)
+
+                with open(ck3_maa_key_file, 'r') as f:
+                    key_data = csv.DictReader(f)
+                    for key in key_data:
+                        if key.get("mod_id") in source_ids:
+                            expected_maa_keys.append(key)
+
+                # Compare reports to expected keys
+                files = os.listdir(map_folder)
+                if files:
+                    for file in files:
+                        missing_keys = []
+                        # CULTURES
+                        if file.endswith('cultures.csv'):
+                            print(f'- {file} - ')
+                            file_path = os.path.join(map_folder,file)
+
+                            with open(file_path, 'r') as f:
+                                report_data = csv.DictReader(f)
+                                expected_cultures = [d["ck3_culture"] for d in expected_culture_keys]
+                                report_cultures = [d["ck3_culture"] for d in report_data]
+                                missing_keys = sorted(list(set(expected_cultures) - set(report_cultures)))
+                        
+                        # MAN AT ARMS
+                        if file.endswith('maa.csv'):
+                            print(f'- {file} - ')
+                            file_path = os.path.join(map_folder,file)
+
+                            with open(file_path, 'r') as f:
+                                report_data = csv.DictReader(f)
+                                expected_maa = [d["ck3_maa"] for d in expected_maa_keys]
+                                report_maa = [d["cw_maa"] for d in report_data]
+                                missing_keys = sorted(set(expected_maa) - set(report_maa))
+                            
+                        if missing_keys:
+                            print(f'⚠ Missing keys: {len(missing_keys)} missing keys')
+                            for i in range(0, len(missing_keys), output_columns):
+                                row = missing_keys[i:i + output_columns]
+                                formatted_row = " ".join(key.ljust(30) for key in row)
+                                print(formatted_row)
+                            print()
+                        else:
+                            print(f'No missing keys found for {file}')
+                            print()
+                else:
+                    print(f'⚠ No reports were found in {map_folder}')
+            print('==================================================')
