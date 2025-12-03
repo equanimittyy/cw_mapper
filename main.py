@@ -1,4 +1,6 @@
 import os
+import sys
+import io
 import FreeSimpleGUI as sg
 
 import cw_mapper
@@ -24,14 +26,13 @@ def main_window():
             font=('Courier New', 10),   # 1. Monospace Font
             horizontal_scroll=True,     # 2. Enables Horizontal Scrolling
             expand_x=True,              # Allows it to stretch horizontally on resize
-            expand_y=True,            # Allows it to stretch vertically on resize
+            expand_y=True,              # Allows it to stretch vertically on resize
             disabled=True,
             key="MLINE_KEY")]
         ]
     ]
 
     window = sg.Window('Crusader Wars Mapper', layout, resizable=True).Finalize()
-    window.Maximize()
 
     while True:
         event, values = window.read()
@@ -40,15 +41,7 @@ def main_window():
             break
         elif event == 'VALIDATE_KEY':
             window["MLINE_KEY"].update('')
-            window["MLINE_KEY"].update(disabled=False)
-
             window["VALIDATE_KEY"].update(disabled=True)
-
-            # Init config in the event it is missing
-            # cw_mapper.init_map_config()
-            # # Validate and update keys, producing reports
-            # cw_map_checker.mapping_validation(*cw_map_checker.get_keys(cw_map_checker.get_cw_config()))
-            # cw_map_checker.summary()
 
     window.close()
 

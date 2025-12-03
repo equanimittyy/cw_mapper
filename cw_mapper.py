@@ -17,10 +17,11 @@ def init_map_config():
         try:
             with open(MAP_CONFIG, 'w') as f:
                 json.dump(DEFAULT_CONFIG, f, indent=4)
+            print(f'Initialised mapper config at {MAP_CONFIG}')
         except Exception as e:
             print('Error: {e}')
             exit(1) # Exit with an error
-
+        
 def get_config(mapping):
     vanilla_mappers = ["OfficialCW_EarlyMedieval_919Mod", "OfficialCW_HighMedieval_MK1212Mod","OfficialCW_LateMedieval_MK1212Mod","OfficialCW_Rennaisance_MK1212Mod"]
     target_config = []
