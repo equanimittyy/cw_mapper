@@ -125,7 +125,8 @@ def get_keys(cw_config):
                 ck3_rows.append({
                     "ck3_culture":culture,
                     "ck3_source_file":source_name,
-                    "ck3_source":"CK3"
+                    "ck3_source":"CK3",
+                    "mod_id":"0"
                 })
 
     # Obtain additional cultures from hybrid and creation names
@@ -144,7 +145,8 @@ def get_keys(cw_config):
                 ck3_rows.append({
                     "ck3_culture":culture,
                     "ck3_source_file":source_name,
-                    "ck3_source":"CK3"
+                    "ck3_source":"CK3",
+                    "mod_id":"0"
                 })
 
     # Obtain additional cultures from CK3 mods
@@ -152,7 +154,7 @@ def get_keys(cw_config):
         if folders.name in CK3_MODS.values():
             ck3_mod_culture_dir = os.path.join(ck3_mod_dir,folders.name,'common','culture','cultures')
             ck3_mod_culture_dir_hybrid = os.path.join(ck3_mod_dir,folders.name,'common','culture','creation_names')
-            mod_name = list(CK3_MODS.keys())[list(CK3_MODS.values()).index(folders.name)] + ', ' + folders.name
+            mod_name = list(CK3_MODS.keys())[list(CK3_MODS.values()).index(folders.name)]
             print(f'== Finding mod culture files in: {folders.name} ==')
 
             if os.path.exists(ck3_mod_culture_dir):
@@ -169,7 +171,8 @@ def get_keys(cw_config):
                             ck3_rows.append({
                                 "ck3_culture":culture,
                                 "ck3_source_file":source_name,
-                                "ck3_source": mod_name
+                                "ck3_source": mod_name,
+                                "mod_id":folders.name
                             })
 
             # Obtain additional cultures from hybrid and creation names                
@@ -187,7 +190,8 @@ def get_keys(cw_config):
                             ck3_rows.append({
                                 "ck3_culture":culture,
                                 "ck3_source_file":source_name,
-                                "ck3_source":mod_name
+                                "ck3_source":mod_name,
+                                "mod_id":folders.name
                             })
 
     df_ck3_cultures = pd.concat([df_ck3_cultures,pd.DataFrame(ck3_rows)],ignore_index=True)
@@ -211,14 +215,15 @@ def get_keys(cw_config):
                 ck3_rows.append({
                     "ck3_maa":maa,
                     "ck3_source_file":source_name,
-                    "ck3_source":"CK3"
+                    "ck3_source":"CK3",
+                    "mod_id":"0"
                 })
 
     # Obtain additional maa from CK3 mods
     for folders in os.scandir(ck3_mod_dir):      
         if folders.name in CK3_MODS.values():
             ck3_mod_maa_dir = os.path.join(ck3_mod_dir,folders.name,'common','men_at_arms_types')
-            mod_name = list(CK3_MODS.keys())[list(CK3_MODS.values()).index(folders.name)] + ', ' + folders.name
+            mod_name = list(CK3_MODS.keys())[list(CK3_MODS.values()).index(folders.name)]
             print(f'== Finding mod maa files in: {folders.name} ==')
 
             if os.path.exists(ck3_mod_maa_dir):
@@ -235,7 +240,8 @@ def get_keys(cw_config):
                             ck3_rows.append({
                                 "ck3_maa":maa,
                                 "ck3_source_file":source_name,
-                                "ck3_source":mod_name
+                                "ck3_source":mod_name,
+                                "mod_id":folders.name
                             })
 
     df_ck3_maa = pd.concat([df_ck3_maa,pd.DataFrame(ck3_rows)],ignore_index=True)
