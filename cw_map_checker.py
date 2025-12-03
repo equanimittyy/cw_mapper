@@ -11,6 +11,8 @@ from io import StringIO
 import configparser
 import pandas as pd
 
+from cw_mapper import get_config
+
 if getattr(sys, 'frozen', False):
     application_path = os.path.dirname(sys.executable)
 elif __file__:
@@ -25,7 +27,7 @@ REPORT_OUTPUT_DIR = 'reports'
 os.makedirs(REPORT_OUTPUT_DIR,exist_ok=True) # Ensure the report directory exists
 
 CONFIG_DIR = os.path.join('config')
-MAP_CONFIG = os.path.join(CONFIG_DIR,'mapper_config.json')
+target_config = os.path.join(CONFIG_DIR,'mapper_config.json')
 
 with open("ascii.txt", 'r') as f:
     ASCII = f.read()
@@ -375,21 +377,12 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
 
 def summary():
     output_columns = 4
-    vanilla_mappers = ["OfficialCW_EarlyMedieval_919Mod", "OfficialCW_HighMedieval_MK1212Mod","OfficialCW_LateMedieval_MK1212Mod","OfficialCW_Rennaisance_MK1212Mod"]
-
+    
     ck3_culture_key_file = os.path.join(REPORT_OUTPUT_DIR,'source_ck3_cultures_keys.csv')
     ck3_maa_key_file = os.path.join(REPORT_OUTPUT_DIR,'source_ck3_maa_keys.csv')
     attila_key_file = os.path.join(REPORT_OUTPUT_DIR,'source_attila_keys.csv')
 
-    with open(ck3_culture_key_file, 'r') as f:
-        culture_keys = f.read()
-    with open(ck3_maa_key_file, 'r') as f:
-        maa_keys = f.read()
-    with open(attila_key_file, 'r') as f:
-        attila_keys = f.read()
-
     original_stdout = sys.stdout
-
     with open('summary_log.txt', 'w', encoding="utf-8-sig") as f:
         sys.stdout = f
         # Check if reports exists
@@ -414,28 +407,21 @@ def summary():
             # Check if mapping directory, and load map to mod config
             if os.path.isdir(map_folder):
                 print('▶ '+mapping)
-                if mapping not in MAP_CONFIG:
-                    if mapping in vanilla_mappers:
-                        target_config = "CW_VANILLA"
-                    else:
-                        target_config = mapping
-            
-                with open(MAP_CONFIG, 'r') as f:
-                    config = json.load(f)
-
-                map_config = config.get(target_config)
+                target_config = get_config(mapping)
+                
                 source_ids = []
-                for mods in map_config:
+                for mods in target_config:
                     id = str(mods[1])
                     source_ids.append(id)
 
 
-                print(f'🛠 Mods: {map_config}')
+                print(f'🛠 Mods: {target_config}')
                 print('')
 
                 # Set up list of expected culture and MAA keys
                 expected_culture_keys = []
                 expected_maa_keys = []
+                source_attila_keys = []
 
 
                 with open(ck3_culture_key_file, 'r') as f:
@@ -449,12 +435,18 @@ def summary():
                     for key in key_data:
                         if key.get("mod_id") in source_ids:
                             expected_maa_keys.append(key)
+                
+                with open(attila_key_file, 'r') as f:
+                    key_data = csv.DictReader(f)
+                    for key in key_data:
+                        source_attila_keys.append(key)
 
                 # Compare reports to expected keys
                 files = os.listdir(map_folder)
                 if files:
                     for file in files:
                         missing_keys = []
+                        missing_attila_keys = []
                         # CULTURES
                         if file.endswith('cultures.csv'):
                             print(f'- {file} - ')
@@ -476,17 +468,37 @@ def summary():
                                 expected_maa = [d["ck3_maa"] for d in expected_maa_keys]
                                 report_maa = [d["cw_maa"] for d in report_data]
                                 missing_keys = sorted(set(expected_maa) - set(report_maa))
+
+                                report_attila_keys = [d["attila_map_key"] for d in report_data]
+                                expected_attila_keys = [d["attila_map_key"] for d in source_attila_keys]
+                                missing_attila_keys = sorted(set(report_attila_keys)-set(expected_attila_keys))
                             
                         if missing_keys:
-                            print(f'⚠ Missing keys: {len(missing_keys)} missing keys')
+                            if expected_attila_keys and expected_culture_keys:
+                                print(f'⚠ Missing keys: {len(missing_keys)} missing keys')
+                                for i in range(0, len(missing_keys), output_columns):
+                                    row = missing_keys[i:i + output_columns]
+                                    formatted_row = " ".join(key.ljust(30) for key in row)
+                                    print(formatted_row)
+                                print()
+                            else:
+                                print(f'⚠ Missing mod files for keys: {file}. Skipping')
+                                print()
+                        else:
+                            print(f'No missing keys found for {file}')
+                            print()
+
+                        if missing_attila_keys:
+                            print(f'⚠ Missing keys from Total War Attila: {len(missing_keys)} missing keys')
                             for i in range(0, len(missing_keys), output_columns):
                                 row = missing_keys[i:i + output_columns]
                                 formatted_row = " ".join(key.ljust(30) for key in row)
                                 print(formatted_row)
                             print()
                         else:
-                            print(f'No missing keys found for {file}')
+                            print(f'No missing Attila keys were found for {file}')
                             print()
                 else:
                     print(f'⚠ No reports were found in {map_folder}')
-            print('==================================================')
+                print('==================================================')
+    sys.stdout = original_stdout

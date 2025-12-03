@@ -44,6 +44,19 @@ def init_map_config():
             print('Error: {e}')
             exit(1) # Exit with an error
 
+def get_config(mapping):
+    vanilla_mappers = ["OfficialCW_EarlyMedieval_919Mod", "OfficialCW_HighMedieval_MK1212Mod","OfficialCW_LateMedieval_MK1212Mod","OfficialCW_Rennaisance_MK1212Mod"]
+    target_config = []
+    if mapping in vanilla_mappers:
+        with open(MAP_CONFIG, 'r') as f:
+            config = json.load(f)
+            target_config = config.get("CW_VANILLA")
+    else:
+       with open(MAP_CONFIG, 'r') as f:
+            config = json.load(f)
+            target_config = config.get(mapping)
+    return target_config
+
 def add_map_config(mapper_key, mapper_config: List[Tuple[str,int]]):
     # Open the config, and initialise if missing
     try:
