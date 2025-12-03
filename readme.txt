@@ -1,6 +1,6 @@
-## ⚔️ Crusader Wars (CW) Unit Mapper Validator Readme
+## ⚔️ Crusader Wars (CW) Unit Mapper Readme
 
-This executable validates the unit mapping files used by the Crusader Wars mod. It compares unit keys exported from **Total War: Attila** against culture and Man-at-Arms (MAA) definitions found in **Crusader Kings III (CK3)** and its mods.
+This program validates the unit mapping files used by the Crusader Wars mod. It compares unit keys exported from **Total War: Attila** against culture and Man-at-Arms (MAA) definitions found in **Crusader Kings III (CK3)** and its mods.
 
 ---
 
@@ -15,13 +15,15 @@ This executable validates the unit mapping files used by the Crusader Wars mod. 
     You may need to create this subfolder.
     > **Tip:** You may need to rename the `.tsv` files if you export from multiple Attila sources to prevent overwriting.
 
-### 3. Execution
+### 3. Application Use
 1.  Run **`cw_mapper.exe`**.
-2.  The program will automatically process the exported Attila unit keys and compare them against the mapping files in the CW and CK3 installation directories.
-3.  **Optional Mod Check:** The program will prompt you to enter the names of any **additional CK3 mods** you want to validate custom mappers for.
+2.  Click 'Refresh Current Mappers' The program will automatically process the exported Attila unit keys and compare them against the mapping files in the CW and CK3 installation directories.
+3.  The program also includes a custom mapping functionality. Press 'Create Custom Mapper' to run this.
+3.1.  **Optional:** The program will prompt you to enter the names of any **additional CK3 mods** you want to create custom mappers for.
 
 ### 4. Output
 The program will generate several **`.csv` report files** (explained below) to help you identify broken or missing keys in both games.
+As well as displaying a summary report of all mappers available, including any custom ones.
 
 ================================================================================
 
