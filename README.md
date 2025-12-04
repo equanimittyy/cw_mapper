@@ -13,18 +13,18 @@ checking what MAA/Cultures are needed plus for future use when people will creat
 
 ☑ ~~Develop a simple UI~~
 \
-↳ ☐ Update the summary display UI to display the instructions to obtain the .tsv's from TW:Attila for when missing in tooling
+↳ ☑ ~~Update the summary display UI to display the instructions to obtain the .tsv's from TW:Attila for when missing in tooling~~
 
 ☐ Develop a simple way to build a mapper, based on Earl's existing mapper (just map it to the mapper that's found in CW currently), or alternatively, from scratch based on the code brought in from CW data.
 \
-↳ ☐ Proper per faction display
+↳ ☑ Proper per faction display
 \
 ↳ ☐ Culture <> Faction mapper
 \
-↳ ☐ Key loading from available sources
+↳ ☑ Key loading from available sources
 \
 ↳ ☐ Saving and loading mappers
 \
-↳ ☐ Create mapper based on existing mapper
+↳ ☐ Create mapper based on existing mapper (loading xmls)
 \
 ↳ ☐ Mapping instructions
