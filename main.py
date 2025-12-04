@@ -121,7 +121,7 @@ def mapping_window():
             key=FACTION_KEY, 
             readonly=True,
             enable_events=True
-        ),sg.Push(background_color='#DDDDDD'),sg.Button('Save', key='SAVE_BUTTON_KEY',size=(15, 2), button_color=('white', '#444444')),sg.Button('Load', size=(15, 2), button_color=('white', '#444444')),sg.Button('Export to XML', size=(15, 2), button_color=('white', "#008670"))],
+        ),sg.Push(background_color='#DDDDDD'),sg.Button('Save', key='SAVE_BUTTON_KEY',size=(15, 2), button_color=('white', '#444444')),sg.Input(key='FILE_LOAD_KEY',visible=False),sg.FileBrowse('Load', target='FILE_LOAD_KEY',size=(15, 2), initial_folder=CUSTOM_MAPPER_DIR, button_color=('white', '#444444'),file_types=(("Text Files", "*.txt"))),sg.Button('Export to XML', size=(15, 2), button_color=('white', "#008670"))],
         [sg.Listbox(
             values=[],
             size=(35, 13), # Adjusted size to fit the Combo element
@@ -191,6 +191,17 @@ def mapping_window():
         }
         with open(output_path, 'w', encoding='utf-8-sig') as f:
             json.dump(save_format,f,indent=4)
+
+    # def load_mapper(custom_mapper):
+    #     input_path = os.path.join(CUSTOM_MAPPER_DIR,f'{custom_mapper}.txt')
+    #     os.makedirs(CUSTOM_MAPPER_DIR, exist_ok=True)
+    #     seperator = ','
+    #     save_format = {
+    #         seperator.join(k):v
+    #         for k,v in custom_mapping.items()
+    #     }
+    #     with open(output_path, 'w', encoding='utf-8-sig') as f:
+    #         json.dump(save_format,f,indent=4)
     
     # END FUNCTIONS
     # ==============================================
