@@ -414,7 +414,7 @@ def summary():
                     source_ids.append(id)
 
                 print()
-                print(f'🛠 Mods: {target_config}')
+                print(f'🛠 Sources: {target_config}')
 
                 # Set up list of expected culture and MAA keys
                 expected_culture_keys = []
@@ -442,7 +442,7 @@ def summary():
                         source_attila_keys.append(key)
                 
                 missing_mods = set(source_ids) - set(found_mods)
-                print(f'↳ ⚠ Mods missing: {missing_mods}')
+                print(f'↳ ⚠ Sources missing: {missing_mods}')
                 print('')
 
                 # Compare reports to expected keys
