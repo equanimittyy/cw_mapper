@@ -520,7 +520,6 @@ def main_window():
 ]
 
     window = sg.Window('Crusader Wars Mapper', layout, resizable=True).Finalize()
-    window.maximize()
 
     while True:
         event, values = window.read()
