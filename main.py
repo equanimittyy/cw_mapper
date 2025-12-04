@@ -1,6 +1,7 @@
 import os
 import sys
 import csv
+import json
 import webbrowser
 import FreeSimpleGUI as sg
 
@@ -19,6 +20,7 @@ ASCII_ART = os.path.join('ascii-art-text.png')
 SUMMARY_LOG = os.path.join("summary_log.txt")
 ATTILA_EXPORT_DIR = os.path.join(WORKING_DIR, 'attila_exports','db','main_units_tables')
 REPORT_OUTPUT_DIR = 'reports'
+CUSTOM_MAPPER_DIR = 'custom_mappers'
 
 MOD_LIST = []
 
@@ -46,16 +48,11 @@ ATTILA_SOURCES = [item['attila_source'] for item in ATTILA_SOURCE_KEYS]
 CK3_SOURCES = [item['ck3_source'] for item in CULTURES_SOURCE_KEYS] + [item['ck3_source'] for item in MAA_SOURCE_KEYS]
 
 def mapping_window():
+    MAPPER_NAME = ''
     ATTILA_UNIT_LIST_SOURCE = ['ALL'] + sorted(list(dict.fromkeys(ATTILA_SOURCES)))
     MAA_LIST_SOURCE = ['ALL'] + sorted(list(dict.fromkeys(CK3_SOURCES)))
 
     FACTION_LIST = ['DEFAULT'] + [
-        'faction_roman',
-        'faction_germanic',
-        'faction_saxon',
-        'faction_hunnish',
-        'faction_sarmatian',
-        'faction_byzantine'
     ]
 
     # Dictionary to store the actual mappings (CK3 MAA: ATTILA UNIT KEY, per FACTION)
@@ -115,7 +112,7 @@ def mapping_window():
 
     # Column 3: Mappings Display and Action Buttons
     col3_layout = [
-        [sg.Text('Unit Key Mapper: (CK3 => TW:A)', font=('Courier New', 12, 'bold'), text_color='#00006D', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE)],
+        [sg.Text(f'Unit Key Mapper: {MAPPER_NAME}', key='MAPPER_COL_TITLE_KEY', font=('Courier New', 12, 'bold'), text_color='#00006D', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE)],
         # Faction Selector Dropdown
         [sg.Text('Select Faction:'), sg.Combo(
             values=FACTION_LIST, 
@@ -124,7 +121,7 @@ def mapping_window():
             key=FACTION_KEY, 
             readonly=True,
             enable_events=True
-        ),sg.Push(background_color='#DDDDDD'),sg.Button('Save', size=(15, 2), button_color=('white', '#444444')),sg.Button('Load', size=(15, 2), button_color=('white', '#444444'))],
+        ),sg.Push(background_color='#DDDDDD'),sg.Button('Save', key='SAVE_BUTTON_KEY',size=(15, 2), button_color=('white', '#444444')),sg.Button('Load', size=(15, 2), button_color=('white', '#444444')),sg.Button('Export', size=(15, 2), button_color=('white', "#008670"))],
         [sg.Listbox(
             values=[],
             size=(35, 13), # Adjusted size to fit the Combo element
@@ -135,14 +132,14 @@ def mapping_window():
             expand_y=True
         )],
         [sg.Button('Add Mapping', key='ADD_MAPPING_KEY', size=(15, 2), button_color=('white', '#004D40'), disabled=True),sg.Button('Remove Selected', key='REMOVE_MAPPING_KEY', size=(15, 2), button_color=('white', '#CC0000'), disabled=True),sg.Push(background_color='#DDDDDD'),sg.Button('Open Faction-Heritage mapping', size=(25, 2), button_color=('white', '#444444'))],
-        [sg.Button('Copy from faction', key='FACTION_COPY_BUTTON_KEY',size=(15, 2), button_color=('white', "#008670")),sg.Push(background_color='#DDDDDD')]
+        [sg.Button('Copy from faction', key='FACTION_COPY_BUTTON_KEY',size=(15, 2), button_color=('white', "#008670")),sg.Push(background_color='#DDDDDD'),sg.Button('Edit faction list', key='FACTION_LIST_EDIT_BUTTON_KEY', size=(15, 2), button_color=('white', '#444444'))]
     ]
 
     # Main layout
     mapper_layout = [
         [sg.Text('Crusader Wars Unit Mapper Configuration', font=('Courier New', 26, 'bold'), justification='center', expand_x=True, pad=(0, 15))],
         [sg.Text('Create your "MAA => UNIT" mapping, per FACTION here. Any missing "MAA => UNIT" mappings will fallback to DEFAULT, or crash if not present.', font=('Courier New', 10, 'bold'), justification='center', expand_x=True)],
-        [sg.Text('Each FACTION will need to be assigned to a HERITAGE.', font=('Courier New', 10, 'bold'), justification='center', expand_x=True)],
+        [sg.Text('Each FACTION is assigned to one or many HERITAGE.', font=('Courier New', 10, 'bold'), justification='center', expand_x=True)],
         [
             sg.Column(col1_layout, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD',expand_x=True,expand_y=True),
             sg.VSeparator(),
@@ -159,8 +156,8 @@ def mapping_window():
     selected_ck3 = None
     selected_attila = None
 
-    # Mapping handler function
-    # Function to update the Mappings Listbox values based on the state dictionary
+    # FUNCTIONS
+    # ==============================================
     def update_mappings_list(window, mappings_dict):
         """Formats the mapping dictionary into a list of strings for the Listbox."""
         display_list = []
@@ -181,8 +178,22 @@ def mapping_window():
     # Function to check if the 'Add Mapping' button should be active
     def check_add_button(window):
         """Enables the Add button only if both CK3 and Attila units are selected."""
-        is_ready = selected_ck3 is not None and selected_attila is not None
+        is_ready = selected_ck3 is not None and selected_attila is not None and values[FACTION_KEY] != ''
         window['ADD_MAPPING_KEY'].update(disabled=not is_ready)
+
+    def save_mapper(name, custom_mapping):
+        output_path = os.path.join(CUSTOM_MAPPER_DIR,f'{name}.txt')
+        os.makedirs(CUSTOM_MAPPER_DIR, exist_ok=True)
+        seperator = ','
+        save_format = {
+            seperator.join(k):v
+            for k,v in custom_mapping.items()
+        }
+        with open(output_path, 'w', encoding='utf-8-sig') as f:
+            json.dump(save_format,f,indent=4)
+    
+    # END FUNCTIONS
+    # ==============================================
 
     while True:
         event, values = window.read()
@@ -232,31 +243,43 @@ def mapping_window():
         elif event == FACTION_KEY:
             current_faction = values[FACTION_KEY]
             update_mappings_list(window, current_mappings)
-        
+            check_add_button(window)
+
+        elif event == 'SAVE_BUTTON_KEY':
+            if MAPPER_NAME:
+                save_mapper(MAPPER_NAME, current_mappings)
+            else:
+                name = popup_mapper_name_input()
+                if name:
+                    save_mapper(name,current_mappings)
+                    MAPPER_NAME = name
+            window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
+
         elif event == 'ADD_MAPPING_KEY' and selected_ck3 and selected_attila:
             current_faction = values[FACTION_KEY]
-            for selected in selected_ck3:
-                mapping_key = (selected, current_faction)
-            
-                # Check for conflicts (CK3 unit + Faction combination already mapped), and overwrite if so.
-                for key in mapping_key:
-                    if key in current_mappings:
-                        key_to_remove = (selected, current_faction)
-                        del current_mappings[key_to_remove]
+            if current_faction:
+                for selected in selected_ck3:
+                    mapping_key = (selected, current_faction)
                 
-                current_mappings[mapping_key] = selected_attila
+                    # Check for conflicts (CK3 unit + Faction combination already mapped), and overwrite if so.
+                    for key in mapping_key:
+                        if key in current_mappings:
+                            key_to_remove = (selected, current_faction)
+                            del current_mappings[key_to_remove]
+                    
+                    current_mappings[mapping_key] = selected_attila
 
-                # Update the displayed list
-                update_mappings_list(window, current_mappings)
-                check_add_button(window)
+                    # Update the displayed list
+                    update_mappings_list(window, current_mappings)
+                    check_add_button(window)
 
-            # Reset unit selections for the next mapping
-            selected_ck3 = None
-            selected_attila = None
-            window['CK3_LIST_KEY'].update(set_to_index=[])
-            window['ATTILA_LIST_KEY'].update(set_to_index=[])
-            window['SELECTED_CK3_KEY'].update('Selected CK3:', background_color='#F0F0F0')
-            window['SELECTED_ATTILA_KEY'].update('Selected ATTILA:', background_color='#F0F0F0')
+                # Reset unit selections for the next mapping
+                selected_ck3 = None
+                selected_attila = None
+                window['CK3_LIST_KEY'].update(set_to_index=[])
+                window['ATTILA_LIST_KEY'].update(set_to_index=[])
+                window['SELECTED_CK3_KEY'].update('Selected CK3:', background_color='#F0F0F0')
+                window['SELECTED_ATTILA_KEY'].update('Selected ATTILA:', background_color='#F0F0F0')
 
         elif event == 'REMOVE_MAPPING_KEY':
             if values['MAPPING_LISTS_KEY']:
@@ -294,7 +317,31 @@ def mapping_window():
                 update_mappings_list(window, current_mappings)
                 check_add_button(window)
 
+        elif event == 'FACTION_LIST_EDIT_BUTTON_KEY':
+            new_faction_list = popup_faction_list(FACTION_LIST)
+            if new_faction_list != None:
+                FACTION_LIST = new_faction_list
+                window[FACTION_KEY].update(values=FACTION_LIST)
+
     window.close()
+
+def popup_mapper_name_input():
+    layout = [
+        [sg.Text('Enter a name for your mapper:')],
+        [sg.Input(
+            key='CUSTOM_MAPPER_NAME_INPUT'
+        )],
+        [sg.Button('OK'), sg.Button('Cancel')]
+    ]
+
+    window = sg.Window('Custom mapper name input', layout, modal=True)
+    event, values = window.read(close=True) # Closes the window after reading the event
+
+    if event == 'OK':
+        name = values['CUSTOM_MAPPER_NAME_INPUT']
+        if name:
+            return name
+    return None
 
 def popup_faction_copy(factions):
     layout = [
@@ -315,6 +362,31 @@ def popup_faction_copy(factions):
         target_faction = values['FACTION_COPIED_KEY']
         if target_faction:
             return target_faction
+    return None
+
+def popup_faction_list(factions):
+    formatted_faction_list = ''
+    for faction in factions:
+        line = faction
+        formatted_faction_list += line + '\n'
+    layout = [
+        [sg.Text('Faction list, seperate with a new line')],
+        [sg.Multiline(
+            formatted_faction_list,
+            size=(50, 20),
+            key='FACTION_EDIT_LIST'
+        )],
+        [sg.Button('OK'), sg.Button('Cancel')]
+    ]
+
+    window = sg.Window('Edit faction list', layout, modal=True)
+    event, values = window.read(close=True) # Closes the window after reading the event
+
+    if event == 'OK':
+        new_faction_list = values['FACTION_EDIT_LIST'].split('\n')
+        clean_faction_list = [item.strip() for item in new_faction_list]
+        if clean_faction_list:
+            return clean_faction_list
     return None
 
 def main_window():
