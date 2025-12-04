@@ -121,7 +121,7 @@ def mapping_window():
             key=FACTION_KEY, 
             readonly=True,
             enable_events=True
-        ),sg.Push(background_color='#DDDDDD'),sg.Button('Save', key='SAVE_BUTTON_KEY',size=(15, 2), button_color=('white', '#444444')),sg.Button('Load', size=(15, 2), button_color=('white', '#444444')),sg.Button('Export', size=(15, 2), button_color=('white', "#008670"))],
+        ),sg.Push(background_color='#DDDDDD'),sg.Button('Save', key='SAVE_BUTTON_KEY',size=(15, 2), button_color=('white', '#444444')),sg.Button('Load', size=(15, 2), button_color=('white', '#444444')),sg.Button('Export to XML', size=(15, 2), button_color=('white', "#008670"))],
         [sg.Listbox(
             values=[],
             size=(35, 13), # Adjusted size to fit the Combo element
@@ -433,6 +433,7 @@ def main_window():
 ]
 
     window = sg.Window('Crusader Wars Mapper', layout, resizable=True).Finalize()
+    window.maximize()
 
     while True:
         event, values = window.read()
@@ -501,8 +502,10 @@ def main_window():
                 window['MLINE_KEY'].update(f'{new_summary}',append=True)
                 window['VALIDATE_KEY'].update(disabled=False)
 
+        elif event == 'CUSTOM_MAPPER_KEY':
+            mapping_window()
+
     window.close()
 
 if __name__ == '__main__':
-    # main_window()
-    mapping_window()
+    main_window()
