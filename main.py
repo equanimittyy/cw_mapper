@@ -75,7 +75,7 @@ def mapping_window():
             readonly=True,
             enable_events=True
         )],
-        [sg.Input(key='CK3_SEARCH_KEY', enable_events=True)]
+        [sg.Input(default_text='Search...', key='CK3_SEARCH_KEY', enable_events=True)]
         ,
         [sg.Listbox(
             values=sorted([item['ck3_maa'] for item in MAA_SOURCE_KEYS]),
@@ -100,7 +100,7 @@ def mapping_window():
             readonly=True,
             enable_events=True
         )],
-        [sg.Input(key='ATTILA_SEARCH_KEY', enable_events=True)]
+        [sg.Input(default_text='Search...', key='ATTILA_SEARCH_KEY', enable_events=True)]
         ,
         [sg.Listbox(
             values=sorted([item['attila_map_key'] for item in ATTILA_SOURCE_KEYS]),
