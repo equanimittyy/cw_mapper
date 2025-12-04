@@ -49,7 +49,7 @@ def mapping_window():
     ATTILA_UNIT_LIST_SOURCE = ['ALL'] + sorted(list(dict.fromkeys(ATTILA_SOURCES)))
     MAA_LIST_SOURCE = ['ALL'] + sorted(list(dict.fromkeys(CK3_SOURCES)))
 
-    FACTION_LIST = [
+    FACTION_LIST = ['DEFAULT'] + [
         'faction_roman',
         'faction_germanic',
         'faction_saxon',
@@ -134,8 +134,8 @@ def mapping_window():
             expand_x=True,
             expand_y=True
         )],
-        [sg.Button('Add Mapping', key='ADD_MAPPING_KEY', size=(15, 2), button_color=('white', '#004D40'), disabled=True),sg.Push(background_color='#DDDDDD'),sg.Button('Open Faction-Heritage mapping', size=(25, 2), button_color=('white', '#444444'))],
-        [sg.Button('Remove Selected', key='REMOVE_MAPPING_KEY', size=(15, 2), button_color=('white', '#CC0000'), disabled=True),sg.Push(background_color='#DDDDDD')]
+        [sg.Button('Add Mapping', key='ADD_MAPPING_KEY', size=(15, 2), button_color=('white', '#004D40'), disabled=True),sg.Button('Remove Selected', key='REMOVE_MAPPING_KEY', size=(15, 2), button_color=('white', '#CC0000'), disabled=True),sg.Push(background_color='#DDDDDD'),sg.Button('Open Faction-Heritage mapping', size=(25, 2), button_color=('white', '#444444'))],
+        [sg.Button('Copy from faction', key='FACTION_COPY_BUTTON_KEY',size=(15, 2), button_color=('white', "#008670")),sg.Push(background_color='#DDDDDD')]
     ]
 
     # Main layout
@@ -276,7 +276,46 @@ def mapping_window():
 
                 # Clear selection in case the user immediately clicks remove again
                 window['MAPPING_LISTS_KEY'].update(set_to_index=[])
+        
+        elif event == 'FACTION_COPY_BUTTON_KEY':
+            target_faction = popup_faction_copy(FACTION_LIST)
+            if target_faction:
+                copied_mapping = [item for item in current_mappings.items() if item[0][1] == target_faction[0]]
+                for copied_key, copied_value in copied_mapping:
+                    mapping_key = (copied_key[0], current_faction)
+
+                    # Check for conflicts (CK3 unit + Faction combination already mapped), and overwrite if so.
+                    for key in mapping_key:
+                        if key in current_mappings:
+                            key_to_remove = (key[0], current_faction)
+                            del current_mappings[key_to_remove]
+                    current_mappings[mapping_key] = copied_value
+                    # Update the displayed list
+                update_mappings_list(window, current_mappings)
+                check_add_button(window)
+
     window.close()
+
+def popup_faction_copy(factions):
+    layout = [
+        [sg.Text('Select a faction to copy from:')],
+        [sg.Listbox(
+            values=factions,
+            select_mode=sg.SELECT_MODE_SINGLE,
+            size=(25, min(10, len(factions))), # Adjust size dynamically
+            key='FACTION_COPIED_KEY'
+        )],
+        [sg.Button('OK'), sg.Button('Cancel')]
+    ]
+
+    window = sg.Window('Copy from faction', layout, modal=True)
+    event, values = window.read(close=True) # Closes the window after reading the event
+
+    if event == 'OK':
+        target_faction = values['FACTION_COPIED_KEY']
+        if target_faction:
+            return target_faction
+    return None
 
 def main_window():
     # Initialise the text in the summary log, if it exists
