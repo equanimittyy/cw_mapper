@@ -1,5 +1,6 @@
 import os
 import sys
+import csv
 import webbrowser
 import FreeSimpleGUI as sg
 
@@ -17,59 +18,68 @@ WORKING_DIR = application_path
 ASCII_ART = os.path.join('ascii-art-text.png')
 SUMMARY_LOG = os.path.join("summary_log.txt")
 ATTILA_EXPORT_DIR = os.path.join(WORKING_DIR, 'attila_exports','db','main_units_tables')
+REPORT_OUTPUT_DIR = 'reports'
 
 MOD_LIST = []
 
-# Initialise the text in the summary log, if it exists
-if os.path.exists(SUMMARY_LOG):
-    with open(SUMMARY_LOG, 'r', encoding="utf-8-sig") as f:
-        TEXT = f.read()
-else:
-    TEXT = "No summary_log.txt was found. Refresh your mappers using 'Refresh Current Mappers'"
+# Key sources
+ATTILA_SOURCE_KEYS = []
+CULTURES_SOURCE_KEYS = []
+MAA_SOURCE_KEYS = []
+
+with open (os.path.join(REPORT_OUTPUT_DIR,'source_attila_keys.csv'), 'r') as f:
+    key_data = csv.DictReader(f)
+    for key in key_data:
+        ATTILA_SOURCE_KEYS.append({'attila_map_key':key['attila_map_key'],'attila_source':key['attila_source']})
+
+with open(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_cultures_keys.csv'), 'r') as f:
+    key_data = csv.DictReader(f)
+    for key in key_data:
+        CULTURES_SOURCE_KEYS.append({'ck3_culture':key['ck3_culture'],'ck3_source':key['ck3_source']})
+
+with open(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_maa_keys.csv'), 'r') as f:
+    key_data = csv.DictReader(f)
+    for key in key_data:
+        MAA_SOURCE_KEYS.append({'ck3_maa':key['ck3_maa'],'ck3_source':key['ck3_source']})
+
+ATTILA_SOURCES = [item['attila_source'] for item in ATTILA_SOURCE_KEYS]
+CK3_SOURCES = [item['ck3_source'] for item in CULTURES_SOURCE_KEYS] + [item['ck3_source'] for item in MAA_SOURCE_KEYS]
 
 def mapping_window():
-    # Load available keys
-    CK3_MAA_LIST = [
-        'maa_heavy_infantry',
-        'maa_light_cavalry_scout',
-        'maa_archer_longbow',
-        'maa_pikemen_landsknechte',
-        'maa_onagers_siege',
-        'maa_war_elephants',
-        'maa_horse_archers'
+    ATTILA_UNIT_LIST_SOURCE = ['ALL'] + sorted(list(dict.fromkeys(ATTILA_SOURCES)))
+    MAA_LIST_SOURCE = ['ALL'] + sorted(list(dict.fromkeys(CK3_SOURCES)))
+
+    FACTION_LIST = [
+        'faction_roman',
+        'faction_germanic',
+        'faction_saxon',
+        'faction_hunnish',
+        'faction_sarmatian',
+        'faction_byzantine'
     ]
 
-    ATTILA_UNIT_LIST = [
-        'att_foot_warriors',
-        'att_shock_cavalry',
-        'att_skirmishers_bow',
-        'att_spearmen_elite',
-        'att_artillery_catapult',
-        'att_camel_riders',
-        'att_mounted_archers'
-    ]
-
-    CULTURE_LIST = [
-        'culture_roman',
-        'culture_germanic',
-        'culture_saxon',
-        'culture_hunnish',
-        'culture_sarmatian',
-        'culture_byzantine'
-    ]
-
-    # Dictionary to store the actual mappings (CK3 MAA: ATTILA UNIT KEY, per CULTURE)
-    # Format: { (ck3_maa, culture): attila_unit ] }
+    # Dictionary to store the actual mappings (CK3 MAA: ATTILA UNIT KEY, per FACTION)
+    # Format: { (ck3_maa, faction): attila_unit ] }
     current_mappings = {}
-    CULTURE_KEY = 'CULTURE_SELECT_KEY'
+    CK3_SOURCE_KEY = 'CK3_SOURCE_KEY'
+    ATTILA_SOURCE_KEY = 'ATTILA_SOURCE_KEY'
+    FACTION_KEY = 'FACTION_SELECT_KEY'
 
 
     # Column Definitions and layout
     # Column 1: CK3 MAA Selector
     col1_layout = [
-        [sg.Text('Available CK3 MAA', font=('Courier New', 12, 'bold'), text_color='#6D0000', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE)],
+        [sg.Text('Available CK3 MAA', font=('Courier New', 12, 'bold'), text_color='#6D0000', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE),
+         sg.Text('Filter CK3 source:'), sg.Combo(
+            values=MAA_LIST_SOURCE, 
+            default_value=MAA_LIST_SOURCE[0], 
+            size=(20, 1), 
+            key=CK3_SOURCE_KEY, 
+            readonly=True,
+            enable_events=True
+        )],
         [sg.Listbox(
-            values=sorted(CK3_MAA_LIST),
+            values=sorted([item['ck3_maa'] for item in MAA_SOURCE_KEYS]),
             size=(30, 15),
             key='CK3_LIST_KEY',
             enable_events=True,
@@ -77,14 +87,22 @@ def mapping_window():
             expand_x=True,
             expand_y=True
         )],
-        [sg.Text('Selected CK3:', size=(25, 1), key='SELECTED_CK3_KEY', background_color='#F0F0F0', relief=sg.RELIEF_SUNKEN)]
+        [sg.Text('Selected CK3:', size=(25, 1), key='SELECTED_CK3_KEY', background_color='#F0F0F0', relief=sg.RELIEF_SUNKEN, expand_x=True, justification='center')]
     ]
 
     # Column 2: ATTILA UNIT KEY Selector
     col2_layout = [
-        [sg.Text('Available ATTILA UNIT KEY', font=('Courier New', 12, 'bold'), text_color='#006D00', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE),],
+        [sg.Text('Available ATTILA UNIT KEYS', font=('Courier New', 12, 'bold'), text_color='#006D00', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE),
+         sg.Text('Filter Attila source:'), sg.Combo(
+            values=ATTILA_UNIT_LIST_SOURCE, 
+            default_value=ATTILA_UNIT_LIST_SOURCE[0], 
+            size=(20, 1), 
+            key=ATTILA_SOURCE_KEY, 
+            readonly=True,
+            enable_events=True
+        )],
         [sg.Listbox(
-            values=sorted(ATTILA_UNIT_LIST),
+            values=sorted([item['attila_map_key'] for item in ATTILA_SOURCE_KEYS]),
             size=(30, 15),
             key='ATTILA_LIST_KEY',
             enable_events=True,
@@ -92,21 +110,21 @@ def mapping_window():
             expand_x=True,
             expand_y=True
         )],
-        [sg.Text('Selected ATTILA:', size=(25, 1), key='SELECTED_ATTILA_KEY', background_color='#F0F0F0', relief=sg.RELIEF_SUNKEN)]
+        [sg.Text('Selected ATTILA:', size=(25, 1), key='SELECTED_ATTILA_KEY', background_color='#F0F0F0', relief=sg.RELIEF_SUNKEN, expand_x=True, justification='center')]
     ]
 
-    # Column 3: Mappings Display and Action Button (with new Culture selector)
+    # Column 3: Mappings Display and Action Buttons
     col3_layout = [
-        [sg.Text('Contextual Mapping Culture: (CK3 <> TWA)', font=('Courier New', 12, 'bold'), text_color='#00006D', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE)],
-        # New Culture Selector Dropdown
-        [sg.Text('Select Culture:'), sg.Combo(
-            values=CULTURE_LIST, 
-            default_value=CULTURE_LIST[0], 
+        [sg.Text('Unit Key Mapper: (CK3 => TW:A)', font=('Courier New', 12, 'bold'), text_color='#00006D', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE)],
+        # Faction Selector Dropdown
+        [sg.Text('Select Faction:'), sg.Combo(
+            values=FACTION_LIST, 
+            default_value=FACTION_LIST[0], 
             size=(20, 1), 
-            key=CULTURE_KEY, 
+            key=FACTION_KEY, 
             readonly=True,
             enable_events=True
-        )],
+        ),sg.Push(background_color='#DDDDDD'),sg.Button('Save', size=(15, 2), button_color=('white', '#444444')),sg.Button('Load', size=(15, 2), button_color=('white', '#444444'))],
         [sg.Listbox(
             values=[],
             size=(35, 13), # Adjusted size to fit the Combo element
@@ -122,7 +140,7 @@ def mapping_window():
 
     # Main layout
     mapper_layout = [
-        [sg.Text('Unit Mapper Configuration', font=('Courier New', 26, 'bold'), justification='center', expand_x=True, pad=(0, 15))],
+        [sg.Text('Crusader Wars Unit Mapper Configuration', font=('Courier New', 26, 'bold'), justification='center', expand_x=True, pad=(0, 15))],
         [
             sg.Column(col1_layout, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD',expand_x=True,expand_y=True),
             sg.VSeparator(),
@@ -130,7 +148,7 @@ def mapping_window():
             sg.VSeparator(),
             sg.Column(col3_layout, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD',expand_x=True,expand_y=True)
         ],
-        [sg.Button('Save', size=(15, 2), button_color=('white', '#444444')),sg.Button('Exit', size=(15, 2), button_color=('white', '#444444'))]
+        [sg.Button('Exit', size=(15, 2), button_color=('white', '#444444'))]
     ]
 
     window = sg.Window('Custom Unit Mapper', mapper_layout, finalize=True, element_justification='center',resizable=True)
@@ -145,12 +163,12 @@ def mapping_window():
         """Formats the mapping dictionary into a list of strings for the Listbox."""
         display_list = []
         formatted_list = []
-        # Key is a tuple (ck3_maa, culture), value is attila_unit
-        for (ck3, culture), attila in mappings_dict.items():
-            display_list = [t for t in mappings_dict.items() if t[0][1] == current_culture]
+        # Key is a tuple (ck3_maa, faction), value is attila_unit
+        for (ck3, faction), attila in mappings_dict.items():
+            display_list = [t for t in mappings_dict.items() if t[0][1] == current_faction]
         if display_list:
-            for (ck3, culture), attila in display_list:
-                formatted_list.append(f"[{culture}] {ck3} => {attila}")
+            for (ck3, faction), attila in display_list:
+                formatted_list.append(f"[{faction}] {ck3} => {attila}")
         else:
             formatted_list = []
         
@@ -187,18 +205,36 @@ def mapping_window():
                 selected_attila = None
                 window['SELECTED_ATTILA_KEY'].update('Selected ATTILA:', background_color='#F0F0F0')
             check_add_button(window)
+
+        elif event == CK3_SOURCE_KEY:
+            current_ck3_source = values[CK3_SOURCE_KEY]
             
-        elif event == CULTURE_KEY:
-            current_culture = values[CULTURE_KEY]
+            if current_ck3_source == 'ALL':
+                new_list = [item['ck3_maa'] for item in MAA_SOURCE_KEYS]
+            else:
+                new_list = [item['ck3_maa'] for item in MAA_SOURCE_KEYS if item['ck3_source'] == current_ck3_source]
+            window['CK3_LIST_KEY'].update(sorted(new_list))
+
+        elif event == ATTILA_SOURCE_KEY:
+            current_att_source = values[ATTILA_SOURCE_KEY]
+            
+            if current_att_source == 'ALL':
+                new_list = [item['attila_map_key'] for item in ATTILA_SOURCE_KEYS]
+            else:
+                new_list = [item['attila_map_key'] for item in ATTILA_SOURCE_KEYS if item['attila_source'] == current_att_source]
+            window['ATTILA_LIST_KEY'].update(sorted(new_list))
+
+        elif event == FACTION_KEY:
+            current_faction = values[FACTION_KEY]
             update_mappings_list(window, current_mappings)
         
         elif event == 'ADD_MAPPING_KEY' and selected_ck3 and selected_attila:
-            current_culture = values[CULTURE_KEY]
-            mapping_key = (selected_ck3, current_culture)
+            current_faction = values[FACTION_KEY]
+            mapping_key = (selected_ck3, current_faction)
             
-            # Check for conflicts (CK3 unit + Culture combination already mapped)
+            # Check for conflicts (CK3 unit + Faction combination already mapped)
             if mapping_key in current_mappings:
-                sg.popup_ok(f"Error: Mapping for '{selected_ck3}' under culture '{current_culture}' already exists.", title="Mapping Conflict")
+                sg.popup_ok(f"Error: Mapping for '{selected_ck3}' under faction '{current_faction}' already exists.", title="Mapping Conflict")
             else:
                 # Add the new mapping
                 current_mappings[mapping_key] = selected_attila
@@ -220,14 +256,14 @@ def mapping_window():
                 # The listbox value is a formatted string. We need to parse it back to find the key tuple.
                 formatted_mapping = values['MAPPING_LISTS_KEY'][0]
                 
-                # 1. Determine if the mapping has a culture prefix
+                # 1. Determine if the mapping has a faction prefix
                 if formatted_mapping.startswith('['):
-                    # Format: [culture] ck3_unit => attila_unit
+                    # Format: [faction] ck3_unit => attila_unit
                     parts = formatted_mapping.split('] ')
-                    culture_key = parts[0].strip('[')
+                    faction_key = parts[0].strip('[')
                     ck3_key_to_remove = parts[1].split(' => ')[0].strip()
 
-                key_to_remove = (ck3_key_to_remove, culture_key)
+                key_to_remove = (ck3_key_to_remove, faction_key)
 
                 if key_to_remove in current_mappings:
                     del current_mappings[key_to_remove]
@@ -238,6 +274,14 @@ def mapping_window():
     window.close()
 
 def main_window():
+    # Initialise the text in the summary log, if it exists
+    if os.path.exists(SUMMARY_LOG):
+        with open(SUMMARY_LOG, 'r', encoding="utf-8-sig") as f:
+            TEXT = f.read()
+    else:
+        TEXT = "No summary_log.txt was found. Refresh your mappers using 'Refresh Current Mappers'"
+
+
     layout = [
     [sg.Image(ASCII_ART)],
     [sg.Text(text='''A mapping tool for FarayC's Crusader Wars, developed by equanimity''',font=('Courier New', 10))],
