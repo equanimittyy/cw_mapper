@@ -62,6 +62,74 @@ with open(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_maa_keys.csv'), 'r') as f:
 ATTILA_SOURCES = [item['attila_source'] for item in ATTILA_SOURCE_KEYS]
 CK3_SOURCES = [item['ck3_source'] for item in CULTURES_SOURCE_KEYS] + [item['ck3_source'] for item in MAA_SOURCE_KEYS]
 
+
+def popup_mapper_name_input():
+    layout = [
+        [sg.Text('Enter a name for your mapper:')],
+        [sg.Input(
+            key='CUSTOM_MAPPER_NAME_INPUT'
+        )],
+        [sg.Button('OK'), sg.Button('Cancel')]
+    ]
+
+    window = sg.Window('Custom mapper name input', layout, modal=True)
+    event, values = window.read(close=True) # Closes the window after reading the event
+
+    if event == 'OK':
+        name = values['CUSTOM_MAPPER_NAME_INPUT']
+        if name:
+            return name
+    return None
+
+def popup_faction_copy(factions):
+    layout = [
+        [sg.Text('Select a faction to copy from:')],
+        [sg.Listbox(
+            values=factions,
+            select_mode=sg.SELECT_MODE_SINGLE,
+            size=(25, min(10, len(factions))), # Adjust size dynamically
+            key='FACTION_COPIED_KEY'
+        )],
+        [sg.Button('OK'), sg.Button('Cancel')]
+    ]
+
+    window = sg.Window('Copy from faction', layout, modal=True)
+    event, values = window.read(close=True) # Closes the window after reading the event
+
+    if event == 'OK':
+        target_faction = values['FACTION_COPIED_KEY']
+        if target_faction:
+            return target_faction
+    return None
+
+def popup_faction_list(factions):
+    formatted_faction_list = ''
+    for faction in factions:
+        line = faction
+        formatted_faction_list += line + '\n'
+    layout = [
+        [sg.Text('Faction list, seperate with a new line')],
+        [sg.Multiline(
+            formatted_faction_list,
+            size=(50, 20),
+            key='FACTION_EDIT_LIST'
+        )],
+        [sg.Button('OK'), sg.Button('Cancel')]
+    ]
+
+    window = sg.Window('Edit faction list', layout, modal=True)
+    event, values = window.read(close=True) # Closes the window after reading the event
+
+    if event == 'OK':
+        new_faction_list = values['FACTION_EDIT_LIST'].split('\n')
+        clean_faction_list = [item.strip() for item in new_faction_list]
+        if clean_faction_list:
+            return clean_faction_list
+    return None
+
+def heritage_window():
+    pass
+
 def mapping_window():
     MAPPER_NAME = ''
     ATTILA_UNIT_LIST_SOURCE = ['ALL'] + sorted(list(dict.fromkeys(ATTILA_SOURCES)))
@@ -222,6 +290,9 @@ def mapping_window():
         }
         return loaded_mapping
     
+    def export_xml():
+        pass
+
     # END FUNCTIONS
     # ==============================================
 
@@ -404,70 +475,6 @@ def mapping_window():
                 window[FACTION_KEY].update(values=FACTION_LIST)
 
     window.close()
-
-def popup_mapper_name_input():
-    layout = [
-        [sg.Text('Enter a name for your mapper:')],
-        [sg.Input(
-            key='CUSTOM_MAPPER_NAME_INPUT'
-        )],
-        [sg.Button('OK'), sg.Button('Cancel')]
-    ]
-
-    window = sg.Window('Custom mapper name input', layout, modal=True)
-    event, values = window.read(close=True) # Closes the window after reading the event
-
-    if event == 'OK':
-        name = values['CUSTOM_MAPPER_NAME_INPUT']
-        if name:
-            return name
-    return None
-
-def popup_faction_copy(factions):
-    layout = [
-        [sg.Text('Select a faction to copy from:')],
-        [sg.Listbox(
-            values=factions,
-            select_mode=sg.SELECT_MODE_SINGLE,
-            size=(25, min(10, len(factions))), # Adjust size dynamically
-            key='FACTION_COPIED_KEY'
-        )],
-        [sg.Button('OK'), sg.Button('Cancel')]
-    ]
-
-    window = sg.Window('Copy from faction', layout, modal=True)
-    event, values = window.read(close=True) # Closes the window after reading the event
-
-    if event == 'OK':
-        target_faction = values['FACTION_COPIED_KEY']
-        if target_faction:
-            return target_faction
-    return None
-
-def popup_faction_list(factions):
-    formatted_faction_list = ''
-    for faction in factions:
-        line = faction
-        formatted_faction_list += line + '\n'
-    layout = [
-        [sg.Text('Faction list, seperate with a new line')],
-        [sg.Multiline(
-            formatted_faction_list,
-            size=(50, 20),
-            key='FACTION_EDIT_LIST'
-        )],
-        [sg.Button('OK'), sg.Button('Cancel')]
-    ]
-
-    window = sg.Window('Edit faction list', layout, modal=True)
-    event, values = window.read(close=True) # Closes the window after reading the event
-
-    if event == 'OK':
-        new_faction_list = values['FACTION_EDIT_LIST'].split('\n')
-        clean_faction_list = [item.strip() for item in new_faction_list]
-        if clean_faction_list:
-            return clean_faction_list
-    return None
 
 def main_window():
     # Initialise the text in the summary log, if it exists
