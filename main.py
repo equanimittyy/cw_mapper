@@ -140,7 +140,7 @@ def mapping_window():
             key=FACTION_KEY, 
             readonly=True,
             enable_events=True
-        ),sg.Push(background_color='#DDDDDD'),sg.Button('Save', key='SAVE_BUTTON_KEY',size=(15, 2), button_color=('white', '#444444')),sg.Input(key='FILE_LOAD_KEY',visible=False),sg.FileBrowse('Load', target='FILE_LOAD_KEY',size=(15, 2), initial_folder=CUSTOM_MAPPER_DIR, button_color=('white', '#444444'),file_types=(("Text Files", "*.txt"))),sg.Button('Export to XML', size=(15, 2), button_color=('white', "#008670"))],
+        ),sg.Push(background_color='#DDDDDD'),sg.Button('Save', key='SAVE_BUTTON_KEY',size=(15, 2), button_color=('white', '#444444')),sg.Input(key='FILE_LOAD_KEY',visible=False,enable_events=True),sg.FileBrowse('Load', target='FILE_LOAD_KEY',size=(15, 2), initial_folder=CUSTOM_MAPPER_DIR, button_color=('white', '#444444'),file_types=((('Text Files', '*.txt'),))),sg.Button('Export to XML', size=(15, 2), button_color=('white', "#008670"))],
         [sg.Listbox(
             values=[],
             size=(35, 13), # Adjusted size to fit the Combo element
@@ -174,6 +174,7 @@ def mapping_window():
     # Variables to hold the currently selected items
     selected_ck3 = None
     selected_attila = None
+    current_faction = FACTION_LIST[0]
 
     # FUNCTIONS
     # ==============================================
@@ -211,16 +212,15 @@ def mapping_window():
         with open(output_path, 'w', encoding='utf-8-sig') as f:
             json.dump(save_format,f,indent=4)
 
-    # def load_mapper(custom_mapper):
-    #     input_path = os.path.join(CUSTOM_MAPPER_DIR,f'{custom_mapper}.txt')
-    #     os.makedirs(CUSTOM_MAPPER_DIR, exist_ok=True)
-    #     seperator = ','
-    #     save_format = {
-    #         seperator.join(k):v
-    #         for k,v in custom_mapping.items()
-    #     }
-    #     with open(output_path, 'w', encoding='utf-8-sig') as f:
-    #         json.dump(save_format,f,indent=4)
+    def load_mapper(file):
+        seperator = ','
+        with open(file, 'r', encoding='utf-8-sig') as f:
+            loaded_data = json.load(f)
+        loaded_mapping = {
+            tuple(k.split(seperator)):v
+            for k, v in loaded_data.items()
+        }
+        return loaded_mapping
     
     # END FUNCTIONS
     # ==============================================
@@ -321,6 +321,18 @@ def mapping_window():
                 if name:
                     save_mapper(name,current_mappings)
                     MAPPER_NAME = name
+            window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
+
+        elif event == 'FILE_LOAD_KEY':
+            loaded_mapper = load_mapper(values['FILE_LOAD_KEY'])
+            map_name, _ = os.path.split(os.path.basename(values['FILE_LOAD_KEY']))
+            if loaded_mapper:
+                current_mappings = loaded_mapper
+                available_factions = set([item[0][1] for item in current_mappings.items()])
+                FACTION_LIST = available_factions
+            MAPPER_NAME = map_name
+            update_mappings_list(window, current_mappings)
+            window[FACTION_KEY].update(values=FACTION_LIST)
             window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
 
         elif event == 'ADD_MAPPING_KEY' and selected_ck3 and selected_attila:
