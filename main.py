@@ -83,7 +83,7 @@ def mapping_window():
             size=(30, 15),
             key='CK3_LIST_KEY',
             enable_events=True,
-            select_mode=sg.LISTBOX_SELECT_MODE_SINGLE,
+            select_mode=sg.LISTBOX_SELECT_MODE_EXTENDED,
             expand_x=True,
             expand_y=True
         )],
@@ -129,18 +129,20 @@ def mapping_window():
             values=[],
             size=(35, 13), # Adjusted size to fit the Combo element
             key='MAPPING_LISTS_KEY',
-            select_mode=sg.LISTBOX_SELECT_MODE_SINGLE,
+            select_mode=sg.LISTBOX_SELECT_MODE_EXTENDED,
             background_color='#E8E8FF',
             expand_x=True,
             expand_y=True
         )],
-        [sg.Button('Add Mapping', key='ADD_MAPPING_KEY', size=(15, 2), button_color=('white', '#004D40'), disabled=True)],
-        [sg.Button('Remove Selected', key='REMOVE_MAPPING_KEY', size=(15, 2), button_color=('white', '#CC0000'), disabled=True)]
+        [sg.Button('Add Mapping', key='ADD_MAPPING_KEY', size=(15, 2), button_color=('white', '#004D40'), disabled=True),sg.Push(background_color='#DDDDDD'),sg.Button('Open Faction-Heritage mapping', size=(25, 2), button_color=('white', '#444444'))],
+        [sg.Button('Remove Selected', key='REMOVE_MAPPING_KEY', size=(15, 2), button_color=('white', '#CC0000'), disabled=True),sg.Push(background_color='#DDDDDD')]
     ]
 
     # Main layout
     mapper_layout = [
         [sg.Text('Crusader Wars Unit Mapper Configuration', font=('Courier New', 26, 'bold'), justification='center', expand_x=True, pad=(0, 15))],
+        [sg.Text('Create your "MAA => UNIT" mapping, per FACTION here. Any missing "MAA => UNIT" mappings will fallback to DEFAULT, or crash if not present.', font=('Courier New', 10, 'bold'), justification='center', expand_x=True)],
+        [sg.Text('Each FACTION will need to be assigned to a HERITAGE.', font=('Courier New', 10, 'bold'), justification='center', expand_x=True)],
         [
             sg.Column(col1_layout, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD',expand_x=True,expand_y=True),
             sg.VSeparator(),
@@ -190,8 +192,11 @@ def mapping_window():
         
         elif event == 'CK3_LIST_KEY':
             if values['CK3_LIST_KEY']:
-                selected_ck3 = values['CK3_LIST_KEY'][0]
-                window['SELECTED_CK3_KEY'].update(f'Selected CK3: {selected_ck3}', background_color='#F5962A')
+                selected_ck3 = values['CK3_LIST_KEY']
+                if len(values['CK3_LIST_KEY']) > 1:
+                    window['SELECTED_CK3_KEY'].update(f'Selected CK3: Multiple', background_color='#F5962A')
+                else:
+                    window['SELECTED_CK3_KEY'].update(f'Selected CK3: {selected_ck3}', background_color='#F5962A')
             else:
                 selected_ck3 = None
                 window['SELECTED_CK3_KEY'].update('Selected CK3:', background_color='#F0F0F0')
@@ -199,7 +204,7 @@ def mapping_window():
 
         elif event == 'ATTILA_LIST_KEY':
             if values['ATTILA_LIST_KEY']:
-                selected_attila = values['ATTILA_LIST_KEY'][0]
+                selected_attila = values['ATTILA_LIST_KEY']
                 window['SELECTED_ATTILA_KEY'].update(f'Selected ATTILA: {selected_attila}', background_color="#F5962A")
             else:
                 selected_attila = None
@@ -230,44 +235,44 @@ def mapping_window():
         
         elif event == 'ADD_MAPPING_KEY' and selected_ck3 and selected_attila:
             current_faction = values[FACTION_KEY]
-            mapping_key = (selected_ck3, current_faction)
+            for selected in selected_ck3:
+                mapping_key = (selected, current_faction)
             
-            # Check for conflicts (CK3 unit + Faction combination already mapped)
-            if mapping_key in current_mappings:
-                sg.popup_ok(f"Error: Mapping for '{selected_ck3}' under faction '{current_faction}' already exists.", title="Mapping Conflict")
-            else:
-                # Add the new mapping
-                current_mappings[mapping_key] = selected_attila
+                # Check for conflicts (CK3 unit + Faction combination already mapped), and overwrite if so.
+                for key in mapping_key:
+                    if key in current_mappings:
+                        key_to_remove = (selected, current_faction)
+                        del current_mappings[key_to_remove]
                 
-                # Reset unit selections for the next mapping
-                selected_ck3 = None
-                selected_attila = None
-                window['CK3_LIST_KEY'].update(set_to_index=[])
-                window['ATTILA_LIST_KEY'].update(set_to_index=[])
-                window['SELECTED_CK3_KEY'].update('Selected CK3:', background_color='#F0F0F0')
-                window['SELECTED_ATTILA_KEY'].update('Selected ATTILA:', background_color='#F0F0F0')
+                current_mappings[mapping_key] = selected_attila
 
                 # Update the displayed list
                 update_mappings_list(window, current_mappings)
                 check_add_button(window)
 
+            # Reset unit selections for the next mapping
+            selected_ck3 = None
+            selected_attila = None
+            window['CK3_LIST_KEY'].update(set_to_index=[])
+            window['ATTILA_LIST_KEY'].update(set_to_index=[])
+            window['SELECTED_CK3_KEY'].update('Selected CK3:', background_color='#F0F0F0')
+            window['SELECTED_ATTILA_KEY'].update('Selected ATTILA:', background_color='#F0F0F0')
+
         elif event == 'REMOVE_MAPPING_KEY':
             if values['MAPPING_LISTS_KEY']:
                 # The listbox value is a formatted string. We need to parse it back to find the key tuple.
-                formatted_mapping = values['MAPPING_LISTS_KEY'][0]
-                
-                # 1. Determine if the mapping has a faction prefix
-                if formatted_mapping.startswith('['):
+                for formatted_mapping in values['MAPPING_LISTS_KEY']:
                     # Format: [faction] ck3_unit => attila_unit
-                    parts = formatted_mapping.split('] ')
-                    faction_key = parts[0].strip('[')
-                    ck3_key_to_remove = parts[1].split(' => ')[0].strip()
+                    if formatted_mapping.startswith('['):
+                        parts = formatted_mapping.split('] ')
+                        faction_key = parts[0].strip('[')
+                        ck3_key_to_remove = parts[1].split(' => ')[0].strip()
 
-                key_to_remove = (ck3_key_to_remove, faction_key)
+                    key_to_remove = (ck3_key_to_remove, faction_key)
 
-                if key_to_remove in current_mappings:
-                    del current_mappings[key_to_remove]
-                    update_mappings_list(window, current_mappings)
+                    if key_to_remove in current_mappings:
+                        del current_mappings[key_to_remove]
+                        update_mappings_list(window, current_mappings)
 
                 # Clear selection in case the user immediately clicks remove again
                 window['MAPPING_LISTS_KEY'].update(set_to_index=[])
