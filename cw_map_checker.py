@@ -103,7 +103,7 @@ def get_keys(cw_config):
             df_attila = pd.concat([df_attila, df])
 
     # CK3 + MODS CULTURE KEYS
-    while True:
+    while False:
         key_input = input("Enter the name of any additional CK3 mods you wish to check (or press Enter to continue): ")
         if key_input.strip() == '':
             print('No further mod input.')
@@ -278,7 +278,7 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
     else:
         print()
         print(f'== No CW mapping files were found in {MAPPER_DIR}... ==')
-        input("Press Enter to quit...")
+        # input("Press Enter to quit...")
         exit(1) # Exit with an error
 
     for mapping in os.listdir(MAPPER_DIR):
@@ -371,8 +371,8 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
     df_ck3_maa.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_maa_keys.csv'))
     print(f'Report produced for source key files.')
 
-    input("Press Enter to quit...")
-    exit(0) # Exit as a success
+    # input("Press Enter to quit...")
+    # exit(0) # Exit as a success
 
 def summary():
     output_columns = 4
@@ -392,7 +392,7 @@ def summary():
         else:
             print(f'== No reports were found in {REPORT_OUTPUT_DIR}. No summary can be made until reports are produced based on your CK3/Attila install... ==')
             print()
-            input("Press Enter to quit...")
+            # input("Press Enter to quit...")
             # Could potentially in future add a functionality to run a report from here.
             exit(1) # Exit with an error        
 
