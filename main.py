@@ -67,7 +67,7 @@ def mapping_window():
     # Column Definitions and layout
     # Column 1: CK3 MAA Selector
     col1_layout = [
-        [sg.Text('Available CK3 MAA', font=('Courier New', 12, 'bold'), text_color='#6D0000',relief=sg.RELIEF_RIDGE)],
+        [sg.Text('Available CK3 MAA', font=('Courier New', 12, 'bold'), text_color='#6D0000', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE)],
         [sg.Listbox(
             values=sorted(CK3_MAA_LIST),
             size=(30, 15),
@@ -82,7 +82,7 @@ def mapping_window():
 
     # Column 2: ATTILA UNIT KEY Selector
     col2_layout = [
-        [sg.Text('Available ATTILA UNIT KEY', font=('Courier New', 12, 'bold'), text_color='#006D00',relief=sg.RELIEF_RIDGE)],
+        [sg.Text('Available ATTILA UNIT KEY', font=('Courier New', 12, 'bold'), text_color='#006D00', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE),],
         [sg.Listbox(
             values=sorted(ATTILA_UNIT_LIST),
             size=(30, 15),
@@ -97,7 +97,7 @@ def mapping_window():
 
     # Column 3: Mappings Display and Action Button (with new Culture selector)
     col3_layout = [
-        [sg.Text('Contextual Mapping Culture: (CK3 <> TWA)', font=('Courier New', 12, 'bold'), text_color='#00006D',relief=sg.RELIEF_RIDGE)],
+        [sg.Text('Contextual Mapping Culture: (CK3 <> TWA)', font=('Courier New', 12, 'bold'), text_color='#00006D', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE)],
         # New Culture Selector Dropdown
         [sg.Text('Select Culture:'), sg.Combo(
             values=CULTURE_LIST, 
@@ -117,7 +117,7 @@ def mapping_window():
             expand_y=True
         )],
         [sg.Button('Add Mapping', key='ADD_MAPPING_KEY', size=(15, 2), button_color=('white', '#004D40'), disabled=True)],
-        [sg.Button('Remove Selected', key='REMOVE_MAPPING_KEY', size=(15, 2), button_color=('white', '#CC0000'))]
+        [sg.Button('Remove Selected', key='REMOVE_MAPPING_KEY', size=(15, 2), button_color=('white', '#CC0000'), disabled=True)]
     ]
 
     # Main layout
@@ -143,14 +143,17 @@ def mapping_window():
     # Function to update the Mappings Listbox values based on the state dictionary
     def update_mappings_list(window, mappings_dict):
         """Formats the mapping dictionary into a list of strings for the Listbox."""
+        display_list = []
         formatted_list = []
         # Key is a tuple (ck3_maa, culture), value is attila_unit
         for (ck3, culture), attila in mappings_dict.items():
             display_list = [t for t in mappings_dict.items() if t[0][1] == current_culture]
-            formatted_list.append(f"{[item[0][1] for item in display_list]} {[item[0][0] for item in display_list]}  =>  {[item[1] for item in display_list]}")
+        if display_list:
+            for (ck3, culture), attila in display_list:
+                formatted_list.append(f"[{culture}] {ck3} => {attila}")
+        else:
+            formatted_list = []
         
-       
-
         window['MAPPING_LISTS_KEY'].update(sorted(formatted_list))
         # Re-enable/disable the Remove button based on whether there are mappings
         window['REMOVE_MAPPING_KEY'].update(disabled=len(formatted_list) == 0)
@@ -185,8 +188,9 @@ def mapping_window():
                 window['SELECTED_ATTILA_KEY'].update('Selected ATTILA:', background_color='#F0F0F0')
             check_add_button(window)
             
-        # elif event == CULTURE_KEY:
-        #     pass
+        elif event == CULTURE_KEY:
+            current_culture = values[CULTURE_KEY]
+            update_mappings_list(window, current_mappings)
         
         elif event == 'ADD_MAPPING_KEY' and selected_ck3 and selected_attila:
             current_culture = values[CULTURE_KEY]
@@ -221,18 +225,14 @@ def mapping_window():
                     # Format: [culture] ck3_unit => attila_unit
                     parts = formatted_mapping.split('] ')
                     culture_key = parts[0].strip('[')
-                    ck3_key_to_remove = parts[1].split('  =>')[0].strip()
-                else:
-                    # Format: ck3_unit => attila_unit (implies 'any_culture')
-                    culture_key = CULTURE_LIST[0]
-                    ck3_key_to_remove = formatted_mapping.split('  =>')[0].strip()
+                    ck3_key_to_remove = parts[1].split(' => ')[0].strip()
 
                 key_to_remove = (ck3_key_to_remove, culture_key)
 
                 if key_to_remove in current_mappings:
                     del current_mappings[key_to_remove]
                     update_mappings_list(window, current_mappings)
-                
+
                 # Clear selection in case the user immediately clicks remove again
                 window['MAPPING_LISTS_KEY'].update(set_to_index=[])
     window.close()
@@ -344,5 +344,5 @@ def main_window():
     window.close()
 
 if __name__ == '__main__':
-    main_window()
-    # mapping_window()
+    # main_window()
+    mapping_window()
