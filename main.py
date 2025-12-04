@@ -75,6 +75,8 @@ def mapping_window():
             readonly=True,
             enable_events=True
         )],
+        [sg.Input(key='CK3_SEARCH_KEY', enable_events=True)]
+        ,
         [sg.Listbox(
             values=sorted([item['ck3_maa'] for item in MAA_SOURCE_KEYS]),
             size=(30, 15),
@@ -98,6 +100,8 @@ def mapping_window():
             readonly=True,
             enable_events=True
         )],
+        [sg.Input(key='ATTILA_SEARCH_KEY', enable_events=True)]
+        ,
         [sg.Listbox(
             values=sorted([item['attila_map_key'] for item in ATTILA_SOURCE_KEYS]),
             size=(30, 15),
@@ -235,26 +239,64 @@ def mapping_window():
 
         elif event == CK3_SOURCE_KEY:
             current_ck3_source = values[CK3_SOURCE_KEY]
+            search_term = values['CK3_SEARCH_KEY']
             
             if current_ck3_source == 'ALL':
                 new_list = [item['ck3_maa'] for item in MAA_SOURCE_KEYS]
+                if search_term != '':
+                    new_list = [item['ck3_maa'] for item in MAA_SOURCE_KEYS if search_term.lower() in item['ck3_maa'].lower()]
             else:
                 new_list = [item['ck3_maa'] for item in MAA_SOURCE_KEYS if item['ck3_source'] == current_ck3_source]
+                if search_term != '':
+                    new_list = [item['ck3_maa'] for item in MAA_SOURCE_KEYS if search_term.lower() in item['ck3_maa'].lower() and item['ck3_source'] == current_ck3_source]
             window['CK3_LIST_KEY'].update(sorted(new_list))
 
         elif event == ATTILA_SOURCE_KEY:
             current_att_source = values[ATTILA_SOURCE_KEY]
+            search_term = values['ATTILA_SEARCH_KEY']
             
             if current_att_source == 'ALL':
                 new_list = [item['attila_map_key'] for item in ATTILA_SOURCE_KEYS]
+                if search_term != '':
+                    new_list = [item['attila_map_key'] for item in ATTILA_SOURCE_KEYS if search_term.lower() in item['attila_map_key'].lower()]
             else:
                 new_list = [item['attila_map_key'] for item in ATTILA_SOURCE_KEYS if item['attila_source'] == current_att_source]
+                if search_term != '':
+                    new_list = [item['attila_map_key'] for item in ATTILA_SOURCE_KEYS if search_term.lower() in item['attila_map_key'].lower() and item['attila_source'] == current_att_source]
             window['ATTILA_LIST_KEY'].update(sorted(new_list))
 
         elif event == FACTION_KEY:
             current_faction = values[FACTION_KEY]
             update_mappings_list(window, current_mappings)
             check_add_button(window)
+
+        elif event == 'CK3_SEARCH_KEY':
+            current_ck3_source = values[CK3_SOURCE_KEY]
+            search_term = values['CK3_SEARCH_KEY']
+            
+            if current_ck3_source == 'ALL':
+                new_list = [item['ck3_maa'] for item in MAA_SOURCE_KEYS]
+                if search_term != '':
+                    new_list = [item['ck3_maa'] for item in MAA_SOURCE_KEYS if search_term.lower() in item['ck3_maa'].lower()]
+            else:
+                new_list = [item['ck3_maa'] for item in MAA_SOURCE_KEYS if item['ck3_source'] == current_ck3_source]
+                if search_term != '':
+                    new_list = [item['ck3_maa'] for item in MAA_SOURCE_KEYS if search_term.lower() in item['ck3_maa'].lower() and item['ck3_source'] == current_ck3_source]
+            window['CK3_LIST_KEY'].update(sorted(new_list))
+
+        elif event == 'ATTILA_SEARCH_KEY':
+            current_att_source = values[ATTILA_SOURCE_KEY]
+            search_term = values['ATTILA_SEARCH_KEY']
+            
+            if current_att_source == 'ALL':
+                new_list = [item['attila_map_key'] for item in ATTILA_SOURCE_KEYS]
+                if search_term != '':
+                    new_list = [item['attila_map_key'] for item in ATTILA_SOURCE_KEYS if search_term.lower() in item['attila_map_key'].lower()]
+            else:
+                new_list = [item['attila_map_key'] for item in ATTILA_SOURCE_KEYS if item['attila_source'] == current_att_source]
+                if search_term != '':
+                    new_list = [item['attila_map_key'] for item in ATTILA_SOURCE_KEYS if search_term.lower() in item['attila_map_key'].lower() and item['attila_source'] == current_att_source]
+            window['ATTILA_LIST_KEY'].update(sorted(new_list))
 
         elif event == 'SAVE_BUTTON_KEY':
             if MAPPER_NAME:
