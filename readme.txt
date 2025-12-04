@@ -11,7 +11,7 @@ This program validates the unit mapping files used by the Crusader Wars mod. It 
 
 ### 2. Attila Data Export
 1.  Use a tool like **PFM/RPFM** to export the unit database files (`db/main_units_tables`) from **Attila** as **`.tsv`** files.
-2.  Place these exported `.tsv` files into the tool's subfolder: **`attila_exports/db/main_units_tables/`**.
+2.  Place these exported `.tsv` files into this tool's subfolder: **`attila_exports/db/main_units_tables/`**.
     You may need to create this subfolder.
     > **Tip:** You may need to rename the `.tsv` files if you export from multiple Attila sources to prevent overwriting.
 
