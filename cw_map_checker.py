@@ -501,7 +501,7 @@ def summary():
                                     print(f'No missing Attila keys were found for {file}')
                                     print()
                         else:
-                            print(f'↳ ⚠ Missing mod files for keys: {file}. Skipping...')
+                            print(f'↳ ⚠ Missing all source files for keys: {file}. Skipping...')
                             print()
 
                 else:
