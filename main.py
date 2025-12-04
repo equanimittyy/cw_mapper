@@ -325,11 +325,11 @@ def mapping_window():
 
         elif event == 'FILE_LOAD_KEY':
             loaded_mapper = load_mapper(values['FILE_LOAD_KEY'])
-            map_name, _ = os.path.split(os.path.basename(values['FILE_LOAD_KEY']))
+            map_name, _ = os.path.splitext(os.path.basename(values['FILE_LOAD_KEY']))
             if loaded_mapper:
                 current_mappings = loaded_mapper
-                available_factions = set([item[0][1] for item in current_mappings.items()])
-                FACTION_LIST = available_factions
+                available_factions = list(set([item[0][1] for item in current_mappings.items()]))
+                FACTION_LIST = sorted(available_factions)
             MAPPER_NAME = map_name
             update_mappings_list(window, current_mappings)
             window[FACTION_KEY].update(values=FACTION_LIST)
