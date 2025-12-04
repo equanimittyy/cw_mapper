@@ -29,6 +29,19 @@ ATTILA_SOURCE_KEYS = []
 CULTURES_SOURCE_KEYS = []
 MAA_SOURCE_KEYS = []
 
+NON_MAA_KEYS = [
+    'GENERAL',
+    'KNIGHTS',
+    'LEVY-SPEAR',
+    'LEVY-SWORD',
+    'LEVY-ARCHER',
+    'LEVY-SKIRM',
+    'LEVY-CAV',
+    'LEVY-CUSTOM1',
+    'LEVY-CUSTOM2',
+    'LEVY-CUSTOM3',
+]
+
 with open (os.path.join(REPORT_OUTPUT_DIR,'source_attila_keys.csv'), 'r') as f:
     key_data = csv.DictReader(f)
     for key in key_data:
@@ -43,6 +56,8 @@ with open(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_maa_keys.csv'), 'r') as f:
     key_data = csv.DictReader(f)
     for key in key_data:
         MAA_SOURCE_KEYS.append({'ck3_maa':key['ck3_maa'],'ck3_source':key['ck3_source']})
+    for maa in NON_MAA_KEYS:
+        MAA_SOURCE_KEYS.append({'ck3_maa':maa,'ck3_source':'CW'})
 
 ATTILA_SOURCES = [item['attila_source'] for item in ATTILA_SOURCE_KEYS]
 CK3_SOURCES = [item['ck3_source'] for item in CULTURES_SOURCE_KEYS] + [item['ck3_source'] for item in MAA_SOURCE_KEYS]
@@ -75,7 +90,7 @@ def mapping_window():
             readonly=True,
             enable_events=True
         )],
-        [sg.Input(default_text='Search...', key='CK3_SEARCH_KEY', enable_events=True)]
+        [sg.Text('Search...',background_color='#DDDDDD',text_color="#000000"),sg.Input(key='CK3_SEARCH_KEY', enable_events=True)]
         ,
         [sg.Listbox(
             values=sorted([item['ck3_maa'] for item in MAA_SOURCE_KEYS]),
@@ -100,7 +115,7 @@ def mapping_window():
             readonly=True,
             enable_events=True
         )],
-        [sg.Input(default_text='Search...', key='ATTILA_SEARCH_KEY', enable_events=True)]
+        [sg.Text('Search...',background_color='#DDDDDD',text_color="#000000"),sg.Input(key='ATTILA_SEARCH_KEY', enable_events=True)]
         ,
         [sg.Listbox(
             values=sorted([item['attila_map_key'] for item in ATTILA_SOURCE_KEYS]),
