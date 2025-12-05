@@ -16,7 +16,8 @@ elif __file__:
 # Identify working directories
 WORKING_DIR = application_path
 
-ASCII_ART = os.path.join('ascii-art-text.png')
+ASCII_ART_MAIN = os.path.join('ascii-art-main.png')
+ASCII_ART_MAPPER = os.path.join('ascii-art-mapper.png')
 SUMMARY_LOG = os.path.join("summary_log.txt")
 ATTILA_EXPORT_DIR = os.path.join(WORKING_DIR, 'attila_exports','db','main_units_tables')
 REPORT_OUTPUT_DIR = 'reports'
@@ -224,7 +225,7 @@ def mapping_window():
 
     # Main layout
     mapper_layout = [
-        [sg.Text('Crusader Wars Unit Mapper Configuration', font=('Courier New', 26, 'bold'), justification='center', expand_x=True, pad=(0, 15))],
+        [sg.Image(ASCII_ART_MAPPER)],
         [sg.Text('Create your "MAA => UNIT" mapping, per FACTION here. Any missing "MAA => UNIT" mappings will fallback to DEFAULT, or crash if not present.', font=('Courier New', 10, 'bold'), justification='center', expand_x=True)],
         [sg.Text('Each FACTION is assigned to one or many HERITAGE.', font=('Courier New', 10, 'bold'), justification='center', expand_x=True)],
         [
@@ -486,7 +487,7 @@ def main_window():
 
 
     layout = [
-    [sg.Image(ASCII_ART)],
+    [sg.Image(ASCII_ART_MAIN)],
     [sg.Text(text='''A mapping tool for FarayC's Crusader Wars, developed by equanimity''',font=('Courier New', 10))],
     [sg.Text(text='Instructions: Click the "Refresh Current Mappers" button to refresh the summary, \n or click "Create Custom Mapper" to open the custom mapping window.',font=('Courier New', 10))],
     
