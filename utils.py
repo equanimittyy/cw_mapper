@@ -64,3 +64,9 @@ def add_map_config(mapper_key, mapper_config: List[Tuple[str,int]]):
         print(f'Successfully updated {MAP_CONFIG} with {mapper_key}')
     except Exception as e:
         print(f'Error: {e}, error occurred while writing to config file')
+
+def import_xml():
+        pass
+
+def export_xml():
+        pass

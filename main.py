@@ -5,8 +5,9 @@ import json
 import webbrowser
 import FreeSimpleGUI as sg
 
-import utils
 import cw_map_checker
+
+from utils import init_map_config, import_xml, export_xml 
 
 if getattr(sys, 'frozen', False):
     application_path = os.path.dirname(sys.executable)
