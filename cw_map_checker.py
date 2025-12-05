@@ -128,11 +128,19 @@ def get_keys(cw_config):
 
             with open (source_file, 'r', encoding="utf-8-sig") as culture_txt_file:
                 data = culture_txt_file.read()
+            culture_data = re.findall(r"^(\w+)\s=\s\{\n([\s\S]*?)\n\}\n$", data, re.M | re.S)
 
-            culture_txt = re.findall(r"^(\w+)\s*=", data, re.M)
-            for culture in culture_txt:
+            for data in culture_data:
+                culture_name = data[0]
+                heritage = re.findall(r"=\s(heritage_\w+)\n|\t", data[1])
+                if not heritage:
+                    heritage_name = ''
+                else:
+                    heritage_name = heritage[0]
+                # heritage = [info for info in culture_info_list if info]
                 ck3_rows.append({
-                    "ck3_culture":culture,
+                    "ck3_culture":culture_name,
+                    "ck3_heritage":heritage_name,
                     "ck3_source_file":source_name,
                     "ck3_source":"CK3",
                     "mod_id":"0"
@@ -148,11 +156,19 @@ def get_keys(cw_config):
 
             with open (source_file, 'r', encoding="utf-8-sig") as culture_txt_file:
                 data = culture_txt_file.read()
+            culture_data = re.findall(r"^(\w+)\s=\s\{\n([\s\S]*?)\n\}$", data, re.M | re.S)
 
-            culture_txt = re.findall(r"^(\w+)\s*=", data, re.M)
-            for culture in culture_txt:
+            for data in culture_data:
+                culture_name = data[0]
+                heritage = re.findall(r"=\s(heritage_\w+)\n", data[1])
+                if not heritage:
+                    heritage_name = ''
+                else:
+                    heritage_name = heritage[0]
+                # heritage = [info for info in culture_info_list if info]
                 ck3_rows.append({
-                    "ck3_culture":culture,
+                    "ck3_culture":culture_name,
+                    "ck3_heritage":heritage_name,
                     "ck3_source_file":source_name,
                     "ck3_source":"CK3",
                     "mod_id":"0"
@@ -174,13 +190,21 @@ def get_keys(cw_config):
 
                         with open (source_file, 'r', encoding="utf-8-sig") as culture_txt_file:
                             data = culture_txt_file.read()
+                        culture_data = re.findall(r"^(\w+)\s=\s\{\n([\s\S]*?)\n\}$", data, re.M | re.S)
 
-                        culture_txt = re.findall(r"^(\w+)\s*=", data, re.M)
-                        for culture in culture_txt:
+                        for data in culture_data:
+                            culture_name = data[0]
+                            heritage = re.findall(r"=\s(heritage_\w+)\n", data[1])
+                            if not heritage:
+                                heritage_name = ''
+                            else:
+                                heritage_name = heritage[0]
+                            # heritage = [info for info in culture_info_list if info]
                             ck3_rows.append({
-                                "ck3_culture":culture,
+                                "ck3_culture":culture_name,
+                                "ck3_heritage":heritage_name,
                                 "ck3_source_file":source_name,
-                                "ck3_source": mod_name,
+                                "ck3_source":mod_name,
                                 "mod_id":folders.name
                             })
 
@@ -193,11 +217,19 @@ def get_keys(cw_config):
 
                         with open (source_file, 'r', encoding="utf-8-sig") as culture_txt_file:
                             data = culture_txt_file.read()
+                        culture_data = re.findall(r"^(\w+)\s=\s\{\n([\s\S]*?)\n\}$", data, re.M | re.S)
 
-                        culture_txt = re.findall(r"^(\w+)\s*=", data, re.M)
-                        for culture in culture_txt:
+                        for data in culture_data:
+                            culture_name = data[0]
+                            heritage = re.findall(r"=\s(heritage_\w+)\n", data[1])
+                            if not heritage:
+                                heritage_name = ''
+                            else:
+                                heritage_name = heritage[0]
+                            # heritage = [info for info in culture_info_list if info]
                             ck3_rows.append({
-                                "ck3_culture":culture,
+                                "ck3_culture":culture_name,
+                                "ck3_heritage":heritage_name,
                                 "ck3_source_file":source_name,
                                 "ck3_source":mod_name,
                                 "mod_id":folders.name
