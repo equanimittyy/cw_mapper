@@ -52,7 +52,7 @@ with open (os.path.join(REPORT_OUTPUT_DIR,'source_attila_keys.csv'), 'r') as f:
 with open(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_cultures_keys.csv'), 'r') as f:
     key_data = csv.DictReader(f)
     for key in key_data:
-        CULTURES_SOURCE_KEYS.append({'ck3_culture':key['ck3_culture'],'ck3_source':key['ck3_source']})
+        CULTURES_SOURCE_KEYS.append({'ck3_culture':key['ck3_culture'],'heritage':key['ck3_heritage'],'ck3_source':key['ck3_source']})
 
 with open(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_maa_keys.csv'), 'r') as f:
     key_data = csv.DictReader(f)
@@ -130,10 +130,134 @@ def popup_faction_list(factions):
     return None
 
 def heritage_window():
-    pass
+    # Available heritages, format (heritage, culture) tuple, should allow people to either take a whole heritage, or a specific culture
+    available_heritages = []
+    source_heritages = sorted(set([item['heritage'] for item in CULTURES_SOURCE_KEYS if item['heritage']]))
+    source_heritages = ["Unassigned"] + source_heritages
+
+    available_heritages_display_list = []
+    display_list = []
+
+    # Initialise available_heritages list
+    for heritage in source_heritages:
+        available_heritages.append((heritage,'PARENT_KEY'))
+        available_heritages_display_list.append(f'HERITAGE: {heritage}')
+        if heritage == 'Unassigned':
+            cultures = sorted(set([item['ck3_culture'] for item in CULTURES_SOURCE_KEYS if item['heritage'] == '']))
+        else:
+            cultures = sorted(set([item['ck3_culture'] for item in CULTURES_SOURCE_KEYS if item['heritage'] == heritage]))
+        for culture in cultures:
+            available_heritages.append((heritage,culture))
+            available_heritages_display_list.append(f'   ->: {culture}')
+
+    # refresh_display_lists()
+
+    def refresh_display_lists(window, mappings_dict):
+        # Clear current display lists and rebuild
+        available_heritages_display_list = []
+        display_list = []
+
+        # Available heritages
+        for pair in available_heritages:
+            if pair[1] == 'PARENT_KEY':
+                available_heritages_display_list.append(f'HERITAGE: {heritage}')
+            else:
+                available_heritages_display_list.append(f'   ->: {culture}')
+
+        # Editing list of heritages
+        for map in mappings_dict:
+            pass
+
+        window['HERITAGE_AVAILABLE_LIST'].update(available_heritages_display_list)
+        window['HERITAGE_EDIT_LIST'].update()
+        # Example brought from the other updating function
+        # Key is a tuple (ck3_maa, faction), value is attila_unit
+        # for (ck3, faction), attila in mappings_dict.items():
+        #     display_list = [t for t in mappings_dict.items() if t[0][1] == current_faction]
+        # if display_list:
+        #     for (ck3, faction), attila in display_list:
+        #         formatted_list.append(f"[{faction}] {ck3} => {attila}")
+        # else:
+        #     formatted_list = []
+
+        # window['MAPPING_LISTS_KEY'].update(sorted(formatted_list))
+        # # Re-enable/disable the Remove button based on whether there are mappings
+        # window['REMOVE_MAPPING_KEY'].update(disabled=len(formatted_list) == 0)
+
+        pass
+
+    def add_heritage(mappings_dict, selected_key):
+            added_key = selected_key.split(seperator=': ', maxsplit=1)[1]
+            added_key = added_key.strip()
+            if added_key in available_heritages: #i.e. a heritage key not a culture key
+                added_key_pair = (added_key, 'PARENT_KEY')
+            else:
+                matching_heritage = [item['heritage'] for item in CULTURES_SOURCE_KEYS if item['ck3_culture'] == added_key]
+                if matching_heritage:
+                    added_key_pair = (matching_heritage, added_key)
+                else:
+                    matching_heritage = 'Unassigned'
+                    added_key_pair = (matching_heritage, added_key)
+            
+            del available_heritages[added_key_pair]
+            mappings_dict[added_key_pair] = '' # Add the heritage/culture but leave faction blank
+            # refresh_display_lists(window, mappings_dict)
+
+    heritage1_col_layout = [
+        [sg.Text('Available Heritages and Cultures', font=('Courier New', 12, 'bold'), text_color='#6D0000', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE)],
+        [sg.Listbox(
+            values=available_heritages_display_list,
+            size=(50, 20),
+            key='HERITAGE_AVAILABLE_LIST',
+            enable_events=True,
+            select_mode=sg.LISTBOX_SELECT_MODE_SINGLE,
+            expand_x=True,
+            expand_y=True
+        )]
+    ]
+
+    heritage2_col_layout = [
+            [sg.Button('<<<', size=(10, 2), button_color=('white', '#444444')),sg.Button('>>>', size=(10, 2), button_color=('white', '#444444'))]
+        ]
+
+    heritage3_col_layout = [
+        [sg.Text('Heritage/Culture to Faction Mapping', font=('Courier New', 12, 'bold'), text_color='#00006D', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE)],
+        [sg.Listbox(
+            values=display_list,
+            size=(50, 20),
+            key='HERITAGE_EDIT_LIST',
+            enable_events=True,
+            select_mode=sg.LISTBOX_SELECT_MODE_SINGLE,
+            expand_x=True,
+            expand_y=True
+        )]
+    ]
+    
+    layout = [
+        [sg.Column(heritage1_col_layout, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD',expand_x=True,expand_y=True),
+         sg.Column(heritage2_col_layout, element_justification='center', vertical_alignment='center', pad=(10, 10), background_color='#DDDDDD'),
+        sg.Column(heritage3_col_layout, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD',expand_x=True,expand_y=True),
+         ],
+        [sg.Push(),sg.Button('OK', size=(15, 2), button_color=('white', '#444444')),sg.Push()]
+    ]
+
+    window = sg.Window('Edit heritage mapping', layout, modal=True)
+
+    while True:
+        event, values = window.read()
+
+        if event == sg.WIN_CLOSED:
+            break
+         
+        elif event == 'OK':
+            # new_faction_list = values['HERITAGE_EDIT_LIST'].split('\n')
+            # clean_faction_list = [item.strip() for item in new_faction_list]
+            # if clean_faction_list:
+            #     return clean_faction_list
+            print('Hello')
+    window.close()
 
 def mapping_window():
-    MAPPER_NAME = ''
     ATTILA_UNIT_LIST_SOURCE = ['ALL'] + sorted(list(dict.fromkeys(ATTILA_SOURCES)))
     MAA_LIST_SOURCE = ['ALL'] + sorted(list(dict.fromkeys(CK3_SOURCES)))
 
@@ -141,8 +265,12 @@ def mapping_window():
     ]
 
     # Dictionary to store the actual mappings (CK3 MAA: ATTILA UNIT KEY, per FACTION)
-    # Format: { (ck3_maa, faction): attila_unit ] }
+    
+    MAPPER_NAME = ''
+    # Format faction mapping: {(ck3_maa, faction): [attila_unit]} | {tuple: [value]}
     current_mappings = {}
+    # Format heritage mapping: {heritage(faction,[culture[faction]]} | {key(value,list[value])}
+    current_heritage_mappings = {}
     CK3_SOURCE_KEY = 'CK3_SOURCE_KEY'
     ATTILA_SOURCE_KEY = 'ATTILA_SOURCE_KEY'
     FACTION_KEY = 'FACTION_SELECT_KEY'
@@ -220,7 +348,7 @@ def mapping_window():
             expand_x=True,
             expand_y=True
         )],
-        [sg.Button('Add Mapping', key='ADD_MAPPING_KEY', size=(15, 2), button_color=('white', '#004D40'), disabled=True),sg.Button('Remove Selected', key='REMOVE_MAPPING_KEY', size=(15, 2), button_color=('white', '#CC0000'), disabled=True),sg.Push(background_color='#DDDDDD'),sg.Button('Open Faction-Heritage mapping', size=(25, 2), button_color=('white', '#444444'))],
+        [sg.Button('Add Mapping', key='ADD_MAPPING_KEY', size=(15, 2), button_color=('white', '#004D40'), disabled=True),sg.Button('Remove Selected', key='REMOVE_MAPPING_KEY', size=(15, 2), button_color=('white', '#CC0000'), disabled=True),sg.Push(background_color='#DDDDDD'),sg.Button('Open Heritage mapping', key='HERITAGE_EDIT_BUTTON_KEY', size=(25, 2), button_color=('white', '#444444'))],
         [sg.Button('Copy from faction', key='FACTION_COPY_BUTTON_KEY',size=(15, 2), button_color=('white', "#008670")),sg.Push(background_color='#DDDDDD'),sg.Button('Edit faction list', key='FACTION_LIST_EDIT_BUTTON_KEY', size=(15, 2), button_color=('white', '#444444'))]
     ]
 
@@ -475,6 +603,9 @@ def mapping_window():
             if new_faction_list != None:
                 FACTION_LIST = new_faction_list
                 window[FACTION_KEY].update(values=FACTION_LIST)
+        
+        elif event == 'HERITAGE_EDIT_BUTTON_KEY':
+            heritage_window()
 
     window.close()
 
