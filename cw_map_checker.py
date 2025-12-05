@@ -132,7 +132,7 @@ def get_keys(cw_config):
 
             for data in culture_data:
                 culture_name = data[0]
-                heritage = re.findall(r"=\s(heritage_\w+)\n|\t", data[1])
+                heritage = re.findall(r"=\s(heritage_\w+)[\n|\t]", data[1])
                 if not heritage:
                     heritage_name = ''
                 else:
@@ -160,7 +160,7 @@ def get_keys(cw_config):
 
             for data in culture_data:
                 culture_name = data[0]
-                heritage = re.findall(r"=\s(heritage_\w+)\n", data[1])
+                heritage = re.findall(r"=\s(heritage_\w+)[\n|\t]", data[1])
                 if not heritage:
                     heritage_name = ''
                 else:
@@ -194,7 +194,7 @@ def get_keys(cw_config):
 
                         for data in culture_data:
                             culture_name = data[0]
-                            heritage = re.findall(r"=\s(heritage_\w+)\n", data[1])
+                            heritage = re.findall(r"=\s(heritage_\w+)[\n|\t]", data[1])
                             if not heritage:
                                 heritage_name = ''
                             else:
@@ -221,7 +221,7 @@ def get_keys(cw_config):
 
                         for data in culture_data:
                             culture_name = data[0]
-                            heritage = re.findall(r"=\s(heritage_\w+)\n", data[1])
+                            heritage = re.findall(r"=\s(heritage_\w+)[\n|\t]", data[1])
                             if not heritage:
                                 heritage_name = ''
                             else:
