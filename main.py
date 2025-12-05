@@ -129,7 +129,7 @@ def popup_faction_list(factions):
             return clean_faction_list
     return None
 
-def heritage_window():
+def heritage_window(heritage_mapping_dict):
     # Available heritages, format (heritage, culture) tuple, should allow people to either take a whole heritage, or a specific culture
     available_heritages = []
     source_heritages = sorted(set([item['heritage'] for item in CULTURES_SOURCE_KEYS if item['heritage']]))
@@ -147,12 +147,13 @@ def heritage_window():
         else:
             cultures = sorted(set([item['ck3_culture'] for item in CULTURES_SOURCE_KEYS if item['heritage'] == heritage]))
         for culture in cultures:
+            source = ([item['ck3_source'] for item in CULTURES_SOURCE_KEYS if item['ck3_culture'] == culture])[0]
             available_heritages.append((heritage,culture))
-            available_heritages_display_list.append(f'   ->: {culture}')
+            available_heritages_display_list.append(f'   ->: {culture} ({source})')
 
     # refresh_display_lists()
 
-    def refresh_display_lists(window, mappings_dict):
+    def refresh_display_lists(window, available_heritages):
         # Clear current display lists and rebuild
         available_heritages_display_list = []
         display_list = []
@@ -160,16 +161,13 @@ def heritage_window():
         # Available heritages
         for pair in available_heritages:
             if pair[1] == 'PARENT_KEY':
-                available_heritages_display_list.append(f'HERITAGE: {heritage}')
+                available_heritages_display_list.append(f'HERITAGE: {pair[0]}')
             else:
-                available_heritages_display_list.append(f'   ->: {culture}')
-
-        # Editing list of heritages
-        for map in mappings_dict:
-            pass
+                available_heritages_display_list.append(f'   ->: {pair[1]}')
 
         window['HERITAGE_AVAILABLE_LIST'].update(available_heritages_display_list)
-        window['HERITAGE_EDIT_LIST'].update()
+
+        # window['HERITAGE_EDIT_LIST'].update()
         # Example brought from the other updating function
         # Key is a tuple (ck3_maa, faction), value is attila_unit
         # for (ck3, faction), attila in mappings_dict.items():
@@ -186,22 +184,30 @@ def heritage_window():
 
         pass
 
-    def add_heritage(mappings_dict, selected_key):
-            added_key = selected_key.split(seperator=': ', maxsplit=1)[1]
+    def add_heritage(available_heritages, mappings_dict, selected_key):
+            added_key = selected_key.split(sep=': ', maxsplit=1)[1]
             added_key = added_key.strip()
-            if added_key in available_heritages: #i.e. a heritage key not a culture key
+            if added_key in [heritage[0] for heritage in available_heritages]: #i.e. a heritage key not a culture key
                 added_key_pair = (added_key, 'PARENT_KEY')
+                available_heritages = [heritage for heritage in available_heritages if heritage[0] != added_key] # Entire heritage
             else:
                 matching_heritage = [item['heritage'] for item in CULTURES_SOURCE_KEYS if item['ck3_culture'] == added_key]
-                if matching_heritage:
-                    added_key_pair = (matching_heritage, added_key)
+                if matching_heritage == []:
+                    matching_heritage = ['Unassigned']
+                    added_key_pair = (matching_heritage[0], added_key)
+                    
                 else:
-                    matching_heritage = 'Unassigned'
-                    added_key_pair = (matching_heritage, added_key)
+                    added_key_pair = (matching_heritage[0], added_key)
+                available_heritages = [heritage for heritage in available_heritages if heritage != added_key_pair] # Drop specific (heritage, culture) key
+
+                # Check if culture key is last key in heritage
+                # remaining_heritage_cultures = sum(1 for heritage in available_heritages if heritage == matching_heritage[0])
+                # if remaining_heritage_cultures == 1:
+                #     available_heritages = [heritage for heritage in available_heritages if heritage[0] != matching_heritage]
             
-            del available_heritages[added_key_pair]
             mappings_dict[added_key_pair] = '' # Add the heritage/culture but leave faction blank
-            # refresh_display_lists(window, mappings_dict)
+            refresh_display_lists(window, available_heritages)
+            return available_heritages
 
     heritage1_col_layout = [
         [sg.Text('Available Heritages and Cultures', font=('Courier New', 12, 'bold'), text_color='#6D0000', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE)],
@@ -249,11 +255,13 @@ def heritage_window():
         if event == sg.WIN_CLOSED:
             break
          
+        elif event == '>>>': # Add to editable list
+            selected_heritage_to_add = values['HERITAGE_AVAILABLE_LIST']
+            if selected_heritage_to_add:
+                available_heritages = add_heritage(available_heritages, heritage_mapping_dict, selected_heritage_to_add[0])
+                
+        
         elif event == 'OK':
-            # new_faction_list = values['HERITAGE_EDIT_LIST'].split('\n')
-            # clean_faction_list = [item.strip() for item in new_faction_list]
-            # if clean_faction_list:
-            #     return clean_faction_list
             print('Hello')
     window.close()
 
@@ -605,7 +613,7 @@ def mapping_window():
                 window[FACTION_KEY].update(values=FACTION_LIST)
         
         elif event == 'HERITAGE_EDIT_BUTTON_KEY':
-            heritage_window()
+            heritage_window(current_heritage_mappings)
 
     window.close()
 
