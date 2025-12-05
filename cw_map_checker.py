@@ -10,7 +10,7 @@ from io import StringIO
 import configparser
 import pandas as pd
 
-from cw_mapper import get_config
+from utils import get_config
 
 if getattr(sys, 'frozen', False):
     application_path = os.path.dirname(sys.executable)

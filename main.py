@@ -5,7 +5,7 @@ import json
 import webbrowser
 import FreeSimpleGUI as sg
 
-import cw_mapper
+import utils
 import cw_map_checker
 
 if getattr(sys, 'frozen', False):
@@ -575,7 +575,7 @@ def main_window():
                 window['MLINE_KEY'].update(f'''Click the 'Open README' button for more details.''',append=True)
                 window['VALIDATE_KEY'].update(disabled=False)
             else:
-                cw_mapper.init_map_config()
+                utils.init_map_config()
                 cw_map_checker.mapping_validation(*cw_map_checker.get_keys(cw_map_checker.get_cw_config()))
                 cw_map_checker.summary()
 
