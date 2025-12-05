@@ -576,7 +576,7 @@ def main_window():
                 window['MLINE_KEY'].update(f'''Click the 'Open README' button for more details.''',append=True)
                 window['VALIDATE_KEY'].update(disabled=False)
             else:
-                utils.init_map_config()
+                init_map_config()
                 cw_map_checker.mapping_validation(*cw_map_checker.get_keys(cw_map_checker.get_cw_config()))
                 cw_map_checker.summary()
 
