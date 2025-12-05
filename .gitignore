@@ -10,3 +10,5 @@ custom_mappers/
 __pycache__
 
 summary_log.txt
+
+testing.py
