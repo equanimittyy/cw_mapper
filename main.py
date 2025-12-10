@@ -152,13 +152,19 @@ def heritage_window(heritage_mapping_dict):
             available_heritages.append((heritage,culture+' ('+source+')'))
             available_heritages_display_list.append(f'   ->: {culture} ({source})')
 
-    def refresh_display_lists(window, available_heritages):
+    def refresh_display_lists(window, available_heritages, heritage_mapping_dict):
         # Clear current display lists and rebuild
         available_heritages_display_list = []
         display_list = []
 
         available_heritages_widget = window['HERITAGE_AVAILABLE_LIST'].Widget
-        current_y = available_heritages_widget.yview()[0] # Retain current y-scroll
+        heritages_widget = window['HERITAGE_MAP_LIST'].Widget
+        current_y_ah = available_heritages_widget.yview()[0] # Retain current y-scroll
+        current_y_h = heritages_widget.yview()[0]
+        
+        # Re-sort lists
+        # available_heritages = sorted(available_heritages, key=lambda tup: tup[1])
+        # heritage_mapping_dict = sorted(heritage_mapping_dict, key=lambda tup: tup[1])
 
         # Available heritages
         for pair in available_heritages:
@@ -172,17 +178,36 @@ def heritage_window(heritage_mapping_dict):
 
         # Stealth refresh and restore previous y-scroll
         window['HERITAGE_AVAILABLE_LIST'].update(available_heritages_display_list, visible = False)
-        available_heritages_widget.yview_moveto(current_y)
+        available_heritages_widget.yview_moveto(current_y_ah)
         window['HERITAGE_AVAILABLE_LIST'].update(visible = True)
 
-    def add_heritage(available_heritages, mappings_dict, selected_key):
+        # Mapped heritages
+        for pair in heritage_mapping_dict:
+            if pair[1] == 'PARENT_KEY':
+                h_count = 1
+            else:
+                if h_count == 1:
+                    display_list.append(f'HERITAGE: {pair[0]}')
+                h_count = h_count+1
+                display_list.append(f'   ->: {pair[1]}')
+
+        # Stealth refresh and restore previous y-scroll
+        window['HERITAGE_MAP_LIST'].update(display_list, visible = False)
+        heritages_widget.yview_moveto(current_y_h)
+        window['HERITAGE_MAP_LIST'].update(visible = True)
+
+    def add_heritage(available_heritages, heritage_mapping_dict, selected_key):
+            added_mapping = []
             added_key = selected_key.split(sep=': ', maxsplit=1)[1]
             added_key = added_key.strip()
             if added_key in [heritage[0] for heritage in available_heritages]: #i.e. a heritage key not a culture key
+                # Entire heritage
                 added_key_pair = (added_key, 'PARENT_KEY')
-                available_heritages = [heritage for heritage in available_heritages if heritage[0] != added_key] # Entire heritage
-                if added_key == 'Unassigned':
-                    available_heritages = [heritage for heritage in available_heritages if heritage[0] != 'Unassigned'] # Entire heritage, for unassigned
+                added_mapping = [heritage for heritage in available_heritages if heritage[0] == added_key]
+                available_heritages = [heritage for heritage in available_heritages if heritage[0] != added_key] # Drop keys with specified heritage
+                for map in added_mapping:
+                    added_key_pair = (added_key, map[1])
+                    heritage_mapping_dict[added_key_pair] = ''
             else:
                 matching_heritage = [item['heritage'] for item in CULTURES_SOURCE_KEYS if item['ck3_culture'] == added_key.split(' ')[0]]
                 if matching_heritage == ['']:
@@ -190,15 +215,14 @@ def heritage_window(heritage_mapping_dict):
                     added_key_pair = (matching_heritage[0], added_key)
                 else:
                     added_key_pair = (matching_heritage[0], added_key)
-                available_heritages = [heritage for heritage in available_heritages if heritage != added_key_pair] # Drop specific (heritage, culture) key
+                # Handle for missing parent_key
+                if not any(matching_heritage == t[0] for t in heritage_mapping_dict):
+                    heritage_mapping_dict[(matching_heritage[0],'PARENT_KEY')] = ''
 
-                # Check if culture key is last key in heritage
-                # remaining_heritage_cultures = sum(1 for heritage in available_heritages if heritage == matching_heritage[0])
-                # if remaining_heritage_cultures == 1:
-                #     available_heritages = [heritage for heritage in available_heritages if heritage[0] != matching_heritage]
+                heritage_mapping_dict[added_key_pair] = '' # Add the heritage/culture but leave faction blank
+                available_heritages = [heritage for heritage in available_heritages if heritage != added_key_pair] # Drop specific (heritage, culture) pair key
             
-            mappings_dict[added_key_pair] = '' # Add the heritage/culture but leave faction blank
-            refresh_display_lists(window, available_heritages)
+            refresh_display_lists(window, available_heritages, heritage_mapping_dict)
             return available_heritages
 
     heritage1_col_layout = [
@@ -223,7 +247,7 @@ def heritage_window(heritage_mapping_dict):
         [sg.Listbox(
             values=display_list,
             size=(50, 20),
-            key='HERITAGE_EDIT_LIST',
+            key='HERITAGE_MAP_LIST',
             enable_events=True,
             select_mode=sg.LISTBOX_SELECT_MODE_SINGLE,
             expand_x=True,
