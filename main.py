@@ -149,41 +149,31 @@ def heritage_window(heritage_mapping_dict):
             cultures = sorted(set([item['ck3_culture'] for item in CULTURES_SOURCE_KEYS if item['heritage'] == heritage]))
         for culture in cultures:
             source = ([item['ck3_source'] for item in CULTURES_SOURCE_KEYS if item['ck3_culture'] == culture])[0]
-            available_heritages.append((heritage,culture))
+            available_heritages.append((heritage,culture+' ('+source+')'))
             available_heritages_display_list.append(f'   ->: {culture} ({source})')
-
-    # refresh_display_lists()
 
     def refresh_display_lists(window, available_heritages):
         # Clear current display lists and rebuild
         available_heritages_display_list = []
         display_list = []
 
+        available_heritages_widget = window['HERITAGE_AVAILABLE_LIST'].Widget
+        current_y = available_heritages_widget.yview()[0] # Retain current y-scroll
+
         # Available heritages
         for pair in available_heritages:
             if pair[1] == 'PARENT_KEY':
-                available_heritages_display_list.append(f'HERITAGE: {pair[0]}')
+                h_count = 1
             else:
+                if h_count == 1:
+                    available_heritages_display_list.append(f'HERITAGE: {pair[0]}')
+                h_count = h_count+1
                 available_heritages_display_list.append(f'   ->: {pair[1]}')
 
-        window['HERITAGE_AVAILABLE_LIST'].update(available_heritages_display_list)
-
-        # window['HERITAGE_EDIT_LIST'].update()
-        # Example brought from the other updating function
-        # Key is a tuple (ck3_maa, faction), value is attila_unit
-        # for (ck3, faction), attila in mappings_dict.items():
-        #     display_list = [t for t in mappings_dict.items() if t[0][1] == current_faction]
-        # if display_list:
-        #     for (ck3, faction), attila in display_list:
-        #         formatted_list.append(f"[{faction}] {ck3} => {attila}")
-        # else:
-        #     formatted_list = []
-
-        # window['MAPPING_LISTS_KEY'].update(sorted(formatted_list))
-        # # Re-enable/disable the Remove button based on whether there are mappings
-        # window['REMOVE_MAPPING_KEY'].update(disabled=len(formatted_list) == 0)
-
-        pass
+        # Stealth refresh and restore previous y-scroll
+        window['HERITAGE_AVAILABLE_LIST'].update(available_heritages_display_list, visible = False)
+        available_heritages_widget.yview_moveto(current_y)
+        window['HERITAGE_AVAILABLE_LIST'].update(visible = True)
 
     def add_heritage(available_heritages, mappings_dict, selected_key):
             added_key = selected_key.split(sep=': ', maxsplit=1)[1]
@@ -191,12 +181,13 @@ def heritage_window(heritage_mapping_dict):
             if added_key in [heritage[0] for heritage in available_heritages]: #i.e. a heritage key not a culture key
                 added_key_pair = (added_key, 'PARENT_KEY')
                 available_heritages = [heritage for heritage in available_heritages if heritage[0] != added_key] # Entire heritage
+                if added_key == 'Unassigned':
+                    available_heritages = [heritage for heritage in available_heritages if heritage[0] != 'Unassigned'] # Entire heritage, for unassigned
             else:
-                matching_heritage = [item['heritage'] for item in CULTURES_SOURCE_KEYS if item['ck3_culture'] == added_key]
-                if matching_heritage == []:
+                matching_heritage = [item['heritage'] for item in CULTURES_SOURCE_KEYS if item['ck3_culture'] == added_key.split(' ')[0]]
+                if matching_heritage == ['']:
                     matching_heritage = ['Unassigned']
                     added_key_pair = (matching_heritage[0], added_key)
-                    
                 else:
                     added_key_pair = (matching_heritage[0], added_key)
                 available_heritages = [heritage for heritage in available_heritages if heritage != added_key_pair] # Drop specific (heritage, culture) key
@@ -387,6 +378,9 @@ def mapping_window():
     # ==============================================
     def update_mappings_list(window, mappings_dict):
         """Formats the mapping dictionary into a list of strings for the Listbox."""
+        mapping_widget = window['MAPPING_LISTS_KEY'].Widget
+        current_y = mapping_widget.yview()[0] # Retain current y-scroll
+
         display_list = []
         formatted_list = []
         # Key is a tuple (ck3_maa, faction), value is attila_unit
@@ -398,7 +392,9 @@ def mapping_window():
         else:
             formatted_list = []
         
-        window['MAPPING_LISTS_KEY'].update(sorted(formatted_list))
+        window['MAPPING_LISTS_KEY'].update(sorted(formatted_list), visible = False)
+        mapping_widget.yview_moveto(current_y)
+        window['MAPPING_LISTS_KEY'].update(visible = True)
         # Re-enable/disable the Remove button based on whether there are mappings
         window['REMOVE_MAPPING_KEY'].update(disabled=len(formatted_list) == 0)
 
