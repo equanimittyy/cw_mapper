@@ -16,6 +16,7 @@ elif __file__:
 
 # Identify working directories
 WORKING_DIR = application_path
+CW_DIR = os.path.dirname(os.path.dirname(application_path)) #Expected directory: CW/tools/cw_mapper
 
 ASCII_ART_MAIN = os.path.join('ascii-art-main.png')
 ASCII_ART_MAPPER = os.path.join('ascii-art-mapper.png')
@@ -662,6 +663,19 @@ def main_window():
 
     window = sg.Window('Crusader Wars Mapper', layout, resizable=True).Finalize()
 
+    # Executable compatibility check
+    try:
+        if os.path.exists(os.path.join(CW_DIR, 'Crusader Wars.exe')):
+            pass
+        else:
+            raise FileNotFoundError('Executable incompatibility or not found for Crusader Wars.exe')
+    except FileNotFoundError as e:
+        sg.popup_error(f"Error: {e}\n\nPlease ensure the Crusader Wars mapping tool is stored in tools/cw_mapper")
+        window.close()
+    except Exception as e:
+        sg.popup_error(f"Error: {e}")
+        window.close()
+
     while True:
         event, values = window.read()
 
@@ -735,4 +749,4 @@ def main_window():
     window.close()
 
 if __name__ == '__main__':
-    main_window()
+        main_window()
