@@ -32,6 +32,10 @@ ATTILA_SOURCE_KEYS = []
 CULTURES_SOURCE_KEYS = []
 MAA_SOURCE_KEYS = []
 
+ATTILA_SOURCE_PATH = os.path.join(REPORT_OUTPUT_DIR,'source_attila_keys.csv')
+CULTURES_SOURCE_PATH = os.path.join(REPORT_OUTPUT_DIR,'source_ck3_cultures_keys.csv')
+MAA_SOURCE_PATH = os.path.join(REPORT_OUTPUT_DIR,'source_ck3_maa_keys.csv')
+
 NON_MAA_KEYS = [
     'GENERAL',
     'KNIGHTS',
@@ -45,9 +49,31 @@ NON_MAA_KEYS = [
     'LEVY-CUSTOM3',
 ]
 
+# If none of the source files exists, run the check program to refresh files
+if not os.path.exists(ATTILA_SOURCE_PATH) or not os.path.exists(CULTURES_SOURCE_PATH) or not os.path.exists(MAA_SOURCE_PATH):
+    init_map_config()
+    cw_map_checker.mapping_validation(*cw_map_checker.get_keys(cw_map_checker.get_cw_config()))
+    cw_map_checker.summary()
+
+with open (ATTILA_SOURCE_PATH, 'r') as f:
+    key_data = csv.DictReader(f)
+    for key in key_data:
+        ATTILA_SOURCE_KEYS.append({'attila_map_key':key['attila_map_key'],'attila_source':key['attila_source']})
+
+with open(CULTURES_SOURCE_PATH, 'r') as f:
+    key_data = csv.DictReader(f)
+    for key in key_data:
+        CULTURES_SOURCE_KEYS.append({'ck3_culture':key['ck3_culture'],'heritage':key['ck3_heritage'],'ck3_source':key['ck3_source']})
+
+with open(MAA_SOURCE_PATH, 'r') as f:
+    key_data = csv.DictReader(f)
+    for key in key_data:
+        MAA_SOURCE_KEYS.append({'ck3_maa':key['ck3_maa'],'ck3_source':key['ck3_source']})
+    for maa in NON_MAA_KEYS:
+        MAA_SOURCE_KEYS.append({'ck3_maa':maa,'ck3_source':'CW'})
+
 ATTILA_SOURCES = [item['attila_source'] for item in ATTILA_SOURCE_KEYS]
 CK3_SOURCES = [item['ck3_source'] for item in CULTURES_SOURCE_KEYS] + [item['ck3_source'] for item in MAA_SOURCE_KEYS]
-
 
 def popup_mapper_name_input():
     layout = [
@@ -856,7 +882,6 @@ def main_window():
             # Disable validation button
             window['VALIDATE_KEY'].update(disabled=True)
 
-
             os.makedirs(ATTILA_EXPORT_DIR, exist_ok=True)
             if not any(file.endswith('.tsv') for file in os.listdir(ATTILA_EXPORT_DIR)):
                 window['MLINE_KEY'].update(f'ERROR: No .tsv Atilla unit keys were found in {ATTILA_EXPORT_DIR}\n')
@@ -884,31 +909,9 @@ def main_window():
                 window['VALIDATE_KEY'].update(disabled=False)
 
         elif event == 'CUSTOM_MAPPER_KEY':
-            if not ATTILA_SOURCE_KEYS or not CULTURES_SOURCE_KEYS or not MAA_SOURCE_KEYS:
-                with open (os.path.join(REPORT_OUTPUT_DIR,'source_attila_keys.csv'), 'r') as f:
-                    key_data = csv.DictReader(f)
-                    for key in key_data:
-                        ATTILA_SOURCE_KEYS.append({'attila_map_key':key['attila_map_key'],'attila_source':key['attila_source']})
-
-                with open(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_cultures_keys.csv'), 'r') as f:
-                    key_data = csv.DictReader(f)
-                    for key in key_data:
-                        CULTURES_SOURCE_KEYS.append({'ck3_culture':key['ck3_culture'],'heritage':key['ck3_heritage'],'ck3_source':key['ck3_source']})
-
-                with open(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_maa_keys.csv'), 'r') as f:
-                    key_data = csv.DictReader(f)
-                    for key in key_data:
-                        MAA_SOURCE_KEYS.append({'ck3_maa':key['ck3_maa'],'ck3_source':key['ck3_source']})
-                    for maa in NON_MAA_KEYS:
-                        MAA_SOURCE_KEYS.append({'ck3_maa':maa,'ck3_source':'CW'})
-                mapping_window()
-            else:
                 mapping_window()
 
     window.close()
 
 if __name__ == '__main__':
-        init_map_config()
-        cw_map_checker.mapping_validation(*cw_map_checker.get_keys(cw_map_checker.get_cw_config()))
-        cw_map_checker.summary()
         main_window()
