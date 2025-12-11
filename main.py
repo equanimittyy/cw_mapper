@@ -1,6 +1,7 @@
 import os
 import sys
 import csv
+import re
 import json
 import webbrowser
 import FreeSimpleGUI as sg
@@ -171,6 +172,55 @@ def popup_heritage_pick_faction(factions, heritage_mapping_dict, selected_map):
             elif pair[1] == selected_map and heritage_mapping_dict[pair].strip() == current_faction: #i.e. if culture name match and faction match
                 heritage_mapping_dict[pair] = target_faction
     return heritage_mapping_dict
+
+def popup_size_manual():
+    ALLOWED_CHARS = '0123456789'
+    default_size = 'INFANTRY'
+    layout = [
+        [sg.Text('Enter unit size (numbers only):')],
+        [sg.Input(
+            key='MANUAL_SIZE_INPUT',
+            enable_events=True
+        )],
+        [sg.Button('OK')]
+    ]
+
+    window = sg.Window('Custom mapper name input', layout, modal=True)
+
+    while True:
+        event, values = window.read()
+
+        if event in (sg.WIN_CLOSED, 'Cancel'):
+            window.close()
+            return default_size
+        
+        elif event == 'MANUAL_SIZE_INPUT':
+            current_value = values['MANUAL_SIZE_INPUT']
+            updated_value = current_value
+
+            if len(current_value) > 0 and current_value[-1] not in ALLOWED_CHARS:
+                window['MANUAL_SIZE_INPUT'].update(current_value[:-1])
+                sg.popup_no_buttons('Only numbers are allowed!', auto_close=True, auto_close_duration=2,title='Input Error')
+    
+            if len(updated_value) > 1 and updated_value.startswith('0'):
+                    stripped_zeros = updated_value.lstrip('0')
+
+                    if stripped_zeros == '':
+                        updated_value = '0'
+                    else:
+                        updated_value = stripped_zeros
+                    
+                    # Update the input field only if the value actually changed
+                    if updated_value != current_value:
+                        window['MANUAL_SIZE_INPUT'].update(updated_value)
+        
+        elif event == 'OK':
+            size = values['MANUAL_SIZE_INPUT']
+            if size:
+                window.close()
+                return size
+            else:
+                sg.popup('Input cannot be empty!', auto_close=True, auto_close_duration=2, title='Error')
 
 def heritage_window(heritage_mapping_dict, factions):
     # Available heritages, format (heritage, culture) tuple, should allow people to either take a whole heritage, or a specific culture
@@ -419,6 +469,8 @@ def mapping_window():
     FACTION_LIST = ['DEFAULT'] + [
     ]
 
+    SIZE_LIST = ['MANUAL','CAVALRY','INFANTRY','RANGED']
+
     # Dictionary to store the actual mappings (CK3 MAA: ATTILA UNIT KEY, per FACTION)
     
     MAPPER_NAME = ''
@@ -468,7 +520,14 @@ def mapping_window():
             readonly=True,
             enable_events=True
         )],
-        [sg.Text('Search...',background_color='#DDDDDD',text_color="#000000"),sg.Input(key='ATTILA_SEARCH_KEY', enable_events=True)]
+        [sg.Text('Search...',background_color='#DDDDDD',text_color="#000000"),sg.Input(key='ATTILA_SEARCH_KEY', enable_events=True),sg.Text('Select unit size:'), sg.Combo(
+            values=SIZE_LIST, 
+            default_value=SIZE_LIST[0], 
+            size=(10, 1), 
+            key='MAA_SIZE_SELECT', 
+            readonly=True,
+            enable_events=True
+        )]
         ,
         [sg.Listbox(
             values=sorted([item['attila_map_key'] for item in ATTILA_SOURCE_KEYS]),
@@ -543,7 +602,7 @@ def mapping_window():
             display_list = [t for t in mappings_dict.items() if t[0][1] == current_faction]
         if display_list:
             for (ck3, faction), attila in display_list:
-                formatted_list.append(f"[{faction}] {ck3} => {attila}")
+                formatted_list.append(f"[{faction}] {ck3}   => {attila}")
         else:
             formatted_list = []
         
@@ -593,9 +652,6 @@ def mapping_window():
             for k, v in heritage_data.items()
         }
         return loaded_faction_mapping, loaded_heritage_mapping
-
-    def export_xml():
-        pass
 
     # END FUNCTIONS
     # ==============================================
@@ -714,6 +770,9 @@ def mapping_window():
         elif event == 'ADD_MAPPING_KEY' and selected_ck3 and selected_attila:
             current_faction = values[FACTION_KEY]
             if current_faction:
+                size = values['MAA_SIZE_SELECT']
+                if size == 'MANUAL':
+                        size = popup_size_manual()
                 for selected in selected_ck3:
                     mapping_key = (selected, current_faction)
                 
@@ -722,8 +781,14 @@ def mapping_window():
                         if key in current_mappings:
                             key_to_remove = (selected, current_faction)
                             del current_mappings[key_to_remove]
-                    
-                    current_mappings[mapping_key] = selected_attila
+                        if re.search(r'^LEVY-', key):
+                            size = 'LEVY'
+                        if re.search(r'^GENERAL\b', key):
+                            size = 'GENERAL'
+                        if re.search(r'^KNIGHTS\b', key):
+                            size = 'KNIGHTS'
+            
+                    current_mappings[mapping_key] = selected_attila + [size]
 
                     # Update the displayed list
                     update_mappings_list(window, current_mappings)
