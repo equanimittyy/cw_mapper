@@ -129,14 +129,22 @@ def popup_heritage_pick_faction(factions, heritage_mapping_dict, selected_map):
     event, values = window.read(close=True) # Closes the window after reading the event
 
     if event == 'OK':
-        target_faction = values['FACTION_HERITAGE_KEY'][0]
-        
+        if values['FACTION_HERITAGE_KEY'] == []:
+            return None
+        prefix = selected_map[0].split(sep=': ', maxsplit=1)[0].strip()
         selected_map = selected_map[0].split(sep=': ', maxsplit=1)[1]
         current_faction = selected_map.split(sep='--',maxsplit=1)[1].strip()
         selected_map = selected_map.split(sep='--',maxsplit=1)[0].strip()
-        if target_faction:
-            return target_faction
-    return None
+        target_faction = values['FACTION_HERITAGE_KEY'][0]
+
+        for pair in heritage_mapping_dict:
+            if pair[0] == selected_map and pair[1] == 'PARENT_KEY': # i.e. if selected a heritage key
+                for pair in heritage_mapping_dict: # Assign faction inner loop
+                    if pair[0] == selected_map:
+                        heritage_mapping_dict[pair] = target_faction
+            elif pair[1] == selected_map and heritage_mapping_dict[pair].strip() == current_faction: #i.e. if culture name match and faction match
+                heritage_mapping_dict[pair] = target_faction
+    return heritage_mapping_dict
 
 def heritage_window(heritage_mapping_dict, factions):
     # Available heritages, format (heritage, culture) tuple, should allow people to either take a whole heritage, or a specific culture
@@ -348,7 +356,9 @@ def heritage_window(heritage_mapping_dict, factions):
         elif event == 'Assign Faction': # Assign faction button
             selected_map = values['HERITAGE_MAP_LIST']
             if selected_map:
-                popup_heritage_pick_faction(factions, heritage_mapping_dict, selected_map)
+                heritage_mapping_dict = popup_heritage_pick_faction(factions, heritage_mapping_dict, selected_map)
+                refresh_display_lists(window, available_heritages, heritage_mapping_dict)
+
             window['Assign Faction'].update(disabled = True)
 
         elif event == 'HERITAGE_MAP_LIST':
