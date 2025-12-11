@@ -27,6 +27,8 @@ checking what MAA/Cultures are needed plus for future use when people will creat
 \
 ↳ ☑ Add in logic for levy size/MAA size
 \
-↳ ☐ Create mapper based on existing mapper (loading xmls)
+↳ ☑ Create mapper based on existing mapper (loading xmls)
+\
+↳ ☐ Fix importing issues, with keys with no source (from mappers where the data isn't locally available)
 \
 ↳ ☐ Mapping instructions
