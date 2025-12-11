@@ -179,6 +179,7 @@ def popup_size_manual():
     layout = [
         [sg.Text('Enter unit size (numbers only):')],
         [sg.Input(
+            default_text='0',
             key='MANUAL_SIZE_INPUT',
             enable_events=True
         )],
