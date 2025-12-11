@@ -522,13 +522,19 @@ def mapping_window():
         is_ready = selected_ck3 is not None and selected_attila is not None and values[FACTION_KEY] != ''
         window['ADD_MAPPING_KEY'].update(disabled=not is_ready)
 
-    def save_mapper(name, custom_mapping):
+    def save_mapper(name, faction_mapping, heritage_mapping):
         output_path = os.path.join(CUSTOM_MAPPER_DIR,f'{name}.txt')
         os.makedirs(CUSTOM_MAPPER_DIR, exist_ok=True)
         seperator = ','
         save_format = {
-            seperator.join(k):v
-            for k,v in custom_mapping.items()
+            'FACTIONS AND MAA': {
+                seperator.join(k):v
+                for k,v in faction_mapping.items()
+                },
+            'HERITAGES AND CULTURES': {
+                seperator.join(k):[v]
+                for k,v in heritage_mapping.items()
+                },
         }
         with open(output_path, 'w', encoding='utf-8-sig') as f:
             json.dump(save_format,f,indent=4)
@@ -537,12 +543,20 @@ def mapping_window():
         seperator = ','
         with open(file, 'r', encoding='utf-8-sig') as f:
             loaded_data = json.load(f)
-        loaded_mapping = {
+
+        faction_data = loaded_data.get('FACTIONS AND MAA',{})
+        heritage_data = loaded_data.get('HERITAGES AND CULTURES', {})
+        
+        loaded_faction_mapping = {
             tuple(k.split(seperator)):v
-            for k, v in loaded_data.items()
+            for k, v in faction_data.items()
         }
-        return loaded_mapping
-    
+        loaded_heritage_mapping = {
+            tuple(k.split(seperator)):v
+            for k, v in heritage_data.items()
+        }
+        return loaded_faction_mapping, loaded_heritage_mapping
+
     def export_xml():
         pass
 
@@ -639,19 +653,20 @@ def mapping_window():
 
         elif event == 'SAVE_BUTTON_KEY':
             if MAPPER_NAME:
-                save_mapper(MAPPER_NAME, current_mappings)
+                save_mapper(MAPPER_NAME, current_mappings, current_heritage_mappings)
             else:
                 name = popup_mapper_name_input()
                 if name:
-                    save_mapper(name,current_mappings)
+                    save_mapper(name,current_mappings, current_heritage_mappings)
                     MAPPER_NAME = name
             window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
 
         elif event == 'FILE_LOAD_KEY':
-            loaded_mapper = load_mapper(values['FILE_LOAD_KEY'])
+            loaded_faction_mapping, loaded_heritage_mapping = load_mapper(values['FILE_LOAD_KEY'])
             map_name, _ = os.path.splitext(os.path.basename(values['FILE_LOAD_KEY']))
-            if loaded_mapper:
-                current_mappings = loaded_mapper
+            if loaded_faction_mapping:
+                current_mappings = loaded_faction_mapping
+                current_heritage_mappings = loaded_heritage_mapping
                 available_factions = list(set([item[0][1] for item in current_mappings.items()]))
                 FACTION_LIST = sorted(available_factions)
             MAPPER_NAME = map_name
