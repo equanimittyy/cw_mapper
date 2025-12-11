@@ -1,5 +1,6 @@
 import os
 import json
+import xml.etree.ElementTree as ET
 
 from typing import List, Tuple
 
@@ -66,6 +67,10 @@ def add_map_config(mapper_key, mapper_config: List[Tuple[str,int]]):
         print(f'Error: {e}, error occurred while writing to config file')
 
 def import_xml(import_folder):
+    # Format faction mapping: {(ck3_maa, faction): [attila_unit]} | {tuple: [value]}
+    imported_mappings = {}
+    # Format heritage mapping: {heritage(faction,[culture[faction]]} | {key(value,list[value])}
+    imported_heritage_mappings = {}
     # Import folders and important files
     import_cultures = os.path.join(import_folder,'Cultures')
     import_factions = os.path.join(import_folder,'Factions')
@@ -74,5 +79,37 @@ def import_xml(import_folder):
     import_tag = os.path.join(import_folder,'tag.txt')
     import_time = os.path.join(import_folder,'Time Period.xml')
 
+    # Cultures
+    for file in os.listdir(import_cultures):
+        if file.endswith('.xml'):
+            file_path = os.path.join(import_cultures,file)
+            tree = ET.parse(file_path)
+            root = tree.getroot()
+            for heritage in root:
+                heritage_name = heritage.get('name')
+                heritage_faction = heritage.get('faction')
+                imported_heritage_mappings[(heritage_name,'PARENT_KEY')] = heritage_faction
+                for culture in heritage:
+                    culture_name = culture.get('name')
+                    culture_faction = culture.get('faction')
+                    imported_heritage_mappings[(heritage_name,culture_name)] = culture_faction
+
+    # Factions
+    for file in os.listdir(import_factions):
+        if file.endswith('.xml'):
+            file_path = os.path.join(import_factions,file)
+            tree = ET.parse(file_path)
+            root = tree.getroot()
+            for faction in root:
+                faction_name = faction.get('name')
+                for key in faction:
+                    if key.tag == 'MenAtArm':
+                        maa_key = key.get('type')
+                        attila_key = key.get('key')
+                        size = key.get('max')
+                        imported_mappings[(maa_key, faction_name)]= [attila_key, size]
+    
+    return imported_mappings, imported_heritage_mappings
+                        
 def export_xml():
         pass

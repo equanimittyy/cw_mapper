@@ -236,10 +236,15 @@ def popup_xml_import_export():
 
     if event == 'Import':
         import_folder = sg.popup_get_folder(title='Find mapper folder',message='Please select the mapping folder you wish to import',initial_folder=cw_mapper_dir)
-        if not os.path.exists(os.path.join(import_folder,'Factions')): # Only checking for factions as titles and additional cultures/heritages may not exist
-            sg.popup_error('Error: Not a valid mapping directory!',title='Directory Error')
-        else:
-            import_xml(import_folder)
+        if import_folder:
+            if not os.path.exists(os.path.join(import_folder,'Factions')): # Only checking for factions as titles and additional cultures/heritages may not exist
+                sg.popup_error('Error: Not a valid mapping directory!',title='Directory Error')
+            else:
+                _, mapper_name = os.path.split(import_folder)
+                imported_maa_map, imported_heritage_map = import_xml(import_folder)
+                window.close()
+                return mapper_name, imported_maa_map, imported_heritage_map
+
     if event == 'Export':
         pass
     return None
@@ -870,7 +875,12 @@ def mapping_window():
             current_heritage_mappings = heritage_window(current_heritage_mappings, FACTION_LIST)
 
         elif event == 'XML_BUTTON':
-            popup_xml_import_export()
+            xml_import = popup_xml_import_export()
+            if xml_import:
+                import_name = xml_import[0]
+                import_maa = xml_import[1]
+                import_heritage = xml_import[2]
+                save_mapper(import_name,import_maa, import_heritage)
 
     window.close()
 
