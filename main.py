@@ -299,10 +299,8 @@ def heritage_window(heritage_mapping_dict, factions):
             return result
 
         def sort_heritages_key(item):
-            key = item[0]
-            heritage = key[0]
-            culture = key[1]
-        # --- 1. Define the Primary Sort Key (The 0, 1, 2, 3 grouping) ---
+            heritage = item[0]
+            culture = item[1]
 
             if heritage == 'Unassigned' and culture == 'PARENT_KEY':
                 priority = 0  # Group 1: [Unassigned, PARENT_KEY]
