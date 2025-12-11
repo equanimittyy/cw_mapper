@@ -180,8 +180,9 @@ def heritage_window(heritage_mapping_dict, factions):
         
         # Re-sort lists
         def sort_heritages_key(item):
-            heritage = item[0]
-            culture = item[1]
+            key = item[0]
+            heritage = key[0]
+            culture = key[1]
         # --- 1. Define the Primary Sort Key (The 0, 1, 2, 3 grouping) ---
 
             if heritage == 'Unassigned' and culture == 'PARENT_KEY':
@@ -222,9 +223,10 @@ def heritage_window(heritage_mapping_dict, factions):
             faction = heritage_mapping_dict[pair]
             if pair[1] == 'PARENT_KEY':
                 h_count = 1
+                parent_faction = faction
             else:
                 if h_count == 1:
-                    display_list.append(f'HERITAGE: {pair[0]}   -- {faction}')
+                    display_list.append(f'HERITAGE: {pair[0]}   -- {parent_faction}')
                 h_count = h_count+1
                 display_list.append(f'   ->: {pair[1]}   -- {faction}')
 
