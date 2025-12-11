@@ -269,7 +269,7 @@ def heritage_window(heritage_mapping_dict, factions):
             cultures = sorted(set([item['ck3_culture'] for item in CULTURES_SOURCE_KEYS if item['heritage'] == heritage]))
         for culture in cultures:
             source = ([item['ck3_source'] for item in CULTURES_SOURCE_KEYS if item['ck3_culture'] == culture])[0]
-            available_heritages.append((heritage,culture+' ('+source+')'))
+            available_heritages.append((heritage,culture))
             available_heritages_display_list.append(f'   ->: {culture} ({source})')
 
     def refresh_display_lists(window, available_heritages, heritage_mapping_dict):
@@ -312,10 +312,15 @@ def heritage_window(heritage_mapping_dict, factions):
             if pair[1] == 'PARENT_KEY':
                 h_count = 1
             else:
+                source = ([item['ck3_source'] for item in CULTURES_SOURCE_KEYS if item['ck3_culture'] == pair[1]])
+                if source == []:
+                    source = None
+                else:
+                    source = source[0]
                 if h_count == 1:
                     available_heritages_display_list.append(f'HERITAGE: {pair[0]}')
                 h_count = h_count+1
-                available_heritages_display_list.append(f'   ->: {pair[1]}')
+                available_heritages_display_list.append(f'   ->: {pair[1]} ({source})')
 
         # Stealth refresh and restore previous y-scroll
         window['HERITAGE_AVAILABLE_LIST'].update(available_heritages_display_list, visible = False)
