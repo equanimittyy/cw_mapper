@@ -19,7 +19,7 @@ checking what MAA/Cultures are needed plus for future use when people will creat
 \
 ↳ ☑ Proper per faction display
 \
-↳ ☐ Heritage/Culture <> Faction mapper
+↳ ☑ Heritage/Culture <> Faction mapper
 \
 ↳ ☑ Key loading from available sources
 \

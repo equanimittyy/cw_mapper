@@ -307,6 +307,7 @@ def heritage_window(heritage_mapping_dict, factions):
             key='HERITAGE_AVAILABLE_LIST',
             enable_events=True,
             select_mode=sg.LISTBOX_SELECT_MODE_SINGLE,
+            tooltip='Available list of heritages and their associated cultures.\n\nYou can also press spacebar to quickly select with the arrow keys.',
             expand_x=True,
             expand_y=True
         )]
@@ -323,6 +324,7 @@ def heritage_window(heritage_mapping_dict, factions):
             values=display_list,
             size=(50, 20),
             key='HERITAGE_MAP_LIST',
+            tooltip='Your list of heritages and cultures, with their associated factions.\n\nYou can also press spacebar to quickly select with the arrow keys.',
             enable_events=True,
             select_mode=sg.LISTBOX_SELECT_MODE_SINGLE,
             expand_x=True,
