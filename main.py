@@ -149,13 +149,14 @@ def popup_heritage_pick_faction(factions, heritage_mapping_dict, selected_map):
 def heritage_window(heritage_mapping_dict, factions):
     # Available heritages, format (heritage, culture) tuple, should allow people to either take a whole heritage, or a specific culture
     available_heritages = []
+    
     source_heritages = sorted(set([item['heritage'] for item in CULTURES_SOURCE_KEYS if item['heritage']]))
     source_heritages = ["Unassigned"] + source_heritages
 
     available_heritages_display_list = []
     display_list = []
 
-    # Initialise available_heritages list
+    # Initialise available_heritages list from source keys
     for heritage in source_heritages:
         available_heritages.append((heritage,'PARENT_KEY'))
         available_heritages_display_list.append(f'HERITAGE: {heritage}')
@@ -337,7 +338,14 @@ def heritage_window(heritage_mapping_dict, factions):
         [sg.Push(),sg.Button('OK', size=(15, 2), button_color=('white', '#444444')),sg.Push()]
     ]
 
-    window = sg.Window('Edit heritage mapping', layout, modal=True)
+    window = sg.Window('Edit heritage mapping', layout, modal=True, finalize= True)
+
+    # Initialise mapping/edit listbox and remove from keys from available list
+    if heritage_mapping_dict:
+        loaded_keys = [keys for keys in heritage_mapping_dict]
+        available_heritages = [heritage for heritage in available_heritages if not heritage in loaded_keys]
+
+    refresh_display_lists(window, available_heritages, heritage_mapping_dict)
 
     while True:
         event, values = window.read()
@@ -374,6 +382,7 @@ def heritage_window(heritage_mapping_dict, factions):
             window.close()
             return heritage_mapping_dict
     window.close()
+    return heritage_mapping_dict
 
 def mapping_window():
     ATTILA_UNIT_LIST_SOURCE = ['ALL'] + sorted(list(dict.fromkeys(ATTILA_SOURCES)))
@@ -552,7 +561,7 @@ def mapping_window():
             for k, v in faction_data.items()
         }
         loaded_heritage_mapping = {
-            tuple(k.split(seperator)):v
+            tuple(k.split(seperator)):v[0]
             for k, v in heritage_data.items()
         }
         return loaded_faction_mapping, loaded_heritage_mapping
