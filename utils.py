@@ -65,8 +65,14 @@ def add_map_config(mapper_key, mapper_config: List[Tuple[str,int]]):
     except Exception as e:
         print(f'Error: {e}, error occurred while writing to config file')
 
-def import_xml():
-        pass
+def import_xml(import_folder):
+    # Import folders and important files
+    import_cultures = os.path.join(import_folder,'Cultures')
+    import_factions = os.path.join(import_folder,'Factions')
+    import_titles = os.path.join(import_folder,'Titles')
+    import_mods = os.path.join(import_folder,'Mods.xml')
+    import_tag = os.path.join(import_folder,'tag.txt')
+    import_time = os.path.join(import_folder,'Time Period.xml')
 
 def export_xml():
         pass

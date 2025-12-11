@@ -223,6 +223,27 @@ def popup_size_manual():
             else:
                 sg.popup('Input cannot be empty!', auto_close=True, auto_close_duration=2, title='Error')
 
+def popup_xml_import_export():
+    cw_mapper_dir = os.path.join(CW_DIR,'unit mappers','attila')
+
+    layout = [
+        [sg.Text('Import or export mappers into their .xml formats, ready for Crusader Wars')],
+        [sg.Button('Import',size=(15, 2), button_color=('white', "#008670"), expand_x=True), sg.Button('Export',size=(15, 2), button_color=('white', "#008670"),expand_x=True)]
+    ]
+
+    window = sg.Window('Import/Export to XML', layout, modal=True)
+    event, values = window.read(close=True) # Closes the window after reading the event
+
+    if event == 'Import':
+        import_folder = sg.popup_get_folder(title='Find mapper folder',message='Please select the mapping folder you wish to import',initial_folder=cw_mapper_dir)
+        if not os.path.exists(os.path.join(import_folder,'Factions')): # Only checking for factions as titles and additional cultures/heritages may not exist
+            sg.popup_error('Error: Not a valid mapping directory!',title='Directory Error')
+        else:
+            import_xml(import_folder)
+    if event == 'Export':
+        pass
+    return None
+
 def heritage_window(heritage_mapping_dict, factions):
     # Available heritages, format (heritage, culture) tuple, should allow people to either take a whole heritage, or a specific culture
     available_heritages = []
@@ -553,7 +574,7 @@ def mapping_window():
             key=FACTION_KEY, 
             readonly=True,
             enable_events=True
-        ),sg.Push(background_color='#DDDDDD'),sg.Button('Save', key='SAVE_BUTTON_KEY',size=(15, 2), button_color=('white', '#444444')),sg.Input(key='FILE_LOAD_KEY',visible=False,enable_events=True),sg.FileBrowse('Load', target='FILE_LOAD_KEY',size=(15, 2), initial_folder=CUSTOM_MAPPER_DIR, button_color=('white', '#444444'),file_types=((('Text Files', '*.txt'),))),sg.Button('Import/Export XML', size=(15, 2), button_color=('white', "#008670"))],
+        ),sg.Push(background_color='#DDDDDD'),sg.Button('Save', key='SAVE_BUTTON_KEY',size=(15, 2), button_color=('white', '#444444')),sg.Input(key='FILE_LOAD_KEY',visible=False,enable_events=True),sg.FileBrowse('Load', target='FILE_LOAD_KEY',size=(15, 2), initial_folder=CUSTOM_MAPPER_DIR, button_color=('white', '#444444'),file_types=((('Text Files', '*.txt'),))),sg.Button('Import/Export XML', key='XML_BUTTON', size=(15, 2), button_color=('white', "#008670"))],
         [sg.Listbox(
             values=[],
             size=(35, 13), # Adjusted size to fit the Combo element
@@ -847,6 +868,9 @@ def mapping_window():
         
         elif event == 'HERITAGE_EDIT_BUTTON_KEY':
             current_heritage_mappings = heritage_window(current_heritage_mappings, FACTION_LIST)
+
+        elif event == 'XML_BUTTON':
+            popup_xml_import_export()
 
     window.close()
 
