@@ -245,6 +245,35 @@ def heritage_window(heritage_mapping_dict):
             refresh_display_lists(window, available_heritages, heritage_mapping_dict)
             return available_heritages
 
+    def remove_heritage(available_heritages, heritage_mapping_dict, selected_key):
+        removed_mapping = []
+        removed_key = selected_key.split(sep=': ', maxsplit=1)[1]
+        removed_key = removed_key.strip()
+        if removed_key in [heritage[0] for heritage in heritage_mapping_dict]: #i.e. a heritage key not a culture key
+            # Entire heritage
+            removed_key_pair = (removed_key, 'PARENT_KEY')
+            removed_mapping = [heritage for heritage in heritage_mapping_dict if heritage[0] == removed_key]
+            heritage_mapping_dict = [heritage for heritage in heritage_mapping_dict if heritage[0] != removed_key] # Drop keys with specified heritage
+            for map in removed_mapping:
+                removed_key_pair = (removed_key, map[1])
+                available_heritages[removed_key_pair]
+        else:
+            matching_heritage = [item['heritage'] for item in CULTURES_SOURCE_KEYS if item['ck3_culture'] == removed_key.split(' ')[0]]
+            if matching_heritage == ['']:
+                matching_heritage = ['Unassigned']
+                removed_key_pair = (matching_heritage[0], removed_key)
+            else:
+                removed_key_pair = (matching_heritage[0], removed_key)
+            # Handle for missing parent_key
+            if not any(matching_heritage == t[0] for t in available_heritages):
+                available_heritages[(matching_heritage[0],'PARENT_KEY')]
+
+            available_heritages[removed_key_pair] # Add the heritage/culture to available list
+            heritage_mapping_dict = [heritage for heritage in available_heritages if heritage != removed_key_pair] # Drop specific (heritage, culture) pair key
+        
+        refresh_display_lists(window, available_heritages, heritage_mapping_dict)
+        return heritage_mapping_dict
+
     heritage1_col_layout = [
         [sg.Text('Available Heritages and Cultures', font=('Courier New', 12, 'bold'), text_color='#6D0000', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE)],
         [sg.Listbox(
@@ -295,7 +324,11 @@ def heritage_window(heritage_mapping_dict):
             selected_heritage_to_add = values['HERITAGE_AVAILABLE_LIST']
             if selected_heritage_to_add:
                 available_heritages = add_heritage(available_heritages, heritage_mapping_dict, selected_heritage_to_add[0])
-                
+
+        elif event == '<<<': # Remove from editable list
+            selected_heritage_to_remove = values['HERITAGE_MAP_LIST']
+            if selected_heritage_to_add:
+                heritage_mapping_dict = remove_heritage(available_heritages, heritage_mapping_dict, selected_heritage_to_remove[0])    
         
         elif event == 'OK':
             print('Hello')
