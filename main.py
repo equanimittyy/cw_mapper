@@ -283,6 +283,21 @@ def heritage_window(heritage_mapping_dict, factions):
         current_y_h = heritages_widget.yview()[0]
         
         # Re-sort lists
+        def deduplicate_in_order(data):
+            """
+            Deduplicates a list of hashable items while preserving the 
+            order of first appearance.
+            """
+            seen = set()
+            result = []
+            
+            for item in data:
+                if item not in seen:
+                    seen.add(item)
+                    result.append(item)
+                    
+            return result
+
         def sort_heritages_key(item):
             key = item[0]
             heritage = key[0]
@@ -306,6 +321,9 @@ def heritage_window(heritage_mapping_dict, factions):
             return (priority, secondary_key, tertiary_key)
 
         available_heritages = sorted(available_heritages, key=sort_heritages_key)
+        # Deduplicate available heritages
+        available_heritages = deduplicate_in_order(available_heritages)
+
         heritage_mapping_dict = dict(sorted(heritage_mapping_dict.items(), key=sort_heritages_key))
         # Available heritages
         for pair in available_heritages:
@@ -354,15 +372,18 @@ def heritage_window(heritage_mapping_dict, factions):
                 added_mapping = [heritage for heritage in available_heritages if heritage[0] == added_key]
                 available_heritages = [heritage for heritage in available_heritages if heritage[0] != added_key] # Drop keys with specified heritage
                 for map in added_mapping:
-                    added_key_pair = (added_key, map[1])
+                    culture = map[1].split('(',maxsplit=1)[0].strip()
+                    added_key_pair = (added_key, culture)
                     heritage_mapping_dict[added_key_pair] = ''
             else:
                 matching_heritage = [item['heritage'] for item in CULTURES_SOURCE_KEYS if item['ck3_culture'] == added_key.split(' ')[0]]
                 if matching_heritage == ['']:
                     matching_heritage = ['Unassigned']
-                    added_key_pair = (matching_heritage[0], added_key)
+                    culture = added_key.split('(',maxsplit=1)[0].strip()
+                    added_key_pair = (matching_heritage[0], culture)
                 else:
-                    added_key_pair = (matching_heritage[0], added_key)
+                    culture = added_key.split('(',maxsplit=1)[0].strip()
+                    added_key_pair = (matching_heritage[0], culture)
                 # Handle for missing parent_key
                 if not any(heritage[0] in matching_heritage for heritage in heritage_mapping_dict):
                     heritage_mapping_dict[(matching_heritage[0],'PARENT_KEY')] = ''
@@ -450,10 +471,17 @@ def heritage_window(heritage_mapping_dict, factions):
 
     window = sg.Window('Edit heritage mapping', layout, modal=True, finalize= True)
 
-    # Initialise mapping/edit listbox and remove from keys from available list
+    # Initialise mapping/edit listbox and remove from keys from available list as part of import
     if heritage_mapping_dict:
         loaded_keys = [keys for keys in heritage_mapping_dict]
         available_heritages = [heritage for heritage in available_heritages if not heritage in loaded_keys]
+        # Handle for missing parent_key due to import
+        remaining_heritages = {t[0] for t in available_heritages}
+        heritage_has_parent = {t[0] for t in available_heritages if t[1] == 'PARENT_KEY'}
+        heritage_missing_parent = sorted(list(remaining_heritages - heritage_has_parent))
+
+        for heritage in heritage_missing_parent:
+            available_heritages.append((heritage,'PARENT_KEY'))
 
     refresh_display_lists(window, available_heritages, heritage_mapping_dict)
 
