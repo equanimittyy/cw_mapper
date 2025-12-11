@@ -163,9 +163,29 @@ def heritage_window(heritage_mapping_dict):
         current_y_h = heritages_widget.yview()[0]
         
         # Re-sort lists
-        # available_heritages = sorted(available_heritages, key=lambda tup: tup[1])
-        # heritage_mapping_dict = sorted(heritage_mapping_dict, key=lambda tup: tup[1])
+        def sort_heritages_key(item):
+            heritage = item[0]
+            culture = item[1]
+        # --- 1. Define the Primary Sort Key (The 0, 1, 2, 3 grouping) ---
 
+            if heritage == 'Unassigned' and culture == 'PARENT_KEY':
+                priority = 0  # Group 1: [Unassigned, PARENT_KEY]
+            elif heritage == 'Unassigned':
+                priority = 1  # Group 2/3: [Unassigned, ...]
+            else:
+                priority = 2
+
+            secondary_key = heritage
+
+            if culture == 'PARENT_KEY':
+                tertiary_key = "AAA" # 'AAA' is alphabetically smaller than most culture strings
+            else:
+                tertiary_key = culture
+
+            return (priority, secondary_key, tertiary_key)
+
+        available_heritages = sorted(available_heritages, key=sort_heritages_key)
+        heritage_mapping_dict = sorted(heritage_mapping_dict, key=sort_heritages_key)
         # Available heritages
         for pair in available_heritages:
             if pair[1] == 'PARENT_KEY':
