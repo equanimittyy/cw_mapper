@@ -408,7 +408,7 @@ def heritage_window(heritage_mapping_dict, factions):
                 available_heritages.append(removed_key_pair)
         else:
             matching_heritage = [item['heritage'] for item in CULTURES_SOURCE_KEYS if item['ck3_culture'] == removed_key.split(' ')[0]]
-            if matching_heritage == ['']:
+            if matching_heritage == [''] or matching_heritage == []:
                 matching_heritage = ['Unassigned']
                 removed_key_pair = (matching_heritage[0], removed_key)
             else:
@@ -434,7 +434,7 @@ def heritage_window(heritage_mapping_dict, factions):
             key='HERITAGE_AVAILABLE_LIST',
             enable_events=True,
             select_mode=sg.LISTBOX_SELECT_MODE_SINGLE,
-            tooltip='Available list of heritages and their associated cultures.\n\nYou can also press spacebar to quickly select with the arrow keys.',
+            tooltip='Available list of heritages and their associated cultures.\nCultures that were unable to be sourced are assigned to "Unassigned" and have source (None)\n\nYou can also press spacebar to quickly select with the arrow keys.',
             expand_x=True,
             expand_y=True
         )]
