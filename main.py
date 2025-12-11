@@ -122,7 +122,7 @@ def popup_heritage_pick_faction(factions, heritage_mapping_dict, selected_map):
             size=(25, min(10, len(factions))), # Adjust size dynamically
             key='FACTION_HERITAGE_KEY'
         )],
-        [sg.Button('OK'), sg.Button('Cancel')]
+        [sg.Button('OK')]
     ]
 
     window = sg.Window('Assign faction to heritage/culture', layout, modal=True)
@@ -352,14 +352,16 @@ def heritage_window(heritage_mapping_dict, factions):
 
         elif event == '<<<': # Remove from editable list
             selected_heritage_to_remove = values['HERITAGE_MAP_LIST']
-            if selected_heritage_to_add:
+            if selected_heritage_to_remove:
                 heritage_mapping_dict = remove_heritage(available_heritages, heritage_mapping_dict, selected_heritage_to_remove[0])
 
         elif event == 'Assign Faction': # Assign faction button
             selected_map = values['HERITAGE_MAP_LIST']
             if selected_map:
-                heritage_mapping_dict = popup_heritage_pick_faction(factions, heritage_mapping_dict, selected_map)
-                refresh_display_lists(window, available_heritages, heritage_mapping_dict)
+                new_mapping = popup_heritage_pick_faction(factions, heritage_mapping_dict, selected_map)
+                if new_mapping:
+                    heritage_mapping_dict = new_mapping
+                    refresh_display_lists(window, available_heritages, heritage_mapping_dict)
 
             window['Assign Faction'].update(disabled = True)
 
@@ -369,6 +371,7 @@ def heritage_window(heritage_mapping_dict, factions):
                 window['Assign Faction'].update(disabled = False)
         
         elif event == 'OK':
+            window.close()
             return heritage_mapping_dict
     window.close()
 
