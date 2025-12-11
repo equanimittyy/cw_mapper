@@ -168,7 +168,7 @@ def heritage_window(heritage_mapping_dict):
             return (priority, secondary_key, tertiary_key)
 
         available_heritages = sorted(available_heritages, key=sort_heritages_key)
-        heritage_mapping_dict = sorted(heritage_mapping_dict, key=sort_heritages_key)
+        heritage_mapping_dict = dict(sorted(heritage_mapping_dict.items(), key=sort_heritages_key))
         # Available heritages
         for pair in available_heritages:
             if pair[1] == 'PARENT_KEY':
@@ -219,7 +219,7 @@ def heritage_window(heritage_mapping_dict):
                 else:
                     added_key_pair = (matching_heritage[0], added_key)
                 # Handle for missing parent_key
-                if not any(matching_heritage == t[0] for t in heritage_mapping_dict):
+                if not any(heritage[0] in matching_heritage for heritage in heritage_mapping_dict):
                     heritage_mapping_dict[(matching_heritage[0],'PARENT_KEY')] = ''
 
                 heritage_mapping_dict[added_key_pair] = '' # Add the heritage/culture but leave faction blank
@@ -236,10 +236,12 @@ def heritage_window(heritage_mapping_dict):
             # Entire heritage
             removed_key_pair = (removed_key, 'PARENT_KEY')
             removed_mapping = [heritage for heritage in heritage_mapping_dict if heritage[0] == removed_key]
-            heritage_mapping_dict = [heritage for heritage in heritage_mapping_dict if heritage[0] != removed_key] # Drop keys with specified heritage
+            heritage_mapping_dict = {
+                pair: value
+                for pair, value in heritage_mapping_dict.items() if pair[0] != removed_key} # Drop keys with specified heritage
             for map in removed_mapping:
                 removed_key_pair = (removed_key, map[1])
-                available_heritages[removed_key_pair]
+                available_heritages.append(removed_key_pair)
         else:
             matching_heritage = [item['heritage'] for item in CULTURES_SOURCE_KEYS if item['ck3_culture'] == removed_key.split(' ')[0]]
             if matching_heritage == ['']:
@@ -248,11 +250,14 @@ def heritage_window(heritage_mapping_dict):
             else:
                 removed_key_pair = (matching_heritage[0], removed_key)
             # Handle for missing parent_key
-            if not any(matching_heritage == t[0] for t in available_heritages):
-                available_heritages[(matching_heritage[0],'PARENT_KEY')]
+            if not any(t[0] in matching_heritage for t in available_heritages):
+                available_heritages.append((matching_heritage[0],'PARENT_KEY'))
 
-            available_heritages[removed_key_pair] # Add the heritage/culture to available list
-            heritage_mapping_dict = [heritage for heritage in available_heritages if heritage != removed_key_pair] # Drop specific (heritage, culture) pair key
+            available_heritages.append(removed_key_pair) # Add the heritage/culture to available list
+            heritage_mapping_dict = { # Drop specific (heritage, culture) pair key
+                pair: value
+                for pair, value in heritage_mapping_dict.items() if pair != removed_key_pair
+            }
         
         refresh_display_lists(window, available_heritages, heritage_mapping_dict)
         return heritage_mapping_dict
@@ -704,7 +709,7 @@ def main_window():
     # --- Output Multiline Field ---
     [
         sg.Multiline(
-            TEXT,
+            '',
             enable_events=False,
             size=(80, 25),
             font=('Courier New', 10),
@@ -818,7 +823,7 @@ def main_window():
 
         elif event == 'CUSTOM_MAPPER_KEY':
             if not ATTILA_SOURCE_KEYS or not CULTURES_SOURCE_KEYS or not MAA_SOURCE_KEYS:
-                sg.popup('Available keys have not yet been scanned.\n\nPlease refresh your current mappers before continuing!', auto_close=True, auto_close_duration=5)
+                sg.popup('Available keys have not yet been scanned!\n\nPlease refresh your current mappers before continuing', auto_close=True, auto_close_duration=5)
             else:
                 mapping_window()
 
