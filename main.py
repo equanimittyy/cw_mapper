@@ -369,7 +369,7 @@ def heritage_window(heritage_mapping_dict, factions):
                 window['Assign Faction'].update(disabled = False)
         
         elif event == 'OK':
-            print('Hello')
+            return heritage_mapping_dict
     window.close()
 
 def mapping_window():
@@ -725,7 +725,7 @@ def mapping_window():
                 window[FACTION_KEY].update(values=FACTION_LIST)
         
         elif event == 'HERITAGE_EDIT_BUTTON_KEY':
-            heritage_window(current_heritage_mappings, FACTION_LIST)
+            current_heritage_mappings = heritage_window(current_heritage_mappings, FACTION_LIST)
 
     window.close()
 
