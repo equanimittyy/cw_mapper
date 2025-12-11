@@ -25,7 +25,7 @@ checking what MAA/Cultures are needed plus for future use when people will creat
 \
 ↳ ☑ Saving and loading mappers (will need future fix for additional culture/heritage/faction data)
 \
-↳ ☐ Add in logic for levy size/MAA size
+↳ ☑ Add in logic for levy size/MAA size
 \
 ↳ ☐ Create mapper based on existing mapper (loading xmls)
 \
