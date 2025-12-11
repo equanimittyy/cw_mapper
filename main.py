@@ -45,23 +45,6 @@ NON_MAA_KEYS = [
     'LEVY-CUSTOM3',
 ]
 
-with open (os.path.join(REPORT_OUTPUT_DIR,'source_attila_keys.csv'), 'r') as f:
-    key_data = csv.DictReader(f)
-    for key in key_data:
-        ATTILA_SOURCE_KEYS.append({'attila_map_key':key['attila_map_key'],'attila_source':key['attila_source']})
-
-with open(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_cultures_keys.csv'), 'r') as f:
-    key_data = csv.DictReader(f)
-    for key in key_data:
-        CULTURES_SOURCE_KEYS.append({'ck3_culture':key['ck3_culture'],'heritage':key['ck3_heritage'],'ck3_source':key['ck3_source']})
-
-with open(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_maa_keys.csv'), 'r') as f:
-    key_data = csv.DictReader(f)
-    for key in key_data:
-        MAA_SOURCE_KEYS.append({'ck3_maa':key['ck3_maa'],'ck3_source':key['ck3_source']})
-    for maa in NON_MAA_KEYS:
-        MAA_SOURCE_KEYS.append({'ck3_maa':maa,'ck3_source':'CW'})
-
 ATTILA_SOURCES = [item['attila_source'] for item in ATTILA_SOURCE_KEYS]
 CK3_SOURCES = [item['ck3_source'] for item in CULTURES_SOURCE_KEYS] + [item['ck3_source'] for item in MAA_SOURCE_KEYS]
 
@@ -806,7 +789,7 @@ def main_window():
                 cw_map_checker.mapping_validation(*cw_map_checker.get_keys(cw_map_checker.get_cw_config()))
                 cw_map_checker.summary()
 
-                window['MLINE_KEY'].update(f'Crusader Wars mappers refreshed! \n', append=True)
+                window['MLINE_KEY'].update(f'*** Crusader Wars mappers refreshed! \n', append=True)
                 window['MLINE_KEY'].update(f'\n',append=True)
                 if os.path.exists(SUMMARY_LOG):
                     with open(SUMMARY_LOG, 'r', encoding="utf-8-sig") as f:
@@ -815,9 +798,29 @@ def main_window():
                     new_summary = "ERROR: Could not read summary_log.txt"
                 window['MLINE_KEY'].update(f'{new_summary}',append=True)
                 window['VALIDATE_KEY'].update(disabled=False)
+            
+                with open (os.path.join(REPORT_OUTPUT_DIR,'source_attila_keys.csv'), 'r') as f:
+                    key_data = csv.DictReader(f)
+                    for key in key_data:
+                        ATTILA_SOURCE_KEYS.append({'attila_map_key':key['attila_map_key'],'attila_source':key['attila_source']})
+
+                with open(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_cultures_keys.csv'), 'r') as f:
+                    key_data = csv.DictReader(f)
+                    for key in key_data:
+                        CULTURES_SOURCE_KEYS.append({'ck3_culture':key['ck3_culture'],'heritage':key['ck3_heritage'],'ck3_source':key['ck3_source']})
+
+                with open(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_maa_keys.csv'), 'r') as f:
+                    key_data = csv.DictReader(f)
+                    for key in key_data:
+                        MAA_SOURCE_KEYS.append({'ck3_maa':key['ck3_maa'],'ck3_source':key['ck3_source']})
+                    for maa in NON_MAA_KEYS:
+                        MAA_SOURCE_KEYS.append({'ck3_maa':maa,'ck3_source':'CW'})
 
         elif event == 'CUSTOM_MAPPER_KEY':
-            mapping_window()
+            if not ATTILA_SOURCE_KEYS or not CULTURES_SOURCE_KEYS or not MAA_SOURCE_KEYS:
+                sg.popup('Available keys have not yet been scanned.\n\nPlease refresh your current mappers before continuing!', auto_close=True, auto_close_duration=5)
+            else:
+                mapping_window()
 
     window.close()
 
