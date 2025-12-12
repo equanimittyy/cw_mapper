@@ -1,11 +1,15 @@
 import os
+import ast
 import json
 import xml.etree.ElementTree as ET
 
+
 from typing import List, Tuple
+from xml.dom import minidom
 
 CONFIG_DIR = os.path.join('config')
 MAP_CONFIG = os.path.join(CONFIG_DIR,'mapper_config.json')
+CUSTOM_MAPPER_DIR = 'custom_mappers'
 
 DEFAULT_CONFIG_PATH = os.path.join('config',"default.json")
 with open(DEFAULT_CONFIG_PATH, 'r') as f:
@@ -111,5 +115,53 @@ def import_xml(import_folder):
     
     return imported_mappings, imported_heritage_mappings
                         
-def export_xml():
+def export_xml(file):
+    file_name, _ = os.path.splitext(os.path.split(file)[1])
+    export_dir = os.path.join(CUSTOM_MAPPER_DIR, 'export', file_name)
+    os.makedirs(export_dir,exist_ok=True)
+
+    # Define export folders and files
+    cultures_dir = os.path.join(export_dir, 'Cultures')
+    os.makedirs(cultures_dir,exist_ok=True)
+    factions_dir = os.path.join(export_dir, 'Factions')
+    os.makedirs(factions_dir,exist_ok=True)
+    titles_dir = os.path.join(export_dir, 'Titles')
+    os.makedirs(titles_dir,exist_ok=True)
+    export_mods = os.path.join(export_dir,'Mods.xml')
+    export_tag = os.path.join(export_dir,'tag.txt')
+    export_time = os.path.join(export_dir,'Time Period.xml')
+
+    seperator = ','
+    with open(file, 'r', encoding='utf-8-sig') as f:
+        export_dict = json.load(f)
+        faction_data = export_dict.get('FACTIONS_AND_MAA',{})
+        heritage_data = export_dict.get('HERITAGES_AND_CULTURES', {})
+
+        # Load mappings for export
+        loaded_faction_mapping = {
+            tuple(k.split(seperator)):v
+            for k, v in faction_data.items()
+        }
+        loaded_heritage_mapping = {
+            tuple(k.split(seperator)):v[0]
+            for k, v in heritage_data.items()
+        }
+
+    # Export culture mapping to XML file
+    c_output = os.path.join(cultures_dir,file_name+'_Cultures.xml')
+    c_root = ET.Element("Cultures")
+    for key, value in loaded_heritage_mapping.items():
+        if key[1] == 'PARENT_KEY': # I.e. the heritage head
+            heritage = ET.SubElement(c_root, "Heritage", name=key[0], faction=value)
+        else:
+            culture = ET.SubElement(heritage, "Culture", name=key[1], faction=value)
+    
+    c_tree = ET.ElementTree(c_root)
+    try:
+        # Use ET.indent for cleaner output in Python 3.9+
+        ET.indent(c_tree, space="\t", level=0)
+    except AttributeError:
+        # Fallback for older Python versions
         pass
+    c_tree.write(c_output, encoding="utf-8", xml_declaration=True, short_empty_elements=False)
+    return export_dir

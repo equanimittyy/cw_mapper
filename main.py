@@ -242,12 +242,16 @@ def popup_xml_import_export():
             else:
                 _, mapper_name = os.path.split(import_folder)
                 imported_maa_map, imported_heritage_map = import_xml(import_folder)
-                sg.popup(f'Mapper {mapper_name} imported!')
+                sg.popup(f"Mapper '{mapper_name}' imported!")
                 window.close()
                 return mapper_name, imported_maa_map, imported_heritage_map
 
     if event == 'Export':
-        pass
+        export_mapper_file = sg.popup_get_file(title='Find mapper file to export',message='Please select the mapping file you wish to export',initial_folder=CUSTOM_MAPPER_DIR)
+        if export_mapper_file:
+            export_dir = export_xml(export_mapper_file)
+            sg.popup(f"Mapper exported to '{export_dir}'!")
+            window.close()
     return None
 
 def heritage_window(heritage_mapping_dict, factions):
@@ -434,6 +438,7 @@ def heritage_window(heritage_mapping_dict, factions):
 
     heritage1_col_layout = [
         [sg.Text('Available Heritages and Cultures', font=('Courier New', 12, 'bold'), text_color='#6D0000', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE)],
+        [sg.Text('''⚠️ Important: It is highly reccomended to manually map "Unassigned"\ncultures after export, as they're not specifically tied to a heritage\nand cannot fall back on heritage "Unassigned" (it doesn't exist in-game)''')],
         [sg.Listbox(
             values=available_heritages_display_list,
             size=(50, 20),
@@ -687,11 +692,11 @@ def mapping_window():
         os.makedirs(CUSTOM_MAPPER_DIR, exist_ok=True)
         seperator = ','
         save_format = {
-            'FACTIONS AND MAA': {
+            'FACTIONS_AND_MAA': {
                 seperator.join(k):v
                 for k,v in faction_mapping.items()
                 },
-            'HERITAGES AND CULTURES': {
+            'HERITAGES_AND_CULTURES': {
                 seperator.join(k):[v]
                 for k,v in heritage_mapping.items()
                 },
@@ -709,8 +714,8 @@ def mapping_window():
         with open(file, 'r', encoding='utf-8-sig') as f:
             loaded_data = json.load(f)
 
-        faction_data = loaded_data.get('FACTIONS AND MAA',{})
-        heritage_data = loaded_data.get('HERITAGES AND CULTURES', {})
+        faction_data = loaded_data.get('FACTIONS_AND_MAA',{})
+        heritage_data = loaded_data.get('HERITAGES_AND_CULTURES', {})
         
         loaded_faction_mapping = {
             tuple(k.split(seperator)):v
