@@ -242,6 +242,7 @@ def popup_xml_import_export():
             else:
                 _, mapper_name = os.path.split(import_folder)
                 imported_maa_map, imported_heritage_map = import_xml(import_folder)
+                sg.popup(f'Mapper {mapper_name} imported!')
                 window.close()
                 return mapper_name, imported_maa_map, imported_heritage_map
 
@@ -699,6 +700,11 @@ def mapping_window():
             json.dump(save_format,f,indent=4)
 
     def load_mapper(file):
+        diff_message = ''
+        maa_diff = 0
+        attila_diff = 0
+        heritage_diff = 0
+        culture_diff = 0
         seperator = ','
         with open(file, 'r', encoding='utf-8-sig') as f:
             loaded_data = json.load(f)
@@ -710,10 +716,38 @@ def mapping_window():
             tuple(k.split(seperator)):v
             for k, v in faction_data.items()
         }
+        for k in loaded_faction_mapping.keys():
+            maa = k[0]
+            if maa not in NON_MAA_KEYS and maa not in [key['ck3_maa'] for key in MAA_SOURCE_KEYS]:
+                maa_diff = 1
+        for v in loaded_faction_mapping.values():
+            attila = v[0]
+            if attila not in [key['attila_map_key'] for key in ATTILA_SOURCE_KEYS]:
+                attila_diff = 1
         loaded_heritage_mapping = {
             tuple(k.split(seperator)):v[0]
             for k, v in heritage_data.items()
         }
+        for k in loaded_heritage_mapping.keys():
+            heritage = k[0]
+            culture = k[1]
+            if heritage not in [key['heritage'] for key in CULTURES_SOURCE_KEYS] and heritage != 'Unassigned':
+                heritage_diff = 1
+            if culture != 'PARENT_KEY' and culture not in [key['ck3_culture'] for key in CULTURES_SOURCE_KEYS]:
+                culture_diff = 1
+
+        if maa_diff == 1:
+            diff_message = diff_message + '⚠️ Detected missing MAA source! (CK3/CK3 mods)\n'
+        if attila_diff == 1:
+            diff_message = diff_message + '⚠️ Detected missing Attila source! (Attila/Attila mods)\n'
+        if heritage_diff == 1:
+            diff_message = diff_message + '⚠️ Detected missing heritage source! (CK3/CK3 mods)\n'
+        if culture_diff == 1:
+            diff_message = diff_message + '⚠️ Detected missing culture source! (CK3/CK3 mods)\n'
+        
+        if diff_message:
+            sg.popup(f'Warning: Missing sources were detected. This will cause issues with the mapper tool due to missing source keys\n\n{diff_message}\nPlease ensure you have all required sources for this mapper, both CK3 and Attila, for complete and issue free editing:\n• For CK3, ensure you have the required mods installed in Steam\n• For Attila, ensure you have exported all the correct unit key .tsv files')
+
         return loaded_faction_mapping, loaded_heritage_mapping
 
     # END FUNCTIONS
