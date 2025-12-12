@@ -178,9 +178,13 @@ def export_xml(file, NON_MAA_KEYS):
     f_root = ET.Element("FactionsGroups")
     factions = sorted(set([key[1] for key in loaded_faction_mapping.keys()]),key=sort_factions)
     for fac in factions:
-        faction = ET.SubElement(f_root, "Faction", name=key[1])
-        for key, value in loaded_faction_mapping.items():
-                if key[0] not in NON_MAA_KEYS and key[1] == fac: # To be changed to handle the general, knights and levies
+        faction = ET.SubElement(f_root, "Faction", name=fac)
+        filtered_items = {
+            key:value
+            for key, value in loaded_faction_mapping.items() if key[1] == fac
+            }
+        for key, value in filtered_items.items():
+                if key[0] not in NON_MAA_KEYS: # To be changed to handle the general, knights and levies
                     maa = ET.SubElement(faction, "MenAtArm", type=key[0], key=value[0], max=value[1])
     f_tree = ET.ElementTree(f_root)
     try:
