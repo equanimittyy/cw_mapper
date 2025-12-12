@@ -29,6 +29,8 @@ checking what MAA/Cultures are needed plus for future use when people will creat
 \
 ↳ ☑ Create mapper based on existing mapper (loading xmls)
 \
-↳ ☐ Fix importing issues, with keys with no source (from mappers where the data isn't locally available)
+↳ ☑ Fix importing issues, with keys with no source (from mappers where the data isn't locally available) (had to compromise with providing a warning)
+\
+↳ ☐ Add export functionality
 \
 ↳ ☐ Mapping instructions
