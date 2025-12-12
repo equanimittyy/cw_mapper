@@ -155,6 +155,14 @@ def export_xml(file, NON_MAA_KEYS):
         name = item
         return priority, name
 
+    def sort_faction_elements(item):
+        if item == 'DEFAULT' or item == 'Default':
+            priority = 0 
+        else:
+            priority = 1
+        name = item
+        return priority, name
+
     # Export CULTURE mapping to XML file
     c_output = os.path.join(cultures_dir,file_name+'_Cultures.xml')
     c_root = ET.Element("Cultures")
@@ -184,7 +192,7 @@ def export_xml(file, NON_MAA_KEYS):
             for key, value in loaded_faction_mapping.items() if key[1] == fac
             }
         for key, value in filtered_items.items():
-                if key[0] not in NON_MAA_KEYS: # To be changed to handle the general, knights and levies
+                if key[0] not in NON_MAA_KEYS: # To be changed to handle the general, knights and levies as well as sorting the entire tree of subelements
                     maa = ET.SubElement(faction, "MenAtArm", type=key[0], key=value[0], max=value[1])
     f_tree = ET.ElementTree(f_root)
     try:
