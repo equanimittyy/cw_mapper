@@ -115,7 +115,7 @@ def import_xml(import_folder):
     
     return imported_mappings, imported_heritage_mappings
                         
-def export_xml(file):
+def export_xml(file, NON_MAA_KEYS):
     file_name, _ = os.path.splitext(os.path.split(file)[1])
     export_dir = os.path.join(CUSTOM_MAPPER_DIR, 'export', file_name)
     os.makedirs(export_dir,exist_ok=True)
@@ -147,7 +147,15 @@ def export_xml(file):
             for k, v in heritage_data.items()
         }
 
-    # Export culture mapping to XML file
+    def sort_factions(item):
+        if item == 'DEFAULT' or item == 'Default':
+            priority = 0 
+        else:
+            priority = 1
+        name = item
+        return priority, name
+
+    # Export CULTURE mapping to XML file
     c_output = os.path.join(cultures_dir,file_name+'_Cultures.xml')
     c_root = ET.Element("Cultures")
     for key, value in loaded_heritage_mapping.items():
@@ -164,4 +172,24 @@ def export_xml(file):
         # Fallback for older Python versions
         pass
     c_tree.write(c_output, encoding="utf-8", xml_declaration=True, short_empty_elements=False)
+
+    # Export FACTION mapping to XML file
+    f_output = os.path.join(factions_dir,file_name+'_Units.xml')
+    f_root = ET.Element("FactionsGroups")
+    factions = sorted(set([key[1] for key in loaded_faction_mapping.keys()]),key=sort_factions)
+    for fac in factions:
+        faction = ET.SubElement(f_root, "Faction", name=key[1])
+        for key, value in loaded_faction_mapping.items():
+                if key[0] not in NON_MAA_KEYS and key[1] == fac: # To be changed to handle the general, knights and levies
+                    maa = ET.SubElement(faction, "MenAtArm", type=key[0], key=value[0], max=value[1])
+    f_tree = ET.ElementTree(f_root)
+    try:
+        # Use ET.indent for cleaner output in Python 3.9+
+        ET.indent(f_tree, space="\t", level=0)
+    except AttributeError:
+        # Fallback for older Python versions
+        pass
+    f_tree.write(f_output, encoding="utf-8", xml_declaration=True, short_empty_elements=False)
+
+
     return export_dir

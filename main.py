@@ -249,7 +249,7 @@ def popup_xml_import_export():
     if event == 'Export':
         export_mapper_file = sg.popup_get_file(title='Find mapper file to export',message='Please select the mapping file you wish to export',initial_folder=CUSTOM_MAPPER_DIR)
         if export_mapper_file:
-            export_dir = export_xml(export_mapper_file)
+            export_dir = export_xml(export_mapper_file, NON_MAA_KEYS)
             sg.popup(f"Mapper exported to '{export_dir}'!")
             window.close()
     return None
