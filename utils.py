@@ -155,13 +155,25 @@ def export_xml(file, NON_MAA_KEYS):
         name = item
         return priority, name
 
-    def sort_faction_elements(item):
-        if item == 'DEFAULT' or item == 'Default':
-            priority = 0 
+    def sort_xml_elements(child):
+        tag = child.tag
+
+        if tag == 'MenAtArm':
+            maa = child.get('type') # type, being MAA key
         else:
+            maa = 'ZZZ'
+
+        if tag == 'General':
+            priority = 0
+        elif tag == 'Knights':
             priority = 1
-        name = item
-        return priority, name
+        elif tag == 'Levies':
+            priority = 2
+        else:
+            priority = 3
+    
+        secondary_key = maa
+        return priority, secondary_key
 
     # Export CULTURE mapping to XML file
     c_output = os.path.join(cultures_dir,file_name+'_Cultures.xml')
@@ -194,6 +206,12 @@ def export_xml(file, NON_MAA_KEYS):
         for key, value in filtered_items.items():
                 if key[0] not in NON_MAA_KEYS: # To be changed to handle the general, knights and levies as well as sorting the entire tree of subelements
                     maa = ET.SubElement(faction, "MenAtArm", type=key[0], key=value[0], max=value[1])
+
+        # Sort XML elements within faction tree
+        faction[:] = sorted(
+            faction,
+            key=sort_xml_elements
+        )
     f_tree = ET.ElementTree(f_root)
     try:
         # Use ET.indent for cleaner output in Python 3.9+
