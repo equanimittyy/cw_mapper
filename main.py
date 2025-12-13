@@ -978,12 +978,6 @@ def main_window():
         sg.Button('Open README', key='README_KEY'),
         sg.Button('Refresh Current Mappers', key='VALIDATE_KEY'),
         sg.Button('Create Custom Mapper', key='CUSTOM_MAPPER_KEY'),
-        # sg.Text('Mod Name:'), 
-        # sg.Input(key='MOD_NAME_KEY', size=(20, 1)), # Input for the Mod Name
-        # sg.Text('Mod ID:'), 
-        # sg.Input(key='MOD_ID_KEY', size=(10, 1)),   # Input for the Mod ID
-        # sg.Button('Add/Show Mods', key='ADD_MOD_KEY'),      # Button to trigger the addition
-        # sg.Button('Clear Mods', key='CLEAR_MOD_KEY')       # Button to clear mods
     ],
     
     # --- Output Multiline Field ---
@@ -1025,32 +1019,6 @@ def main_window():
 
         elif event == 'README_KEY':
             webbrowser.open("readme.txt")
-        
-        # elif event == 'ADD_MOD_KEY':
-        #     window['MLINE_KEY'].update('')
-        #     mod_name = values['MOD_NAME_KEY'].strip()
-        #     mod_id = values['MOD_ID_KEY'].strip()
-        
-        #     if mod_name and mod_id:
-        #         MOD_LIST.append((mod_name, mod_id))
-        #         window['MOD_NAME_KEY'].update('') # Clear the input field
-        #         window['MOD_ID_KEY'].update('')   # Clear the input field
-                
-        #         # Log the addition to the Multiline
-        #         window["MLINE_KEY"].update(f'Added Mod: {mod_name} (ID: {mod_id})\n', append=True)
-        #         window["MLINE_KEY"].update(f'Additional mods list: \n', append=True)
-        #         window["MLINE_KEY"].update(f'{MOD_LIST}', append=True)
-        #     else:
-        #         window["MLINE_KEY"].update('Both Mod Name and Mod ID must be entered.\n', append=True)
-        #         window["MLINE_KEY"].update(f'Additional mods list: \n', append=True)
-        #         window["MLINE_KEY"].update(f'{MOD_LIST}', append=True)
-        
-        # elif event == 'CLEAR_MOD_KEY':
-        #     MOD_LIST.clear()
-        #     window['MLINE_KEY'].update('')
-        #     window["MLINE_KEY"].update('Additional mod list cleared.\n', append=True)
-        #     window["MLINE_KEY"].update(f'Additional mods list: \n', append=True)
-        #     window["MLINE_KEY"].update(f'{MOD_LIST}', append=True)
 
         elif event == 'VALIDATE_KEY':
             window['MLINE_KEY'].update('')
