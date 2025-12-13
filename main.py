@@ -891,13 +891,16 @@ def mapping_window():
                         del current_mappings[key_to_remove]
                         key = mapping_key[0]
                     if re.search(r'^LEVY-', key):
-                        size = 'LEVY'
+                        override_size = 'LEVY'
                     if re.search(r'^GENERAL\b', key):
-                        size = 'GENERAL'
+                        override_size = 'GENERAL'
                     if re.search(r'^KNIGHTS\b', key):
-                        size = 'KNIGHTS'
-            
-                    current_mappings[mapping_key] = selected_attila + [size]
+                        override_size = 'KNIGHTS'
+
+                    if override_size:
+                        current_mappings[mapping_key] = selected_attila + [override_size]
+                    else:
+                        current_mappings[mapping_key] = selected_attila + [size]
 
                     # Update the displayed list
                     update_mappings_list(window, current_mappings)
