@@ -872,7 +872,7 @@ def mapping_window():
             window[FACTION_KEY].update(values=FACTION_LIST)
             window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
             if diff:
-                window['SUBTEXT'].update('⚠️ Warning: Missing sources for loaded mapper, continue at your own risk!\nRecommended to only add or modify existing maps',text_color="#FF0D00")
+                window['SUBTEXT'].update('⚠️ Warning: Missing sources for loaded mapper, continue at your own risk!\nRecommended to only add or modify existing maps',text_color="#E9D502")
             else:
                 window['SUBTEXT'].update('Each FACTION is assigned to one or many HERITAGE.',text_color="#FFFFFF")
 
