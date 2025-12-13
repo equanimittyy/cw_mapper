@@ -115,7 +115,7 @@ def import_xml(import_folder):
     
     return imported_mappings, imported_heritage_mappings
                         
-def export_xml(file, NON_MAA_KEYS):
+def export_xml(file, NON_MAA_KEYS, tag):
     file_name, _ = os.path.splitext(os.path.split(file)[1])
     export_dir = os.path.join(CUSTOM_MAPPER_DIR, 'export', file_name)
     os.makedirs(export_dir,exist_ok=True)
@@ -229,5 +229,10 @@ def export_xml(file, NON_MAA_KEYS):
         pass
     f_tree.write(f_output, encoding="utf-8", xml_declaration=True, short_empty_elements=False)
 
+    # Create tag file
+    if not tag:
+        tag = file_name
+    with open(export_tag, 'w', encoding='utf-8-sig') as f:
+        f.write(tag)
 
     return export_dir
