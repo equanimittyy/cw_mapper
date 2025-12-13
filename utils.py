@@ -204,7 +204,15 @@ def export_xml(file, NON_MAA_KEYS):
             for key, value in loaded_faction_mapping.items() if key[1] == fac
             }
         for key, value in filtered_items.items():
-                if key[0] not in NON_MAA_KEYS: # To be changed to handle the general, knights and levies as well as sorting the entire tree of subelements
+                if key[0] in NON_MAA_KEYS: #i.e. a CW key, General, Knight, or a levy unit
+                    if key[0] == 'GENERAL':
+                        general = ET.SubElement(faction, "General", key=value[0])
+                    if key[0] == 'KNIGHTS':
+                        knights = ET.SubElement(faction, "Knights", key=value[0])
+                    else: # Levies are the only remaining possible type
+                        levy = ET.SubElement(faction,'Levies', porcentage='0',key=value[0], max='LEVY')
+                    pass
+                else:
                     maa = ET.SubElement(faction, "MenAtArm", type=key[0], key=value[0], max=value[1])
 
         # Sort XML elements within faction tree
