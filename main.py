@@ -886,16 +886,16 @@ def mapping_window():
                     mapping_key = (selected, current_faction)
                 
                     # Check for conflicts (CK3 unit + Faction combination already mapped), and overwrite if so.
-                    for key in mapping_key:
-                        if key in current_mappings:
-                            key_to_remove = (selected, current_faction)
-                            del current_mappings[key_to_remove]
-                        if re.search(r'^LEVY-', key):
-                            size = 'LEVY'
-                        if re.search(r'^GENERAL\b', key):
-                            size = 'GENERAL'
-                        if re.search(r'^KNIGHTS\b', key):
-                            size = 'KNIGHTS'
+                    if mapping_key in current_mappings:
+                        key_to_remove = (selected, current_faction)
+                        del current_mappings[key_to_remove]
+                        key = mapping_key[0]
+                    if re.search(r'^LEVY-', key):
+                        size = 'LEVY'
+                    if re.search(r'^GENERAL\b', key):
+                        size = 'GENERAL'
+                    if re.search(r'^KNIGHTS\b', key):
+                        size = 'KNIGHTS'
             
                     current_mappings[mapping_key] = selected_attila + [size]
 
