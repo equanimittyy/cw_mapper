@@ -242,7 +242,7 @@ def popup_xml_import_export():
             else:
                 _, mapper_name = os.path.split(import_folder)
                 imported_maa_map, imported_heritage_map = import_xml(import_folder)
-                sg.popup(f"Mapper '{mapper_name}' imported!")
+                sg.popup(f"Mapper '{mapper_name}' imported!\n\nLoad the mapper using the 'Load' button")
                 window.close()
                 return mapper_name, imported_maa_map, imported_heritage_map
 
@@ -640,7 +640,7 @@ def mapping_window():
     mapper_layout = [
         [sg.Image(ASCII_ART_MAPPER)],
         [sg.Text('Create your "MAA => UNIT" mapping, per FACTION here. Each FACTION can have as many "MAA => UNIT" mappings as you like. Any missing "MAA => UNIT" mappings will fallback to faction DEFAULT, or crash if not present.', font=('Courier New', 10, 'bold'), justification='center', expand_x=True)],
-        [sg.Text('Each FACTION is assigned to one or many HERITAGE.', font=('Courier New', 10, 'bold'), justification='center', expand_x=True)],
+        [sg.Text('Each FACTION is assigned to one or many HERITAGE.', font=('Courier New', 10, 'bold'), key='SUBTEXT', justification='center', expand_x=True)],
         [
             sg.Column(col1_layout, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD',expand_x=True,expand_y=True),
             sg.VSeparator(),
@@ -711,6 +711,7 @@ def mapping_window():
         attila_diff = 0
         heritage_diff = 0
         culture_diff = 0
+        overall_diff = 0
         seperator = ','
         with open(file, 'r', encoding='utf-8-sig') as f:
             loaded_data = json.load(f)
@@ -753,8 +754,9 @@ def mapping_window():
         
         if diff_message:
             sg.popup(f'Warning: Missing sources were detected. This will cause issues with the mapper tool due to missing source keys\n\n{diff_message}\nPlease ensure you have all required sources for this mapper, both CK3 and Attila, for complete and issue free editing:\n• For CK3, ensure you have the required mods installed in Steam\n• For Attila, ensure you have exported all the correct unit key .tsv files')
+            overall_diff = 1
 
-        return loaded_faction_mapping, loaded_heritage_mapping
+        return loaded_faction_mapping, loaded_heritage_mapping, overall_diff
 
     # END FUNCTIONS
     # ==============================================
@@ -858,7 +860,7 @@ def mapping_window():
             window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
 
         elif event == 'FILE_LOAD_KEY':
-            loaded_faction_mapping, loaded_heritage_mapping = load_mapper(values['FILE_LOAD_KEY'])
+            loaded_faction_mapping, loaded_heritage_mapping, diff = load_mapper(values['FILE_LOAD_KEY'])
             map_name, _ = os.path.splitext(os.path.basename(values['FILE_LOAD_KEY']))
             if loaded_faction_mapping:
                 current_mappings = loaded_faction_mapping
@@ -869,6 +871,10 @@ def mapping_window():
             update_mappings_list(window, current_mappings)
             window[FACTION_KEY].update(values=FACTION_LIST)
             window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
+            if diff:
+                window['SUBTEXT'].update('⚠️ Warning: Missing sources for loaded mapper, continue at your own risk!\nRecommended to only add or modify existing maps',text_color="#FF0D00")
+            else:
+                window['SUBTEXT'].update('Each FACTION is assigned to one or many HERITAGE.',text_color="#FFFFFF")
 
         elif event == 'ADD_MAPPING_KEY' and selected_ck3 and selected_attila:
             current_faction = values[FACTION_KEY]
