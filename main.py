@@ -51,6 +51,17 @@ NON_MAA_KEYS = [
     'LEVY-CUSTOM3',
 ]
 
+DEFAULT_LEVY_PERCENTAGES = {
+    'LEVY-SPEAR':50,
+    'LEVY-SWORD':25,
+    'LEVY-ARCHER':25,
+    'LEVY-SKIRM':0,
+    'LEVY-CAV':0,
+    'LEVY-CUSTOM1':0,
+    'LEVY-CUSTOM2':0,
+    'LEVY-CUSTOM3':0
+}
+
 # If none of the source files exists, run the check program to refresh files
 if not os.path.exists(ATTILA_SOURCE_PATH) or not os.path.exists(CULTURES_SOURCE_PATH) or not os.path.exists(MAA_SOURCE_PATH):
     init_map_config()
@@ -949,7 +960,7 @@ def mapping_window():
                     override_size = ''
                     if re.search(r'^LEVY-', mapping_key[0]):
                         override_size = 'LEVY'
-                        levy_size = NON_MAA_KEYS.get(mapping_key[0]) # Get default levy % from list, as levies can only be obtained from available units list
+                        levy_size = DEFAULT_LEVY_PERCENTAGES.get(mapping_key[0]) # Get default levy % from list, as levies can only be obtained from available units list
                     if re.search(r'^GENERAL\b', mapping_key[0]):
                         override_size = 'GENERAL'
                     if re.search(r'^KNIGHTS\b', mapping_key[0]):
