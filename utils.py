@@ -243,6 +243,12 @@ def export_xml(file, NON_MAA_KEYS, tag, s_date, e_date):
     date_end = ET.SubElement(date_root,"EndDate")
     date_end.text = e_date
     date_tree = ET.ElementTree(date_root)
+    try:
+        # Use ET.indent for cleaner output in Python 3.9+
+        ET.indent(date_tree, space="\t", level=0)
+    except AttributeError:
+        # Fallback for older Python versions
+        pass
     date_tree.write(date_output, encoding="utf-8", xml_declaration=True, short_empty_elements=False)
 
     return export_dir
