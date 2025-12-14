@@ -1,11 +1,9 @@
 import os
-import ast
 import json
+import re
 import xml.etree.ElementTree as ET
 
-
 from typing import List, Tuple
-from xml.dom import minidom
 
 CONFIG_DIR = os.path.join('config')
 MAP_CONFIG = os.path.join(CONFIG_DIR,'mapper_config.json')
@@ -106,11 +104,28 @@ def import_xml(import_folder):
             root = tree.getroot()
             for faction in root:
                 faction_name = faction.get('name')
+                levy_count = 0
                 for key in faction:
                     if key.tag == 'MenAtArm':
                         maa_key = key.get('type')
                         attila_key = key.get('key')
                         size = key.get('max')
+                        imported_mappings[(maa_key, faction_name)]= [attila_key, size]
+                    elif key.tag == 'General':
+                        maa_key = 'GENERAL'
+                        attila_key = key.get('key')
+                        size = 'GENERAL'
+                        imported_mappings[(maa_key, faction_name)]= [attila_key, size]
+                    elif key.tag == 'Knights':
+                        maa_key = 'KNIGHTS'
+                        attila_key = key.get('key')
+                        size = 'KNIGHTS'
+                        imported_mappings[(maa_key, faction_name)]= [attila_key, size]
+                    elif key.tag == 'Levies':
+                        levy_count += 1
+                        maa_key = 'LEVY-IMPORTED_'+str(levy_count)
+                        attila_key = key.get('key')
+                        size = 'LEVY'
                         imported_mappings[(maa_key, faction_name)]= [attila_key, size]
     
     return imported_mappings, imported_heritage_mappings
@@ -204,7 +219,7 @@ def export_xml(file, NON_MAA_KEYS, tag, s_date, e_date):
             for key, value in loaded_faction_mapping.items() if key[1] == fac
             }
         for key, value in filtered_items.items():
-                if key[0] in NON_MAA_KEYS: #i.e. a CW key, General, Knight, or a levy unit
+                if key[0] in NON_MAA_KEYS or re.search(r'^LEVY-', key[0]): #i.e. a CW key, General, Knight, or a levy unit
                     if key[0] == 'GENERAL':
                         general = ET.SubElement(faction, "General", key=value[0])
                     if key[0] == 'KNIGHTS':
@@ -213,7 +228,10 @@ def export_xml(file, NON_MAA_KEYS, tag, s_date, e_date):
                         levy = ET.SubElement(faction,'Levies', porcentage='0',key=value[0], max='LEVY')
                     pass
                 else:
-                    maa = ET.SubElement(faction, "MenAtArm", type=key[0], key=value[0], max=value[1])
+                    if value[1]: # has a size value
+                        maa = ET.SubElement(faction, "MenAtArm", type=key[0], key=value[0], max=value[1])
+                    else:
+                        maa = ET.SubElement(faction, "MenAtArm", type=key[0], key=value[0])
 
         # Sort XML elements within faction tree
         faction[:] = sorted(
