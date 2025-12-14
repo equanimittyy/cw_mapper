@@ -1033,7 +1033,7 @@ def mapping_window():
                         }
             
                 for key, value in filtered_mapping.items():
-                    table_data.append([key[0],value[0],0])
+                    table_data.append([key[0],value[0],value[2]])
                 new_levy_data = popup_levy_percentage(current_faction, table_headings, table_data)
                 if new_levy_data:
                     for data in new_levy_data:
