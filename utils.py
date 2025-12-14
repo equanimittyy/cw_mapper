@@ -1,3 +1,5 @@
+'''Copyright (c) 2025 equanimittyy. All Rights Reserved.'''
+
 import os
 import json
 import re
