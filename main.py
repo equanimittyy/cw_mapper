@@ -134,6 +134,7 @@ def popup_levy_percentage(faction, headings, data):
         event, values = window.read()
 
         if event == sg.WIN_CLOSED or event == 'Exit':
+            window.close()
             return data
 
         elif event == 'LEVY_PERCENTAGE_TABLE':
