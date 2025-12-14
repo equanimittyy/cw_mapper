@@ -115,7 +115,7 @@ def import_xml(import_folder):
     
     return imported_mappings, imported_heritage_mappings
                         
-def export_xml(file, NON_MAA_KEYS, tag):
+def export_xml(file, NON_MAA_KEYS, tag, s_date, e_date):
     file_name, _ = os.path.splitext(os.path.split(file)[1])
     export_dir = os.path.join(CUSTOM_MAPPER_DIR, 'export', file_name)
     os.makedirs(export_dir,exist_ok=True)
@@ -234,5 +234,15 @@ def export_xml(file, NON_MAA_KEYS, tag):
         tag = file_name
     with open(export_tag, 'w', encoding='utf-8-sig') as f:
         f.write(tag)
+
+    # Create start/end date file
+    date_output = export_time
+    date_root = ET.Element("TimePeriod")
+    date_start = ET.SubElement(date_root, "StartDate")
+    date_start.text = s_date
+    date_end = ET.SubElement(date_root,"EndDate")
+    date_end.text = e_date
+    date_tree = ET.ElementTree(date_root)
+    date_tree.write(date_output, encoding="utf-8", xml_declaration=True, short_empty_elements=False)
 
     return export_dir

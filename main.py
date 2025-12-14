@@ -250,7 +250,9 @@ def popup_xml_import_export():
         export_mapper_file = sg.popup_get_file(title='Find mapper file to export',message='Please select the mapping file you wish to export',initial_folder=CUSTOM_MAPPER_DIR)
         if export_mapper_file:
             tag = sg.popup_get_text(title='Assign mod tag',message='Define a tag used for your mapper set, which can be used to identify\nmulti-mappers for different time periods')
-            export_dir = export_xml(export_mapper_file, NON_MAA_KEYS, tag)
+            s_date = sg.popup_get_text(title='Define start date',message='Define the start date (enter numbers only, e.g.: 768)')
+            e_date = sg.popup_get_text(title='Define end date',message='Define the end date (enter numbers only, e.g.: 768)')
+            export_dir = export_xml(export_mapper_file, NON_MAA_KEYS, tag, s_date, e_date)
             sg.popup(f"Mapper exported to '{export_dir}'!")
             window.close()
     return None
