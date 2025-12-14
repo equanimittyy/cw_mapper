@@ -949,12 +949,15 @@ def mapping_window():
                     override_size = ''
                     if re.search(r'^LEVY-', mapping_key[0]):
                         override_size = 'LEVY'
+                        levy_size = NON_MAA_KEYS.get(mapping_key[0]) # Get default levy % from list, as levies can only be obtained from available units list
                     if re.search(r'^GENERAL\b', mapping_key[0]):
                         override_size = 'GENERAL'
                     if re.search(r'^KNIGHTS\b', mapping_key[0]):
                         override_size = 'KNIGHTS'
 
-                    if override_size:
+                    if override_size == 'LEVY':
+                        current_mappings[mapping_key] = selected_attila + [override_size] + [levy_size]
+                    elif override_size:
                         current_mappings[mapping_key] = selected_attila + [override_size]
                     else:
                         current_mappings[mapping_key] = selected_attila + [size]

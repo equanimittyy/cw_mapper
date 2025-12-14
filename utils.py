@@ -126,7 +126,8 @@ def import_xml(import_folder):
                         maa_key = 'LEVY-IMPORTED_'+str(levy_count)
                         attila_key = key.get('key')
                         size = 'LEVY'
-                        imported_mappings[(maa_key, faction_name)]= [attila_key, size]
+                        percentage = key.get('porcentage')
+                        imported_mappings[(maa_key, faction_name)]= [attila_key, size, percentage]
     
     return imported_mappings, imported_heritage_mappings
                         
