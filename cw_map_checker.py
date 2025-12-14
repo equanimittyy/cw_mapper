@@ -415,17 +415,15 @@ def summary():
     ck3_maa_key_file = os.path.join(REPORT_OUTPUT_DIR,'source_ck3_maa_keys.csv')
     attila_key_file = os.path.join(REPORT_OUTPUT_DIR,'source_attila_keys.csv')
 
-    original_stdout = sys.stdout
     with open('summary_log.txt', 'w', encoding="utf-8-sig") as f:
-        sys.stdout = f
         # Check if reports exists
-        print(ASCII)
+        print(ASCII, file=f)
         if os.listdir(REPORT_OUTPUT_DIR):
-            print(f'== Found reports in report directory ==')
-            print('==================================================')
+            print(f'== Found reports in report directory ==', file=f)
+            print('==================================================', file=f)
         else:
-            print(f'== No reports were found in {REPORT_OUTPUT_DIR}. No summary can be made until reports are produced based on your CK3/Attila install... ==')
-            print()
+            print(f'== No reports were found in {REPORT_OUTPUT_DIR}. No summary can be made until reports are produced based on your CK3/Attila install... ==', file=f)
+            print('', file=f)
             # input("Press Enter to quit...")
             # Could potentially in future add a functionality to run a report from here.
             exit(1) # Exit with an error        
@@ -439,7 +437,7 @@ def summary():
             
             # Check if mapping directory, and load map to mod config
             if os.path.isdir(map_folder):
-                print('▶ '+mapping+' ◀')
+                print('▶ '+mapping+' ◀', file=f)
                 target_config = get_config(mapping)
                 
                 source_ids = []
@@ -447,8 +445,8 @@ def summary():
                     id = str(mods[1])
                     source_ids.append(id)
 
-                print()
-                print(f'🛠 Sources: {target_config}')
+                print('', file=f)
+                print(f'🛠 Sources: {target_config}', file=f)
 
                 # Set up list of expected culture and MAA keys
                 expected_culture_keys = []
@@ -476,8 +474,8 @@ def summary():
                         source_attila_keys.append(key)
                 
                 missing_mods = set(source_ids) - set(found_mods)
-                print(f'↳ ⚠ Sources missing: {missing_mods}')
-                print('')
+                print(f'↳ ⚠ Sources missing: {missing_mods}', file=f)
+                print('', file=f)
 
                 # Compare reports to expected keys
                 files = os.listdir(map_folder)
@@ -487,7 +485,7 @@ def summary():
                         missing_attila_keys = []
                         # CULTURES
                         if file.endswith('cultures.csv'):
-                            print(f'◆ {file} ')
+                            print(f'◆ {file} ', file=f)
                             file_path = os.path.join(map_folder,file)
 
                             with open(file_path, 'r') as f:
@@ -498,7 +496,7 @@ def summary():
                         
                         # MAN AT ARMS
                         if file.endswith('maa.csv'):
-                            print(f'◆ {file} ')
+                            print(f'◆ {file} ', file=f)
                             file_path = os.path.join(map_folder,file)
 
                             with open(file_path, 'r') as f:
@@ -513,32 +511,31 @@ def summary():
 
                         if expected_culture_keys and expected_maa_keys:
                             if missing_keys:
-                                    print(f'↳ ⚠ Missing keys: {len(missing_keys)} missing keys')
+                                    print(f'↳ ⚠ Missing keys: {len(missing_keys)} missing keys', file=f)
                                     for i in range(0, len(missing_keys), output_columns):
                                         row = missing_keys[i:i + output_columns]
                                         formatted_row = " ".join(key.ljust(30) for key in row)
-                                        print(formatted_row)
-                                    print()
+                                        print(formatted_row, file=f)
+                                    print('', file=f)
                             else:
-                                print(f'No missing keys found for {file}')
-                                print()
+                                print(f'No missing keys found for {file}', file=f)
+                                print('', file=f)
 
                             if missing_attila_keys:
-                                print(f'↳ ⚠ Missing keys from Total War Attila: {len(missing_keys)} missing keys')
+                                print(f'↳ ⚠ Missing keys from Total War Attila: {len(missing_keys)} missing keys', file=f)
                                 for i in range(0, len(missing_keys), output_columns):
                                     row = missing_keys[i:i + output_columns]
                                     formatted_row = " ".join(key.ljust(30) for key in row)
-                                    print(formatted_row)
-                                print()
+                                    print(formatted_row, file=f)
+                                print(', file=f')
                             else:
                                 if file.endswith('maa.csv'):
-                                    print(f'No missing Attila keys were found for {file}')
-                                    print()
+                                    print(f'No missing Attila keys were found for {file}', file=f)
+                                    print('', file=f)
                         else:
-                            print(f'↳ ⚠ Missing all source files for keys: {file}. Skipping...')
-                            print()
+                            print(f'↳ ⚠ Missing all source files for keys: {file}. Skipping...', file=f)
+                            print('', file=f)
 
                 else:
-                    print(f'↳ ⚠ No reports were found in {map_folder}')
-                print('==================================================')
-    sys.stdout = original_stdout
+                    print(f'↳ ⚠ No reports were found in {map_folder}', file=f)
+                print('==================================================', file=f)
