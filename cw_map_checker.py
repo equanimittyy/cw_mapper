@@ -58,12 +58,12 @@ def get_cw_config():
         config.read_file(settings_file)
     else:
         print(f"== Could not find GamePaths.ini! Please ensure you place the cw_mapper folder in the 'tools' folder of the Crusader Wars directory.")
-        exit(1) # Exit with an error
+        sys.exit(1) # Exit with an error
 
     ck3_dir_path = os.path.dirname(os.path.dirname(config.get('GamePaths','CRUSADERKINGS3')))
     if ck3_dir_path == "":
         print(f"== The Crusader Kings 3 directory path was not found! Please ensure you configure your game paths in Crusader Wars.")
-        exit(1) # Exit with an error
+        sys.exit(1) # Exit with an error
     return config
 
 def get_keys(cw_config):
@@ -84,7 +84,7 @@ def get_keys(cw_config):
         
         # Auto open readme.txt upon close
         webbrowser.open("readme.txt")
-        exit(1) # Exit with an error
+        sys.exit(1) # Exit with an error
     else:
         print(f'== Atilla unit keys found in {ATTILA_EXPORT_DIR}! ==')
 
@@ -307,7 +307,7 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
     else:
         print()
         print(f'== No CW mapping files were found in {MAPPER_DIR}... ==')
-        exit(1) # Exit with an error
+        sys.exit(1) # Exit with an error
 
     for mapping in os.listdir(MAPPER_DIR):
             cultures = os.path.join(MAPPER_DIR,mapping,'Cultures')
@@ -399,8 +399,6 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
     df_ck3_maa.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_maa_keys.csv'))
     print(f'Report produced for source key files.')
 
-    # exit(0) # Exit as a success
-
 def summary():
     output_columns = 4
     
@@ -418,7 +416,7 @@ def summary():
             print(f'== No reports were found in {REPORT_OUTPUT_DIR}. No summary can be made until reports are produced based on your CK3/Attila install... ==', file=sum_f)
             print('', file=sum_f)
             # Could potentially in future add a functionality to run a report from here.
-            exit(1) # Exit with an error        
+            sys.exit(1) # Exit with an error        
 
         for mapping in os.listdir(REPORT_OUTPUT_DIR):
             map_folder = os.path.join(REPORT_OUTPUT_DIR,mapping)
