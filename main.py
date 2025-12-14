@@ -107,7 +107,7 @@ def popup_mapper_name_input():
     return None
 
 def popup_levy_percentage(faction, headings, data):
-    percentage_total = sum([row[2] for row in data])
+    percentage_total = sum([int(row[2]) for row in data])
     layout = [
         [sg.Text(f'Total must add up to 100% or crashes will occur:\n\n{faction}')],
         [sg.Table(
@@ -1045,8 +1045,10 @@ def mapping_window():
                 if new_levy_data:
                     for data in new_levy_data:
                         updated_key = (data[0],current_faction)
-                        updated_value = [data[2]]
-                        current_mappings[updated_key] = current_mappings[updated_key] + updated_value
+                        updated_value = data[2]
+                        current_mappings[updated_key] = [data[1], 'LEVY', updated_value]
+
+
                     update_mappings_list(window, current_mappings)
                     
 

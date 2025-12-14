@@ -126,7 +126,7 @@ def import_xml(import_folder):
                         maa_key = 'LEVY-IMPORTED_'+str(levy_count)
                         attila_key = key.get('key')
                         size = 'LEVY'
-                        percentage = key.get('porcentage')
+                        percentage = int(key.get('porcentage'))
                         imported_mappings[(maa_key, faction_name)]= [attila_key, size, percentage]
     
     return imported_mappings, imported_heritage_mappings
@@ -223,10 +223,10 @@ def export_xml(file, NON_MAA_KEYS, tag, s_date, e_date):
                 if key[0] in NON_MAA_KEYS or re.search(r'^LEVY-', key[0]): #i.e. a CW key, General, Knight, or a levy unit
                     if key[0] == 'GENERAL':
                         general = ET.SubElement(faction, "General", key=value[0])
-                    if key[0] == 'KNIGHTS':
+                    elif key[0] == 'KNIGHTS':
                         knights = ET.SubElement(faction, "Knights", key=value[0])
                     else: # Levies are the only remaining possible type
-                        levy = ET.SubElement(faction,'Levies', porcentage='0',key=value[0], max='LEVY')
+                        levy = ET.SubElement(faction,'Levies', porcentage=str(value[2]),key=value[0], max='LEVY')
                 else:
                     if value[1]: # has a size value
                         maa = ET.SubElement(faction, "MenAtArm", type=key[0], key=value[0], max=value[1])
