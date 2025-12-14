@@ -700,8 +700,8 @@ def mapping_window():
             expand_y=True,
             enable_events=True
         )],
-        [sg.Button('Add Mapping', key='ADD_MAPPING_KEY', size=(15, 2), button_color=('white', '#004D40'), disabled=True),sg.Button('Remove Selected', key='REMOVE_MAPPING_KEY', size=(15, 2), button_color=('white', '#CC0000'), disabled=True),sg.Push(background_color='#DDDDDD'),sg.Button('Open Title mapping', key='TITLE_EDIT_BUTTON_KEY', size=(16, 2), button_color=('white', '#F78702')),sg.Button('Open Heritage mapping', key='HERITAGE_EDIT_BUTTON_KEY', size=(20, 2), button_color=('white', '#F78702'))],
-        [sg.Button('Copy from faction', key='FACTION_COPY_BUTTON_KEY',size=(15, 2), button_color=('white', "#008670")),sg.Push(background_color='#DDDDDD'),sg.Button('Edit levy percentages', key='LEVY_PERCENTAGE_BUTTON_KEY',size=(20, 2), button_color=('white', "#444444")),sg.Button('Edit faction list', key='FACTION_LIST_EDIT_BUTTON_KEY', size=(15, 2), button_color=('white', '#444444'))]
+        [sg.Button('Add Mapping', key='ADD_MAPPING_KEY', size=(15, 2), button_color=('white', '#004D40'), disabled=True),sg.Button('Remove Selected', key='REMOVE_MAPPING_KEY', size=(15, 2), button_color=('white', '#CC0000'), disabled=True),sg.Push(background_color='#DDDDDD'),sg.Button('Edit levy percentages', key='LEVY_PERCENTAGE_BUTTON_KEY',size=(20, 2), button_color=('white', "#444444")),sg.Button('Edit faction list', key='FACTION_LIST_EDIT_BUTTON_KEY', size=(15, 2), button_color=('white', '#444444'))],
+        [sg.Button('Copy from faction', key='FACTION_COPY_BUTTON_KEY',size=(15, 2), button_color=('white', "#008670")),sg.Push(background_color='#DDDDDD'),sg.Button('Open Title mapping', key='TITLE_EDIT_BUTTON_KEY', size=(16, 2), button_color=('white', '#F78702')),sg.Button('Open Heritage mapping', key='HERITAGE_EDIT_BUTTON_KEY', size=(20, 2), button_color=('white', '#F78702'))]
     ]
 
     # Main layout
