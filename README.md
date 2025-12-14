@@ -15,22 +15,25 @@ checking what MAA/Cultures are needed plus for future use when people will creat
 \
 ↳ ☑ ~~Update the summary display UI to display the instructions to obtain the .tsv's from TW:Attila for when missing in tooling~~
 
-☐ Develop a simple way to build a mapper, based on Earl's existing mapper (just map it to the mapper that's found in CW currently), or alternatively, from scratch based on the code brought in from CW data.
+☑ ~~Develop a simple way to build a mapper, based on Earl's existing mapper (just map it to the mapper that's found in CW currently), or alternatively, from scratch based on the code brought in from CW data.~~
 \
-↳ ☑ Proper per faction display
+↳ ~~☑ Proper per faction display~~
 \
-↳ ☑ Heritage/Culture <> Faction mapper
+↳ ~~☑ Heritage/Culture <> Faction mapper~~
 \
-↳ ☑ Key loading from available sources
+↳ ~~☑ Key loading from available sources~~
 \
-↳ ☑ Saving and loading mappers (will need future fix for additional culture/heritage/faction data)
+↳ ~~☑ Saving and loading mappers (will need future fix for additional culture/heritage/faction data)~~
 \
-↳ ☑ Add in logic for levy size/MAA size
+↳ ~~☑ Add in logic for levy size/MAA size~~
 \
-↳ ☑ Create mapper based on existing mapper (loading xmls)
+↳ ~~☑ Create mapper based on existing mapper (loading xmls)~~
 \
-↳ ☑ Fix importing issues, with keys with no source (from mappers where the data isn't locally available) (had to compromise with providing a warning)
+↳ ~~☑ Fix importing issues, with keys with no source (from mappers where the data isn't locally available) (had to compromise with providing a warning)~~
 \
-↳ ☑ Add export functionality
-\
-↳ ☐ Mapping instructions
+↳ ~~☑ Add export functionality~~
+
+☐ Mapping instructions
+
+## 💫 Future-state Wishlist
+☐ Landed Title-based mapping
