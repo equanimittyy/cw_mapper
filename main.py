@@ -1047,6 +1047,8 @@ def mapping_window():
                         updated_key = (data[0],current_faction)
                         updated_value = [data[2]]
                         current_mappings[updated_key] = current_mappings[updated_key] + updated_value
+                    update_mappings_list(window, current_mappings)
+                    
 
         elif event == 'FACTION_LIST_EDIT_BUTTON_KEY':
             new_faction_list = popup_faction_list(FACTION_LIST)
