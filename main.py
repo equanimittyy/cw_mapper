@@ -95,6 +95,59 @@ def popup_mapper_name_input():
             return name
     return None
 
+def popup_levy_percentage(faction, headings, data):
+    layout = [
+        [sg.Text(f'Total must add up to 100% or crashes will occur:\n\n{faction}')],
+        [sg.Table(
+            values=data,
+            headings=headings,
+            key='LEVY_PERCENTAGE_TABLE',
+            max_col_width=30,          
+            auto_size_columns=True,
+            justification='left',
+            num_rows=min(20, len(data)),
+            row_height=25,
+            enable_events=True
+        )],
+        [sg.HSeparator()],
+        [sg.Text('Edit Selected Row: ', key='LEVY_SELECT_TEXT')],
+        # Input fields for editing the data
+        [sg.Text('Percentage %:  '), sg.Input(size=(10, 1), key='LEVY_PERCENTAGE_INPUT')],
+        [sg.Button('Update Row', key='UPDATE_LEVY'), sg.Button('Exit')]
+    ]
+
+    window = sg.Window('Edit levy percentages', layout, modal=True, finalize=True)
+
+    while True:
+        event, values = window.read()
+
+        if event == sg.WIN_CLOSED or event == 'Exit':
+            return data
+
+        elif event == 'LEVY_PERCENTAGE_TABLE':
+            if values['LEVY_PERCENTAGE_TABLE']: # Check if a row is actually selected
+                selected_row_index = values['LEVY_PERCENTAGE_TABLE'][0]
+                current_row_data = data[selected_row_index]
+                
+                # Update the Input fields with the selected row's data
+                window['LEVY_SELECT_TEXT'].update(f'Edit Selected Row: {current_row_data[0]}')
+                window['LEVY_PERCENTAGE_INPUT'].update(current_row_data[2])
+
+        if event == 'UPDATE_LEVY':
+            if values['LEVY_PERCENTAGE_TABLE']:
+                selected_row_index = values['LEVY_PERCENTAGE_TABLE'][0]
+                
+                # Get the new values from the Input fields
+                new_percentage = int(values['LEVY_PERCENTAGE_INPUT']) # Ensure Strength is int for consistency
+
+                # Update the data structure
+                data[selected_row_index][2] = new_percentage
+                
+                # Crucial Step: Update the sg.Table element to show the new data
+                window['LEVY_PERCENTAGE_TABLE'].update(values=data)
+            else:
+                sg.popup_error('Please select a row in the table first.')
+
 def popup_faction_copy(factions):
     layout = [
         [sg.Text('Select a faction to copy from:')],
@@ -637,7 +690,7 @@ def mapping_window():
             enable_events=True
         )],
         [sg.Button('Add Mapping', key='ADD_MAPPING_KEY', size=(15, 2), button_color=('white', '#004D40'), disabled=True),sg.Button('Remove Selected', key='REMOVE_MAPPING_KEY', size=(15, 2), button_color=('white', '#CC0000'), disabled=True),sg.Push(background_color='#DDDDDD'),sg.Button('Edit levy percentages', key='LEVY_PERCENTAGE_BUTTON_KEY',size=(20, 2), button_color=('white', "#444444")),sg.Button('Edit faction list', key='FACTION_LIST_EDIT_BUTTON_KEY', size=(15, 2), button_color=('white', '#444444'))],
-        [sg.Button('Copy from faction', key='FACTION_COPY_BUTTON_KEY',size=(15, 2), button_color=('white', "#008670")),sg.Push(background_color='#DDDDDD'),sg.Button('Open Title mapping', key='TITLE_EDIT_BUTTON_KEY', size=(15, 2), button_color=('white', '#F78702')),sg.Button('Open Heritage mapping', key='HERITAGE_EDIT_BUTTON_KEY', size=(25, 2), button_color=('white', '#F78702'))]
+        [sg.Button('Copy from faction', key='FACTION_COPY_BUTTON_KEY',size=(15, 2), button_color=('white', "#008670")),sg.Push(background_color='#DDDDDD'),sg.Button('Open Title mapping', key='TITLE_EDIT_BUTTON_KEY', size=(16, 2), button_color=('white', '#F78702')),sg.Button('Open Heritage mapping', key='HERITAGE_EDIT_BUTTON_KEY', size=(25, 2), button_color=('white', '#F78702'))]
     ]
 
     # Main layout
@@ -955,8 +1008,24 @@ def mapping_window():
                 check_add_button(window)
         
         elif event == 'LEVY_PERCENTAGE_BUTTON_KEY':
-            print('hello')
-            pass
+            current_faction = values[FACTION_KEY]
+            filtered_mapping = {}
+            table_data = []
+            table_headings = ['Levy','Unit_Key','Percentage']
+            if current_faction:
+                filtered_mapping = {
+                            key:value
+                            for key, value in current_mappings.items() if re.search(r'^LEVY-', key[0]) and key[1] == current_faction
+                        }
+            
+                for key, value in filtered_mapping.items():
+                    table_data.append([key[0],value[0],0])
+                new_levy_data = popup_levy_percentage(current_faction, table_headings, table_data)
+                if new_levy_data:
+                    for data in new_levy_data:
+                        updated_key = (data[0],current_faction)
+                        updated_value = [data[2]]
+                        current_mappings[updated_key] = current_mappings[updated_key] + updated_value
 
         elif event == 'FACTION_LIST_EDIT_BUTTON_KEY':
             new_faction_list = popup_faction_list(FACTION_LIST)
@@ -965,7 +1034,7 @@ def mapping_window():
                 window[FACTION_KEY].update(values=FACTION_LIST)
         
         elif event == 'TITLE_EDIT_BUTTON_KEY':
-            sg.popup('Title mapping not yet implemented! ☹️')
+            sg.popup('Title mapping not yet implemented!')
 
         elif event == 'HERITAGE_EDIT_BUTTON_KEY':
             current_heritage_mappings = heritage_window(current_heritage_mappings, FACTION_LIST)

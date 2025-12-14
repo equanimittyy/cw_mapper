@@ -226,7 +226,6 @@ def export_xml(file, NON_MAA_KEYS, tag, s_date, e_date):
                         knights = ET.SubElement(faction, "Knights", key=value[0])
                     else: # Levies are the only remaining possible type
                         levy = ET.SubElement(faction,'Levies', porcentage='0',key=value[0], max='LEVY')
-                    pass
                 else:
                     if value[1]: # has a size value
                         maa = ET.SubElement(faction, "MenAtArm", type=key[0], key=value[0], max=value[1])
