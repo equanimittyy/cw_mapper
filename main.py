@@ -965,7 +965,7 @@ def mapping_window():
                 window[FACTION_KEY].update(values=FACTION_LIST)
         
         elif event == 'TITLE_EDIT_BUTTON_KEY':
-            sg.popup('Title mapping not yet implemented! :()')
+            sg.popup('Title mapping not yet implemented! ☹️')
 
         elif event == 'HERITAGE_EDIT_BUTTON_KEY':
             current_heritage_mappings = heritage_window(current_heritage_mappings, FACTION_LIST)
