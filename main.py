@@ -891,13 +891,12 @@ def mapping_window():
                     if mapping_key in current_mappings:
                         key_to_remove = (selected, current_faction)
                         del current_mappings[key_to_remove]
-                        key = mapping_key[0]
                     override_size = ''
-                    if re.search(r'^LEVY-', key):
+                    if re.search(r'^LEVY-', mapping_key[0]):
                         override_size = 'LEVY'
-                    if re.search(r'^GENERAL\b', key):
+                    if re.search(r'^GENERAL\b', mapping_key[0]):
                         override_size = 'GENERAL'
-                    if re.search(r'^KNIGHTS\b', key):
+                    if re.search(r'^KNIGHTS\b', mapping_key[0]):
                         override_size = 'KNIGHTS'
 
                     if override_size:
