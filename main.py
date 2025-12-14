@@ -107,6 +107,7 @@ def popup_mapper_name_input():
     return None
 
 def popup_levy_percentage(faction, headings, data):
+    percentage_total = sum([row[2] for row in data])
     layout = [
         [sg.Text(f'Total must add up to 100% or crashes will occur:\n\n{faction}')],
         [sg.Table(
@@ -123,7 +124,7 @@ def popup_levy_percentage(faction, headings, data):
         [sg.HSeparator()],
         [sg.Text('Edit Selected Row: ', key='LEVY_SELECT_TEXT')],
         # Input fields for editing the data
-        [sg.Text('Percentage %:  '), sg.Input(size=(10, 1), key='LEVY_PERCENTAGE_INPUT')],
+        [sg.Text('Percentage %:  '), sg.Input(size=(10, 1), key='LEVY_PERCENTAGE_INPUT'),sg.Text(f'Total: {percentage_total}%', key='TOTAL_KEY')],
         [sg.Button('Update Row', key='UPDATE_LEVY'), sg.Button('Exit')]
     ]
 
@@ -155,7 +156,12 @@ def popup_levy_percentage(faction, headings, data):
                 data[selected_row_index][2] = new_percentage
                 
                 # Crucial Step: Update the sg.Table element to show the new data
+                percentage_total = sum([row[2] for row in data])
+                window['TOTAL_KEY'].update(f'Total: {percentage_total}%')
+                window['LEVY_SELECT_TEXT'].update(f'Edit Selected Row: ')
+                window['LEVY_PERCENTAGE_INPUT'].update('')
                 window['LEVY_PERCENTAGE_TABLE'].update(values=data)
+
             else:
                 sg.popup_error('Please select a row in the table first.')
 
