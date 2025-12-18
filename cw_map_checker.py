@@ -28,7 +28,7 @@ REPORT_OUTPUT_DIR = 'reports'
 os.makedirs(REPORT_OUTPUT_DIR,exist_ok=True) # Ensure the report directory exists
 
 CONFIG_DIR = os.path.join('config')
-target_config = os.path.join(CONFIG_DIR,'mapper_config.json')
+target_config = os.path.join(CONFIG_DIR,'mod_config.json')
 
 with open("ascii.txt", 'r') as f:
     ASCII = f.read()
@@ -422,7 +422,7 @@ def summary():
             map_folder = os.path.join(REPORT_OUTPUT_DIR,mapping)
 
             # Key things that need to be summarised:
-            # - Whether the mapper has all the MAA and cultures from Vanilla or MOD, based on the mapper_config.json
+            # - Whether the mapper has all the MAA and cultures from Vanilla or MOD, based on the mod_config.json
             # - Whether the mapper has a valid attila unit key
             
             # Check if mapping directory, and load map to mod config

@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from typing import List, Tuple
 
 CONFIG_DIR = os.path.join('config')
-MAP_CONFIG = os.path.join(CONFIG_DIR,'mapper_config.json')
+MAP_CONFIG = os.path.join(CONFIG_DIR,'mod_config.json')
 CUSTOM_MAPPER_DIR = 'custom_mappers'
 
 DEFAULT_CONFIG_PATH = os.path.join('config',"default.json")
@@ -38,9 +38,13 @@ def get_config(mapping):
        with open(MAP_CONFIG, 'r') as f:
             config = json.load(f)
             target_config = config.get(mapping)
+    
+    if not target_config:
+        pass
+
     return target_config
 
-def add_map_config(mapper_key, mapper_config: List[Tuple[str,int]]):
+def add_map_config(mapper_key, mod_config: List[Tuple[str,int]]):
     # Open the config, and initialise if missing
     try:
         with open (MAP_CONFIG, 'r') as f:
@@ -55,10 +59,10 @@ def add_map_config(mapper_key, mapper_config: List[Tuple[str,int]]):
         exit(1) # Exit with an error
 
     if mapper_key not in data:
-        data[mapper_key] = mapper_config
+        data[mapper_key] = mod_config
     else:
         existing_config = set((tuple(item)) for item in data[mapper_key])
-        for item in mapper_config:
+        for item in mod_config:
             if tuple(item) not in existing_config:
                 data[mapper_key].append(item)
                 existing_config.add(tuple(item)) # Add to existing set
