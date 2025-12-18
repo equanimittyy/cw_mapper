@@ -90,6 +90,25 @@ with open(MAA_SOURCE_PATH, 'r') as f:
 ATTILA_SOURCES = [item['attila_source'] for item in ATTILA_SOURCE_KEYS]
 CK3_SOURCES = [item['ck3_source'] for item in CULTURES_SOURCE_KEYS] + [item['ck3_source'] for item in MAA_SOURCE_KEYS]
 
+def popup_mods_config(mods):
+    cur_CK3_mods = [v for k,v in mods.items() if k == 'CK3']
+    cur_Attila_mods = [v for k,v in mods.items() if k == 'Attila']
+    
+    ck3_col = [[sg.Text('CK3 Mod List', font=('Courier New', 12, 'bold'), text_color='#6D0000', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE, justification='center')],[sg.Text('(No load order, only for tool, one item per line)\nFormat: "Mod Name":"Workshop ID"\nExample: "RICE:2273832430"', font=('Courier New', 10, 'bold'), text_color="#000000", background_color='#DDDDDD', justification='center')],[sg.Multiline(size=(50, 20), key='CK3_MODS_LIST')]]
+    attila_col = [[sg.Text('Attila Mod List', font=('Courier New', 12, 'bold'), text_color='#006D00', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE, justification='center')],[sg.Text('(Load order: Bottom is priority, one item per line)\nFormat: ".pack Name"\nExample: "@@ad_919_1.pack"', font=('Courier New', 10, 'bold'), text_color="#000000", background_color='#DDDDDD', justification='center')],[sg.Multiline(size=(50, 20), key='ATTILA_MODS_LIST')]]
+
+    layout = [
+        [sg.Column(ck3_col, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD', expand_x=True, expand_y=True), sg.Column(attila_col, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD', expand_x=True, expand_y=True)],
+        [sg.Button('OK'), sg.Button('Cancel')]
+    ]
+
+    window = sg.Window('Edit mapper mod configuration', layout, modal=True)
+    event, values = window.read(close=True) # Closes the window after reading the event
+
+    if event == 'OK':
+        return None
+    return None
+
 def popup_mapper_name_input():
     layout = [
         [sg.Text('Enter a name for your mapper:')],
@@ -1105,6 +1124,9 @@ def mapping_window():
             if new_faction_list != None:
                 FACTION_LIST = new_faction_list
                 window[FACTION_KEY].update(values=FACTION_LIST)
+
+        elif event == 'MOD_CONFIG_BUTTON':
+            popup_mods_config(current_mods)
         
         elif event == 'TITLE_EDIT_BUTTON_KEY':
             sg.popup('Title mapping not yet implemented!')
