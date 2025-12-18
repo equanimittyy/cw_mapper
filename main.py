@@ -733,7 +733,7 @@ def mapping_window():
             expand_y=True,
             enable_events=True
         )],
-        [sg.Button('Add Mapping', key='ADD_MAPPING_KEY', size=(15, 2), button_color=('white', '#004D40'), disabled=True),sg.Button('Remove Selected', key='REMOVE_MAPPING_KEY', size=(15, 2), button_color=('white', '#CC0000'), disabled=True),sg.Push(background_color='#DDDDDD'),sg.Button('Edit levy percentages', key='LEVY_PERCENTAGE_BUTTON_KEY',size=(20, 2), button_color=('white', "#444444")),sg.Button('Edit faction list', key='FACTION_LIST_EDIT_BUTTON_KEY', size=(15, 2), button_color=('white', '#444444'))],
+        [sg.Button('Add Mapping', key='ADD_MAPPING_KEY', size=(15, 2), button_color=('white', '#004D40'), disabled=True),sg.Button('Remove Selected', key='REMOVE_MAPPING_KEY', size=(15, 2), button_color=('white', '#CC0000'), disabled=True),sg.Push(background_color='#DDDDDD'),sg.Button('Edit levy percentages', key='LEVY_PERCENTAGE_BUTTON_KEY',size=(20, 2), button_color=('white', "#444444")),sg.Button('Edit faction list', key='FACTION_LIST_EDIT_BUTTON_KEY', size=(15, 2), button_color=('white', '#444444')),sg.Button('Mod configuration', key='MOD_CONFIG_BUTTON', size=(15, 2), button_color=('white', '#444444'))],
         [sg.Button('Copy from faction', key='FACTION_COPY_BUTTON_KEY',size=(15, 2), button_color=('white', "#008670")),sg.Push(background_color='#DDDDDD'),sg.Button('Open Title mapping', key='TITLE_EDIT_BUTTON_KEY', size=(16, 2), button_color=('white', '#F78702')),sg.Button('Open Heritage mapping', key='HERITAGE_EDIT_BUTTON_KEY', size=(20, 2), button_color=('white', '#F78702'))]
     ]
 
@@ -748,8 +748,7 @@ def mapping_window():
             sg.Column(col2_layout, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD',expand_x=True,expand_y=True),
             sg.VSeparator(),
             sg.Column(col3_layout, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD',expand_x=True,expand_y=True)
-        ],
-        [sg.Button('Exit', size=(15, 2), button_color=('white', '#444444'))]
+        ]
     ]
 
     window = sg.Window('Custom Unit Mapper', mapper_layout, finalize=True, element_justification='center',resizable=True)
@@ -789,7 +788,7 @@ def mapping_window():
         is_ready = selected_ck3 is not None and selected_attila is not None and values[FACTION_KEY] != ''
         window['ADD_MAPPING_KEY'].update(disabled=not is_ready)
 
-    def save_mapper(name, faction_mapping, heritage_mapping):
+    def save_mapper(name, faction_mapping, heritage_mapping, mods):
         output_path = os.path.join(CUSTOM_MAPPER_DIR,f'{name}.txt')
         os.makedirs(CUSTOM_MAPPER_DIR, exist_ok=True)
         seperator = ','
@@ -802,6 +801,9 @@ def mapping_window():
                 seperator.join(k):[v]
                 for k,v in heritage_mapping.items()
                 },
+            'MODS':{
+                
+            }
         }
         with open(output_path, 'w', encoding='utf-8-sig') as f:
             json.dump(save_format,f,indent=4)
@@ -873,7 +875,7 @@ def mapping_window():
     while True:
         event, values = window.read()
 
-        if event == sg.WIN_CLOSED or event == 'Exit':
+        if event == sg.WIN_CLOSED:
             break
         
         elif event == 'CK3_LIST_KEY':
@@ -960,11 +962,11 @@ def mapping_window():
 
         elif event == 'SAVE_BUTTON_KEY':
             if MAPPER_NAME:
-                save_mapper(MAPPER_NAME, current_mappings, current_heritage_mappings)
+                save_mapper(MAPPER_NAME, current_mappings, current_heritage_mappings, current_mods)
             else:
                 name = popup_mapper_name_input()
                 if name:
-                    save_mapper(name,current_mappings, current_heritage_mappings)
+                    save_mapper(name,current_mappings, current_heritage_mappings, current_mods)
                     MAPPER_NAME = name
             window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
 
@@ -1108,7 +1110,8 @@ def mapping_window():
                 import_name = xml_import[0]
                 import_maa = xml_import[1]
                 import_heritage = xml_import[2]
-                save_mapper(import_name,import_maa, import_heritage)
+                import_mods = ''
+                save_mapper(import_name,import_maa, import_heritage, import_mods)
 
     window.close()
 
