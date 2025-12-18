@@ -427,7 +427,7 @@ def summary():
             
             # Check if mapping directory, and load map to mod config
             if os.path.isdir(map_folder):
-                print('▶ '+mapping+' ◀', file=sum_f)
+                print('◆ Mapper: '+mapping, file=sum_f)
                 target_config = get_config(mapping)
                 
                 source_ids = []
@@ -436,7 +436,7 @@ def summary():
                     source_ids.append(id)
 
                 print('', file=sum_f)
-                print(f'🛠 Sources: {target_config}', file=sum_f)
+                print(f'\t🛠 Sources: {target_config}', file=sum_f)
 
                 # Set up list of expected culture and MAA keys
                 expected_culture_keys = []
@@ -465,10 +465,10 @@ def summary():
                 
                 missing_mods = set(source_ids) - set(found_mods)
                 if missing_mods:
-                    print(f'↳ ⚠ Sources missing: {missing_mods}', file=sum_f)
+                    print(f'\t↳ ⚠ Sources missing: {missing_mods}\n\tMissing sources can cause inaccuracies when checking for keys', file=sum_f)
                     print('', file=sum_f)
                 else:
-                    print(f'↳ ✓ No sources missing', file=sum_f)
+                    print(f'\t↳ ✓ No missing sources', file=sum_f)
                     print('', file=sum_f)
 
                 # Compare reports to expected keys
@@ -479,7 +479,7 @@ def summary():
                         missing_attila_keys = []
                         # CULTURES
                         if file.endswith('cultures.csv'):
-                            print(f'◆ {file} ', file=sum_f)
+                            print(f'\t⚑ Cultures: ', file=sum_f)
                             file_path = os.path.join(map_folder,file)
 
                             with open(file_path, 'r') as f:
@@ -490,7 +490,7 @@ def summary():
                         
                         # MAN AT ARMS
                         if file.endswith('maa.csv'):
-                            print(f'◆ {file} ', file=sum_f)
+                            print(f'\t⚔ ManAtArms: ', file=sum_f)
                             file_path = os.path.join(map_folder,file)
 
                             with open(file_path, 'r') as f:
@@ -505,18 +505,18 @@ def summary():
 
                         if expected_culture_keys and expected_maa_keys:
                             if missing_keys:
-                                    print(f'↳ ⚠ Missing keys: {len(missing_keys)} missing keys', file=sum_f)
+                                    print(f'\t↳ ⚠ Missing keys: {len(missing_keys)} missing keys', file=sum_f)
                                     for i in range(0, len(missing_keys), output_columns):
                                         row = missing_keys[i:i + output_columns]
                                         formatted_row = " ".join(key.ljust(30) for key in row)
                                         print(formatted_row, file=sum_f)
                                     print('', file=sum_f)
                             else:
-                                print(f'↳ ✓ No missing keys found for {file}', file=sum_f)
+                                print(f'\t↳ ✓ No missing keys found for {file}', file=sum_f)
                                 print('', file=sum_f)
 
                             if missing_attila_keys:
-                                print(f'↳ ⚠ Missing keys from Total War Attila: {len(missing_keys)} missing keys', file=sum_f)
+                                print(f'\t↳ ⚠ Missing keys from Total War Attila: {len(missing_keys)} missing keys', file=sum_f)
                                 for i in range(0, len(missing_keys), output_columns):
                                     row = missing_keys[i:i + output_columns]
                                     formatted_row = " ".join(key.ljust(30) for key in row)
@@ -524,10 +524,10 @@ def summary():
                                 print(', file=sum_f')
                             else:
                                 if file.endswith('maa.csv'):
-                                    print(f'↳ ✓ No missing Attila keys were found for {file}', file=sum_f)
+                                    print(f'\t↳ ✓ No missing Attila keys were found for {file}', file=sum_f)
                                     print('', file=sum_f)
                         else:
-                            print(f'↳ ⚠ Missing all source files for keys: {file}. Skipping...', file=sum_f)
+                            print(f'\t↳ ⚠ Missing all source files for keys: {file}. Skipping...', file=sum_f)
                             print('', file=sum_f)
 
                 else:
