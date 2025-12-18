@@ -108,7 +108,8 @@ def popup_mapper_name_input():
             return name
     return None
 
-def popup_levy_percentage(faction, headings, data):
+def popup_levy_percentage(faction, data):
+    headings = ['Levy','Unit_Key','Percentage']
     percentage_total = sum([int(row[2]) for row in data])
     layout = [
         [sg.Text(f'Total must add up to 100% or crashes will occur:\n\n{faction}')],
@@ -167,6 +168,26 @@ def popup_levy_percentage(faction, headings, data):
 
             else:
                 sg.popup_error('Please select a row in the table first.')
+
+def popup_missing_keys(missing_keys):
+    headings = ['Missing Key', 'Type and Source']
+    layout = [
+        [sg.Text("This is a list of missing keys that the currently loaded mapper is referencing, but not found in your files:\n\nIt is very likely that the missing source comes from a mod you currently do not have installed, or an Attila key you don't have exported.")],
+        [sg.Table(
+            values=missing_keys,
+            headings=headings,
+            key='LEVY_PERCENTAGE_TABLE',
+            max_col_width=30,          
+            auto_size_columns=True,
+            justification='left',
+            num_rows=min(20, len(missing_keys)),
+            row_height=25,
+            expand_x=True
+        )]
+    ]
+
+    window = sg.Window('Missing mapper keys', layout, modal=True)
+    event, values = window.read(close=True) # Closes the window after reading the event
 
 def popup_faction_copy(factions):
     layout = [
@@ -795,7 +816,8 @@ def mapping_window():
 
         faction_data = loaded_data.get('FACTIONS_AND_MAA',{})
         heritage_data = loaded_data.get('HERITAGES_AND_CULTURES', {})
-        
+        missing_keys = []
+
         loaded_faction_mapping = {
             tuple(k.split(seperator)):v
             for k, v in faction_data.items()
@@ -804,10 +826,13 @@ def mapping_window():
             maa = k[0]
             if maa not in NON_MAA_KEYS and maa not in [key['ck3_maa'] for key in MAA_SOURCE_KEYS]:
                 maa_diff = 1
+                if not re.search(r'^LEVY-', maa):
+                    missing_keys.append([maa,'CK3 ManAtArms'])
         for v in loaded_faction_mapping.values():
             attila = v[0]
             if attila not in [key['attila_map_key'] for key in ATTILA_SOURCE_KEYS]:
                 attila_diff = 1
+                missing_keys.append([attila,'Attila Unit'])
         loaded_heritage_mapping = {
             tuple(k.split(seperator)):v[0]
             for k, v in heritage_data.items()
@@ -817,8 +842,10 @@ def mapping_window():
             culture = k[1]
             if heritage not in [key['heritage'] for key in CULTURES_SOURCE_KEYS] and heritage != 'Unassigned':
                 heritage_diff = 1
+                missing_keys.append([heritage,'CK3 Heritage'])
             if culture != 'PARENT_KEY' and culture not in [key['ck3_culture'] for key in CULTURES_SOURCE_KEYS]:
                 culture_diff = 1
+                missing_keys.append([culture,'CK3 Culture'])
 
         if maa_diff == 1:
             diff_message = diff_message + '⚠️ Detected missing MAA source! (CK3/CK3 mods)\n'
@@ -832,8 +859,10 @@ def mapping_window():
         if diff_message:
             sg.popup(f'Warning: Missing sources were detected. This will cause issues with the mapper tool due to missing source keys\n\n{diff_message}\nPlease ensure you have all required sources for this mapper, both CK3 and Attila, for complete and issue free editing:\n• For CK3, ensure you have the required mods installed in Steam\n• For Attila, ensure you have exported all the correct unit key .tsv files')
             overall_diff = 1
+            unique = sorted(set(tuple(x) for x in missing_keys))
+            missing_keys = [list(x) for x in unique]
 
-        return loaded_faction_mapping, loaded_heritage_mapping, overall_diff
+        return loaded_faction_mapping, loaded_heritage_mapping, overall_diff, missing_keys
 
     # END FUNCTIONS
     # ==============================================
@@ -937,7 +966,7 @@ def mapping_window():
             window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
 
         elif event == 'FILE_LOAD_KEY':
-            loaded_faction_mapping, loaded_heritage_mapping, diff = load_mapper(values['FILE_LOAD_KEY'])
+            loaded_faction_mapping, loaded_heritage_mapping, diff, missing_keys = load_mapper(values['FILE_LOAD_KEY'])
             map_name, _ = os.path.splitext(os.path.basename(values['FILE_LOAD_KEY']))
             if loaded_faction_mapping:
                 current_mappings = loaded_faction_mapping
@@ -954,6 +983,9 @@ def mapping_window():
             else:
                 window['SUBTEXT'].update('Each FACTION is assigned to one or many HERITAGE.',text_color="#FFFFFF")
                 window['VIEW_MISSING_BUTTON'].update(visible=False)
+
+        elif event == 'VIEW_MISSING_BUTTON':
+            popup_missing_keys(missing_keys)
 
         elif event == 'ADD_MAPPING_KEY' and selected_ck3 and selected_attila:
             current_faction = values[FACTION_KEY]
@@ -1036,7 +1068,6 @@ def mapping_window():
             current_faction = values[FACTION_KEY]
             filtered_mapping = {}
             table_data = []
-            table_headings = ['Levy','Unit_Key','Percentage']
             if current_faction:
                 filtered_mapping = {
                             key:value
@@ -1045,7 +1076,7 @@ def mapping_window():
             
                 for key, value in filtered_mapping.items():
                     table_data.append([key[0],value[0],value[2]])
-                new_levy_data = popup_levy_percentage(current_faction, table_headings, table_data)
+                new_levy_data = popup_levy_percentage(current_faction, table_data)
                 if new_levy_data:
                     for data in new_levy_data:
                         updated_key = (data[0],current_faction)
