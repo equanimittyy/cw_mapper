@@ -92,10 +92,24 @@ CK3_SOURCES = [item['ck3_source'] for item in CULTURES_SOURCE_KEYS] + [item['ck3
 
 def popup_mods_config(mods):
     cur_CK3_mods = [v for k,v in mods.items() if k == 'CK3']
-    cur_Attila_mods = [v for k,v in mods.items() if k == 'Attila']
+    cur_ATTILA_mods = [v for k,v in mods.items() if k == 'Attila']
+
+    display_CK3_mods = ''
+    display_ATTILA_mods = ''
+
+    if cur_CK3_mods:
+        for v in cur_CK3_mods.values():
+            display_CK3_mods += v[0]+':'+v[1]+'\n'
+    if cur_ATTILA_mods:
+        for v in cur_ATTILA_mods.values():
+            display_ATTILA_mods += v+'\n'
     
-    ck3_col = [[sg.Text('CK3 Mod List', font=('Courier New', 12, 'bold'), text_color='#6D0000', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE, justification='center')],[sg.Text('(No load order, one item per line)\nFormat: "Mod Name":"Workshop ID"\nExample: "RICE:2273832430"', font=('Courier New', 10, 'bold'), text_color="#000000", background_color='#DDDDDD', justification='center')],[sg.Multiline(size=(50, 20), key='CK3_MODS_LIST')]]
-    attila_col = [[sg.Text('Attila Mod List', font=('Courier New', 12, 'bold'), text_color='#006D00', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE, justification='center')],[sg.Text('(Load order: Bottom is priority, one item per line)\nFormat: ".pack Name"\nExample: "@@ad_919_1.pack"', font=('Courier New', 10, 'bold'), text_color="#000000", background_color='#DDDDDD', justification='center')],[sg.Multiline(size=(50, 20), key='ATTILA_MODS_LIST')]]
+    ck3_col = [[sg.Text('CK3 Mod List', font=('Courier New', 12, 'bold'), text_color='#6D0000', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE, justification='center')],
+               [sg.Text('(No load order, one item per line)\nFormat: "Mod Name":"Workshop ID"\nExample: "RICE:2273832430"', font=('Courier New', 10, 'bold'), text_color="#000000", background_color='#DDDDDD', justification='center')],
+               [sg.Multiline(display_CK3_mods, size=(50, 20), key='CK3_MODS_LIST')]]
+    attila_col = [[sg.Text('Attila Mod List', font=('Courier New', 12, 'bold'), text_color='#006D00', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE, justification='center')],
+                [sg.Text('(Load order: Bottom is priority, one item per line)\nFormat: ".pack Name"\nExample: "@@ad_919_1.pack"', font=('Courier New', 10, 'bold'), text_color="#000000", background_color='#DDDDDD', justification='center')],
+                [sg.Multiline(display_ATTILA_mods, size=(50, 20), key='ATTILA_MODS_LIST')]]
 
     layout = [
         [sg.Column(ck3_col, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD', expand_x=True, expand_y=True), sg.Column(attila_col, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD', expand_x=True, expand_y=True)],
@@ -109,6 +123,12 @@ def popup_mods_config(mods):
 
         if event == sg.WIN_CLOSED or event == 'Cancel':
             break
+
+        elif event == 'OK':
+            new_CK3_mods = values['CK3_MODS_LIST']
+            new_ATTILA_mods = values['ATTILA_MODS_LIST']
+            
+            # Add formatting handler
 
     window.close()
 
