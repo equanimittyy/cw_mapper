@@ -40,10 +40,14 @@ def get_config(mapping):
             target_config = config.get(mapping)
     
     if not target_config: # i.e. missing mod configuration
-        with open(MAP_CONFIG, 'w') as f:
+        with open(MAP_CONFIG, 'r') as f:
             config = json.load(f)
-            config[mapping] = []
-            target_config = config.get(mapping)
+        
+        config[mapping] = []
+
+        with open(MAP_CONFIG, 'w') as f:
+            json.dump(config, f, indent=4)
+        target_config = config.get(mapping)
 
     return target_config
 
