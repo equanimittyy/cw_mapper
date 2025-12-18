@@ -717,7 +717,7 @@ def mapping_window():
     mapper_layout = [
         [sg.Image(ASCII_ART_MAPPER)],
         [sg.Text('Create your "MAA => UNIT" mapping, per FACTION here. Each FACTION can have as many "MAA => UNIT" mappings as you like. Any missing "MAA => UNIT" mappings will fallback to faction DEFAULT, or crash if not present.', font=('Courier New', 10, 'bold'), justification='center', expand_x=True)],
-        [sg.Text('Each FACTION is assigned to one or many HERITAGE.', font=('Courier New', 10, 'bold'), key='SUBTEXT', justification='center', expand_x=True)],
+        [sg.Column([[sg.Text('Each FACTION is assigned to one or many HERITAGE.', font=('Courier New', 10, 'bold'), key='SUBTEXT', justification='center'),sg.Button('⚠️ View missing keys', key='VIEW_MISSING_BUTTON', size=(20, 1), button_color=('white', "#CABD2E"), visible=False)]],element_justification='center')],
         [
             sg.Column(col1_layout, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD',expand_x=True,expand_y=True),
             sg.VSeparator(),
@@ -950,8 +950,10 @@ def mapping_window():
             window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
             if diff:
                 window['SUBTEXT'].update('⚠️ Warning: Missing sources for loaded mapper, continue at your own risk!\nRecommended to only add or modify existing maps',text_color="#E9D502")
+                window['VIEW_MISSING_BUTTON'].update(visible=True)
             else:
                 window['SUBTEXT'].update('Each FACTION is assigned to one or many HERITAGE.',text_color="#FFFFFF")
+                window['VIEW_MISSING_BUTTON'].update(visible=False)
 
         elif event == 'ADD_MAPPING_KEY' and selected_ck3 and selected_attila:
             current_faction = values[FACTION_KEY]
