@@ -468,7 +468,7 @@ def summary():
                     print(f'↳ ⚠ Sources missing: {missing_mods}', file=sum_f)
                     print('', file=sum_f)
                 else:
-                    print(f'↳ No sources missing', file=sum_f)
+                    print(f'↳ ✓ No sources missing', file=sum_f)
                     print('', file=sum_f)
 
                 # Compare reports to expected keys
@@ -512,7 +512,7 @@ def summary():
                                         print(formatted_row, file=sum_f)
                                     print('', file=sum_f)
                             else:
-                                print(f'No missing keys found for {file}', file=sum_f)
+                                print(f'↳ ✓ No missing keys found for {file}', file=sum_f)
                                 print('', file=sum_f)
 
                             if missing_attila_keys:
@@ -524,7 +524,7 @@ def summary():
                                 print(', file=sum_f')
                             else:
                                 if file.endswith('maa.csv'):
-                                    print(f'No missing Attila keys were found for {file}', file=sum_f)
+                                    print(f'↳ ✓ No missing Attila keys were found for {file}', file=sum_f)
                                     print('', file=sum_f)
                         else:
                             print(f'↳ ⚠ Missing all source files for keys: {file}. Skipping...', file=sum_f)
