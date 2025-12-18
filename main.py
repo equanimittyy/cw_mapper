@@ -802,7 +802,8 @@ def mapping_window():
                 for k,v in heritage_mapping.items()
                 },
             'MODS':{
-                
+                k:v
+                for k,v in mods.items()
             }
         }
         with open(output_path, 'w', encoding='utf-8-sig') as f:
@@ -821,6 +822,7 @@ def mapping_window():
 
         faction_data = loaded_data.get('FACTIONS_AND_MAA',{})
         heritage_data = loaded_data.get('HERITAGES_AND_CULTURES', {})
+        mod_data = loaded_data.get('MODS',{})
         missing_keys = []
 
         loaded_faction_mapping = {
@@ -838,6 +840,7 @@ def mapping_window():
             if attila not in [key['attila_map_key'] for key in ATTILA_SOURCE_KEYS]:
                 attila_diff = 1
                 missing_keys.append([attila,'Attila Unit'])
+
         loaded_heritage_mapping = {
             tuple(k.split(seperator)):v[0]
             for k, v in heritage_data.items()
@@ -851,6 +854,11 @@ def mapping_window():
             if culture != 'PARENT_KEY' and culture not in [key['ck3_culture'] for key in CULTURES_SOURCE_KEYS]:
                 culture_diff = 1
                 missing_keys.append([culture,'CK3 Culture'])
+
+        loaded_mods = {
+            k:v
+            for k, v in mod_data.items()
+        }
 
         if maa_diff == 1:
             diff_message = diff_message + '⚠️ Detected missing MAA source! (CK3/CK3 mods)\n'
@@ -867,7 +875,7 @@ def mapping_window():
             unique = sorted(set(tuple(x) for x in missing_keys))
             missing_keys = [list(x) for x in unique]
 
-        return loaded_faction_mapping, loaded_heritage_mapping, overall_diff, missing_keys
+        return loaded_faction_mapping, loaded_heritage_mapping, loaded_mods, overall_diff, missing_keys
 
     # END FUNCTIONS
     # ==============================================
@@ -971,7 +979,7 @@ def mapping_window():
             window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
 
         elif event == 'FILE_LOAD_KEY':
-            loaded_faction_mapping, loaded_heritage_mapping, diff, missing_keys = load_mapper(values['FILE_LOAD_KEY'])
+            loaded_faction_mapping, loaded_heritage_mapping, loaded_mods, diff, missing_keys = load_mapper(values['FILE_LOAD_KEY'])
             map_name, _ = os.path.splitext(os.path.basename(values['FILE_LOAD_KEY']))
             if loaded_faction_mapping:
                 current_mappings = loaded_faction_mapping
