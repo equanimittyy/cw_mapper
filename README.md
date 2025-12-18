@@ -34,6 +34,8 @@ checking what MAA/Cultures are needed plus for future use when people will creat
 ↳ ~~☑ Add export functionality~~
 
 ☐ Mapping instructions
+\
+↳ ☐ Mod handling for both CK3 for source keys and Attila for mod load order
 
 ## 💫 Future-state Wishlist
 ☐ Landed Title-based mapping
