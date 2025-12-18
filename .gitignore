@@ -10,6 +10,7 @@ custom_mappers/
 __pycache__
 .vscode
 
+mod_config.json
 summary_log.txt
 
 testing.py
