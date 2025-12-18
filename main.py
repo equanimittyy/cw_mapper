@@ -638,13 +638,16 @@ def mapping_window():
 
     SIZE_LIST = ['MANUAL','CAVALRY','INFANTRY','RANGED']
 
-    # Dictionary to store the actual mappings (CK3 MAA: ATTILA UNIT KEY, per FACTION)
-    
+    # Define global dictionaries of mappers to store the actual mappings (CK3 MAA: ATTILA UNIT KEY, per FACTION)
+    # ==================================================
     MAPPER_NAME = ''
     # Format faction mapping: {(ck3_maa, faction): [attila_unit]} | {tuple: [value]}
     current_mappings = {}
     # Format heritage mapping: {heritage(faction,[culture[faction]]} | {key(value,list[value])}
     current_heritage_mappings = {}
+    current_mods = {}
+    # ==================================================
+
     CK3_SOURCE_KEY = 'CK3_SOURCE_KEY'
     ATTILA_SOURCE_KEY = 'ATTILA_SOURCE_KEY'
     FACTION_KEY = 'FACTION_SELECT_KEY'
