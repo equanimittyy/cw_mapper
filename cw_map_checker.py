@@ -464,8 +464,12 @@ def summary():
                         source_attila_keys.append(key)
                 
                 missing_mods = set(source_ids) - set(found_mods)
-                print(f'↳ ⚠ Sources missing: {missing_mods}', file=sum_f)
-                print('', file=sum_f)
+                if missing_mods:
+                    print(f'↳ ⚠ Sources missing: {missing_mods}', file=sum_f)
+                    print('', file=sum_f)
+                else:
+                    print(f'↳ No sources missing', file=sum_f)
+                    print('', file=sum_f)
 
                 # Compare reports to expected keys
                 files = os.listdir(map_folder)
