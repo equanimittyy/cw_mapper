@@ -86,6 +86,7 @@ def import_xml(import_folder):
     imported_mappings = {}
     # Format heritage mapping: {heritage(faction,[culture[faction]]} | {key(value,list[value])}
     imported_heritage_mappings = {}
+    imported_mods = {}
     # Import folders and important files
     import_cultures = os.path.join(import_folder,'Cultures')
     import_factions = os.path.join(import_folder,'Factions')
@@ -142,7 +143,15 @@ def import_xml(import_folder):
                         percentage = int(key.get('porcentage'))
                         imported_mappings[(maa_key, faction_name)]= [attila_key, size, percentage]
     
-    return imported_mappings, imported_heritage_mappings
+    # Mods
+    tree = ET.parse(import_mods)
+    root = tree.getroot()
+    imported_mods['Attila'] = []
+    for mod in root:
+        imported_mods['Attila'].append(mod.text)
+
+
+    return imported_mappings, imported_heritage_mappings, imported_mods
                         
 def export_xml(file, NON_MAA_KEYS, tag, s_date, e_date):
     file_name, _ = os.path.splitext(os.path.split(file)[1])

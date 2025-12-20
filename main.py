@@ -98,10 +98,10 @@ def popup_mods_config(mods):
     display_ATTILA_mods = ''
 
     if cur_CK3_mods:
-        for v in cur_CK3_mods.values():
+        for v in cur_CK3_mods[0]:
             display_CK3_mods += v[0]+':'+v[1]+'\n'
     if cur_ATTILA_mods:
-        for v in cur_ATTILA_mods.values():
+        for v in cur_ATTILA_mods[0]:
             display_ATTILA_mods += v+'\n'
     
     ck3_col = [[sg.Text('CK3 Mod List', font=('Courier New', 12, 'bold'), text_color='#6D0000', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE, justification='center')],
@@ -378,10 +378,10 @@ def popup_xml_import_export():
                 sg.popup_error('Error: Not a valid mapping directory!',title='Directory Error')
             else:
                 _, mapper_name = os.path.split(import_folder)
-                imported_maa_map, imported_heritage_map = import_xml(import_folder)
+                imported_maa_map, imported_heritage_map, imported_mods = import_xml(import_folder)
                 sg.popup(f"Mapper '{mapper_name}' imported!\n\nLoad the mapper using the 'Load' button")
                 window.close()
-                return mapper_name, imported_maa_map, imported_heritage_map
+                return mapper_name, imported_maa_map, imported_heritage_map, imported_mods
 
     if event == 'Export':
         export_mapper_file = sg.popup_get_file(title='Find mapper file to export',message='Please select the mapping file you wish to export',initial_folder=CUSTOM_MAPPER_DIR)
@@ -1026,6 +1026,7 @@ def mapping_window():
             if loaded_faction_mapping:
                 current_mappings = loaded_faction_mapping
                 current_heritage_mappings = loaded_heritage_mapping
+                current_mods = loaded_mods
                 available_factions = list(set([item[0][1] for item in current_mappings.items()]))
                 FACTION_LIST = sorted(available_factions)
             MAPPER_NAME = map_name
@@ -1163,7 +1164,7 @@ def mapping_window():
                 import_name = xml_import[0]
                 import_maa = xml_import[1]
                 import_heritage = xml_import[2]
-                import_mods = ''
+                import_mods = xml_import[3]
                 save_mapper(import_name,import_maa, import_heritage, import_mods)
 
     window.close()
