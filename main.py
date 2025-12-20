@@ -125,11 +125,16 @@ def popup_mods_config(mods):
             break
 
         elif event == 'OK':
-            new_CK3_mods = values['CK3_MODS_LIST']
-            new_ATTILA_mods = values['ATTILA_MODS_LIST']
-            
-            # Add formatting handler
+            new_mods = {}
+            new_CK3_mods = values['CK3_MODS_LIST'].splitlines()
+            new_CK3_mods = [mod.strip() for mod in new_CK3_mods if mod.strip()]
 
+            new_ATTILA_mods = values['ATTILA_MODS_LIST'].splitlines()
+            new_ATTILA_mods = [mod.strip() for mod in new_ATTILA_mods if mod.strip()]
+            
+            new_mods['CK3'] = new_CK3_mods
+            new_mods['Attila'] = new_ATTILA_mods
+            return new_mods
     window.close()
 
 def popup_mapper_name_input():
