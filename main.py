@@ -99,7 +99,7 @@ def popup_mods_config(mods):
 
     if cur_CK3_mods:
         for v in cur_CK3_mods[0]:
-            display_CK3_mods += v[0]+':'+v[1]+'\n'
+            display_CK3_mods += v+'\n'
     if cur_ATTILA_mods:
         for v in cur_ATTILA_mods[0]:
             display_ATTILA_mods += v+'\n'
@@ -134,6 +134,7 @@ def popup_mods_config(mods):
             
             new_mods['CK3'] = new_CK3_mods
             new_mods['Attila'] = new_ATTILA_mods
+            window.close()
             return new_mods
     window.close()
 
@@ -1155,7 +1156,9 @@ def mapping_window():
                 window[FACTION_KEY].update(values=FACTION_LIST)
 
         elif event == 'MOD_CONFIG_BUTTON':
-            popup_mods_config(current_mods)
+            new_mods = popup_mods_config(current_mods)
+            if new_mods:
+                current_mods = new_mods
         
         elif event == 'TITLE_EDIT_BUTTON_KEY':
             sg.popup('Title mapping not yet implemented!')
