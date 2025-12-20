@@ -174,6 +174,7 @@ def export_xml(file, NON_MAA_KEYS, tag, s_date, e_date):
         export_dict = json.load(f)
         faction_data = export_dict.get('FACTIONS_AND_MAA',{})
         heritage_data = export_dict.get('HERITAGES_AND_CULTURES', {})
+        mod_data = export_dict.get('MODS', {})
 
         # Load mappings for export
         loaded_faction_mapping = {
@@ -183,6 +184,10 @@ def export_xml(file, NON_MAA_KEYS, tag, s_date, e_date):
         loaded_heritage_mapping = {
             tuple(k.split(seperator)):v[0]
             for k, v in heritage_data.items()
+        }
+        loaded_mods = {
+            k:v
+            for k,v in mod_data.items()
         }
 
     def sort_factions(item):
@@ -290,5 +295,21 @@ def export_xml(file, NON_MAA_KEYS, tag, s_date, e_date):
         # Fallback for older Python versions
         pass
     date_tree.write(date_output, encoding="utf-8", xml_declaration=True, short_empty_elements=False)
+
+    # Create mod file
+    mod_output = export_mods
+    mod_root = ET.Element("Mods")
+    mod_list = [v for k, v in loaded_mods.items() if k == 'Attila']
+    for mod in mod_list[0]:
+        mod_child = ET.SubElement(mod_root, 'Mod')
+        mod_child.text = mod
+    mod_tree = ET.ElementTree(mod_root)
+    try:
+        # Use ET.indent for cleaner output in Python 3.9+
+        ET.indent(mod_tree, space="\t", level=0)
+    except AttributeError:
+        # Fallback for older Python versions
+        pass
+    mod_tree.write(mod_output, encoding="utf-8", xml_declaration=True, short_empty_elements=False)
 
     return export_dir
