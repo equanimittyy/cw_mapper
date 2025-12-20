@@ -4,6 +4,7 @@ import os
 import re
 import sys
 import csv
+import json
 import webbrowser
 import xml.etree.ElementTree as ET
 
@@ -26,6 +27,7 @@ MAPPER_DIR = '../../unit mappers/attila'
 SETTINGS_DIR = '../../data/settings'
 REPORT_OUTPUT_DIR = 'reports'
 os.makedirs(REPORT_OUTPUT_DIR,exist_ok=True) # Ensure the report directory exists
+os.chdir(WORKING_DIR)
 
 CONFIG_DIR = os.path.join('config')
 target_config = os.path.join(CONFIG_DIR,'mod_config.json')
@@ -33,18 +35,15 @@ target_config = os.path.join(CONFIG_DIR,'mod_config.json')
 with open("ascii.txt", 'r') as f:
     ASCII = f.read()
 
-CK3_MODS = {
-            'Africa Plus' : '3401420817',
-            'Buffed Mongol Invasion' : '2796578078',
-            'Cultures Expanded' : '2829397295',
-            'More Traditions v2' : '2893793966',
-            'Muslim Enhancements' : '2241658518',
-            'RICE' : '2273832430',
-            'Fallen Eagle' : '2243307127',
-            'Realms in Exile' : '2291024373',
-            'AGOT' : '2962333032'
-        }
-os.chdir(WORKING_DIR)
+# Set CK3_MODS to check whatever is in config
+CK3_MODS = {}
+with open(target_config, 'r') as f:
+    data = json.load(f)
+    for map in data.items():
+        for mod in map[1]:
+            mod_name = mod[0]
+            mod_id = str(mod[1])
+            CK3_MODS[mod_name] = mod_id
 
 def get_cw_config():
     # Handle improper .ini structure and pass through configparser
@@ -100,16 +99,6 @@ def get_keys(cw_config):
             df['attila_source'] = source_name
             # Append loop
             df_attila = pd.concat([df_attila, df])
-
-    # CK3 + MODS CULTURE KEYS
-    # while False:
-    #     if key_input.strip() == '':
-    #         print('No further mod input.')
-    #         break
-    #     CK3_MODS[key_input] = value_input
-    print()
-    print(f'== CK3 mods to check: {CK3_MODS} ==')
-    print()
     
     ck3_culture_dir = os.path.join(ck3_dir_path,'game','common','culture','cultures')
     ck3_culture_dir_hybrid = os.path.join(ck3_dir_path,'game','common','culture','creation_names')
