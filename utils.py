@@ -76,13 +76,11 @@ def add_map_config(mapper_name, mods):
     if mapper_name not in data:
         data[mapper_name] = new_ck3_mods
     else:
-        existing_config = set((tuple(item)) for item in data[mapper_name])
+        data[mapper_name] = []
         for v in cur_CK3_mods[0]:
             name, id = v.split(':', 1)
             mod = tuple((name, int(id)))
-            if mod not in existing_config:
-                data[mapper_name].append(mod)
-                existing_config.add(mod) # Add to existing set
+            data[mapper_name].append(mod)
     
     try:
         with open(MAP_CONFIG, 'w') as f:
