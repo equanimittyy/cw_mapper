@@ -51,7 +51,7 @@ def get_config(mapping):
 
     return target_config
 
-def add_map_config(mapper_key, mod_config: List[Tuple[str,int]]):
+def add_map_config(mapper_name, mods):
     # Open the config, and initialise if missing
     try:
         with open (MAP_CONFIG, 'r') as f:
@@ -65,19 +65,29 @@ def add_map_config(mapper_key, mod_config: List[Tuple[str,int]]):
         print(f'ERROR: {e}, the file {MAP_CONFIG} exists but is not valid JSON or is corrupt')
         exit(1) # Exit with an error
 
-    if mapper_key not in data:
-        data[mapper_key] = mod_config
+    cur_CK3_mods = [v for k,v in mods.items() if k == 'CK3']
+    new_ck3_mods = []
+    if cur_CK3_mods:
+        for v in cur_CK3_mods[0]:
+            name, id = v.split(':', 1)
+            mod = tuple((name, int(id)))
+            new_ck3_mods.append(mod)
+
+    if mapper_name not in data:
+        data[mapper_name] = new_ck3_mods
     else:
-        existing_config = set((tuple(item)) for item in data[mapper_key])
-        for item in mod_config:
-            if tuple(item) not in existing_config:
-                data[mapper_key].append(item)
-                existing_config.add(tuple(item)) # Add to existing set
+        existing_config = set((tuple(item)) for item in data[mapper_name])
+        for v in cur_CK3_mods[0]:
+            name, id = v.split(':', 1)
+            mod = tuple((name, int(id)))
+            if mod not in existing_config:
+                data[mapper_name].append(mod)
+                existing_config.add(mod) # Add to existing set
     
     try:
         with open(MAP_CONFIG, 'w') as f:
             json.dump(data, f, indent=4)
-        print(f'Successfully updated {MAP_CONFIG} with {mapper_key}')
+        print(f'Successfully updated {MAP_CONFIG} with {mapper_name}')
     except Exception as e:
         print(f'Error: {e}, error occurred while writing to config file')
 

@@ -11,7 +11,7 @@ import FreeSimpleGUI as sg
 
 import cw_map_checker
 
-from utils import init_map_config, import_xml, export_xml 
+from utils import init_map_config, import_xml, export_xml, add_map_config
 
 if getattr(sys, 'frozen', False):
     application_path = os.path.dirname(sys.executable)
@@ -29,7 +29,7 @@ ATTILA_EXPORT_DIR = os.path.join(WORKING_DIR, 'attila_exports','db','main_units_
 REPORT_OUTPUT_DIR = 'reports'
 CUSTOM_MAPPER_DIR = 'custom_mappers'
 
-MOD_LIST = []
+CONFIG = os.path.join('config','mod_config.json')
 
 # Key sources
 ATTILA_SOURCE_KEYS = []
@@ -1019,11 +1019,14 @@ def mapping_window():
         elif event == 'SAVE_BUTTON_KEY':
             if MAPPER_NAME:
                 save_mapper(MAPPER_NAME, current_mappings, current_heritage_mappings, current_mods)
+                add_map_config(MAPPER_NAME, current_mods)
+
             else:
                 name = popup_mapper_name_input()
                 if name:
                     save_mapper(name,current_mappings, current_heritage_mappings, current_mods)
                     MAPPER_NAME = name
+                    add_map_config(MAPPER_NAME, current_mods)
             window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
 
         elif event == 'FILE_LOAD_KEY':
@@ -1174,6 +1177,7 @@ def mapping_window():
                 import_heritage = xml_import[2]
                 import_mods = xml_import[3]
                 save_mapper(import_name,import_maa, import_heritage, import_mods)
+                add_map_config(import_name, import_mods)
 
     window.close()
 
