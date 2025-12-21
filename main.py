@@ -365,7 +365,7 @@ def popup_size_manual():
             else:
                 sg.popup('Input cannot be empty!', auto_close=True, auto_close_duration=2, title='Error')
 
-def popup_xml_import_export():
+def popup_xml_import_export(config):
     cw_mapper_dir = os.path.join(CW_DIR,'unit mappers','attila')
 
     layout = [
@@ -384,6 +384,14 @@ def popup_xml_import_export():
             else:
                 _, mapper_name = os.path.split(import_folder)
                 imported_maa_map, imported_heritage_map, imported_mods = import_xml(import_folder)
+                # Finally, add to imported_mods if the name of mod is found in config
+                with open(config, 'r') as f:
+                    data = json.load(f)
+                    ck3_mods = [v for k,v in data.items() if k == mapper_name][0]
+                    imported_mods['CK3'] = []
+                    for mod in ck3_mods:
+                        imported_mods['CK3'] += [mod[0]+':'+str(mod[1])]
+
                 sg.popup(f"Mapper '{mapper_name}' imported!\n\nLoad the mapper using the 'Load' button")
                 window.close()
                 return mapper_name, imported_maa_map, imported_heritage_map, imported_mods
@@ -1169,7 +1177,7 @@ def mapping_window():
             current_heritage_mappings = heritage_window(current_heritage_mappings, FACTION_LIST)
 
         elif event == 'XML_BUTTON':
-            xml_import = popup_xml_import_export()
+            xml_import = popup_xml_import_export(CONFIG)
             if xml_import:
                 import_name = xml_import[0]
                 import_maa = xml_import[1]

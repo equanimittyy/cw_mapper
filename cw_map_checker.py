@@ -13,7 +13,7 @@ from io import StringIO
 import configparser
 import pandas as pd
 
-from utils import get_config
+from utils import get_config, init_map_config
 
 if getattr(sys, 'frozen', False):
     application_path = os.path.dirname(sys.executable)
@@ -37,6 +37,9 @@ with open("ascii.txt", 'r') as f:
 
 # Set CK3_MODS to check whatever is in config
 CK3_MODS = {}
+if not os.path.exists(target_config):
+    init_map_config()
+
 with open(target_config, 'r') as f:
     data = json.load(f)
     for map in data.items():
