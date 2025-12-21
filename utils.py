@@ -30,14 +30,9 @@ def init_map_config():
 def get_config(mapping):
     vanilla_mappers = ["OfficialCW_EarlyMedieval_919Mod", "OfficialCW_HighMedieval_MK1212Mod","OfficialCW_LateMedieval_MK1212Mod","OfficialCW_Rennaisance_MK1212Mod"]
     target_config = []
-    if mapping in vanilla_mappers:
-        with open(MAP_CONFIG, 'r') as f:
-            config = json.load(f)
-            target_config = config.get("CW_VANILLA")
-    else:
-       with open(MAP_CONFIG, 'r') as f:
-            config = json.load(f)
-            target_config = config.get(mapping)
+    with open(MAP_CONFIG, 'r') as f:
+        config = json.load(f)
+        target_config = config.get(mapping)
     
     if not target_config: # i.e. missing mod configuration
         with open(MAP_CONFIG, 'r') as f:

@@ -65,10 +65,9 @@ DEFAULT_LEVY_PERCENTAGES = {
 }
 
 # If none of the source files exists, run the check program to refresh files
-if not os.path.exists(ATTILA_SOURCE_PATH) or not os.path.exists(CULTURES_SOURCE_PATH) or not os.path.exists(MAA_SOURCE_PATH):
-    init_map_config()
-    cw_map_checker.mapping_validation(*cw_map_checker.get_keys(cw_map_checker.get_cw_config()))
-    cw_map_checker.summary()
+init_map_config()
+cw_map_checker.mapping_validation(*cw_map_checker.get_keys(cw_map_checker.get_cw_config()))
+cw_map_checker.summary()
 
 with open (ATTILA_SOURCE_PATH, 'r') as f:
     key_data = csv.DictReader(f)
