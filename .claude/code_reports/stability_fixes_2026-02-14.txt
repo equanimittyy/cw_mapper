@@ -1,0 +1,181 @@
+================================================================================
+    CRUSADER WARS MAPPER - STABILITY FIX REPORT
+    Date: 2026-02-14
+================================================================================
+
+SUMMARY
+-------
+10 stability issues were identified and fixed across 3 source files.
+All fixes passed Python syntax validation after being applied.
+
+    Files modified:
+        - cw_map_checker.py  (4 fixes)
+        - utils.py           (1 fix)
+        - main.py            (5 fixes)
+
+    Severity breakdown:
+        - CRITICAL (crashes the program):  7
+        - HIGH (silently produces wrong results):  3
+
+
+================================================================================
+                            cw_map_checker.py
+================================================================================
+
+FIX #1 - DictReader consumed twice in summary()
+    Severity:   HIGH (silent data loss)
+    Location:   summary() -> MAA report section, ~line 491
+    Problem:    The csv.DictReader for the MAA report was iterated once to
+                build `report_maa`, then iterated again to build
+                `report_attila_keys`. Since DictReader is a one-pass
+                iterator, the second iteration always yielded an empty
+                list. This meant Attila key validation was completely
+                non-functional - missing Attila keys were never reported.
+    Fix:        Materialised the DictReader into a list() on first read
+                so it can be iterated multiple times.
+
+--------------------------------------------------------------------------------
+
+FIX #2 - Misplaced quote in print statement
+    Severity:   HIGH (silent wrong output)
+    Location:   summary() -> missing Attila keys section, ~line 516
+    Problem:    The line read: print(', file=sum_f')
+                The closing quote was in the wrong position, making
+                "file=sum_f" part of the string literal instead of a
+                keyword argument. This printed the literal text
+                "', file=sum_f'" to stdout instead of writing a blank
+                line to the summary log file.
+    Fix:        Corrected to: print('', file=sum_f)
+
+--------------------------------------------------------------------------------
+
+FIX #3 - DataFrames reset to None breaking multi-mapper loops
+    Severity:   CRITICAL (crash on second mapper)
+    Location:   mapping_validation(), ~lines 384-385
+    Problem:    After processing each mapper in the loop, df_cultures and
+                df_maa were set to None. On the next loop iteration,
+                pd.concat([None, pd.DataFrame(...)]) would raise a
+                TypeError, crashing the program. This meant only the
+                first mapper in the directory was ever processed.
+    Fix:        Changed `None` to `pd.DataFrame()` so subsequent
+                iterations can concatenate properly.
+
+--------------------------------------------------------------------------------
+
+FIX #9 - Missing directory check before os.scandir on mod directory
+    Severity:   CRITICAL (crash if mod dir missing)
+    Location:   get_keys(), ~lines 167 and 253
+    Problem:    os.scandir(ck3_mod_dir) was called without checking if
+                the directory exists. If the Steam Workshop content
+                directory was not at the expected path (e.g. different
+                Steam library location, no mods installed), the program
+                would crash with a FileNotFoundError.
+    Fix:        Added os.path.exists() guard before each scandir call.
+                If the directory is missing, a warning is printed and
+                mod scanning is skipped gracefully.
+
+
+================================================================================
+                                utils.py
+================================================================================
+
+FIX #4 - Recursive call with missing arguments in add_map_config()
+    Severity:   CRITICAL (crash on config recovery)
+    Location:   add_map_config(), ~line 58
+    Problem:    In the FileNotFoundError except block, the function
+                called itself recursively as add_map_config() with no
+                arguments. The function signature requires (mapper_name,
+                mods), so this would immediately crash with a TypeError,
+                defeating the purpose of the recovery logic.
+    Fix:        Passed through the original arguments:
+                add_map_config(mapper_name, mods), and added a return
+                statement to avoid executing the rest of the function
+                with uninitialised `data`.
+
+
+================================================================================
+                                 main.py
+================================================================================
+
+FIX #5 - Broken faction copy conflict check
+    Severity:   HIGH (silently creates duplicate mappings)
+    Location:   mapping_window() -> FACTION_COPY_BUTTON_KEY handler,
+                ~lines 1130-1133
+    Problem:    The conflict detection loop was:
+                    for key in mapping_key:
+                        if key in current_mappings: ...
+                Since mapping_key is a tuple like ("light_footmen",
+                "DEFAULT"), `for key in mapping_key` iterated over the
+                individual strings. Then `if key in current_mappings`
+                checked if a bare string existed as a key in a dict
+                with tuple keys - this would never match. Conflict
+                detection was completely non-functional.
+    Fix:        Replaced the loop with a direct check:
+                    if mapping_key in current_mappings:
+                        del current_mappings[mapping_key]
+
+--------------------------------------------------------------------------------
+
+FIX #6 - Unhandled int() conversion crash in levy percentage popup
+    Severity:   CRITICAL (crash on bad input)
+    Location:   popup_levy_percentage() -> UPDATE_LEVY handler, ~line 204
+    Problem:    int(values['LEVY_PERCENTAGE_INPUT']) was called without
+                error handling. If the user entered non-numeric text,
+                left the field empty, or pasted invalid characters, the
+                popup would crash with a ValueError.
+    Fix:        Wrapped in try/except (ValueError, TypeError) with a
+                user-facing error popup prompting for valid input.
+
+--------------------------------------------------------------------------------
+
+FIX #7 - IndexError on XML import when mapper not in config
+    Severity:   CRITICAL (crash during import)
+    Location:   popup_xml_import_export() -> Import handler, ~line 390
+    Problem:    The line:
+                    ck3_mods = [v for k,v in data.items() if k == mapper_name][0]
+                would crash with an IndexError if the imported mapper
+                name was not found in mod_config.json (e.g. importing a
+                mapper from another user or a new mapper not yet
+                configured).
+    Fix:        Split into a two-step check: build the match list first,
+                then check if empty. If no match found, shows an
+                informational popup and continues with an empty CK3 mod
+                list instead of crashing.
+
+--------------------------------------------------------------------------------
+
+FIX #8 - Module-level validation crash prevents GUI from loading
+    Severity:   CRITICAL (program won't start)
+    Location:   Module-level code, ~lines 68-70 and 72-90
+    Problem:    At module load time, the program unconditionally ran:
+                    cw_map_checker.mapping_validation(...)
+                    cw_map_checker.summary()
+                and then unconditionally opened report CSV files. If CK3
+                was not installed, GamePaths.ini was missing, or the
+                Attila exports were absent, the program would crash
+                with sys.exit(1) or FileNotFoundError before the GUI
+                window ever appeared.
+    Fix:        Wrapped the validation calls in try/except so failures
+                are caught and logged. Added os.path.exists() guards
+                around all three CSV file reads. The GUI now loads
+                regardless, and users can use "Refresh Current Mappers"
+                to retry.
+
+--------------------------------------------------------------------------------
+
+FIX #10 - h_count / parent_faction used before assignment
+    Severity:   CRITICAL (crash on corrupted data)
+    Location:   heritage_window() -> refresh_display_lists(), ~lines
+                506-535
+    Problem:    Two loops referenced `h_count` and `parent_faction`
+                without initialising them before the loop. If the first
+                item in the sorted heritage list was not a PARENT_KEY
+                (possible with corrupted or partial mapper data), Python
+                would raise a NameError, crashing the heritage editor.
+    Fix:        Initialised h_count = 0 and parent_faction = '' before
+                each loop.
+
+
+================================================================================
+                              END OF REPORT
+================================================================================

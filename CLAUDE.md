@@ -146,3 +146,7 @@ NOTE: If 'Levies', the 'porcentage' (mispelling of percentage) of all Levies mus
 
 - Built as executable via PyInstaller (`main.spec`)
 - Distributed as `cw_mapper.zip`
+
+## Reporting
+
+- Any code changes and implementations are to be summarised in a human-readable format in workspace/.claude/code_reports in .txt format.

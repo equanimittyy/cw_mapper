@@ -66,25 +66,33 @@ DEFAULT_LEVY_PERCENTAGES = {
 
 # If none of the source files exists, run the check program to refresh files
 init_map_config()
-cw_map_checker.mapping_validation(*cw_map_checker.get_keys(cw_map_checker.get_cw_config()))
-cw_map_checker.summary()
+try:
+    cw_map_checker.mapping_validation(*cw_map_checker.get_keys(cw_map_checker.get_cw_config()))
+    cw_map_checker.summary()
+except (FileNotFoundError, SystemExit, Exception) as e:
+    print(f'Warning: Initial validation could not complete: {e}')
+    print('The GUI will still load. Use "Refresh Current Mappers" to retry.')
 
-with open (ATTILA_SOURCE_PATH, 'r') as f:
-    key_data = csv.DictReader(f)
-    for key in key_data:
-        ATTILA_SOURCE_KEYS.append({'attila_map_key':key['attila_map_key'],'attila_source':key['attila_source']})
+if os.path.exists(ATTILA_SOURCE_PATH):
+    with open (ATTILA_SOURCE_PATH, 'r') as f:
+        key_data = csv.DictReader(f)
+        for key in key_data:
+            ATTILA_SOURCE_KEYS.append({'attila_map_key':key['attila_map_key'],'attila_source':key['attila_source']})
 
-with open(CULTURES_SOURCE_PATH, 'r') as f:
-    key_data = csv.DictReader(f)
-    for key in key_data:
-        CULTURES_SOURCE_KEYS.append({'ck3_culture':key['ck3_culture'],'heritage':key['ck3_heritage'],'ck3_source':key['ck3_source']})
+if os.path.exists(CULTURES_SOURCE_PATH):
+    with open(CULTURES_SOURCE_PATH, 'r') as f:
+        key_data = csv.DictReader(f)
+        for key in key_data:
+            CULTURES_SOURCE_KEYS.append({'ck3_culture':key['ck3_culture'],'heritage':key['ck3_heritage'],'ck3_source':key['ck3_source']})
 
-with open(MAA_SOURCE_PATH, 'r') as f:
-    key_data = csv.DictReader(f)
-    for key in key_data:
-        MAA_SOURCE_KEYS.append({'ck3_maa':key['ck3_maa'],'ck3_source':key['ck3_source']})
-    for maa in NON_MAA_KEYS:
-        MAA_SOURCE_KEYS.append({'ck3_maa':maa,'ck3_source':'CW'})
+if os.path.exists(MAA_SOURCE_PATH):
+    with open(MAA_SOURCE_PATH, 'r') as f:
+        key_data = csv.DictReader(f)
+        for key in key_data:
+            MAA_SOURCE_KEYS.append({'ck3_maa':key['ck3_maa'],'ck3_source':key['ck3_source']})
+
+for maa in NON_MAA_KEYS:
+    MAA_SOURCE_KEYS.append({'ck3_maa':maa,'ck3_source':'CW'})
 
 ATTILA_SOURCES = [item['attila_source'] for item in ATTILA_SOURCE_KEYS]
 CK3_SOURCES = [item['ck3_source'] for item in CULTURES_SOURCE_KEYS] + [item['ck3_source'] for item in MAA_SOURCE_KEYS]
@@ -201,7 +209,11 @@ def popup_levy_percentage(faction, data):
                 selected_row_index = values['LEVY_PERCENTAGE_TABLE'][0]
                 
                 # Get the new values from the Input fields
-                new_percentage = int(values['LEVY_PERCENTAGE_INPUT']) # Ensure Strength is int for consistency
+                try:
+                    new_percentage = int(values['LEVY_PERCENTAGE_INPUT'])
+                except (ValueError, TypeError):
+                    sg.popup_error('Please enter a valid number for the percentage.')
+                    continue
 
                 # Update the data structure
                 data[selected_row_index][2] = new_percentage
@@ -387,10 +399,14 @@ def popup_xml_import_export(config):
                 # Finally, add to imported_mods if the name of mod is found in config
                 with open(config, 'r') as f:
                     data = json.load(f)
-                    ck3_mods = [v for k,v in data.items() if k == mapper_name][0]
+                    ck3_mods_match = [v for k,v in data.items() if k == mapper_name]
                     imported_mods['CK3'] = []
-                    for mod in ck3_mods:
-                        imported_mods['CK3'] += [mod[0]+':'+str(mod[1])]
+                    if not ck3_mods_match:
+                        sg.popup(f"Note: No CK3 mod configuration found for '{mapper_name}' in config.\nYou can configure mods after loading the mapper.")
+                    else:
+                        ck3_mods = ck3_mods_match[0]
+                        for mod in ck3_mods:
+                            imported_mods['CK3'] += [mod[0]+':'+str(mod[1])]
 
                 sg.popup(f"Mapper '{mapper_name}' imported!\n\nLoad the mapper using the 'Load' button")
                 window.close()
@@ -487,6 +503,7 @@ def heritage_window(heritage_mapping_dict, factions):
 
         heritage_mapping_dict = dict(sorted(heritage_mapping_dict.items(), key=sort_heritages_key))
         # Available heritages
+        h_count = 0
         for pair in available_heritages:
             if pair[1] == 'PARENT_KEY':
                 h_count = 1
@@ -507,6 +524,8 @@ def heritage_window(heritage_mapping_dict, factions):
         window['HERITAGE_AVAILABLE_LIST'].update(visible = True)
 
         # Mapped heritages
+        h_count = 0
+        parent_faction = ''
         for pair in heritage_mapping_dict:
             faction = heritage_mapping_dict[pair]
             if pair[1] == 'PARENT_KEY':
@@ -1127,10 +1146,8 @@ def mapping_window():
                     mapping_key = (copied_key[0], current_faction)
 
                     # Check for conflicts (CK3 unit + Faction combination already mapped), and overwrite if so.
-                    for key in mapping_key:
-                        if key in current_mappings:
-                            key_to_remove = (key[0], current_faction)
-                            del current_mappings[key_to_remove]
+                    if mapping_key in current_mappings:
+                        del current_mappings[mapping_key]
                     current_mappings[mapping_key] = copied_value
                     # Update the displayed list
                 update_mappings_list(window, current_mappings)

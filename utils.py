@@ -55,7 +55,8 @@ def add_map_config(mapper_name, mods):
         print(f'WARNING: {e}, config file not found in {CONFIG_DIR}. Initialising config and trying again')
         print(f'Initialising {MAP_CONFIG} with defaults')
         init_map_config()
-        add_map_config()
+        add_map_config(mapper_name, mods)
+        return
     except json.JSONDecodeError as e:
         print(f'ERROR: {e}, the file {MAP_CONFIG} exists but is not valid JSON or is corrupt')
         exit(1) # Exit with an error

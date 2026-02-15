@@ -164,65 +164,66 @@ def get_keys(cw_config):
                 })
 
     # Obtain additional cultures from CK3 mods
-    for folders in os.scandir(ck3_mod_dir):
-        if folders.name in CK3_MODS.values():
-            ck3_mod_culture_dir = os.path.join(ck3_mod_dir,folders.name,'common','culture','cultures')
-            ck3_mod_culture_dir_hybrid = os.path.join(ck3_mod_dir,folders.name,'common','culture','creation_names')
-            mod_name = list(CK3_MODS.keys())[list(CK3_MODS.values()).index(folders.name)]
-            print(f'== Finding mod culture files in: {folders.name} ==')
+    if not os.path.exists(ck3_mod_dir):
+        print(f'== CK3 mod directory not found: {ck3_mod_dir}, skipping mod cultures ==')
+    else:
+        for folders in os.scandir(ck3_mod_dir):
+            if folders.name in CK3_MODS.values():
+                ck3_mod_culture_dir = os.path.join(ck3_mod_dir,folders.name,'common','culture','cultures')
+                ck3_mod_culture_dir_hybrid = os.path.join(ck3_mod_dir,folders.name,'common','culture','creation_names')
+                mod_name = list(CK3_MODS.keys())[list(CK3_MODS.values()).index(folders.name)]
+                print(f'== Finding mod culture files in: {folders.name} ==')
 
-            if os.path.exists(ck3_mod_culture_dir):
-                for file in os.listdir(ck3_mod_culture_dir):
-                    if file.endswith('.txt'):
-                        source_file = os.path.join(ck3_mod_culture_dir,file)
-                        source_name = os.path.basename(source_file)
+                if os.path.exists(ck3_mod_culture_dir):
+                    for file in os.listdir(ck3_mod_culture_dir):
+                        if file.endswith('.txt'):
+                            source_file = os.path.join(ck3_mod_culture_dir,file)
+                            source_name = os.path.basename(source_file)
 
-                        with open (source_file, 'r', encoding="utf-8-sig") as culture_txt_file:
-                            data = culture_txt_file.read()
-                        culture_data = re.findall(r"^(\w+)\s=\s\{\n([\s\S]*?)\n\}$", data, re.M | re.S)
+                            with open (source_file, 'r', encoding="utf-8-sig") as culture_txt_file:
+                                data = culture_txt_file.read()
+                            culture_data = re.findall(r"^(\w+)\s=\s\{\n([\s\S]*?)\n\}$", data, re.M | re.S)
 
-                        for data in culture_data:
-                            culture_name = data[0]
-                            heritage = re.findall(r"=\s(heritage_\w+).*[\n|\t]", data[1])
-                            if not heritage:
-                                heritage_name = ''
-                            else:
-                                heritage_name = heritage[0]
-                            # heritage = [info for info in culture_info_list if info]
-                            ck3_rows.append({
-                                "ck3_culture":culture_name,
-                                "ck3_heritage":heritage_name,
-                                "ck3_source_file":source_name,
-                                "ck3_source":mod_name,
-                                "mod_id":folders.name
-                            })
+                            for data in culture_data:
+                                culture_name = data[0]
+                                heritage = re.findall(r"=\s(heritage_\w+).*[\n|\t]", data[1])
+                                if not heritage:
+                                    heritage_name = ''
+                                else:
+                                    heritage_name = heritage[0]
+                                ck3_rows.append({
+                                    "ck3_culture":culture_name,
+                                    "ck3_heritage":heritage_name,
+                                    "ck3_source_file":source_name,
+                                    "ck3_source":mod_name,
+                                    "mod_id":folders.name
+                                })
 
-            # Obtain additional cultures from hybrid and creation names                
-            if os.path.exists(ck3_mod_culture_dir_hybrid):
-                for file in os.listdir(ck3_mod_culture_dir_hybrid):
-                    if file.endswith('.txt'):
-                        source_file = os.path.join(ck3_mod_culture_dir_hybrid,file)
-                        source_name = os.path.basename(source_file)
+                # Obtain additional cultures from hybrid and creation names
+                if os.path.exists(ck3_mod_culture_dir_hybrid):
+                    for file in os.listdir(ck3_mod_culture_dir_hybrid):
+                        if file.endswith('.txt'):
+                            source_file = os.path.join(ck3_mod_culture_dir_hybrid,file)
+                            source_name = os.path.basename(source_file)
 
-                        with open (source_file, 'r', encoding="utf-8-sig") as culture_txt_file:
-                            data = culture_txt_file.read()
-                        culture_data = re.findall(r"^(\w+)\s=\s\{\n([\s\S]*?)\n\}$", data, re.M | re.S)
+                            with open (source_file, 'r', encoding="utf-8-sig") as culture_txt_file:
+                                data = culture_txt_file.read()
+                            culture_data = re.findall(r"^(\w+)\s=\s\{\n([\s\S]*?)\n\}$", data, re.M | re.S)
 
-                        for data in culture_data:
-                            culture_name = data[0]
-                            heritage = re.findall(r"=\s(heritage_\w+).*[\n|\t]", data[1])
-                            if not heritage:
-                                heritage_name = ''
-                            else:
-                                heritage_name = heritage[0]
-                            # heritage = [info for info in culture_info_list if info]
-                            ck3_rows.append({
-                                "ck3_culture":culture_name,
-                                "ck3_heritage":heritage_name,
-                                "ck3_source_file":source_name,
-                                "ck3_source":mod_name,
-                                "mod_id":folders.name
-                            })
+                            for data in culture_data:
+                                culture_name = data[0]
+                                heritage = re.findall(r"=\s(heritage_\w+).*[\n|\t]", data[1])
+                                if not heritage:
+                                    heritage_name = ''
+                                else:
+                                    heritage_name = heritage[0]
+                                ck3_rows.append({
+                                    "ck3_culture":culture_name,
+                                    "ck3_heritage":heritage_name,
+                                    "ck3_source_file":source_name,
+                                    "ck3_source":mod_name,
+                                    "mod_id":folders.name
+                                })
 
     df_ck3_cultures = pd.concat([df_ck3_cultures,pd.DataFrame(ck3_rows)],ignore_index=True)
 
@@ -250,29 +251,32 @@ def get_keys(cw_config):
                 })
 
     # Obtain additional maa from CK3 mods
-    for folders in os.scandir(ck3_mod_dir):      
-        if folders.name in CK3_MODS.values():
-            ck3_mod_maa_dir = os.path.join(ck3_mod_dir,folders.name,'common','men_at_arms_types')
-            mod_name = list(CK3_MODS.keys())[list(CK3_MODS.values()).index(folders.name)]
-            print(f'== Finding mod maa files in: {folders.name} ==')
+    if not os.path.exists(ck3_mod_dir):
+        print(f'== CK3 mod directory not found: {ck3_mod_dir}, skipping mod MAA ==')
+    else:
+        for folders in os.scandir(ck3_mod_dir):
+            if folders.name in CK3_MODS.values():
+                ck3_mod_maa_dir = os.path.join(ck3_mod_dir,folders.name,'common','men_at_arms_types')
+                mod_name = list(CK3_MODS.keys())[list(CK3_MODS.values()).index(folders.name)]
+                print(f'== Finding mod maa files in: {folders.name} ==')
 
-            if os.path.exists(ck3_mod_maa_dir):
-                for file in os.listdir(ck3_mod_maa_dir):
-                    if file.endswith('.txt'):
-                        source_file = os.path.join(ck3_mod_maa_dir,file)
-                        source_name = os.path.basename(source_file)
+                if os.path.exists(ck3_mod_maa_dir):
+                    for file in os.listdir(ck3_mod_maa_dir):
+                        if file.endswith('.txt'):
+                            source_file = os.path.join(ck3_mod_maa_dir,file)
+                            source_name = os.path.basename(source_file)
 
-                        with open (source_file, 'r', encoding="utf-8-sig") as maa_txt_file:
-                            data = maa_txt_file.read()
+                            with open (source_file, 'r', encoding="utf-8-sig") as maa_txt_file:
+                                data = maa_txt_file.read()
 
-                        maa_txt = re.findall(r"^(\w+)\s*=", data, re.M)
-                        for maa in maa_txt:
-                            ck3_rows.append({
-                                "ck3_maa":maa,
-                                "ck3_source_file":source_name,
-                                "ck3_source":mod_name,
-                                "mod_id":folders.name
-                            })
+                            maa_txt = re.findall(r"^(\w+)\s*=", data, re.M)
+                            for maa in maa_txt:
+                                ck3_rows.append({
+                                    "ck3_maa":maa,
+                                    "ck3_source_file":source_name,
+                                    "ck3_source":mod_name,
+                                    "mod_id":folders.name
+                                })
 
     df_ck3_maa = pd.concat([df_ck3_maa,pd.DataFrame(ck3_rows)],ignore_index=True)
 
@@ -381,8 +385,8 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
             df_cultures.to_csv(os.path.join(REPORT_OUTPUT_DIR,mapping,f'{mapping}_cw_cultures.csv'))
             print(f'// 🕮  Report produced for culture files for mapper: {mapping}.')
 
-            df_cultures = None
-            df_maa = None
+            df_cultures = pd.DataFrame()
+            df_maa = pd.DataFrame()
             cultures_rows = []
             maa_rows = []
 
@@ -486,7 +490,7 @@ def summary():
                             file_path = os.path.join(map_folder,file)
 
                             with open(file_path, 'r') as f:
-                                report_data = csv.DictReader(f)
+                                report_data = list(csv.DictReader(f))
                                 expected_maa = [d["ck3_maa"] for d in expected_maa_keys]
                                 report_maa = [d["cw_maa"] for d in report_data]
                                 missing_keys = sorted(set(expected_maa) - set(report_maa))
@@ -513,7 +517,7 @@ def summary():
                                     row = missing_keys[i:i + output_columns]
                                     formatted_row = " ".join(key.ljust(30) for key in row)
                                     print(formatted_row, file=sum_f)
-                                print(', file=sum_f')
+                                print('', file=sum_f)
                             else:
                                 if file.endswith('maa.csv'):
                                     print(f'\t↳ ✓ No missing Attila keys were found for {file}', file=sum_f)
