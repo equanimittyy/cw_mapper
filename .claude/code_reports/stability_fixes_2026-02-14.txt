@@ -5,16 +5,16 @@
 
 SUMMARY
 -------
-10 stability issues were identified and fixed across 3 source files.
+12 stability issues were identified and fixed across 3 source files.
 All fixes passed Python syntax validation after being applied.
 
     Files modified:
-        - cw_map_checker.py  (4 fixes)
+        - cw_map_checker.py  (5 fixes)
         - utils.py           (1 fix)
-        - main.py            (5 fixes)
+        - main.py            (6 fixes)
 
     Severity breakdown:
-        - CRITICAL (crashes the program):  7
+        - CRITICAL (crashes the program):  9
         - HIGH (silently produces wrong results):  3
 
 
@@ -174,6 +174,51 @@ FIX 140226-00010 - h_count / parent_faction used before assignment
                 would raise a NameError, crashing the heritage editor.
     Fix:        Initialised h_count = 0 and parent_faction = '' before
                 each loop.
+
+
+================================================================================
+                            cw_map_checker.py
+================================================================================
+
+FIX 140226-00011 - sys.exit(1) in get_cw_config() prevents error recovery
+    Severity:   CRITICAL (uncatchable termination)
+    Location:   get_cw_config(), ~lines 62-68
+    Problem:    When GamePaths.ini was missing or the CK3 path was empty,
+                get_cw_config() called sys.exit(1). This immediately
+                terminated the process, making it impossible for callers
+                (including the GUI's try/except from FIX 140226-00009) to
+                catch and handle the error gracefully. Additionally, the
+                CK3 executable path was only checked for being non-empty
+                but never validated as existing on disk, and the Attila
+                executable path was never read or validated at all.
+    Fix:        - Replaced both sys.exit(1) calls with descriptive
+                  FileNotFoundError exceptions
+                - Added os.path.exists() check for the CK3 executable path
+                - Added Attila exe path read and validation (wrapped in
+                  try/except configparser.NoOptionError so a missing key
+                  does not crash)
+
+
+================================================================================
+                                 main.py
+================================================================================
+
+FIX 140226-00012 - Refresh Current Mappers handler has no error handling
+    Severity:   CRITICAL (crash on refresh)
+    Location:   main_window() -> VALIDATE_KEY handler, ~lines 1285-1298
+    Problem:    The "Refresh Current Mappers" button handler called
+                init_map_config(), mapping_validation(), and summary()
+                without any try/except wrapping. If any of these failed
+                (e.g. missing GamePaths.ini, missing CK3 install, missing
+                mod directory), the entire application would crash. This
+                was especially problematic because FIX 140226-00009 ensured
+                the GUI loads despite startup validation failures, but
+                clicking "Refresh" to retry would crash it again.
+    Fix:        Wrapped the three validation calls and summary display in
+                try/except (FileNotFoundError, SystemExit, Exception),
+                matching the pattern used at module level. On error, the
+                message is displayed in the GUI multiline field and the
+                button is re-enabled.
 
 
 ================================================================================

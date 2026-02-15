@@ -1283,18 +1283,21 @@ def main_window():
                 window['MLINE_KEY'].update(f'''Click the 'Open README' button for more details.''',append=True)
                 window['VALIDATE_KEY'].update(disabled=False)
             else:
-                init_map_config()
-                cw_map_checker.mapping_validation(*cw_map_checker.get_keys(cw_map_checker.get_cw_config()))
-                cw_map_checker.summary()
+                try:
+                    init_map_config()
+                    cw_map_checker.mapping_validation(*cw_map_checker.get_keys(cw_map_checker.get_cw_config()))
+                    cw_map_checker.summary()
 
-                window['MLINE_KEY'].update(f'*** Crusader Wars mappers refreshed! \n', append=True)
-                window['MLINE_KEY'].update(f'\n',append=True)
-                if os.path.exists(SUMMARY_LOG):
-                    with open(SUMMARY_LOG, 'r', encoding="utf-8-sig") as f:
-                        new_summary = f.read()
-                else:
-                    new_summary = "ERROR: Could not read summary_log.txt"
-                window['MLINE_KEY'].update(f'{new_summary}',append=True)
+                    window['MLINE_KEY'].update(f'*** Crusader Wars mappers refreshed! \n', append=True)
+                    window['MLINE_KEY'].update(f'\n',append=True)
+                    if os.path.exists(SUMMARY_LOG):
+                        with open(SUMMARY_LOG, 'r', encoding="utf-8-sig") as f:
+                            new_summary = f.read()
+                    else:
+                        new_summary = "ERROR: Could not read summary_log.txt"
+                    window['MLINE_KEY'].update(f'{new_summary}',append=True)
+                except (FileNotFoundError, SystemExit, Exception) as e:
+                    window['MLINE_KEY'].update(f'ERROR: Validation failed: {e}\n', append=True)
                 window['VALIDATE_KEY'].update(disabled=False)
 
         elif event == 'CUSTOM_MAPPER_KEY':

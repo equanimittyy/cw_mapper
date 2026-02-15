@@ -59,13 +59,22 @@ def get_cw_config():
         config = configparser.ConfigParser()
         config.read_file(settings_file)
     else:
-        print(f"== Could not find GamePaths.ini! Please ensure you place the cw_mapper folder in the 'tools' folder of the Crusader Wars directory.")
-        sys.exit(1) # Exit with an error
+        raise FileNotFoundError("Could not find GamePaths.ini! Please ensure you place the cw_mapper folder in the 'tools' folder of the Crusader Wars directory.")
 
-    ck3_dir_path = os.path.dirname(os.path.dirname(config.get('GamePaths','CRUSADERKINGS3')))
+    ck3_exe_path = config.get('GamePaths','CRUSADERKINGS3')
+    ck3_dir_path = os.path.dirname(os.path.dirname(ck3_exe_path))
     if ck3_dir_path == "":
-        print(f"== The Crusader Kings 3 directory path was not found! Please ensure you configure your game paths in Crusader Wars.")
-        sys.exit(1) # Exit with an error
+        raise FileNotFoundError("The Crusader Kings 3 directory path was not found! Please ensure you configure your game paths in Crusader Wars.")
+    if not os.path.exists(ck3_exe_path):
+        raise FileNotFoundError(f"The Crusader Kings 3 executable was not found at: {ck3_exe_path}")
+
+    try:
+        attila_exe_path = config.get('GamePaths','ATTILA')
+        if attila_exe_path and not os.path.exists(attila_exe_path):
+            print(f"== Warning: The Attila executable was not found at: {attila_exe_path}")
+    except configparser.NoOptionError:
+        pass
+
     return config
 
 def get_keys(cw_config):
