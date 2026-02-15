@@ -150,3 +150,4 @@ NOTE: If 'Levies', the 'porcentage' (mispelling of percentage) of all Levies mus
 ## Reporting
 
 - Any code changes and implementations are to be summarised in a human-readable format in workspace/.claude/code_reports in .txt format.
+- Have references to code changes in the report with the format of DDMMYY-##### where ##### is the change for that date

@@ -22,7 +22,7 @@ All fixes passed Python syntax validation after being applied.
                             cw_map_checker.py
 ================================================================================
 
-FIX #1 - DictReader consumed twice in summary()
+FIX 140226-00001 - DictReader consumed twice in summary()
     Severity:   HIGH (silent data loss)
     Location:   summary() -> MAA report section, ~line 491
     Problem:    The csv.DictReader for the MAA report was iterated once to
@@ -36,7 +36,7 @@ FIX #1 - DictReader consumed twice in summary()
 
 --------------------------------------------------------------------------------
 
-FIX #2 - Misplaced quote in print statement
+FIX 140226-00002 - Misplaced quote in print statement
     Severity:   HIGH (silent wrong output)
     Location:   summary() -> missing Attila keys section, ~line 516
     Problem:    The line read: print(', file=sum_f')
@@ -49,7 +49,7 @@ FIX #2 - Misplaced quote in print statement
 
 --------------------------------------------------------------------------------
 
-FIX #3 - DataFrames reset to None breaking multi-mapper loops
+FIX 140226-00003 - DataFrames reset to None breaking multi-mapper loops
     Severity:   CRITICAL (crash on second mapper)
     Location:   mapping_validation(), ~lines 384-385
     Problem:    After processing each mapper in the loop, df_cultures and
@@ -62,7 +62,7 @@ FIX #3 - DataFrames reset to None breaking multi-mapper loops
 
 --------------------------------------------------------------------------------
 
-FIX #9 - Missing directory check before os.scandir on mod directory
+FIX 140226-00004 - Missing directory check before os.scandir on mod directory
     Severity:   CRITICAL (crash if mod dir missing)
     Location:   get_keys(), ~lines 167 and 253
     Problem:    os.scandir(ck3_mod_dir) was called without checking if
@@ -79,7 +79,7 @@ FIX #9 - Missing directory check before os.scandir on mod directory
                                 utils.py
 ================================================================================
 
-FIX #4 - Recursive call with missing arguments in add_map_config()
+FIX 140226-00005 - Recursive call with missing arguments in add_map_config()
     Severity:   CRITICAL (crash on config recovery)
     Location:   add_map_config(), ~line 58
     Problem:    In the FileNotFoundError except block, the function
@@ -97,7 +97,7 @@ FIX #4 - Recursive call with missing arguments in add_map_config()
                                  main.py
 ================================================================================
 
-FIX #5 - Broken faction copy conflict check
+FIX 140226-00006 - Broken faction copy conflict check
     Severity:   HIGH (silently creates duplicate mappings)
     Location:   mapping_window() -> FACTION_COPY_BUTTON_KEY handler,
                 ~lines 1130-1133
@@ -116,7 +116,7 @@ FIX #5 - Broken faction copy conflict check
 
 --------------------------------------------------------------------------------
 
-FIX #6 - Unhandled int() conversion crash in levy percentage popup
+FIX 140226-00007 - Unhandled int() conversion crash in levy percentage popup
     Severity:   CRITICAL (crash on bad input)
     Location:   popup_levy_percentage() -> UPDATE_LEVY handler, ~line 204
     Problem:    int(values['LEVY_PERCENTAGE_INPUT']) was called without
@@ -128,7 +128,7 @@ FIX #6 - Unhandled int() conversion crash in levy percentage popup
 
 --------------------------------------------------------------------------------
 
-FIX #7 - IndexError on XML import when mapper not in config
+FIX 140226-00008 - IndexError on XML import when mapper not in config
     Severity:   CRITICAL (crash during import)
     Location:   popup_xml_import_export() -> Import handler, ~line 390
     Problem:    The line:
@@ -144,7 +144,7 @@ FIX #7 - IndexError on XML import when mapper not in config
 
 --------------------------------------------------------------------------------
 
-FIX #8 - Module-level validation crash prevents GUI from loading
+FIX 140226-00009 - Module-level validation crash prevents GUI from loading
     Severity:   CRITICAL (program won't start)
     Location:   Module-level code, ~lines 68-70 and 72-90
     Problem:    At module load time, the program unconditionally ran:
@@ -163,7 +163,7 @@ FIX #8 - Module-level validation crash prevents GUI from loading
 
 --------------------------------------------------------------------------------
 
-FIX #10 - h_count / parent_faction used before assignment
+FIX 140226-00010 - h_count / parent_faction used before assignment
     Severity:   CRITICAL (crash on corrupted data)
     Location:   heritage_window() -> refresh_display_lists(), ~lines
                 506-535
