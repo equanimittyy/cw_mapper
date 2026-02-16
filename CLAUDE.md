@@ -86,7 +86,7 @@ CW Mapper XMLs (../../unit mappers/attila/) ──> mapping_validation() ──>
 ```
 User selects CK3 MAA + Attila Unit Key + Faction ──> current_mappings dict
 User maps Heritages/Cultures to Factions ──────────> current_heritage_mappings dict
-User maps Title (Empire/Kingdom/Dutchy etc.) based mapping (NOT YET IMPLEMENTED)
+User maps Titles (Empire/Kingdom/Duchy) to MAA ───> current_title_mappings dict + current_title_names dict
 User configures mod list ──────────────────────────> current_mods dict
      │
      ├──> Save as .txt (JSON) in custom_mappers/
@@ -100,10 +100,16 @@ NOTE: "optional_levy_percentage" must be included if the type is 'LEVY' it must 
 ```json
 {
   "FACTIONS_AND_MAA": {
-    "ck3_maa_key,faction_name": ["attila_unit_key", "size_or_type", optional_levy_percentage
+    "ck3_maa_key,faction_name": ["attila_unit_key", "size_or_type", optional_levy_percentage]
   },
   "HERITAGES_AND_CULTURES": {
     "heritage_name,culture_or_PARENT_KEY": ["assigned_faction"]
+  },
+  "TITLES_AND_MAA": {
+    "ck3_maa_key,title_key": ["attila_unit_key", "size_or_type"]
+  },
+  "TITLE_NAMES": {
+    "title_key": "display_name"
   },
   "MODS": {
     "CK3": ["ModName:SteamWorkshopID", ...],
@@ -112,12 +118,15 @@ NOTE: "optional_levy_percentage" must be included if the type is 'LEVY' it must 
 }
 ```
 
+NOTE: Title mappings do NOT support levies. Only GENERAL, KNIGHTS, and MenAtArm types are valid for title mappings.
+
 ### CW XML Format (What Crusader Wars Reads)
 
 NOTE: If 'Levies', the 'porcentage' (mispelling of percentage) of all Levies must add up to 100% for a given Faction
 
 - **Factions XML**: `<FactionsGroups>` > `<Faction name="...">` > `<MenAtArm type="ck3_maa" key="attila_key" max="size"/>` + `<General>`, `<Knights>`, `<Levies>`
 - **Cultures XML**: `<Cultures>` > `<Heritage name="..." faction="...">` > `<Culture name="..." faction="..."/>`
+- **Titles XML**: `<Titles>` > `<Faction title_key="e_byzantium" name="Byzantine Empire">` > `<General>`, `<Knights>`, `<MenAtArm>` (no Levies). Grouped by rank: `Empires.xml`, `Kingdoms.xml`, `Duchies.xml`
 - **Mods XML**: `<Mods>` > `<Mod>packfile.pack</Mod>`
 - **Time Period XML**: `<TimePeriod>` > `<StartDate>` + `<EndDate>`
 

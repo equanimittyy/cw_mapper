@@ -1,0 +1,169 @@
+================================================================================
+    CRUSADER WARS MAPPER - TITLE-BASED MAPPING FEATURE REPORT
+    Date: 2026-02-16
+================================================================================
+
+SUMMARY
+-------
+Implemented title-based unit mapping, the third mapping layer in the custom
+mapper. Titles (empires e_, kingdoms k_, duchies d_) can now override
+faction-based unit assignments. Levies do NOT participate in title mapping
+per CW's XML specification.
+
+    Files modified:
+        - cw_map_checker.py   (1 feature)
+        - main.py             (6 features)
+        - utils.py            (2 features)
+        - CLAUDE.md           (documentation update)
+
+    Severity breakdown:
+        - FEATURE (new functionality):  9
+
+
+================================================================================
+                            cw_map_checker.py
+================================================================================
+
+FEATURE 160226-00001 - Add CK3 title key extraction to get_keys()
+    Severity:   FEATURE
+    Location:   get_keys(), after MAA key extraction block (~line 293+)
+    Problem:    Title keys from CK3 landed_titles directory were not being
+                sourced, preventing the GUI from offering title keys for
+                mapping.
+    Fix:        Added extraction of e_, k_, d_ title keys from
+                CK3/game/common/landed_titles/ .txt files using regex
+                ^([ekd]_\w+)\s*=\s*\{. Also extracts from CK3 Steam Workshop
+                mod directories. Builds df_ck3_titles DataFrame and saves to
+                reports/source_ck3_title_keys.csv. Updated return value of
+                get_keys() to include df_ck3_titles. Updated
+                mapping_validation() signature to accept optional title_keys
+                parameter and save title CSV report.
+
+--------------------------------------------------------------------------------
+
+================================================================================
+                                main.py
+================================================================================
+
+FEATURE 160226-00002 - Add title source key loading at module level
+    Severity:   FEATURE
+    Location:   Module-level constants and CSV loading (~line 35-100)
+    Problem:    No mechanism existed to load title key source data for the GUI.
+    Fix:        Added TITLE_SOURCE_KEYS list, TITLE_SOURCE_PATH constant,
+                TITLE_NON_MAA_KEYS constant (GENERAL, KNIGHTS only), and
+                TITLE_SOURCES list. Added CSV DictReader loading block that
+                reads source_ck3_title_keys.csv into TITLE_SOURCE_KEYS.
+
+--------------------------------------------------------------------------------
+
+FEATURE 160226-00003 - Add popup_title_pick() and popup_title_name() helpers
+    Severity:   FEATURE
+    Location:   Before heritage_window() definition (~line 437)
+    Problem:    No UI existed for selecting title keys or assigning display
+                names to titles.
+    Fix:        popup_title_pick(current_title_list): Modal window with
+                searchable listbox of available CK3 title keys, filterable
+                by rank (Empire/Kingdom/Duchy). Returns list of selected
+                title keys.
+                popup_title_name(title_key): Modal popup prompting user to
+                enter a display name for a title key (e.g. "Byzantine Empire"
+                for e_byzantium). Returns the display name string.
+
+--------------------------------------------------------------------------------
+
+FEATURE 160226-00004 - Create title_window() function
+    Severity:   FEATURE
+    Location:   Before mapping_window() definition (~line 796)
+    Problem:    No window existed for creating title-based unit mappings.
+    Fix:        Added title_window(title_mapping_dict, title_names_dict)
+                function implementing a 3-column modal window:
+                - Col 1: CK3 MAA selector (filtered to exclude levies)
+                - Col 2: Attila unit key selector (no LEVY size option)
+                - Col 3: Title mapping editor with title key dropdown,
+                  mapping listbox, add/remove/edit title list buttons
+                Supports GENERAL and KNIGHTS override types. Returns updated
+                title_mapping_dict and title_names_dict.
+
+--------------------------------------------------------------------------------
+
+FEATURE 160226-00005 - Update save_mapper() and load_mapper() for titles
+    Severity:   FEATURE
+    Location:   save_mapper() ~line 1247, load_mapper() ~line 1276
+    Problem:    Save/load did not persist title mapping data.
+    Fix:        save_mapper() now accepts optional title_mapping and
+                title_names parameters. Saves TITLES_AND_MAA and TITLE_NAMES
+                sections in the JSON output. load_mapper() now reads
+                TITLES_AND_MAA and TITLE_NAMES from loaded data (backward
+                compatible with old saves via .get() defaults). Validates
+                title keys against TITLE_SOURCE_KEYS and reports missing
+                keys. Returns additional loaded_title_mapping and
+                loaded_title_names values.
+
+--------------------------------------------------------------------------------
+
+FEATURE 160226-00006 - Wire title window into mapping_window()
+    Severity:   FEATURE
+    Location:   mapping_window() state vars (~line 1098), event handler
+                (~line 1615), save/load calls
+    Problem:    "Open Title mapping" button showed a "not yet implemented"
+                popup.
+    Fix:        Added current_title_mappings and current_title_names state
+                dicts. Replaced stub popup with title_window() call. Updated
+                all save_mapper() calls to pass title data. Updated
+                load_mapper() call to receive and populate title data.
+                Updated XML import handler to extract title data from
+                import_xml() return tuple.
+
+--------------------------------------------------------------------------------
+
+================================================================================
+                                utils.py
+================================================================================
+
+FEATURE 160226-00007 - Add title XML import in import_xml()
+    Severity:   FEATURE
+    Location:   import_xml(), after Factions import block (~line 150)
+    Problem:    XML import did not read title-based mapping data from CW
+                mapper directories.
+    Fix:        Added Titles parsing block that reads XML files from the
+                Titles/ subdirectory. Parses <Faction title_key="..." name="...">
+                elements and their <General>, <Knights>, <MenAtArm> children
+                (no Levies). Returns imported_title_mappings and
+                imported_title_names as additional return values.
+
+--------------------------------------------------------------------------------
+
+FEATURE 160226-00008 - Add title XML export in export_xml()
+    Severity:   FEATURE
+    Location:   export_xml(), after faction export block (~line 316)
+    Problem:    XML export did not write title-based mapping data to CW
+                format XML files.
+    Fix:        Added title export block that loads TITLES_AND_MAA and
+                TITLE_NAMES from the JSON save file. Groups title keys by
+                rank prefix (e_ -> Empires.xml, k_ -> Kingdoms.xml,
+                d_ -> Duchies.xml). Generates <Titles> root with CW format
+                comments and <Faction title_key="..." name="..."> elements
+                containing sorted <General>, <Knights>, <MenAtArm> children.
+                Only creates rank files that have entries. Uses existing
+                sort_xml_elements() for element ordering.
+
+--------------------------------------------------------------------------------
+
+================================================================================
+                               CLAUDE.md
+================================================================================
+
+FEATURE 160226-00009 - Update documentation for title mapping
+    Severity:   FEATURE
+    Location:   Custom Mapper Flow, Mapper Save Format, CW XML Format sections
+    Problem:    Documentation still showed title mapping as "NOT YET
+                IMPLEMENTED".
+    Fix:        Updated Custom Mapper Flow diagram to show title mapping data
+                flow. Updated Mapper Save Format to document TITLES_AND_MAA
+                and TITLE_NAMES JSON sections. Updated CW XML Format to
+                document Titles XML structure and rank-based file grouping.
+
+
+================================================================================
+                              END OF REPORT
+================================================================================
