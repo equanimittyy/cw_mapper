@@ -1,17 +1,63 @@
-Code Change Report - 150226
-==========================
+================================================================================
+    CRUSADER WARS MAPPER - ATTILA KEYS BUGFIX REPORT
+    Date: 2026-02-15
+================================================================================
 
-Summary: Fixed "Missing Keys from Total War Attila" section in summary_log.txt showing CK3 MAA keys instead of Attila unit keys.
+SUMMARY
+-------
+3 related issues were identified and fixed in 1 source file.
+The "Missing Keys from Total War Attila" section in summary_log.txt was
+displaying CK3 MAA keys instead of Attila unit keys due to use of the
+wrong variable.
 
-Bug Description:
-The summary() function in cw_map_checker.py was using the wrong variable (missing_keys)
-when printing the "Missing keys from Total War Attila" section. The variable missing_keys
-contains CK3 Man-at-Arms keys missing from the mapper, not Attila unit keys. This caused
-the Attila section to display identical output to the CK3 MAA section above it.
+    Files modified:
+        - cw_map_checker.py  (3 fixes)
 
-Changes:
---------
+    Severity breakdown:
+        - HIGH (silently produces wrong results):  3
 
-150226-00001  cw_map_checker.py:524 - Changed len(missing_keys) to len(missing_attila_keys) in the count display
-150226-00002  cw_map_checker.py:525 - Changed range(0, len(missing_keys), ...) to range(0, len(missing_attila_keys), ...) in the iteration
-150226-00003  cw_map_checker.py:526 - Changed missing_keys[i:i + output_columns] to missing_attila_keys[i:i + output_columns] in the row slicing
+
+================================================================================
+                            cw_map_checker.py
+================================================================================
+
+FIX 150226-00001 - Wrong variable in Attila missing keys count display
+    Severity:   HIGH (silent wrong output)
+    Location:   summary() -> missing Attila keys section, ~line 524
+    Problem:    len(missing_keys) was used to display the count of missing
+                Attila unit keys. The variable missing_keys contains CK3
+                Man-at-Arms keys, not Attila unit keys. This caused the
+                Attila section header to show the CK3 MAA missing count
+                instead of the Attila missing count.
+    Fix:        Changed len(missing_keys) to len(missing_attila_keys).
+
+--------------------------------------------------------------------------------
+
+FIX 150226-00002 - Wrong variable in Attila missing keys iteration range
+    Severity:   HIGH (silent wrong output)
+    Location:   summary() -> missing Attila keys section, ~line 525
+    Problem:    range(0, len(missing_keys), ...) was used to iterate over
+                the missing Attila keys for output. Since missing_keys
+                holds CK3 MAA keys, the loop iterated over the wrong count,
+                producing output rows based on the CK3 MAA list length
+                rather than the Attila keys list length.
+    Fix:        Changed range(0, len(missing_keys), ...) to
+                range(0, len(missing_attila_keys), ...).
+
+--------------------------------------------------------------------------------
+
+FIX 150226-00003 - Wrong variable in Attila missing keys row slicing
+    Severity:   HIGH (silent wrong output)
+    Location:   summary() -> missing Attila keys section, ~line 526
+    Problem:    missing_keys[i:i + output_columns] was used to slice rows
+                for display in the Attila section. This printed CK3 MAA key
+                names in a section labelled "Missing keys from Total War
+                Attila", making the Attila section output identical to the
+                CK3 MAA section above it.
+    Fix:        Changed missing_keys[i:i + output_columns] to
+                missing_attila_keys[i:i + output_columns].
+
+
+================================================================================
+                              END OF REPORT
+================================================================================
