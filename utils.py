@@ -147,6 +147,33 @@ def import_xml(import_folder):
                         percentage = int(key.get('porcentage'))
                         imported_mappings[(maa_key, faction_name)]= [attila_key, size, percentage]
     
+    # Titles
+    imported_title_mappings = {}
+    imported_title_names = {}
+    if os.path.exists(import_titles):
+        for file in os.listdir(import_titles):
+            if file.endswith('.xml'):
+                file_path = os.path.join(import_titles,file)
+                tree = ET.parse(file_path)
+                root = tree.getroot()
+                for faction in root:
+                    title_key = faction.get('title_key')
+                    title_name = faction.get('name')
+                    if title_key:
+                        imported_title_names[title_key] = title_name
+                        for key in faction:
+                            if key.tag == 'MenAtArm':
+                                maa_key = key.get('type')
+                                attila_key = key.get('key')
+                                size = key.get('max')
+                                imported_title_mappings[(maa_key, title_key)] = [attila_key, size]
+                            elif key.tag == 'General':
+                                attila_key = key.get('key')
+                                imported_title_mappings[('GENERAL', title_key)] = [attila_key, 'GENERAL']
+                            elif key.tag == 'Knights':
+                                attila_key = key.get('key')
+                                imported_title_mappings[('KNIGHTS', title_key)] = [attila_key, 'KNIGHTS']
+
     # Mods
     tree = ET.parse(import_mods)
     root = tree.getroot()
@@ -155,7 +182,7 @@ def import_xml(import_folder):
         imported_mods['Attila'].append(mod.text)
 
 
-    return imported_mappings, imported_heritage_mappings, imported_mods
+    return imported_mappings, imported_heritage_mappings, imported_mods, imported_title_mappings, imported_title_names
                         
 def export_xml(file, NON_MAA_KEYS, tag, s_date, e_date):
     file_name, _ = os.path.splitext(os.path.split(file)[1])
@@ -179,6 +206,8 @@ def export_xml(file, NON_MAA_KEYS, tag, s_date, e_date):
         faction_data = export_dict.get('FACTIONS_AND_MAA',{})
         heritage_data = export_dict.get('HERITAGES_AND_CULTURES', {})
         mod_data = export_dict.get('MODS', {})
+        title_data = export_dict.get('TITLES_AND_MAA', {})
+        title_names_data = export_dict.get('TITLE_NAMES', {})
 
         # Load mappings for export
         loaded_faction_mapping = {
@@ -192,6 +221,14 @@ def export_xml(file, NON_MAA_KEYS, tag, s_date, e_date):
         loaded_mods = {
             k:v
             for k,v in mod_data.items()
+        }
+        loaded_title_mapping = {
+            tuple(k.split(seperator)):v
+            for k, v in title_data.items()
+        }
+        loaded_title_names = {
+            k:v
+            for k,v in title_names_data.items()
         }
 
     def sort_factions(item):
@@ -277,6 +314,60 @@ def export_xml(file, NON_MAA_KEYS, tag, s_date, e_date):
         # Fallback for older Python versions
         pass
     f_tree.write(f_output, encoding="utf-8", xml_declaration=True, short_empty_elements=False)
+
+    # Export TITLE mapping to XML files (grouped by rank)
+    if loaded_title_mapping:
+        rank_prefix_map = {'e': 'Empires', 'k': 'Kingdoms', 'd': 'Duchies'}
+        # Group titles by rank
+        rank_groups = {}
+        for title_key in loaded_title_names.keys():
+            prefix = title_key[0]
+            rank_name = rank_prefix_map.get(prefix)
+            if rank_name:
+                if rank_name not in rank_groups:
+                    rank_groups[rank_name] = []
+                rank_groups[rank_name].append(title_key)
+
+        for rank_name, title_keys in rank_groups.items():
+            t_output = os.path.join(titles_dir, rank_name + '.xml')
+            t_root = ET.Element("Titles")
+            # Add CW format comments
+            t_root.append(ET.Comment("This is to assign MEN-AT-ARMS units based on title key and not owner culture"))
+            t_root.append(ET.Comment("Levies do not take part in this!!"))
+            t_root.append(ET.Comment("DEFAULT value does not work here, every unit must have a unit key"))
+            t_root.append(ET.Comment("title_key = key of the landed title"))
+
+            for title_key in sorted(title_keys):
+                title_name = loaded_title_names.get(title_key, title_key)
+                faction_elem = ET.SubElement(t_root, "Faction", title_key=title_key, name=title_name)
+
+                filtered_items = {
+                    key: value
+                    for key, value in loaded_title_mapping.items() if key[1] == title_key
+                }
+                for key, value in filtered_items.items():
+                    if key[0] == 'GENERAL':
+                        ET.SubElement(faction_elem, "General", key=value[0])
+                    elif key[0] == 'KNIGHTS':
+                        ET.SubElement(faction_elem, "Knights", key=value[0])
+                    else:
+                        if value[1]:
+                            ET.SubElement(faction_elem, "MenAtArm", type=key[0], key=value[0], max=value[1])
+                        else:
+                            ET.SubElement(faction_elem, "MenAtArm", type=key[0], key=value[0])
+
+                # Sort XML elements within title faction
+                faction_elem[:] = sorted(
+                    faction_elem,
+                    key=sort_xml_elements
+                )
+
+            t_tree = ET.ElementTree(t_root)
+            try:
+                ET.indent(t_tree, space="\t", level=0)
+            except AttributeError:
+                pass
+            t_tree.write(t_output, encoding="utf-8", xml_declaration=True, short_empty_elements=False)
 
     # Create tag file
     if not tag:

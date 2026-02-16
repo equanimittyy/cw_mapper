@@ -35,10 +35,12 @@ CONFIG = os.path.join('config','mod_config.json')
 ATTILA_SOURCE_KEYS = []
 CULTURES_SOURCE_KEYS = []
 MAA_SOURCE_KEYS = []
+TITLE_SOURCE_KEYS = []
 
 ATTILA_SOURCE_PATH = os.path.join(REPORT_OUTPUT_DIR,'source_attila_keys.csv')
 CULTURES_SOURCE_PATH = os.path.join(REPORT_OUTPUT_DIR,'source_ck3_cultures_keys.csv')
 MAA_SOURCE_PATH = os.path.join(REPORT_OUTPUT_DIR,'source_ck3_maa_keys.csv')
+TITLE_SOURCE_PATH = os.path.join(REPORT_OUTPUT_DIR,'source_ck3_title_keys.csv')
 
 NON_MAA_KEYS = [
     'GENERAL',
@@ -91,11 +93,20 @@ if os.path.exists(MAA_SOURCE_PATH):
         for key in key_data:
             MAA_SOURCE_KEYS.append({'ck3_maa':key['ck3_maa'],'ck3_source':key['ck3_source']})
 
+if os.path.exists(TITLE_SOURCE_PATH):
+    with open(TITLE_SOURCE_PATH, 'r') as f:
+        key_data = csv.DictReader(f)
+        for key in key_data:
+            TITLE_SOURCE_KEYS.append({'title_key':key['title_key'],'title_rank':key['title_rank'],'ck3_source':key['ck3_source']})
+
 for maa in NON_MAA_KEYS:
     MAA_SOURCE_KEYS.append({'ck3_maa':maa,'ck3_source':'CW'})
 
+TITLE_NON_MAA_KEYS = ['GENERAL', 'KNIGHTS']
+
 ATTILA_SOURCES = [item['attila_source'] for item in ATTILA_SOURCE_KEYS]
 CK3_SOURCES = [item['ck3_source'] for item in CULTURES_SOURCE_KEYS] + [item['ck3_source'] for item in MAA_SOURCE_KEYS]
+TITLE_SOURCES = [item['ck3_source'] for item in TITLE_SOURCE_KEYS]
 
 def popup_mods_config(mods):
     cur_CK3_mods = [v for k,v in mods.items() if k == 'CK3']
@@ -395,7 +406,7 @@ def popup_xml_import_export(config):
                 sg.popup_error('Error: Not a valid mapping directory!',title='Directory Error')
             else:
                 _, mapper_name = os.path.split(import_folder)
-                imported_maa_map, imported_heritage_map, imported_mods = import_xml(import_folder)
+                imported_maa_map, imported_heritage_map, imported_mods, imported_title_map, imported_title_names = import_xml(import_folder)
                 # Finally, add to imported_mods if the name of mod is found in config
                 with open(config, 'r') as f:
                     data = json.load(f)
@@ -410,7 +421,7 @@ def popup_xml_import_export(config):
 
                 sg.popup(f"Mapper '{mapper_name}' imported!\n\nLoad the mapper using the 'Load' button")
                 window.close()
-                return mapper_name, imported_maa_map, imported_heritage_map, imported_mods
+                return mapper_name, imported_maa_map, imported_heritage_map, imported_mods, imported_title_map, imported_title_names
 
     if event == 'Export':
         export_mapper_file = sg.popup_get_file(title='Find mapper file to export',message='Please select the mapping file you wish to export',initial_folder=CUSTOM_MAPPER_DIR)
@@ -422,6 +433,85 @@ def popup_xml_import_export(config):
             sg.popup(f"Mapper exported to '{export_dir}'!")
             window.close()
     return None
+
+def popup_title_pick(current_title_list):
+    available_titles = [item['title_key'] for item in TITLE_SOURCE_KEYS if item['title_key'] not in current_title_list]
+    rank_filter = ['ALL','Empire','Kingdom','Duchy']
+
+    layout = [
+        [sg.Text('Add or remove title keys for your title mapping')],
+        [sg.Text('Filter by rank:'), sg.Combo(
+            values=rank_filter,
+            default_value='ALL',
+            size=(15, 1),
+            key='TITLE_RANK_FILTER',
+            readonly=True,
+            enable_events=True
+        ), sg.Text('Search:'), sg.Input(key='TITLE_SEARCH', enable_events=True, size=(25,1))],
+        [sg.Listbox(
+            values=sorted(available_titles),
+            size=(40, 15),
+            key='TITLE_AVAILABLE_LIST',
+            select_mode=sg.LISTBOX_SELECT_MODE_EXTENDED,
+            enable_events=True
+        )],
+        [sg.Button('Add Selected', size=(15, 2), button_color=('white', '#004D40')), sg.Button('Done', size=(15, 2), button_color=('white', '#444444'))]
+    ]
+
+    window = sg.Window('Select title keys', layout, modal=True)
+    added_titles = []
+
+    while True:
+        event, values = window.read()
+
+        if event == sg.WIN_CLOSED or event == 'Done':
+            break
+
+        elif event == 'TITLE_RANK_FILTER' or event == 'TITLE_SEARCH':
+            rank = values['TITLE_RANK_FILTER']
+            search = values['TITLE_SEARCH'].lower()
+            filtered = [item['title_key'] for item in TITLE_SOURCE_KEYS if item['title_key'] not in current_title_list and item['title_key'] not in added_titles]
+            if rank != 'ALL':
+                filtered = [t for t in filtered if any(item['title_key'] == t and item['title_rank'] == rank for item in TITLE_SOURCE_KEYS)]
+            if search:
+                filtered = [t for t in filtered if search in t.lower()]
+            window['TITLE_AVAILABLE_LIST'].update(sorted(filtered))
+
+        elif event == 'Add Selected':
+            selected = values['TITLE_AVAILABLE_LIST']
+            if selected:
+                added_titles.extend(selected)
+                # Refresh list
+                rank = values['TITLE_RANK_FILTER']
+                search = values['TITLE_SEARCH'].lower()
+                filtered = [item['title_key'] for item in TITLE_SOURCE_KEYS if item['title_key'] not in current_title_list and item['title_key'] not in added_titles]
+                if rank != 'ALL':
+                    filtered = [t for t in filtered if any(item['title_key'] == t and item['title_rank'] == rank for item in TITLE_SOURCE_KEYS)]
+                if search:
+                    filtered = [t for t in filtered if search in t.lower()]
+                window['TITLE_AVAILABLE_LIST'].update(sorted(filtered))
+
+    window.close()
+    return added_titles
+
+def popup_title_name(title_key):
+    layout = [
+        [sg.Text(f'Enter a display name for title: {title_key}')],
+        [sg.Input(
+            default_text=title_key,
+            key='TITLE_NAME_INPUT'
+        )],
+        [sg.Button('OK'), sg.Button('Cancel')]
+    ]
+
+    window = sg.Window('Title display name', layout, modal=True)
+    event, values = window.read(close=True)
+
+    if event == 'OK':
+        name = values['TITLE_NAME_INPUT']
+        if name:
+            return name
+    return title_key
 
 def heritage_window(heritage_mapping_dict, factions):
     # Available heritages, format (heritage, culture) tuple, should allow people to either take a whole heritage, or a specific culture
@@ -703,6 +793,298 @@ def heritage_window(heritage_mapping_dict, factions):
     window.close()
     return heritage_mapping_dict
 
+def title_window(title_mapping_dict, title_names_dict):
+    ATTILA_UNIT_LIST_SOURCE = ['ALL'] + sorted(list(dict.fromkeys(ATTILA_SOURCES)))
+    # For title mapping, only show regular MAA + GENERAL + KNIGHTS (no levies)
+    TITLE_MAA_KEYS = [item for item in MAA_SOURCE_KEYS if item['ck3_maa'] not in NON_MAA_KEYS or item['ck3_maa'] in TITLE_NON_MAA_KEYS]
+    MAA_LIST_SOURCE = ['ALL'] + sorted(list(dict.fromkeys([item['ck3_source'] for item in TITLE_MAA_KEYS])))
+    SIZE_LIST = ['MANUAL','CAVALRY','INFANTRY','RANGED']
+
+    TITLE_LIST = list(title_names_dict.keys()) if title_names_dict else []
+
+    selected_ck3 = None
+    selected_attila = None
+    current_title = TITLE_LIST[0] if TITLE_LIST else ''
+
+    def update_title_mappings_list(window, mappings_dict):
+        mapping_widget = window['TITLE_MAPPING_LIST_KEY'].Widget
+        current_y = mapping_widget.yview()[0]
+
+        display_list = []
+        formatted_list = []
+        for (ck3, title_key), attila in mappings_dict.items():
+            display_list = [t for t in mappings_dict.items() if t[0][1] == current_title]
+        if display_list:
+            for (ck3, title_key), attila in display_list:
+                title_name = title_names_dict.get(title_key, title_key)
+                formatted_list.append(f"[{title_name}] {ck3}   => {attila}")
+        else:
+            formatted_list = []
+
+        window['TITLE_MAPPING_LIST_KEY'].update(sorted(formatted_list), visible=False)
+        mapping_widget.yview_moveto(current_y)
+        window['TITLE_MAPPING_LIST_KEY'].update(visible=True)
+        window['TITLE_REMOVE_MAPPING_KEY'].update(disabled=len(formatted_list) == 0)
+
+    def check_title_add_button(window, values):
+        is_ready = selected_ck3 is not None and selected_attila is not None and current_title != ''
+        window['TITLE_ADD_MAPPING_KEY'].update(disabled=not is_ready)
+
+    # Column 1: CK3 MAA Selector (no levies)
+    col1_layout = [
+        [sg.Text('Available CK3 MAA (No Levies)', font=('Courier New', 12, 'bold'), text_color='#6D0000', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE),
+         sg.Text('Filter CK3 source:'), sg.Combo(
+            values=MAA_LIST_SOURCE,
+            default_value=MAA_LIST_SOURCE[0],
+            size=(20, 1),
+            key='TITLE_CK3_SOURCE_KEY',
+            readonly=True,
+            enable_events=True
+        )],
+        [sg.Text('Search...',background_color='#DDDDDD',text_color="#000000"),sg.Input(key='TITLE_CK3_SEARCH_KEY', enable_events=True)],
+        [sg.Listbox(
+            values=sorted([item['ck3_maa'] for item in TITLE_MAA_KEYS]),
+            size=(30, 15),
+            key='TITLE_CK3_LIST_KEY',
+            enable_events=True,
+            select_mode=sg.LISTBOX_SELECT_MODE_EXTENDED,
+            expand_x=True,
+            expand_y=True
+        )],
+        [sg.Text('Selected CK3:', size=(25, 1), key='TITLE_SELECTED_CK3_KEY', background_color='#F0F0F0', relief=sg.RELIEF_SUNKEN, expand_x=True, justification='center')]
+    ]
+
+    # Column 2: ATTILA UNIT KEY Selector (no LEVY size option)
+    col2_layout = [
+        [sg.Text('Available ATTILA UNIT KEYS', font=('Courier New', 12, 'bold'), text_color='#006D00', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE),
+         sg.Text('Filter Attila source:'), sg.Combo(
+            values=ATTILA_UNIT_LIST_SOURCE,
+            default_value=ATTILA_UNIT_LIST_SOURCE[0],
+            size=(20, 1),
+            key='TITLE_ATTILA_SOURCE_KEY',
+            readonly=True,
+            enable_events=True
+        )],
+        [sg.Text('Search...',background_color='#DDDDDD',text_color="#000000"),sg.Input(key='TITLE_ATTILA_SEARCH_KEY', enable_events=True),sg.Text('Select unit size:'), sg.Combo(
+            values=SIZE_LIST,
+            default_value=SIZE_LIST[0],
+            size=(10, 1),
+            key='TITLE_MAA_SIZE_SELECT',
+            readonly=True,
+            enable_events=True
+        )],
+        [sg.Listbox(
+            values=sorted([item['attila_map_key'] for item in ATTILA_SOURCE_KEYS]),
+            size=(30, 15),
+            key='TITLE_ATTILA_LIST_KEY',
+            enable_events=True,
+            select_mode=sg.LISTBOX_SELECT_MODE_SINGLE,
+            expand_x=True,
+            expand_y=True
+        )],
+        [sg.Text('Selected ATTILA:', size=(25, 1), key='TITLE_SELECTED_ATTILA_KEY', background_color='#F0F0F0', relief=sg.RELIEF_SUNKEN, expand_x=True, justification='center')]
+    ]
+
+    # Column 3: Title Mapping Editor
+    col3_layout = [
+        [sg.Text('Title-Based Unit Mapping', font=('Courier New', 12, 'bold'), text_color='#00006D', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE)],
+        [sg.Text('Select Title:'), sg.Combo(
+            values=TITLE_LIST,
+            default_value=current_title,
+            size=(30, 1),
+            key='TITLE_SELECT_KEY',
+            readonly=True,
+            enable_events=True
+        ), sg.Push(background_color='#DDDDDD'), sg.Button('Edit title list', key='TITLE_LIST_EDIT_KEY', size=(15, 2), button_color=('white', '#444444'))],
+        [sg.Listbox(
+            values=[],
+            size=(35, 13),
+            key='TITLE_MAPPING_LIST_KEY',
+            select_mode=sg.LISTBOX_SELECT_MODE_EXTENDED,
+            background_color='#E8E8FF',
+            expand_x=True,
+            expand_y=True,
+            enable_events=True
+        )],
+        [sg.Button('Add Mapping', key='TITLE_ADD_MAPPING_KEY', size=(15, 2), button_color=('white', '#004D40'), disabled=True),
+         sg.Button('Remove Selected', key='TITLE_REMOVE_MAPPING_KEY', size=(15, 2), button_color=('white', '#CC0000'), disabled=True),
+         sg.Push(background_color='#DDDDDD'),
+         sg.Button('OK', key='TITLE_OK_KEY', size=(15, 2), button_color=('white', '#444444'))]
+    ]
+
+    layout = [
+        [sg.Text('Map CK3 MAA to Attila units per TITLE. Levies do NOT participate in title mapping.\nEvery unit MUST have a unit key (no DEFAULT fallback).', font=('Courier New', 10, 'bold'), justification='center', expand_x=True)],
+        [
+            sg.Column(col1_layout, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD',expand_x=True,expand_y=True),
+            sg.VSeparator(),
+            sg.Column(col2_layout, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD',expand_x=True,expand_y=True),
+            sg.VSeparator(),
+            sg.Column(col3_layout, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD',expand_x=True,expand_y=True)
+        ]
+    ]
+
+    window = sg.Window('Title-Based Unit Mapping', layout, finalize=True, element_justification='center', resizable=True, modal=True)
+
+    if title_mapping_dict:
+        update_title_mappings_list(window, title_mapping_dict)
+
+    while True:
+        event, values = window.read()
+
+        if event == sg.WIN_CLOSED:
+            break
+
+        elif event == 'TITLE_CK3_LIST_KEY':
+            if values['TITLE_CK3_LIST_KEY']:
+                selected_ck3 = values['TITLE_CK3_LIST_KEY']
+                if len(selected_ck3) > 1:
+                    window['TITLE_SELECTED_CK3_KEY'].update(f'Selected CK3: Multiple', background_color='#F5962A')
+                else:
+                    window['TITLE_SELECTED_CK3_KEY'].update(f'Selected CK3: {selected_ck3}', background_color='#F5962A')
+            else:
+                selected_ck3 = None
+                window['TITLE_SELECTED_CK3_KEY'].update('Selected CK3:', background_color='#F0F0F0')
+            check_title_add_button(window, values)
+
+        elif event == 'TITLE_ATTILA_LIST_KEY':
+            if values['TITLE_ATTILA_LIST_KEY']:
+                selected_attila = values['TITLE_ATTILA_LIST_KEY']
+                window['TITLE_SELECTED_ATTILA_KEY'].update(f'Selected ATTILA: {selected_attila}', background_color="#F5962A")
+            else:
+                selected_attila = None
+                window['TITLE_SELECTED_ATTILA_KEY'].update('Selected ATTILA:', background_color='#F0F0F0')
+            check_title_add_button(window, values)
+
+        elif event == 'TITLE_SELECT_KEY':
+            current_title = values['TITLE_SELECT_KEY']
+            update_title_mappings_list(window, title_mapping_dict)
+            check_title_add_button(window, values)
+
+        elif event == 'TITLE_CK3_SOURCE_KEY':
+            current_ck3_source = values['TITLE_CK3_SOURCE_KEY']
+            search_term = values['TITLE_CK3_SEARCH_KEY']
+            if current_ck3_source == 'ALL':
+                new_list = [item['ck3_maa'] for item in TITLE_MAA_KEYS]
+                if search_term:
+                    new_list = [item['ck3_maa'] for item in TITLE_MAA_KEYS if search_term.lower() in item['ck3_maa'].lower()]
+            else:
+                new_list = [item['ck3_maa'] for item in TITLE_MAA_KEYS if item['ck3_source'] == current_ck3_source]
+                if search_term:
+                    new_list = [item['ck3_maa'] for item in TITLE_MAA_KEYS if search_term.lower() in item['ck3_maa'].lower() and item['ck3_source'] == current_ck3_source]
+            window['TITLE_CK3_LIST_KEY'].update(sorted(new_list))
+
+        elif event == 'TITLE_ATTILA_SOURCE_KEY':
+            current_att_source = values['TITLE_ATTILA_SOURCE_KEY']
+            search_term = values['TITLE_ATTILA_SEARCH_KEY']
+            if current_att_source == 'ALL':
+                new_list = [item['attila_map_key'] for item in ATTILA_SOURCE_KEYS]
+                if search_term:
+                    new_list = [item['attila_map_key'] for item in ATTILA_SOURCE_KEYS if search_term.lower() in item['attila_map_key'].lower()]
+            else:
+                new_list = [item['attila_map_key'] for item in ATTILA_SOURCE_KEYS if item['attila_source'] == current_att_source]
+                if search_term:
+                    new_list = [item['attila_map_key'] for item in ATTILA_SOURCE_KEYS if search_term.lower() in item['attila_map_key'].lower() and item['attila_source'] == current_att_source]
+            window['TITLE_ATTILA_LIST_KEY'].update(sorted(new_list))
+
+        elif event == 'TITLE_CK3_SEARCH_KEY':
+            current_ck3_source = values['TITLE_CK3_SOURCE_KEY']
+            search_term = values['TITLE_CK3_SEARCH_KEY']
+            if current_ck3_source == 'ALL':
+                new_list = [item['ck3_maa'] for item in TITLE_MAA_KEYS]
+                if search_term:
+                    new_list = [item['ck3_maa'] for item in TITLE_MAA_KEYS if search_term.lower() in item['ck3_maa'].lower()]
+            else:
+                new_list = [item['ck3_maa'] for item in TITLE_MAA_KEYS if item['ck3_source'] == current_ck3_source]
+                if search_term:
+                    new_list = [item['ck3_maa'] for item in TITLE_MAA_KEYS if search_term.lower() in item['ck3_maa'].lower() and item['ck3_source'] == current_ck3_source]
+            window['TITLE_CK3_LIST_KEY'].update(sorted(new_list))
+
+        elif event == 'TITLE_ATTILA_SEARCH_KEY':
+            current_att_source = values['TITLE_ATTILA_SOURCE_KEY']
+            search_term = values['TITLE_ATTILA_SEARCH_KEY']
+            if current_att_source == 'ALL':
+                new_list = [item['attila_map_key'] for item in ATTILA_SOURCE_KEYS]
+                if search_term:
+                    new_list = [item['attila_map_key'] for item in ATTILA_SOURCE_KEYS if search_term.lower() in item['attila_map_key'].lower()]
+            else:
+                new_list = [item['attila_map_key'] for item in ATTILA_SOURCE_KEYS if item['attila_source'] == current_att_source]
+                if search_term:
+                    new_list = [item['attila_map_key'] for item in ATTILA_SOURCE_KEYS if search_term.lower() in item['attila_map_key'].lower() and item['attila_source'] == current_att_source]
+            window['TITLE_ATTILA_LIST_KEY'].update(sorted(new_list))
+
+        elif event == 'TITLE_ADD_MAPPING_KEY' and selected_ck3 and selected_attila:
+            if current_title:
+                size = values['TITLE_MAA_SIZE_SELECT']
+                if size == 'MANUAL':
+                    size = popup_size_manual()
+                for selected in selected_ck3:
+                    mapping_key = (selected, current_title)
+
+                    if mapping_key in title_mapping_dict:
+                        del title_mapping_dict[mapping_key]
+
+                    override_size = ''
+                    if re.search(r'^GENERAL\b', mapping_key[0]):
+                        override_size = 'GENERAL'
+                    if re.search(r'^KNIGHTS\b', mapping_key[0]):
+                        override_size = 'KNIGHTS'
+
+                    if override_size:
+                        title_mapping_dict[mapping_key] = selected_attila + [override_size]
+                    else:
+                        title_mapping_dict[mapping_key] = selected_attila + [size]
+
+                    update_title_mappings_list(window, title_mapping_dict)
+                    check_title_add_button(window, values)
+
+                selected_ck3 = None
+                selected_attila = None
+                window['TITLE_CK3_LIST_KEY'].update(set_to_index=[])
+                window['TITLE_ATTILA_LIST_KEY'].update(set_to_index=[])
+                window['TITLE_SELECTED_CK3_KEY'].update('Selected CK3:', background_color='#F0F0F0')
+                window['TITLE_SELECTED_ATTILA_KEY'].update('Selected ATTILA:', background_color='#F0F0F0')
+
+        elif event == 'TITLE_REMOVE_MAPPING_KEY':
+            if values['TITLE_MAPPING_LIST_KEY']:
+                for formatted_mapping in values['TITLE_MAPPING_LIST_KEY']:
+                    if formatted_mapping.startswith('['):
+                        parts = formatted_mapping.split('] ')
+                        display_name = parts[0].strip('[')
+                        ck3_key_to_remove = parts[1].split(' => ')[0].strip()
+                        # Find title_key from display name
+                        title_key_to_remove = current_title
+                        for tk, tn in title_names_dict.items():
+                            if tn == display_name:
+                                title_key_to_remove = tk
+                                break
+
+                    key_to_remove = (ck3_key_to_remove, title_key_to_remove)
+                    if key_to_remove in title_mapping_dict:
+                        del title_mapping_dict[key_to_remove]
+                        update_title_mappings_list(window, title_mapping_dict)
+
+                window['TITLE_MAPPING_LIST_KEY'].update(set_to_index=[])
+
+        elif event == 'TITLE_LIST_EDIT_KEY':
+            new_titles = popup_title_pick(TITLE_LIST)
+            if new_titles:
+                for title_key in new_titles:
+                    display_name = popup_title_name(title_key)
+                    title_names_dict[title_key] = display_name
+                    TITLE_LIST.append(title_key)
+                TITLE_LIST.sort()
+                window['TITLE_SELECT_KEY'].update(values=TITLE_LIST)
+                if not current_title and TITLE_LIST:
+                    current_title = TITLE_LIST[0]
+                    window['TITLE_SELECT_KEY'].update(value=current_title)
+
+        elif event == 'TITLE_OK_KEY':
+            window.close()
+            return title_mapping_dict, title_names_dict
+
+    window.close()
+    return title_mapping_dict, title_names_dict
+
 def mapping_window():
     ATTILA_UNIT_LIST_SOURCE = ['ALL'] + sorted(list(dict.fromkeys(ATTILA_SOURCES)))
     MAA_LIST_SOURCE = ['ALL'] + sorted(list(dict.fromkeys(CK3_SOURCES)))
@@ -720,6 +1102,10 @@ def mapping_window():
     # Format heritage mapping: {heritage(faction,[culture[faction]]} | {key(value,list[value])}
     current_heritage_mappings = {}
     current_mods = {}
+    # Format title mapping: {(ck3_maa, title_key): [attila_unit, size]} | {tuple: [value]}
+    current_title_mappings = {}
+    # Format title names: {title_key: display_name} | {str: str}
+    current_title_names = {}
     # ==================================================
 
     CK3_SOURCE_KEY = 'CK3_SOURCE_KEY'
@@ -862,7 +1248,7 @@ def mapping_window():
         is_ready = selected_ck3 is not None and selected_attila is not None and values[FACTION_KEY] != ''
         window['ADD_MAPPING_KEY'].update(disabled=not is_ready)
 
-    def save_mapper(name, faction_mapping, heritage_mapping, mods):
+    def save_mapper(name, faction_mapping, heritage_mapping, mods, title_mapping=None, title_names=None):
         output_path = os.path.join(CUSTOM_MAPPER_DIR,f'{name}.txt')
         os.makedirs(CUSTOM_MAPPER_DIR, exist_ok=True)
         seperator = ','
@@ -874,6 +1260,14 @@ def mapping_window():
             'HERITAGES_AND_CULTURES': {
                 seperator.join(k):[v]
                 for k,v in heritage_mapping.items()
+                },
+            'TITLES_AND_MAA': {
+                seperator.join(k):v
+                for k,v in (title_mapping or {}).items()
+                },
+            'TITLE_NAMES': {
+                k:v
+                for k,v in (title_names or {}).items()
                 },
             'MODS':{
                 k:v
@@ -934,6 +1328,35 @@ def mapping_window():
             for k, v in mod_data.items()
         }
 
+        # Load title data (backward compatible with old saves)
+        title_data = loaded_data.get('TITLES_AND_MAA', {})
+        title_names_data = loaded_data.get('TITLE_NAMES', {})
+        loaded_title_mapping = {
+            tuple(k.split(seperator)):v
+            for k, v in title_data.items()
+        }
+        loaded_title_names = {
+            k:v
+            for k, v in title_names_data.items()
+        }
+
+        # Validate title keys
+        title_diff = 0
+        for k in loaded_title_mapping.keys():
+            maa = k[0]
+            if maa not in TITLE_NON_MAA_KEYS and maa not in [key['ck3_maa'] for key in MAA_SOURCE_KEYS]:
+                maa_diff = 1
+                missing_keys.append([maa,'CK3 ManAtArms (Title)'])
+        for v in loaded_title_mapping.values():
+            attila = v[0]
+            if attila not in [key['attila_map_key'] for key in ATTILA_SOURCE_KEYS]:
+                attila_diff = 1
+                missing_keys.append([attila,'Attila Unit (Title)'])
+        for tk in loaded_title_names.keys():
+            if tk not in [item['title_key'] for item in TITLE_SOURCE_KEYS]:
+                title_diff = 1
+                missing_keys.append([tk,'CK3 Title'])
+
         if maa_diff == 1:
             diff_message = diff_message + '⚠️ Detected missing MAA source! (CK3/CK3 mods)\n'
         if attila_diff == 1:
@@ -942,14 +1365,16 @@ def mapping_window():
             diff_message = diff_message + '⚠️ Detected missing heritage source! (CK3/CK3 mods)\n'
         if culture_diff == 1:
             diff_message = diff_message + '⚠️ Detected missing culture source! (CK3/CK3 mods)\n'
-        
+        if title_diff == 1:
+            diff_message = diff_message + '⚠️ Detected missing title source! (CK3/CK3 mods)\n'
+
         if diff_message:
             sg.popup(f'Warning: Missing sources were detected. This will cause issues with the mapper tool due to missing source keys\n\n{diff_message}\nPlease ensure you have all required sources for this mapper, both CK3 and Attila, for complete and issue free editing:\n• For CK3, ensure you have the required mods installed in Steam\n• For Attila, ensure you have exported all the correct unit key .tsv files')
             overall_diff = 1
             unique = sorted(set(tuple(x) for x in missing_keys))
             missing_keys = [list(x) for x in unique]
 
-        return loaded_faction_mapping, loaded_heritage_mapping, loaded_mods, overall_diff, missing_keys
+        return loaded_faction_mapping, loaded_heritage_mapping, loaded_mods, overall_diff, missing_keys, loaded_title_mapping, loaded_title_names
 
     # END FUNCTIONS
     # ==============================================
@@ -1044,24 +1469,26 @@ def mapping_window():
 
         elif event == 'SAVE_BUTTON_KEY':
             if MAPPER_NAME:
-                save_mapper(MAPPER_NAME, current_mappings, current_heritage_mappings, current_mods)
+                save_mapper(MAPPER_NAME, current_mappings, current_heritage_mappings, current_mods, current_title_mappings, current_title_names)
                 add_map_config(MAPPER_NAME, current_mods)
 
             else:
                 name = popup_mapper_name_input()
                 if name:
-                    save_mapper(name,current_mappings, current_heritage_mappings, current_mods)
+                    save_mapper(name, current_mappings, current_heritage_mappings, current_mods, current_title_mappings, current_title_names)
                     MAPPER_NAME = name
                     add_map_config(MAPPER_NAME, current_mods)
             window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
 
         elif event == 'FILE_LOAD_KEY':
-            loaded_faction_mapping, loaded_heritage_mapping, loaded_mods, diff, missing_keys = load_mapper(values['FILE_LOAD_KEY'])
+            loaded_faction_mapping, loaded_heritage_mapping, loaded_mods, diff, missing_keys, loaded_title_mapping, loaded_title_names = load_mapper(values['FILE_LOAD_KEY'])
             map_name, _ = os.path.splitext(os.path.basename(values['FILE_LOAD_KEY']))
             if loaded_faction_mapping:
                 current_mappings = loaded_faction_mapping
                 current_heritage_mappings = loaded_heritage_mapping
                 current_mods = loaded_mods
+                current_title_mappings = loaded_title_mapping
+                current_title_names = loaded_title_names
                 available_factions = list(set([item[0][1] for item in current_mappings.items()]))
                 FACTION_LIST = sorted(available_factions)
             MAPPER_NAME = map_name
@@ -1188,7 +1615,9 @@ def mapping_window():
                 current_mods = new_mods
         
         elif event == 'TITLE_EDIT_BUTTON_KEY':
-            sg.popup('Title mapping not yet implemented!')
+            current_title_mappings, current_title_names = title_window(
+                current_title_mappings, current_title_names
+            )
 
         elif event == 'HERITAGE_EDIT_BUTTON_KEY':
             current_heritage_mappings = heritage_window(current_heritage_mappings, FACTION_LIST)
@@ -1200,7 +1629,9 @@ def mapping_window():
                 import_maa = xml_import[1]
                 import_heritage = xml_import[2]
                 import_mods = xml_import[3]
-                save_mapper(import_name,import_maa, import_heritage, import_mods)
+                import_titles = xml_import[4] if len(xml_import) > 4 else {}
+                import_title_names = xml_import[5] if len(xml_import) > 5 else {}
+                save_mapper(import_name, import_maa, import_heritage, import_mods, import_titles, import_title_names)
                 add_map_config(import_name, import_mods)
 
     window.close()
