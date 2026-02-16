@@ -521,9 +521,9 @@ def summary():
                                 print('', file=sum_f)
 
                             if missing_attila_keys:
-                                print(f'\t↳ ⚠ Missing keys from Total War Attila: {len(missing_keys)} missing keys', file=sum_f)
-                                for i in range(0, len(missing_keys), output_columns):
-                                    row = missing_keys[i:i + output_columns]
+                                print(f'\t↳ ⚠ Missing keys from Total War Attila: {len(missing_attila_keys)} missing keys', file=sum_f)
+                                for i in range(0, len(missing_attila_keys), output_columns):
+                                    row = missing_attila_keys[i:i + output_columns]
                                     formatted_row = " ".join(key.ljust(30) for key in row)
                                     print(formatted_row, file=sum_f)
                                 print('', file=sum_f)
