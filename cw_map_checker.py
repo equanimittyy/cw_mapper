@@ -289,9 +289,71 @@ def get_keys(cw_config):
 
     df_ck3_maa = pd.concat([df_ck3_maa,pd.DataFrame(ck3_rows)],ignore_index=True)
 
-    return df_ck3_cultures, df_ck3_maa, df_attila
+    # CK3 + MODS LANDED TITLE KEYS
+    df_ck3_titles = pd.DataFrame()
+    ck3_title_dir = os.path.join(ck3_dir_path,'game','common','landed_titles')
+    ck3_rows = []
+    print()
+    print(f'== Finding CK3 landed title files in: {ck3_title_dir} ==')
+    print()
 
-def mapping_validation(culture_keys, maa_keys, attila_keys):
+    rank_map = {'e': 'Empire', 'k': 'Kingdom', 'd': 'Duchy'}
+
+    if os.path.exists(ck3_title_dir):
+        for file in os.listdir(ck3_title_dir):
+            if file.endswith('.txt'):
+                source_file = os.path.join(ck3_title_dir,file)
+                source_name = os.path.basename(source_file)
+
+                with open(source_file, 'r', encoding="utf-8-sig") as title_txt_file:
+                    data = title_txt_file.read()
+
+                title_keys = re.findall(r'^([ekd]_\w+)\s*=\s*\{', data, re.M)
+                for title in title_keys:
+                    prefix = title[0]
+                    ck3_rows.append({
+                        "title_key":title,
+                        "title_rank":rank_map.get(prefix, 'Unknown'),
+                        "ck3_source_file":source_name,
+                        "ck3_source":"CK3",
+                        "mod_id":"0"
+                    })
+
+    # Obtain additional titles from CK3 mods
+    if not os.path.exists(ck3_mod_dir):
+        print(f'== CK3 mod directory not found: {ck3_mod_dir}, skipping mod titles ==')
+    else:
+        for folders in os.scandir(ck3_mod_dir):
+            if folders.name in CK3_MODS.values():
+                ck3_mod_title_dir = os.path.join(ck3_mod_dir,folders.name,'common','landed_titles')
+                mod_name = list(CK3_MODS.keys())[list(CK3_MODS.values()).index(folders.name)]
+                print(f'== Finding mod landed title files in: {folders.name} ==')
+
+                if os.path.exists(ck3_mod_title_dir):
+                    for file in os.listdir(ck3_mod_title_dir):
+                        if file.endswith('.txt'):
+                            source_file = os.path.join(ck3_mod_title_dir,file)
+                            source_name = os.path.basename(source_file)
+
+                            with open(source_file, 'r', encoding="utf-8-sig") as title_txt_file:
+                                data = title_txt_file.read()
+
+                            title_keys = re.findall(r'^([ekd]_\w+)\s*=\s*\{', data, re.M)
+                            for title in title_keys:
+                                prefix = title[0]
+                                ck3_rows.append({
+                                    "title_key":title,
+                                    "title_rank":rank_map.get(prefix, 'Unknown'),
+                                    "ck3_source_file":source_name,
+                                    "ck3_source":mod_name,
+                                    "mod_id":folders.name
+                                })
+
+    df_ck3_titles = pd.concat([df_ck3_titles,pd.DataFrame(ck3_rows)],ignore_index=True)
+
+    return df_ck3_cultures, df_ck3_maa, df_attila, df_ck3_titles
+
+def mapping_validation(culture_keys, maa_keys, attila_keys, title_keys=None):
     # == BEGIN MAPPING ==
     # Declare data frame for processed cw mapping
     df_cultures = pd.DataFrame()
@@ -300,6 +362,7 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
     df_ck3_cultures = culture_keys
     df_ck3_maa = maa_keys
     df_attila = attila_keys
+    df_ck3_titles = title_keys
 
     cultures_rows = []
     maa_rows = []
@@ -402,6 +465,9 @@ def mapping_validation(culture_keys, maa_keys, attila_keys):
     df_attila.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_attila_keys.csv'))
     df_ck3_cultures.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_cultures_keys.csv'))
     df_ck3_maa.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_maa_keys.csv'))
+    if df_ck3_titles is not None and not df_ck3_titles.empty:
+        df_ck3_titles.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_title_keys.csv'))
+        print(f'Report produced for source title key files.')
     print(f'Report produced for source key files.')
 
 def summary():
