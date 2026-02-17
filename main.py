@@ -453,7 +453,8 @@ def popup_help_guide():
         "=================\n"
         "Click 'Mod configuration' to set which CK3 mods and Attila .pack files your\n"
         "mapper requires. This is written into the exported Mods.xml for Crusader Wars and used\n"
-        "when validating your mapper(s) in the tool's report window."
+        "when validating your mapper(s) in the tool's report window.\n\n"
+        "To add more unit keys from Attila, export the tables via RPFM as .tsv into the folder 'attila_exports/db/main_unit_tables'"
     )
 
     layout = [
