@@ -308,7 +308,7 @@ def get_keys(cw_config):
                 with open(source_file, 'r', encoding="utf-8-sig") as title_txt_file:
                     data = title_txt_file.read()
 
-                title_keys = re.findall(r'^([ekdc]_\w+)\s*=\s*\{', data, re.M)
+                title_keys = re.findall(r'([ekdc]_\w+)\s*=\s*\{', data, re.M)
                 for title in title_keys:
                     prefix = title[0]
                     ck3_rows.append({
