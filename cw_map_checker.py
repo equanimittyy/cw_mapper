@@ -353,7 +353,7 @@ def get_keys(cw_config):
 
     return df_ck3_cultures, df_ck3_maa, df_attila, df_ck3_titles
 
-def mapping_validation(culture_keys, maa_keys, attila_keys, title_keys=None):
+def mapping_validation(culture_keys, maa_keys, attila_keys, title_keys):
     # == BEGIN MAPPING ==
     # Declare data frame for processed cw mapping
     df_cultures = pd.DataFrame()
@@ -455,7 +455,7 @@ def mapping_validation(culture_keys, maa_keys, attila_keys, title_keys=None):
             # Join df from CW and Attila/CK3, and produce reports
             df_maa = pd.merge(df_maa,df_attila, on='attila_map_key', how ='left')
             df_maa.to_csv(os.path.join(REPORT_OUTPUT_DIR,mapping,f'{mapping}_cw_maa.csv'))
-            if df_ck3_titles is not None and not df_ck3_titles.empty:
+            if not df_titles.empty:
                 df_titles = pd.merge(df_titles, df_ck3_titles, on='title_key', how='left')
                 df_titles.to_csv(os.path.join(REPORT_OUTPUT_DIR,mapping,f'{mapping}_cw_titles.csv'))
             print(f'// 🕮  Report produced for man-at-arms files for mapper: {mapping}.')
@@ -474,9 +474,7 @@ def mapping_validation(culture_keys, maa_keys, attila_keys, title_keys=None):
     df_attila.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_attila_keys.csv'))
     df_ck3_cultures.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_cultures_keys.csv'))
     df_ck3_maa.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_maa_keys.csv'))
-    if df_ck3_titles is not None and not df_ck3_titles.empty:
-        df_ck3_titles.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_title_keys.csv'))
-        print(f'Report produced for source title key files.')
+    df_ck3_titles.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_title_keys.csv'))
     print(f'Report produced for source key files.')
 
 def summary():
