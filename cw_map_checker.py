@@ -358,6 +358,7 @@ def mapping_validation(culture_keys, maa_keys, attila_keys, title_keys=None):
     # Declare data frame for processed cw mapping
     df_cultures = pd.DataFrame()
     df_maa = pd.DataFrame()
+    df_titles = pd.DataFrame()
 
     df_ck3_cultures = culture_keys
     df_ck3_maa = maa_keys
@@ -366,6 +367,7 @@ def mapping_validation(culture_keys, maa_keys, attila_keys, title_keys=None):
 
     cultures_rows = []
     maa_rows = []
+    title_rows = []
 
     # CW MAPPERS
     if os.listdir(MAPPER_DIR):
@@ -434,9 +436,10 @@ def mapping_validation(culture_keys, maa_keys, attila_keys, title_keys=None):
                         for titles_parent in titles_root:
                             for titles_child in titles_parent:
                                 # Update rows
-                                maa_rows.append({
+                                title_rows.append({
                                     "cw_type": titles_child.tag,
                                     "cw_category": 'Title',
+                                    "cw_title_key": titles_parent.attrib.get('title_key'),
                                     "cw_maa_parent": titles_parent.attrib.get('name'),
                                     "cw_maa": titles_child.attrib.get('type'),
                                     "attila_map_key": titles_child.attrib.get('key'),
@@ -447,10 +450,13 @@ def mapping_validation(culture_keys, maa_keys, attila_keys, title_keys=None):
             # Append processing results to df
             df_cultures = pd.concat([df_cultures,pd.DataFrame(cultures_rows)],ignore_index=True)
             df_maa = pd.concat([df_maa,pd.DataFrame(maa_rows)],ignore_index=True)
+            df_titles = pd.concat([df_titles,pd.DataFrame(title_rows)],ignore_index=True)
 
             # Join df from CW and Attila/CK3, and produce reports
             df_maa = pd.merge(df_maa,df_attila, on='attila_map_key', how ='left')
             df_maa.to_csv(os.path.join(REPORT_OUTPUT_DIR,mapping,f'{mapping}_cw_maa.csv'))
+            df_titles = pd.merge(df_titles, df_attila, on='attila_map_key', how='left')
+            df_titles.to_csv(os.path.join(REPORT_OUTPUT_DIR,mapping,f'{mapping}_cw_titles.csv'))
             print(f'// 🕮  Report produced for man-at-arms files for mapper: {mapping}.')
 
             df_cultures = pd.merge(df_cultures,df_ck3_cultures, on='ck3_culture', how ='left')
@@ -459,8 +465,10 @@ def mapping_validation(culture_keys, maa_keys, attila_keys, title_keys=None):
 
             df_cultures = pd.DataFrame()
             df_maa = pd.DataFrame()
+            df_titles = pd.DataFrame()
             cultures_rows = []
             maa_rows = []
+            title_rows = []
 
     df_attila.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_attila_keys.csv'))
     df_ck3_cultures.to_csv(os.path.join(REPORT_OUTPUT_DIR,'source_ck3_cultures_keys.csv'))
@@ -582,17 +590,23 @@ def summary():
                             with open(file_path, 'r') as f:
                                 report_data = list(csv.DictReader(f))
                                 expected_maa = [d["ck3_maa"] for d in expected_maa_keys]
-                                report_maa = [d["cw_maa"] for d in report_data if d.get("cw_category") != 'Title']
+                                report_maa = [d["cw_maa"] for d in report_data]
                                 missing_keys = sorted(set(expected_maa) - set(report_maa) - CW_CUSTOM_VALUES)
 
                                 report_attila_keys = [d["attila_map_key"] for d in report_data]
                                 expected_attila_keys = [d["attila_map_key"] for d in source_attila_keys]
                                 missing_attila_keys = sorted(set(report_attila_keys)-set(expected_attila_keys))
 
-                                # TITLES - validate title keys used in mapper
-                                title_rows = [d for d in report_data if d.get("cw_category") == 'Title']
+                        # TITLES - validate title keys used in mapper
+                        if file.endswith('titles.csv'):
+                            print(f'\t♠ Titles: ', file=sum_f)
+                            file_path = os.path.join(map_folder,file)
+
+                            with open(file_path, 'r') as f:
+                                report_data = list(csv.DictReader(f))
+                                title_rows = [d for d in report_data]
                                 if title_rows:
-                                    report_title_keys = set(d["cw_maa_parent"] for d in title_rows)
+                                    report_title_keys = set(d["cw_title_key"] for d in title_rows)
                                     expected_title_key_set = set(d["title_key"] for d in expected_title_keys)
                                     missing_title_keys = sorted(report_title_keys - expected_title_key_set - CW_CUSTOM_VALUES)
 
@@ -621,7 +635,7 @@ def summary():
                                     print('', file=sum_f)
 
                             # Title key validation
-                            if file.endswith('maa.csv') and title_rows:
+                            if file.endswith('titles.csv'):
                                 print(f'\t♠ Titles: ', file=sum_f)
                                 if missing_title_keys:
                                     print(f'\t↳ ⚠ Missing title keys: {len(missing_title_keys)} missing keys', file=sum_f)
