@@ -388,6 +388,95 @@ def popup_size_manual():
             else:
                 sg.popup('Input cannot be empty!', auto_close=True, auto_close_duration=2, title='Error')
 
+def popup_help_guide():
+    guide_text = (
+        "GETTING STARTED\n"
+        "===============\n"
+        "The Custom Unit Mapper lets you create unit mappings between CK3 and Total War: Attila.\n"
+        "The window has three columns:\n"
+        "  - Left: CK3 Man-at-Arms keys (including special types like GENERAL, KNIGHTS, LEVY)\n"
+        "  - Middle: Attila unit keys (the TW:A units to map to)\n"
+        "  - Right: Your current mappings for the selected faction\n\n"
+
+        "FACTION MAPPING (Main Window)\n"
+        "=============================\n"
+        "Each mapping links a CK3 MAA type to an Attila unit, organised by FACTION.\n"
+        "A faction represents a group of units (e.g. 'Western European', 'Norse').\n\n"
+        "To create a mapping:\n"
+        "  1. Select a Faction from the dropdown (or create one via 'Edit faction list')\n"
+        "  2. Click a CK3 MAA key from the left list\n"
+        "  3. Click an Attila unit key from the middle list\n"
+        "  4. Choose a unit size (INFANTRY, CAVALRY, RANGED, or a manual number)\n"
+        "  5. Click 'Add Mapping'\n\n"
+        "Special unit types (GENERAL, KNIGHTS, LEVY-*) are listed at the top of the CK3 list.\n"
+        "  - GENERAL: The commander unit for a faction (one per faction)\n"
+        "  - KNIGHTS: The knight unit for a faction (one per faction)\n"
+        "  - LEVY-*: Levy units with percentage allocations that must total 100%% per faction\n"
+        "    Use 'Edit levy percentages' to adjust the split\n\n"
+        "You can copy all mappings from one faction to another using 'Copy from faction'.\n\n"
+
+        "HERITAGE MAPPING\n"
+        "================\n"
+        "Click 'Open Heritage mapping' to assign CK3 heritages/cultures to your factions.\n"
+        "This determines which faction's units a culture uses in battle.\n\n"
+        "  - A HERITAGE is a group of cultures (e.g. 'West Germanic' contains English, Dutch, etc.)\n"
+        "  - You can assign a faction at the heritage level (all cultures inherit it)\n"
+        "  - Or override individual cultures within a heritage to use a different faction\n"
+        "  - Use 'PARENT_KEY' to set the default faction for an entire heritage\n\n"
+
+        "TITLE MAPPING\n"
+        "=============\n"
+        "Click 'Open Title mapping' to create title-specific unit overrides.\n"
+        "Title mappings let specific empires, kingdoms, or duchies use different units\n"
+        "than their culture's default faction would give them.\n\n"
+        "  - Title mappings support GENERAL, KNIGHTS, and MenAtArm types only (no levies)\n"
+        "  - These override the faction mapping for holders of that title\n\n"
+
+        "SAVING & LOADING\n"
+        "================\n"
+        "  - 'Save': Saves your mapper as a .txt file (JSON format) in the custom_mappers/ folder.\n"
+        "    This is the working format for this tool. Use Save/Load to continue editing later.\n"
+        "  - 'Load': Loads a previously saved .txt mapper file to continue editing.\n\n"
+
+        "IMPORTING & EXPORTING XML\n"
+        "=========================\n"
+        "  - 'Import/Export XML' opens a dialog to convert between this tool and Crusader Wars.\n"
+        "  - IMPORT: Reads an existing CW mapper folder (with Factions/, Cultures/, etc.) and\n"
+        "    converts it into this tool's format so you can edit it. Use this to modify an\n"
+        "    existing official or community mapper.\n"
+        "  - EXPORT: Converts your saved mapper into the XML folder structure that Crusader Wars\n"
+        "    actually reads (Factions/, Cultures/, Titles/, Mods.xml, etc.).\n"
+        "    Export when your mapper is ready to be used in-game.\n\n"
+        "  Save/Load = working format for editing | Import/Export XML = game-ready format for CW\n\n"
+
+        "MOD CONFIGURATION\n"
+        "=================\n"
+        "Click 'Mod configuration' to set which CK3 mods and Attila .pack files your\n"
+        "mapper requires. This is written into the exported Mods.xml for Crusader Wars\n"
+        "and used when validating your mapper(s) in the tool's report window."
+    )
+
+    layout = [
+        [sg.Text('Custom Mapper Instructions', font=('Courier New', 14, 'bold'))],
+        [sg.Multiline(
+            guide_text,
+            size=(90, 35),
+            font=('Courier New', 10),
+            disabled=True,
+            expand_x=True,
+            expand_y=True,
+            background_color='#F5F5F5',
+            text_color='#000000'
+        )],
+        [sg.Button('Close', size=(10, 1))]
+    ]
+    window = sg.Window('Mapper Help Guide', layout, modal=True, resizable=True, element_justification='center')
+    while True:
+        event, _ = window.read()
+        if event in (sg.WIN_CLOSED, 'Close'):
+            break
+    window.close()
+
 def popup_xml_import_export(config):
     cw_mapper_dir = os.path.join(CW_DIR,'unit mappers','attila')
 
@@ -1259,7 +1348,7 @@ def mapping_window():
     mapper_layout = [
         [sg.Image(ASCII_ART_MAPPER)],
         [sg.Text('Create your "MAA => UNIT" mapping, per FACTION here. Each FACTION can have as many "MAA => UNIT" mappings as you like. Any missing "MAA => UNIT" mappings will fallback to faction DEFAULT, or crash if not present.', font=('Courier New', 10, 'bold'), justification='center', expand_x=True)],
-        [sg.Column([[sg.Text('Each FACTION is assigned to one or many HERITAGE.', font=('Courier New', 10, 'bold'), key='SUBTEXT', justification='center'),sg.Button('⚠️ View missing keys', key='VIEW_MISSING_BUTTON', size=(20, 1), button_color=('white', "#CABD2E"), visible=False)]],element_justification='center')],
+        [sg.Column([[sg.Text('Each FACTION is assigned to one or many HERITAGE.', font=('Courier New', 10, 'bold'), key='SUBTEXT', justification='center'),sg.Button('⚠️ View missing keys', key='VIEW_MISSING_BUTTON', size=(20, 1), button_color=('white', "#CABD2E"), visible=False),sg.Button('? Help', key='HELP_GUIDE_BUTTON', size=(10, 1), button_color=('white', '#2266AA'))]],element_justification='center')],
         [
             sg.Column(col1_layout, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD',expand_x=True,expand_y=True),
             sg.VSeparator(),
@@ -1691,6 +1780,9 @@ def mapping_window():
                 import_title_names = xml_import[5] if len(xml_import) > 5 else {}
                 save_mapper(import_name, import_maa, import_heritage, import_mods, import_titles, import_title_names)
                 add_map_config(import_name, import_mods)
+
+        elif event == 'HELP_GUIDE_BUTTON':
+            popup_help_guide()
 
     window.close()
 

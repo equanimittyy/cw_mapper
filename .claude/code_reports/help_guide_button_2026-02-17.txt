@@ -1,0 +1,18 @@
+Help Guide Button - Custom Mapper Window
+=========================================
+
+170217-00001 - Add help guide button to custom mapper window
+  Severity: N/A (Feature)
+  Location: main.py - popup_help_guide() function (line ~391), mapper_layout (line ~1262), event loop (line ~1697)
+  Problem: Users had no in-app instructions for how to use the custom mapper window, including
+           the difference between Save/Load vs Import/Export XML, and how faction, heritage,
+           and title mapping work.
+  Fix: Added a "? Help" button to the mapper header row (next to the "View missing keys" button).
+       Clicking it opens a modal popup window with a scrollable guide covering:
+       - Getting started / three-column layout overview
+       - Faction mapping workflow (selecting CK3 MAA, Attila unit, size, adding mappings)
+       - Special unit types (GENERAL, KNIGHTS, LEVY with percentage allocation)
+       - Heritage mapping (assigning cultures to factions, PARENT_KEY usage)
+       - Title mapping (empire/kingdom/duchy overrides, no levy support)
+       - Save/Load vs Import/Export XML (working format vs game-ready format)
+       - Mod configuration
