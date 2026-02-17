@@ -297,7 +297,7 @@ def get_keys(cw_config):
     print(f'== Finding CK3 landed title files in: {ck3_title_dir} ==')
     print()
 
-    rank_map = {'e': 'Empire', 'k': 'Kingdom', 'd': 'Duchy'}
+    rank_map = {'e': 'Empire', 'k': 'Kingdom', 'd': 'Duchy', 'c': 'County'}
 
     if os.path.exists(ck3_title_dir):
         for file in os.listdir(ck3_title_dir):
@@ -439,7 +439,7 @@ def mapping_validation(culture_keys, maa_keys, attila_keys, title_keys=None):
                                 title_rows.append({
                                     "cw_type": titles_child.tag,
                                     "cw_category": 'Title',
-                                    "cw_title_key": titles_parent.attrib.get('title_key'),
+                                    "title_key": titles_parent.attrib.get('title_key'),
                                     "cw_maa_parent": titles_parent.attrib.get('name'),
                                     "cw_maa": titles_child.attrib.get('type'),
                                     "attila_map_key": titles_child.attrib.get('key'),
@@ -455,8 +455,9 @@ def mapping_validation(culture_keys, maa_keys, attila_keys, title_keys=None):
             # Join df from CW and Attila/CK3, and produce reports
             df_maa = pd.merge(df_maa,df_attila, on='attila_map_key', how ='left')
             df_maa.to_csv(os.path.join(REPORT_OUTPUT_DIR,mapping,f'{mapping}_cw_maa.csv'))
-            df_titles = pd.merge(df_titles, df_attila, on='attila_map_key', how='left')
-            df_titles.to_csv(os.path.join(REPORT_OUTPUT_DIR,mapping,f'{mapping}_cw_titles.csv'))
+            if df_ck3_titles is not None and not df_ck3_titles.empty:
+                df_titles = pd.merge(df_titles, df_ck3_titles, on='title_key', how='left')
+                df_titles.to_csv(os.path.join(REPORT_OUTPUT_DIR,mapping,f'{mapping}_cw_titles.csv'))
             print(f'// 🕮  Report produced for man-at-arms files for mapper: {mapping}.')
 
             df_cultures = pd.merge(df_cultures,df_ck3_cultures, on='ck3_culture', how ='left')
