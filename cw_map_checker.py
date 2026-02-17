@@ -607,9 +607,6 @@ def summary():
                                     report_title_keys = set(d["title_key"] for d in title_rows)
                                     expected_title_key_set = set(d["title_key"] for d in expected_title_keys)
                                     missing_title_keys = sorted(report_title_keys - expected_title_key_set)
-                        else:
-                            print(f'\t♠ Titles: ', file=sum_f)
-                            print(f'\t↳ ⚠ Mapper "{mapping}" does not have title-based mapping', file=sum_f)
 
                         if expected_culture_keys and expected_maa_keys:
                             # Culture and MAA missing key reporting
@@ -649,6 +646,9 @@ def summary():
                                 else:
                                     print(f'\t↳ ✓ No missing title keys found', file=sum_f)
                                     print('', file=sum_f)
+                        elif not expected_title_keys:
+                            print(f'\t♠ Titles: ', file=sum_f)
+                            print(f'\t↳ ⚠ Mapper "{mapping}" does not have title-based mapping or missing source files', file=sum_f)
                         else:
                             print(f'\t↳ ⚠ Missing all source files for keys: {file}. Skipping...', file=sum_f)
                             print('', file=sum_f)
