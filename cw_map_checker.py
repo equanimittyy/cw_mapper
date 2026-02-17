@@ -590,11 +590,11 @@ def summary():
                                 report_data = list(csv.DictReader(f))
                                 expected_maa = [d["ck3_maa"] for d in expected_maa_keys]
                                 report_maa = [d["cw_maa"] for d in report_data]
-                                missing_keys = sorted(set(expected_maa) - set(report_maa) - CW_CUSTOM_VALUES)
+                                missing_keys = sorted(set(expected_maa) - set(report_maa))
 
                                 report_attila_keys = [d["attila_map_key"] for d in report_data]
                                 expected_attila_keys = [d["attila_map_key"] for d in source_attila_keys]
-                                missing_attila_keys = sorted(set(report_attila_keys)-set(expected_attila_keys))
+                                missing_attila_keys = sorted(set(report_attila_keys)-set(expected_attila_keys) - CW_CUSTOM_VALUES)
 
                         # TITLES - validate title keys used in mapper
                         if file.endswith('titles.csv'):
@@ -607,7 +607,7 @@ def summary():
                                 if title_rows:
                                     report_title_keys = set(d["title_key"] for d in title_rows)
                                     expected_title_key_set = set(d["title_key"] for d in expected_title_keys)
-                                    missing_title_keys = sorted(report_title_keys - expected_title_key_set - CW_CUSTOM_VALUES)
+                                    missing_title_keys = sorted(report_title_keys - expected_title_key_set)
 
                         if expected_culture_keys and expected_maa_keys:
                             # Culture and MAA missing key reporting
