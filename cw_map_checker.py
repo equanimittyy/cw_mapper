@@ -646,9 +646,6 @@ def summary():
                                 else:
                                     print(f'\t↳ ✓ No missing title keys found', file=sum_f)
                                     print('', file=sum_f)
-                        elif not expected_title_keys:
-                            print(f'\t♠ Titles: ', file=sum_f)
-                            print(f'\t↳ ⚠ Mapper "{mapping}" does not have title-based mapping or missing source files', file=sum_f)
                         else:
                             print(f'\t↳ ⚠ Missing all source files for keys: {file}. Skipping...', file=sum_f)
                             print('', file=sum_f)
