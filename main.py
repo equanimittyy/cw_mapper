@@ -527,7 +527,7 @@ def popup_xml_import_export(config):
 
 def popup_title_pick(current_title_list, current_title_names):
     available_titles = [item['title_key'] for item in TITLE_SOURCE_KEYS if item['title_key'] not in current_title_list]
-    rank_filter = ['ALL','Empire','Kingdom','Duchy']
+    rank_filter = ['ALL','Empire','Kingdom','Duchy','County']
 
     current_display = [f'{t} ({current_title_names.get(t, t)})' for t in current_title_list]
 
