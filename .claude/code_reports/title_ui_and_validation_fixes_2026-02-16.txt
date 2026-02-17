@@ -1,0 +1,128 @@
+================================================================================
+    CRUSADER WARS MAPPER - TITLE UI & VALIDATION FIXES REPORT
+    Date: 2026-02-16
+================================================================================
+
+SUMMARY
+-------
+Updated the Edit Title List window to support removing titles, fixed cancel
+behavior on title display name prompt, made display name prompt appear
+immediately when adding titles, improved window sizing for screen
+compatibility, added title key validation to summary_log.txt, and removed
+DEFAULT from validation checks.
+
+    Files modified:
+        - main.py             (4 changes)
+        - cw_map_checker.py   (2 changes)
+
+    Severity breakdown:
+        - FEATURE (new functionality):  2
+        - BUGFIX:                       2
+        - ENHANCEMENT:                  2
+
+
+================================================================================
+                                main.py
+================================================================================
+
+FEATURE 160226-10001 - Edit title list: Add title removal support
+    Severity:   FEATURE
+    Location:   popup_title_pick(), ~line 437
+    Problem:    The Edit Title List window only allowed adding titles. Users
+                had no way to remove titles once added, requiring manual JSON
+                editing or starting over.
+    Fix:        Rewrote popup_title_pick() with a two-column layout: left
+                column shows available titles (with rank filter and search),
+                right column shows current titles. Added "Remove Selected"
+                button that removes titles from the current list. Function now
+                accepts current_title_names parameter and returns a tuple of
+                (added_titles dict, removed_titles list). Updated the caller
+                in title_window() TITLE_LIST_EDIT_KEY handler to process both
+                added and removed titles, including cleanup of title_mapping_dict
+                entries for removed titles.
+
+--------------------------------------------------------------------------------
+
+BUGFIX 160226-10002 - Edit title list: Cancel on display name cancels add
+    Severity:   BUGFIX
+    Location:   popup_title_name(), ~line 544
+    Problem:    Clicking Cancel on the Edit Title Display Name window still
+                added the title using the title_key as the display name,
+                instead of cancelling the add operation.
+    Fix:        Changed popup_title_name() to return None when Cancel or
+                window close is triggered (was returning title_key). The
+                caller in popup_title_pick() now checks for None and skips
+                adding that title via continue.
+
+--------------------------------------------------------------------------------
+
+ENHANCEMENT 160226-10003 - Edit title list: Prompt display name on each add
+    Severity:   ENHANCEMENT
+    Location:   popup_title_pick(), ~line 518; title_window() TITLE_LIST_EDIT_KEY
+    Problem:    Previously, users selected multiple titles at once in the
+                picker, then were prompted for display names after closing
+                the picker window. This batch approach meant users couldn't
+                see their progress or cancel individual titles mid-flow.
+    Fix:        Changed "Add Selected" to "Add Title" with single-select mode.
+                The display name popup now appears immediately when adding
+                each title from within popup_title_pick(). If the user cancels
+                the display name prompt, that specific title is skipped. The
+                current titles list refreshes after each add.
+
+--------------------------------------------------------------------------------
+
+ENHANCEMENT 160226-10004 - Fix window sizing for screen compatibility
+    Severity:   ENHANCEMENT
+    Location:   Multiple sg.Window calls across main.py
+    Problem:    Several windows were not resizable, causing issues on
+                smaller screens or different DPI settings. Content could
+                be cut off or inaccessible.
+    Fix:        Added resizable=True to the following windows:
+                - Edit mapper mod configuration (popup_mods_config)
+                - Edit levy percentages (popup_levy_percentage)
+                - Missing mapper keys (popup_missing_keys)
+                - Edit heritage mapping (heritage_window)
+                Added expand_x=True and expand_y=True to Multiline elements
+                in popup_mods_config for proper resize behavior. The Edit
+                Title List window (popup_title_pick) was already created with
+                resizable=True in the rewrite.
+
+--------------------------------------------------------------------------------
+
+================================================================================
+                            cw_map_checker.py
+================================================================================
+
+FEATURE 160226-10005 - Add title key validation to summary_log.txt
+    Severity:   FEATURE
+    Location:   summary(), ~line 473
+    Problem:    The summary log validated MAA keys and culture keys but did
+                not validate title keys. Invalid or missing title keys in
+                mapper XMLs went unreported.
+    Fix:        Added loading of source_ck3_title_keys.csv in the summary
+                function. When processing the MAA report CSV, title-category
+                rows are extracted and their cw_maa_parent values (title keys)
+                are compared against expected title source keys. Missing title
+                keys are reported under a new "Titles" section with the same
+                formatting as other key reports. Uses the check/cross markers
+                consistent with existing output style.
+
+--------------------------------------------------------------------------------
+
+BUGFIX 160226-10006 - Remove DEFAULT from validation in summary_log.txt
+    Severity:   BUGFIX
+    Location:   summary(), ~line 475 (CW_CUSTOM_VALUES set)
+    Problem:    DEFAULT is a custom CW fallback faction value, not a real CK3
+                MAA key. It was being flagged as a missing key in the summary
+                log, creating false positive warnings.
+    Fix:        Added CW_CUSTOM_VALUES set containing 'DEFAULT' and 'Default'.
+                The MAA missing keys calculation now subtracts CW_CUSTOM_VALUES
+                from the missing set. Title key validation also excludes these
+                values. This prevents custom CW-specific values from appearing
+                as missing source keys.
+
+--------------------------------------------------------------------------------
+
+================================================================================
+                              END OF REPORT
+================================================================================

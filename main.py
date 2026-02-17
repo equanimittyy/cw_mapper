@@ -124,17 +124,17 @@ def popup_mods_config(mods):
     
     ck3_col = [[sg.Text('CK3 Mod List', font=('Courier New', 12, 'bold'), text_color='#6D0000', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE, justification='center')],
                [sg.Text('(No load order, one item per line)\nFormat: "Mod Name":"Workshop ID"\nExample: "RICE:2273832430"', font=('Courier New', 10, 'bold'), text_color="#000000", background_color='#DDDDDD', justification='center')],
-               [sg.Multiline(display_CK3_mods, size=(50, 20), key='CK3_MODS_LIST')]]
+               [sg.Multiline(display_CK3_mods, size=(50, 20), key='CK3_MODS_LIST', expand_x=True, expand_y=True)]]
     attila_col = [[sg.Text('Attila Mod List', font=('Courier New', 12, 'bold'), text_color='#006D00', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE, justification='center')],
                 [sg.Text('(Load order: Bottom is priority, one item per line)\nFormat: ".pack Name"\nExample: "@@ad_919_1.pack"', font=('Courier New', 10, 'bold'), text_color="#000000", background_color='#DDDDDD', justification='center')],
-                [sg.Multiline(display_ATTILA_mods, size=(50, 20), key='ATTILA_MODS_LIST')]]
+                [sg.Multiline(display_ATTILA_mods, size=(50, 20), key='ATTILA_MODS_LIST', expand_x=True, expand_y=True)]]
 
     layout = [
         [sg.Column(ck3_col, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD', expand_x=True, expand_y=True), sg.Column(attila_col, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD', expand_x=True, expand_y=True)],
         [sg.Button('OK', size=(15, 2), button_color=('white', '#444444')), sg.Button('Cancel', size=(15, 2), button_color=('white', '#444444'))]
     ]
 
-    window = sg.Window('Edit mapper mod configuration', layout, element_justification='center', modal=True)
+    window = sg.Window('Edit mapper mod configuration', layout, element_justification='center', modal=True, resizable=True)
 
     while True:
         event, values = window.read()
@@ -197,7 +197,7 @@ def popup_levy_percentage(faction, data):
         [sg.Button('Update Row', key='UPDATE_LEVY'), sg.Button('Exit')]
     ]
 
-    window = sg.Window('Edit levy percentages', layout, modal=True, finalize=True)
+    window = sg.Window('Edit levy percentages', layout, modal=True, finalize=True, resizable=True)
 
     while True:
         event, values = window.read()
@@ -256,7 +256,7 @@ def popup_missing_keys(missing_keys):
         )]
     ]
 
-    window = sg.Window('Missing mapper keys', layout, modal=True)
+    window = sg.Window('Missing mapper keys', layout, modal=True, resizable=True)
     event, values = window.read(close=True) # Closes the window after reading the event
 
 def popup_faction_copy(factions):
@@ -434,12 +434,14 @@ def popup_xml_import_export(config):
             window.close()
     return None
 
-def popup_title_pick(current_title_list):
+def popup_title_pick(current_title_list, current_title_names):
     available_titles = [item['title_key'] for item in TITLE_SOURCE_KEYS if item['title_key'] not in current_title_list]
     rank_filter = ['ALL','Empire','Kingdom','Duchy']
 
-    layout = [
-        [sg.Text('Add or remove title keys for your title mapping')],
+    current_display = [f'{t} ({current_title_names.get(t, t)})' for t in current_title_list]
+
+    add_col = [
+        [sg.Text('Available Titles', font=('Courier New', 11, 'bold'), text_color='#006D00', background_color='#DDDDDD', relief=sg.RELIEF_RIDGE)],
         [sg.Text('Filter by rank:'), sg.Combo(
             values=rank_filter,
             default_value='ALL',
@@ -452,14 +454,57 @@ def popup_title_pick(current_title_list):
             values=sorted(available_titles),
             size=(40, 15),
             key='TITLE_AVAILABLE_LIST',
-            select_mode=sg.LISTBOX_SELECT_MODE_EXTENDED,
-            enable_events=True
+            select_mode=sg.LISTBOX_SELECT_MODE_SINGLE,
+            enable_events=True,
+            expand_x=True,
+            expand_y=True
         )],
-        [sg.Button('Add Selected', size=(15, 2), button_color=('white', '#004D40')), sg.Button('Done', size=(15, 2), button_color=('white', '#444444'))]
+        [sg.Button('Add Title', size=(15, 2), button_color=('white', '#004D40'))]
     ]
 
-    window = sg.Window('Select title keys', layout, modal=True)
-    added_titles = []
+    current_col = [
+        [sg.Text('Current Titles', font=('Courier New', 11, 'bold'), text_color='#6D0000', background_color='#DDDDDD', relief=sg.RELIEF_RIDGE)],
+        [sg.Listbox(
+            values=current_display,
+            size=(40, 15),
+            key='TITLE_CURRENT_LIST',
+            select_mode=sg.LISTBOX_SELECT_MODE_EXTENDED,
+            enable_events=True,
+            expand_x=True,
+            expand_y=True
+        )],
+        [sg.Button('Remove Selected', size=(15, 2), button_color=('white', '#CC0000'), key='TITLE_REMOVE_BTN')]
+    ]
+
+    layout = [
+        [sg.Text('Add or remove title keys for your title mapping')],
+        [sg.Column(add_col, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD', expand_x=True, expand_y=True),
+         sg.VSeparator(),
+         sg.Column(current_col, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD', expand_x=True, expand_y=True)],
+        [sg.Button('Done', size=(15, 2), button_color=('white', '#444444'))]
+    ]
+
+    window = sg.Window('Edit title list', layout, modal=True, resizable=True)
+    added_titles = {}  # {title_key: display_name}
+    removed_titles = []
+
+    def refresh_available(window, values):
+        rank = values['TITLE_RANK_FILTER']
+        search = values['TITLE_SEARCH'].lower()
+        all_current = current_title_list + list(added_titles.keys())
+        all_current = [t for t in all_current if t not in removed_titles]
+        filtered = [item['title_key'] for item in TITLE_SOURCE_KEYS if item['title_key'] not in all_current]
+        if rank != 'ALL':
+            filtered = [t for t in filtered if any(item['title_key'] == t and item['title_rank'] == rank for item in TITLE_SOURCE_KEYS)]
+        if search:
+            filtered = [t for t in filtered if search in t.lower()]
+        window['TITLE_AVAILABLE_LIST'].update(sorted(filtered))
+
+    def refresh_current(window):
+        remaining = [t for t in current_title_list if t not in removed_titles]
+        display = [f'{t} ({current_title_names.get(t, t)})' for t in remaining]
+        display += [f'{t} ({added_titles[t]})' for t in added_titles]
+        window['TITLE_CURRENT_LIST'].update(sorted(display))
 
     while True:
         event, values = window.read()
@@ -468,31 +513,33 @@ def popup_title_pick(current_title_list):
             break
 
         elif event == 'TITLE_RANK_FILTER' or event == 'TITLE_SEARCH':
-            rank = values['TITLE_RANK_FILTER']
-            search = values['TITLE_SEARCH'].lower()
-            filtered = [item['title_key'] for item in TITLE_SOURCE_KEYS if item['title_key'] not in current_title_list and item['title_key'] not in added_titles]
-            if rank != 'ALL':
-                filtered = [t for t in filtered if any(item['title_key'] == t and item['title_rank'] == rank for item in TITLE_SOURCE_KEYS)]
-            if search:
-                filtered = [t for t in filtered if search in t.lower()]
-            window['TITLE_AVAILABLE_LIST'].update(sorted(filtered))
+            refresh_available(window, values)
 
-        elif event == 'Add Selected':
+        elif event == 'Add Title':
             selected = values['TITLE_AVAILABLE_LIST']
             if selected:
-                added_titles.extend(selected)
-                # Refresh list
-                rank = values['TITLE_RANK_FILTER']
-                search = values['TITLE_SEARCH'].lower()
-                filtered = [item['title_key'] for item in TITLE_SOURCE_KEYS if item['title_key'] not in current_title_list and item['title_key'] not in added_titles]
-                if rank != 'ALL':
-                    filtered = [t for t in filtered if any(item['title_key'] == t and item['title_rank'] == rank for item in TITLE_SOURCE_KEYS)]
-                if search:
-                    filtered = [t for t in filtered if search in t.lower()]
-                window['TITLE_AVAILABLE_LIST'].update(sorted(filtered))
+                title_key = selected[0]
+                display_name = popup_title_name(title_key)
+                if display_name is None:
+                    continue
+                added_titles[title_key] = display_name
+                refresh_available(window, values)
+                refresh_current(window)
+
+        elif event == 'TITLE_REMOVE_BTN':
+            selected = values['TITLE_CURRENT_LIST']
+            if selected:
+                for item in selected:
+                    title_key = item.split(' (')[0]
+                    if title_key in added_titles:
+                        del added_titles[title_key]
+                    elif title_key in current_title_list:
+                        removed_titles.append(title_key)
+                refresh_available(window, values)
+                refresh_current(window)
 
     window.close()
-    return added_titles
+    return added_titles, removed_titles
 
 def popup_title_name(title_key):
     layout = [
@@ -511,7 +558,8 @@ def popup_title_name(title_key):
         name = values['TITLE_NAME_INPUT']
         if name:
             return name
-    return title_key
+        return title_key
+    return None
 
 def heritage_window(heritage_mapping_dict, factions):
     # Available heritages, format (heritage, culture) tuple, should allow people to either take a whole heritage, or a specific culture
@@ -740,7 +788,7 @@ def heritage_window(heritage_mapping_dict, factions):
         [sg.Push(),sg.Button('OK', size=(15, 2), button_color=('white', '#444444')),sg.Push()]
     ]
 
-    window = sg.Window('Edit heritage mapping', layout, modal=True, finalize= True)
+    window = sg.Window('Edit heritage mapping', layout, modal=True, finalize=True, resizable=True)
 
     # Initialise mapping/edit listbox and remove from keys from available list as part of import
     if heritage_mapping_dict:
@@ -1066,17 +1114,27 @@ def title_window(title_mapping_dict, title_names_dict):
                 window['TITLE_MAPPING_LIST_KEY'].update(set_to_index=[])
 
         elif event == 'TITLE_LIST_EDIT_KEY':
-            new_titles = popup_title_pick(TITLE_LIST)
-            if new_titles:
-                for title_key in new_titles:
-                    display_name = popup_title_name(title_key)
-                    title_names_dict[title_key] = display_name
-                    TITLE_LIST.append(title_key)
-                TITLE_LIST.sort()
-                window['TITLE_SELECT_KEY'].update(values=TITLE_LIST)
-                if not current_title and TITLE_LIST:
-                    current_title = TITLE_LIST[0]
-                    window['TITLE_SELECT_KEY'].update(value=current_title)
+            added_titles, removed_titles = popup_title_pick(TITLE_LIST, title_names_dict)
+            # Process added titles
+            for title_key, display_name in added_titles.items():
+                title_names_dict[title_key] = display_name
+                TITLE_LIST.append(title_key)
+            # Process removed titles
+            for title_key in removed_titles:
+                if title_key in TITLE_LIST:
+                    TITLE_LIST.remove(title_key)
+                if title_key in title_names_dict:
+                    del title_names_dict[title_key]
+                # Remove all mappings for this title
+                keys_to_remove = [k for k in title_mapping_dict if k[1] == title_key]
+                for k in keys_to_remove:
+                    del title_mapping_dict[k]
+            TITLE_LIST.sort()
+            window['TITLE_SELECT_KEY'].update(values=TITLE_LIST)
+            if current_title not in TITLE_LIST:
+                current_title = TITLE_LIST[0] if TITLE_LIST else ''
+                window['TITLE_SELECT_KEY'].update(value=current_title)
+            update_title_mappings_list(window, title_mapping_dict)
 
         elif event == 'TITLE_OK_KEY':
             window.close()
