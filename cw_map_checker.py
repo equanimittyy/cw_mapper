@@ -546,13 +546,12 @@ def summary():
                     for key in key_data:
                         source_attila_keys.append(key)
 
-                if os.path.exists(ck3_title_key_file):
-                    with open(ck3_title_key_file, 'r') as f:
-                        key_data = csv.DictReader(f)
-                        for key in key_data:
-                            if key.get("mod_id") in source_ids:
-                                expected_title_keys.append(key)
-                                found_mods.append(key.get("mod_id"))
+                with open(ck3_title_key_file, 'r') as f:
+                    key_data = csv.DictReader(f)
+                    for key in key_data:
+                        if key.get("mod_id") in source_ids:
+                            expected_title_keys.append(key)
+                            found_mods.append(key.get("mod_id"))
 
                 missing_mods = set(source_ids) - set(found_mods)
                 if missing_mods:
@@ -608,6 +607,9 @@ def summary():
                                     report_title_keys = set(d["title_key"] for d in title_rows)
                                     expected_title_key_set = set(d["title_key"] for d in expected_title_keys)
                                     missing_title_keys = sorted(report_title_keys - expected_title_key_set)
+                        else:
+                            print(f'\t♠ Titles: ', file=sum_f)
+                            print(f'\t↳ ⚠ Mapper "{mapping}" does not have title-based mapping', file=sum_f)
 
                         if expected_culture_keys and expected_maa_keys:
                             # Culture and MAA missing key reporting
