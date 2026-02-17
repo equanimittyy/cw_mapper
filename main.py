@@ -452,8 +452,8 @@ def popup_help_guide():
         "MOD CONFIGURATION\n"
         "=================\n"
         "Click 'Mod configuration' to set which CK3 mods and Attila .pack files your\n"
-        "mapper requires. This is written into the exported Mods.xml for Crusader Wars\n"
-        "and used when validating your mapper(s) in the tool's report window."
+        "mapper requires. This is written into the exported Mods.xml for Crusader Wars and used\n"
+        "when validating your mapper(s) in the tool's report window."
     )
 
     layout = [
