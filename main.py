@@ -839,7 +839,7 @@ def heritage_window(heritage_mapping_dict, factions):
 
     heritage1_col_layout = [
         [sg.Text('Available Heritages and Cultures', font=('Courier New', 12, 'bold'), text_color='#6D0000', background_color='#DDDDDD',relief=sg.RELIEF_RIDGE)],
-        [sg.Text('''⚠️ Important: It is highly recommended to manually map "Unassigned"\ncultures after export, as they're not specifically tied to a heritage\nand cannot fall back on heritage "Unassigned" (it doesn't exist in-game)''')],
+        [sg.Text('''⚠️ Important: It is highly recommended to manually map "Unassigned"\ncultures, as they're not specifically tied to a heritage and cannot fall back\non heritage "Unassigned" (it doesn't exist in-game)''')],
         [sg.Listbox(
             values=available_heritages_display_list,
             size=(50, 20),
