@@ -411,7 +411,7 @@ def popup_help_guide():
         "Special unit types (GENERAL, KNIGHTS, LEVY-*) are listed at the top of the CK3 list.\n"
         "  - GENERAL: The commander unit for a faction (one per faction)\n"
         "  - KNIGHTS: The knight unit for a faction (one per faction)\n"
-        "  - LEVY-*: Levy units with percentage allocations that must total 100%% per faction\n"
+        "  - LEVY-*: Levy units with percentage allocations that must total 100% per faction\n"
         "    Use 'Edit levy percentages' to adjust the split\n\n"
         "You can copy all mappings from one faction to another using 'Copy from faction'.\n\n"
 
@@ -422,7 +422,7 @@ def popup_help_guide():
         "  - A HERITAGE is a group of cultures (e.g. 'West Germanic' contains English, Dutch, etc.)\n"
         "  - You can assign a faction at the heritage level (all cultures inherit it)\n"
         "  - Or override individual cultures within a heritage to use a different faction\n"
-        "  - Use 'PARENT_KEY' to set the default faction for an entire heritage\n\n"
+        "  - Assign a faction to a heritage key to assign to all cultures with that heritage (overriden by culture level faction overides)\n\n"
 
         "TITLE MAPPING\n"
         "=============\n"
