@@ -605,7 +605,7 @@ def summary():
                                 report_data = list(csv.DictReader(f))
                                 title_rows = [d for d in report_data]
                                 if title_rows:
-                                    report_title_keys = set(d["cw_title_key"] for d in title_rows)
+                                    report_title_keys = set(d["title_key"] for d in title_rows)
                                     expected_title_key_set = set(d["title_key"] for d in expected_title_keys)
                                     missing_title_keys = sorted(report_title_keys - expected_title_key_set - CW_CUSTOM_VALUES)
 
