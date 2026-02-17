@@ -610,32 +610,33 @@ def summary():
                                     missing_title_keys = sorted(report_title_keys - expected_title_key_set - CW_CUSTOM_VALUES)
 
                         if expected_culture_keys and expected_maa_keys:
-                            if missing_keys:
-                                    print(f'\t↳ ⚠ Missing keys: {len(missing_keys)} missing keys', file=sum_f)
-                                    for i in range(0, len(missing_keys), output_columns):
-                                        row = missing_keys[i:i + output_columns]
+                            # Culture and MAA missing key reporting
+                            if file.endswith('cultures.csv') or file.endswith('maa.csv'):
+                                if missing_keys:
+                                        print(f'\t↳ ⚠ Missing keys: {len(missing_keys)} missing keys', file=sum_f)
+                                        for i in range(0, len(missing_keys), output_columns):
+                                            row = missing_keys[i:i + output_columns]
+                                            formatted_row = " ".join(key.ljust(30) for key in row)
+                                            print(formatted_row, file=sum_f)
+                                        print('', file=sum_f)
+                                else:
+                                    print(f'\t↳ ✓ No missing keys found for {file}', file=sum_f)
+                                    print('', file=sum_f)
+
+                                if missing_attila_keys:
+                                    print(f'\t↳ ⚠ Missing keys from Total War Attila: {len(missing_attila_keys)} missing keys', file=sum_f)
+                                    for i in range(0, len(missing_attila_keys), output_columns):
+                                        row = missing_attila_keys[i:i + output_columns]
                                         formatted_row = " ".join(key.ljust(30) for key in row)
                                         print(formatted_row, file=sum_f)
                                     print('', file=sum_f)
-                            else:
-                                print(f'\t↳ ✓ No missing keys found for {file}', file=sum_f)
-                                print('', file=sum_f)
-
-                            if missing_attila_keys:
-                                print(f'\t↳ ⚠ Missing keys from Total War Attila: {len(missing_attila_keys)} missing keys', file=sum_f)
-                                for i in range(0, len(missing_attila_keys), output_columns):
-                                    row = missing_attila_keys[i:i + output_columns]
-                                    formatted_row = " ".join(key.ljust(30) for key in row)
-                                    print(formatted_row, file=sum_f)
-                                print('', file=sum_f)
-                            else:
-                                if file.endswith('maa.csv'):
-                                    print(f'\t↳ ✓ No missing Attila keys were found for {file}', file=sum_f)
-                                    print('', file=sum_f)
+                                else:
+                                    if file.endswith('maa.csv'):
+                                        print(f'\t↳ ✓ No missing Attila keys were found for {file}', file=sum_f)
+                                        print('', file=sum_f)
 
                             # Title key validation
                             if file.endswith('titles.csv'):
-                                print(f'\t♠ Titles: ', file=sum_f)
                                 if missing_title_keys:
                                     print(f'\t↳ ⚠ Missing title keys: {len(missing_title_keys)} missing keys', file=sum_f)
                                     for i in range(0, len(missing_title_keys), output_columns):

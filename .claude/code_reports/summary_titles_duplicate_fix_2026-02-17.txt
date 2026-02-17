@@ -1,0 +1,31 @@
+170217-00001 - Fix duplicate title section with conflicting info in summary log
+================================================================================
+
+Severity: Medium (misleading validation output)
+
+Location: cw_map_checker.py:612-651 (summary() function)
+
+Problem:
+The summary log printed the Titles section twice per mapper with conflicting information.
+The first instance always reported "No missing keys found" (false positive), while the
+second showed the actual title key validation results.
+
+Root cause: The generic missing_keys/missing_attila_keys reporting block (lines 612-634)
+ran for ALL file types including titles. For titles files, missing_keys was always empty
+(only populated for cultures/MAA), so it always printed a false "no missing keys" result.
+Then the title-specific validation block (lines 636-648) printed a second "Titles:" header
+with the real data.
+
+Example of broken output:
+    Titles:
+    > No missing keys found for ..._cw_titles.csv    <-- WRONG (checking empty MAA/culture data)
+    Titles:
+    > Missing title keys: 30 missing keys             <-- CORRECT (actual title validation)
+
+Fix:
+Wrapped the generic missing_keys/missing_attila_keys reporting in a condition that only
+runs for cultures.csv and maa.csv files. Removed the duplicate "Titles:" header from the
+title validation block since it was already printed at line 601 when entering the titles
+processing section.
+
+Result: Each mapper now shows exactly one Titles section with accurate validation data.
