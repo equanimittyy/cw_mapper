@@ -37,8 +37,9 @@ A FreeSimpleGUI desktop application that lets users create their own custom unit
 ```
 /workspace
   main.py               # GUI application (FreeSimpleGUI) - main window + custom mapper window
+  constants.py          # Shared constants: paths, directories, domain constants (NON_MAA_KEYS, etc.)
   cw_map_checker.py     # Validation logic - reads CK3/Attila data, parses CW XMLs, produces reports
-  utils.py              # Utilities - config management, XML import/export
+  utils.py              # Utilities - config management, XML import/export, save/load mapper, list filtering
   pyproject.toml        # Project config (Python >=3.13, deps: configparser, freesimplegui, pandas)
 
   config/
@@ -65,6 +66,35 @@ A FreeSimpleGUI desktop application that lets users create their own custom unit
   summary_log.txt       # Human-readable validation summary
 ```
 
+## Module Responsibilities
+
+### constants.py
+Single source of truth for all shared constants and paths. All other modules import from here instead of redefining paths.
+- **Paths**: APPLICATION_PATH, WORKING_DIR, CW_DIR, ATTILA_EXPORT_DIR, REPORT_OUTPUT_DIR, CUSTOM_MAPPER_DIR, MAP_CONFIG, etc.
+- **Domain constants**: NON_MAA_KEYS, DEFAULT_LEVY_PERCENTAGES, TITLE_NON_MAA_KEYS, RANK_MAP, CW_CUSTOM_VALUES
+
+### utils.py
+Business logic utilities — no GUI imports, no module-level side effects.
+- **Config**: `init_map_config()`, `get_config()`, `get_full_config()`, `get_ck3_mods_from_config()`, `add_map_config()`, `resolve_import_mods()`
+- **Save/Load**: `save_mapper()`, `load_mapper()` — JSON serialization/deserialization with key validation
+- **XML I/O**: `import_xml()`, `export_xml()`
+- **Helpers**: `filter_source_list()` — shared filter+search for GUI list widgets
+
+### cw_map_checker.py
+Validation engine — reads game data, validates mappers, writes reports.
+- **Parsing helpers**: `_parse_culture_files()`, `_parse_maa_files()`, `_parse_title_files()` — deduplicated file parsing
+- **Data loading**: `get_keys()` returns a `GameKeys` NamedTuple (cultures, maa, attila, titles)
+- **Validation**: `mapping_validation()` returns in-memory results (no file I/O)
+- **Report writing**: `write_reports()` writes CSVs from validation results (separated from validation)
+- **Summary**: `summary()` reads reports and writes summary_log.txt
+
+### main.py
+GUI layer — FreeSimpleGUI windows and event loops. Delegates all business logic to utils/cw_map_checker.
+- **SourceData**: NamedTuple holding loaded source keys, passed explicitly to all window functions
+- **`load_source_data()`**: Reads CSV reports into a SourceData (replaces module-level globals)
+- **`run_validation()`**: Orchestrates the full validation pipeline
+- **Window functions**: `main_window()`, `mapping_window(src)`, `heritage_window(..., src)`, `title_window(..., src)` — all receive SourceData explicitly
+
 ## Key Data Flows
 
 ### Validation Flow
@@ -72,11 +102,15 @@ A FreeSimpleGUI desktop application that lets users create their own custom unit
 ```
 CK3 Install Dir (cultures, MAA) ──┐
 CK3 Mod Dir (Steam Workshop)  ────┤
-                                   ├──> cw_map_checker.get_keys() ──> DataFrames
+                                   ├──> cw_map_checker.get_keys() ──> GameKeys NamedTuple
 Attila .tsv exports ───────────────┘           │
                                                v
-CW Mapper XMLs (../../unit mappers/attila/) ──> mapping_validation() ──> CSV Reports
+CW Mapper XMLs (../../unit mappers/attila/) ──> mapping_validation(game_keys)
                                                        │
+                                                       v
+                                              (mapper_results, game_keys)  [in-memory]
+                                                       │
+                                                       ├──> write_reports()  ──> CSV Reports
                                                        v
                                                  summary() ──> summary_log.txt
 ```
