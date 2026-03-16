@@ -156,6 +156,23 @@ NOTE: If 'Levies', the 'porcentage' (mispelling of percentage) of all Levies mus
 - Built as executable via PyInstaller (`main.spec`)
 - Distributed as `cw_mapper.zip`
 
+## Post-Code Agent Suite
+
+After completing code changes, **prompt the user** to run the post-code review agents. These live in `.claude/agents/` and should be offered as a follow-up step after any non-trivial implementation or refactor.
+
+**Agents (run any combination relevant to the change):**
+
+- **`coupling-reviewer`** — Analyzes coupling, dependency direction, and separation of concerns. Use after adding new modules, refactoring existing code, or introducing new interactions between files/functions.
+- **`dead-code-finder`** — Identifies unused imports, unreferenced functions, redundant logic, and stale code. Use after refactoring or removing features to keep the codebase lean.
+- **`edge-case-finder`** — Finds unguarded boundary conditions, empty-state bugs, string-parsing fragility, and GUI state inconsistencies. Use after adding new user-facing features or modifying event handlers.
+- **`robustness-reviewer`** — Reviews file I/O safety, data integrity, input validation, error recovery, and XML generation correctness. Use after modifying save/load, import/export, or any code that touches the filesystem.
+
+**How to prompt:**
+After finishing a code change, say something like:
+> "Would you like me to run the post-code review agents? Based on this change, I'd recommend: [agent names]"
+
+Only suggest agents relevant to the change — don't offer all four for a one-line fix. For large changes touching multiple concerns, offer to run multiple agents in parallel.
+
 ## Reporting
 
 - Any code changes and implementations are to be summarised in a human-readable format in workspace/.claude/code_reports in .txt format.
