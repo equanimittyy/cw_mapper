@@ -199,10 +199,24 @@ def popup_levy_percentage(faction, data):
 
     window = sg.Window('Edit levy percentages', layout, modal=True, finalize=True, resizable=True)
 
+    # Set initial total color
+    total_color = 'green' if percentage_total == 100 else 'red'
+    window['TOTAL_KEY'].update(text_color=total_color)
+
     while True:
         event, values = window.read()
 
         if event == sg.WIN_CLOSED or event == 'Exit':
+            percentage_total = sum([row[2] for row in data])
+            if data and percentage_total != 100:
+                confirm = sg.popup_yes_no(
+                    f'Levy percentages total {percentage_total}%, not 100%.\n'
+                    'This WILL cause Crusader Wars to crash!\n\n'
+                    'Close anyway?',
+                    title='Invalid levy percentages'
+                )
+                if confirm != 'Yes':
+                    continue
             window.close()
             return data
 
@@ -231,7 +245,8 @@ def popup_levy_percentage(faction, data):
                 
                 # Crucial Step: Update the sg.Table element to show the new data
                 percentage_total = sum([row[2] for row in data])
-                window['TOTAL_KEY'].update(f'Total: {percentage_total}%')
+                total_color = 'green' if percentage_total == 100 else 'red'
+                window['TOTAL_KEY'].update(f'Total: {percentage_total}%', text_color=total_color)
                 window['LEVY_SELECT_TEXT'].update(f'Edit Selected Row: ')
                 window['LEVY_PERCENTAGE_INPUT'].update('')
                 window['LEVY_PERCENTAGE_TABLE'].update(values=data)
@@ -351,7 +366,7 @@ def popup_size_manual():
         [sg.Button('OK')]
     ]
 
-    window = sg.Window('Custom mapper name input', layout, modal=True)
+    window = sg.Window('Enter unit size', layout, modal=True)
 
     while True:
         event, values = window.read()
@@ -510,7 +525,7 @@ def popup_xml_import_export(config):
                         for mod in ck3_mods:
                             imported_mods['CK3'] += [mod[0]+':'+str(mod[1])]
 
-                sg.popup(f"Mapper '{mapper_name}' imported!\n\nLoad the mapper using the 'Load' button")
+                sg.popup(f"Mapper '{mapper_name}' imported!\n\nMapper imported and loaded into the editor!")
                 window.close()
                 return mapper_name, imported_maa_map, imported_heritage_map, imported_mods, imported_title_map, imported_title_names
 
@@ -1255,6 +1270,8 @@ def mapping_window():
     current_title_mappings = {}
     # Format title names: {title_key: display_name} | {str: str}
     current_title_names = {}
+    has_unsaved_changes = False
+    missing_keys = []
     # ==================================================
 
     CK3_SOURCE_KEY = 'CK3_SOURCE_KEY'
@@ -1532,8 +1549,15 @@ def mapping_window():
         event, values = window.read()
 
         if event == sg.WIN_CLOSED:
+            if has_unsaved_changes:
+                confirm = sg.popup_yes_no(
+                    'You have unsaved changes. Close without saving?',
+                    title='Unsaved changes'
+                )
+                if confirm != 'Yes':
+                    continue
             break
-        
+
         elif event == 'CK3_LIST_KEY':
             if values['CK3_LIST_KEY']:
                 selected_ck3 = values['CK3_LIST_KEY']
@@ -1617,19 +1641,29 @@ def mapping_window():
             window['ATTILA_LIST_KEY'].update(sorted(new_list))
 
         elif event == 'SAVE_BUTTON_KEY':
-            if MAPPER_NAME:
-                save_mapper(MAPPER_NAME, current_mappings, current_heritage_mappings, current_mods, current_title_mappings, current_title_names)
-                add_map_config(MAPPER_NAME, current_mods)
-
-            else:
-                name = popup_mapper_name_input()
-                if name:
+            name = MAPPER_NAME if MAPPER_NAME else popup_mapper_name_input()
+            if name:
+                try:
                     save_mapper(name, current_mappings, current_heritage_mappings, current_mods, current_title_mappings, current_title_names)
+                    add_map_config(name, current_mods)
                     MAPPER_NAME = name
-                    add_map_config(MAPPER_NAME, current_mods)
+                    has_unsaved_changes = False
+                    sg.popup_auto_close(f"Mapper '{name}' saved!", auto_close_duration=2, non_blocking=True, title='Save successful')
+                except Exception as e:
+                    sg.popup_error(f'Error saving mapper: {e}', title='Save error')
             window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
 
         elif event == 'FILE_LOAD_KEY':
+            if has_unsaved_changes:
+                confirm = sg.popup_yes_no(
+                    'You have unsaved changes. Loading will discard them.\nContinue?',
+                    title='Unsaved changes'
+                )
+                if confirm != 'Yes':
+                    window['FILE_LOAD_KEY'].update('')
+                    continue
+            if not values['FILE_LOAD_KEY']:
+                continue
             loaded_faction_mapping, loaded_heritage_mapping, loaded_mods, diff, missing_keys, loaded_title_mapping, loaded_title_names = load_mapper(values['FILE_LOAD_KEY'])
             map_name, _ = os.path.splitext(os.path.basename(values['FILE_LOAD_KEY']))
             if loaded_faction_mapping:
@@ -1641,6 +1675,7 @@ def mapping_window():
                 available_factions = list(set([item[0][1] for item in current_mappings.items()]))
                 FACTION_LIST = sorted(available_factions)
             MAPPER_NAME = map_name
+            has_unsaved_changes = False
             update_mappings_list(window, current_mappings)
             window[FACTION_KEY].update(values=FACTION_LIST)
             window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
@@ -1687,6 +1722,8 @@ def mapping_window():
                     update_mappings_list(window, current_mappings)
                     check_add_button(window)
 
+                has_unsaved_changes = True
+
                 # Reset unit selections for the next mapping
                 selected_ck3 = None
                 selected_attila = None
@@ -1711,9 +1748,10 @@ def mapping_window():
                         del current_mappings[key_to_remove]
                         update_mappings_list(window, current_mappings)
 
+                has_unsaved_changes = True
                 # Clear selection in case the user immediately clicks remove again
                 window['MAPPING_LISTS_KEY'].update(set_to_index=[])
-        
+
         elif event == 'FACTION_COPY_BUTTON_KEY':
             target_faction = popup_faction_copy(FACTION_LIST)
             if target_faction:
@@ -1728,7 +1766,8 @@ def mapping_window():
                     # Update the displayed list
                 update_mappings_list(window, current_mappings)
                 check_add_button(window)
-        
+                has_unsaved_changes = True
+
         elif event == 'LEVY_PERCENTAGE_BUTTON_KEY':
             current_faction = values[FACTION_KEY]
             filtered_mapping = {}
@@ -1750,28 +1789,44 @@ def mapping_window():
 
 
                     update_mappings_list(window, current_mappings)
-                    
+                    has_unsaved_changes = True
 
         elif event == 'FACTION_LIST_EDIT_BUTTON_KEY':
             new_faction_list = popup_faction_list(FACTION_LIST)
             if new_faction_list != None:
                 FACTION_LIST = new_faction_list
                 window[FACTION_KEY].update(values=FACTION_LIST)
+                has_unsaved_changes = True
 
         elif event == 'MOD_CONFIG_BUTTON':
             new_mods = popup_mods_config(current_mods)
             if new_mods:
                 current_mods = new_mods
+                has_unsaved_changes = True
         
         elif event == 'TITLE_EDIT_BUTTON_KEY':
+            old_title_mappings = dict(current_title_mappings)
+            old_title_names = dict(current_title_names)
             current_title_mappings, current_title_names = title_window(
                 current_title_mappings, current_title_names
             )
+            if current_title_mappings != old_title_mappings or current_title_names != old_title_names:
+                has_unsaved_changes = True
 
         elif event == 'HERITAGE_EDIT_BUTTON_KEY':
+            old_heritage_mappings = dict(current_heritage_mappings)
             current_heritage_mappings = heritage_window(current_heritage_mappings, FACTION_LIST)
+            if current_heritage_mappings != old_heritage_mappings:
+                has_unsaved_changes = True
 
         elif event == 'XML_BUTTON':
+            if has_unsaved_changes:
+                confirm = sg.popup_yes_no(
+                    'You have unsaved changes. Importing will discard them.\nContinue?',
+                    title='Unsaved changes'
+                )
+                if confirm != 'Yes':
+                    continue
             xml_import = popup_xml_import_export(CONFIG)
             if xml_import:
                 import_name = xml_import[0]
@@ -1780,8 +1835,41 @@ def mapping_window():
                 import_mods = xml_import[3]
                 import_titles = xml_import[4] if len(xml_import) > 4 else {}
                 import_title_names = xml_import[5] if len(xml_import) > 5 else {}
-                save_mapper(import_name, import_maa, import_heritage, import_mods, import_titles, import_title_names)
-                add_map_config(import_name, import_mods)
+                try:
+                    save_mapper(import_name, import_maa, import_heritage, import_mods, import_titles, import_title_names)
+                    add_map_config(import_name, import_mods)
+                except Exception as e:
+                    sg.popup_error(f'Error saving imported mapper: {e}', title='Save error')
+                    continue
+
+                # Auto-load the imported mapper into the editor
+                MAPPER_NAME = import_name
+                current_mappings = import_maa
+                current_heritage_mappings = import_heritage
+                current_mods = import_mods
+                current_title_mappings = import_titles
+                current_title_names = import_title_names
+                available_factions = list(set([item[0][1] for item in current_mappings.items()]))
+                FACTION_LIST = sorted(available_factions)
+                current_faction = FACTION_LIST[0] if FACTION_LIST else 'DEFAULT'
+                update_mappings_list(window, current_mappings)
+                window[FACTION_KEY].update(values=FACTION_LIST, value=current_faction)
+                window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
+
+                # Run missing-key validation (non-critical)
+                try:
+                    mapper_file = os.path.join(CUSTOM_MAPPER_DIR, f'{import_name}.txt')
+                    _, _, _, diff, missing_keys, _, _ = load_mapper(mapper_file)
+                    if diff:
+                        window['SUBTEXT'].update('⚠️ Warning: Missing sources for loaded mapper, continue at your own risk!\nRecommended to only add or modify existing maps', text_color="#E9D502")
+                        window['VIEW_MISSING_BUTTON'].update(visible=True)
+                    else:
+                        window['SUBTEXT'].update('Each FACTION is assigned to one or many HERITAGE.', text_color="#FFFFFF")
+                        window['VIEW_MISSING_BUTTON'].update(visible=False)
+                except Exception:
+                    pass
+
+                has_unsaved_changes = False
 
         elif event == 'HELP_GUIDE_BUTTON':
             popup_help_guide()

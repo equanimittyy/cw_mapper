@@ -172,14 +172,3 @@ After finishing a code change, say something like:
 > "Would you like me to run the post-code review agents? Based on this change, I'd recommend: [agent names]"
 
 Only suggest agents relevant to the change — don't offer all four for a one-line fix. For large changes touching multiple concerns, offer to run multiple agents in parallel.
-
-## Reporting
-
-- Any code changes and implementations are to be summarised in a human-readable format in workspace/.claude/code_reports in .txt format.
-- Have references to code changes in the report with the format of DDMMYY-##### where ##### is the change for that date.
-- Maintain consistency with the following format per code change:
-  - Reference with change name
-  - Severity (for bug fixes)
-  - Location
-  - Problem
-  - Fix
