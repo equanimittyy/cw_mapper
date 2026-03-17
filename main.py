@@ -1,6 +1,7 @@
 '''Copyright (c) 2025 equanimittyy. All Rights Reserved.'''
 
 import os
+import copy
 
 import csv
 import re
@@ -11,9 +12,9 @@ import cw_map_checker
 
 from typing import NamedTuple
 from constants import (
-    CW_DIR, ASCII_ART_MAIN, ASCII_ART_MAPPER, SUMMARY_LOG,
-    ATTILA_EXPORT_DIR, REPORT_OUTPUT_DIR, CUSTOM_MAPPER_DIR,
-    MAP_CONFIG, NON_MAA_KEYS, DEFAULT_LEVY_PERCENTAGES,
+    CW_DIR, WORKING_DIR, ASCII_ART_MAIN, ASCII_ART_MAPPER, SUMMARY_LOG,
+    ATTILA_EXPORT_DIR, MAPPER_DIR, CUSTOM_MAPPER_DIR,
+    NON_MAA_KEYS, DEFAULT_LEVY_PERCENTAGES,
     TITLE_NON_MAA_KEYS,
     ATTILA_SOURCE_PATH, CULTURES_SOURCE_PATH, MAA_SOURCE_PATH, TITLE_SOURCE_PATH,
 )
@@ -43,25 +44,25 @@ def load_source_data():
     title_keys = []
 
     if os.path.exists(ATTILA_SOURCE_PATH):
-        with open(ATTILA_SOURCE_PATH, 'r') as f:
+        with open(ATTILA_SOURCE_PATH, 'r', encoding='utf-8') as f:
             key_data = csv.DictReader(f)
             for key in key_data:
                 attila_keys.append({'attila_map_key': key['attila_map_key'], 'attila_source': key['attila_source']})
 
     if os.path.exists(CULTURES_SOURCE_PATH):
-        with open(CULTURES_SOURCE_PATH, 'r') as f:
+        with open(CULTURES_SOURCE_PATH, 'r', encoding='utf-8') as f:
             key_data = csv.DictReader(f)
             for key in key_data:
                 cultures_keys.append({'ck3_culture': key['ck3_culture'], 'heritage': key['ck3_heritage'], 'ck3_source': key['ck3_source']})
 
     if os.path.exists(MAA_SOURCE_PATH):
-        with open(MAA_SOURCE_PATH, 'r') as f:
+        with open(MAA_SOURCE_PATH, 'r', encoding='utf-8') as f:
             key_data = csv.DictReader(f)
             for key in key_data:
                 maa_keys.append({'ck3_maa': key['ck3_maa'], 'ck3_source': key['ck3_source']})
 
     if os.path.exists(TITLE_SOURCE_PATH):
-        with open(TITLE_SOURCE_PATH, 'r') as f:
+        with open(TITLE_SOURCE_PATH, 'r', encoding='utf-8') as f:
             key_data = csv.DictReader(f)
             for key in key_data:
                 title_keys.append({'title_key': key['title_key'], 'title_rank': key['title_rank'], 'ck3_source': key['ck3_source']})
@@ -191,8 +192,12 @@ def popup_levy_percentage(faction, data):
     while True:
         event, values = window.read()
 
-        if event == sg.WIN_CLOSED or event == 'Exit':
-            percentage_total = sum([row[2] for row in data])
+        if event == sg.WIN_CLOSED:
+            window.close()
+            return data
+
+        if event == 'Exit':
+            percentage_total = sum([int(row[2]) for row in data])
             if data and percentage_total != 100:
                 confirm = sg.popup_yes_no(
                     f'Levy percentages total {percentage_total}%, not 100%.\n'
@@ -225,7 +230,7 @@ def popup_levy_percentage(faction, data):
 
                 data[selected_row_index][2] = new_percentage
 
-                percentage_total = sum([row[2] for row in data])
+                percentage_total = sum([int(row[2]) for row in data])
                 total_color = 'green' if percentage_total == 100 else 'red'
                 window['TOTAL_KEY'].update(f'Total: {percentage_total}%', text_color=total_color)
                 window['LEVY_SELECT_TEXT'].update(f'Edit Selected Row: ')
@@ -326,9 +331,9 @@ def popup_heritage_pick_faction(factions, heritage_mapping_dict, selected_map):
 
         for pair in heritage_mapping_dict:
             if pair[0] == selected_map and pair[1] == 'PARENT_KEY':
-                for pair in heritage_mapping_dict:
-                    if pair[0] == selected_map:
-                        heritage_mapping_dict[pair] = target_faction
+                for inner_pair in heritage_mapping_dict:
+                    if inner_pair[0] == selected_map:
+                        heritage_mapping_dict[inner_pair] = target_faction
             elif pair[1] == selected_map and heritage_mapping_dict[pair].strip() == current_faction:
                 heritage_mapping_dict[pair] = target_faction
     return heritage_mapping_dict
@@ -474,7 +479,7 @@ def popup_help_guide():
     window.close()
 
 def popup_xml_import_export(src):
-    cw_mapper_dir = os.path.join(CW_DIR, 'unit mappers', 'attila')
+    cw_mapper_dir = MAPPER_DIR
 
     layout = [
         [sg.Text('Import or export mappers into their .xml formats, ready for Crusader Wars')],
@@ -497,7 +502,6 @@ def popup_xml_import_export(src):
                     sg.popup(f"Note: No CK3 mod configuration found for '{mapper_name}' in config.\nYou can configure mods after loading the mapper.")
 
                 sg.popup(f"Mapper '{mapper_name}' imported!\n\nMapper imported and loaded into the editor!")
-                window.close()
                 return mapper_name, imported_maa_map, imported_heritage_map, imported_mods, imported_title_map, imported_title_names
 
     if event == 'Export':
@@ -506,9 +510,10 @@ def popup_xml_import_export(src):
             tag = sg.popup_get_text(title='Assign mod tag', message='Define a tag used for your mapper set, which can be used to identify\nmulti-mappers for different time periods')
             s_date = sg.popup_get_text(title='Define start date', message='Define the start date (please enter numbers only, e.g.: 768)', default_text='0')
             e_date = sg.popup_get_text(title='Define end date', message='Define the end date (please enter numbers only, e.g.: 768)', default_text='9999')
+            if s_date is None or e_date is None:
+                return None
             export_dir = export_xml(export_mapper_file, tag, s_date, e_date)
             sg.popup(f"Mapper exported to '{export_dir}'!")
-            window.close()
     return None
 
 def popup_title_pick(current_title_list, current_title_names, src):
@@ -820,7 +825,7 @@ def heritage_window(heritage_mapping_dict, factions, src):
     ]
 
     heritage2_col_layout = [
-            [sg.Button('<<<', size=(10, 2), button_color=('white', '#444444')), sg.Button('>>>', size=(10, 2), button_color=('white', '#444444'))]
+            [sg.Button('<<< Remove', size=(10, 2), button_color=('white', '#444444')), sg.Button('Add >>>', size=(10, 2), button_color=('white', '#444444'))]
         ]
 
     heritage3_col_layout = [
@@ -849,7 +854,7 @@ def heritage_window(heritage_mapping_dict, factions, src):
     window = sg.Window('Edit heritage mapping', layout, modal=True, finalize=True, resizable=True)
 
     if heritage_mapping_dict:
-        loaded_keys = [keys for keys in heritage_mapping_dict]
+        loaded_keys = list(heritage_mapping_dict)
         available_heritages = [heritage for heritage in available_heritages if not heritage in loaded_keys]
         remaining_heritages = {t[0] for t in available_heritages}
         heritage_has_parent = {t[0] for t in available_heritages if t[1] == 'PARENT_KEY'}
@@ -866,12 +871,12 @@ def heritage_window(heritage_mapping_dict, factions, src):
         if event == sg.WIN_CLOSED:
             break
 
-        elif event == '>>>':
+        elif event == 'Add >>>':
             selected_heritage_to_add = values['HERITAGE_AVAILABLE_LIST']
             if selected_heritage_to_add:
                 available_heritages = add_heritage(available_heritages, heritage_mapping_dict, selected_heritage_to_add[0])
 
-        elif event == '<<<':
+        elif event == '<<< Remove':
             selected_heritage_to_remove = values['HERITAGE_MAP_LIST']
             if selected_heritage_to_remove:
                 heritage_mapping_dict = remove_heritage(available_heritages, heritage_mapping_dict, selected_heritage_to_remove[0])
@@ -917,16 +922,11 @@ def title_window(title_mapping_dict, title_names_dict, src):
         mapping_widget = window['TITLE_MAPPING_LIST_KEY'].Widget
         current_y = mapping_widget.yview()[0]
 
-        display_list = []
         formatted_list = []
-        for (ck3, title_key), attila in mappings_dict.items():
-            display_list = [t for t in mappings_dict.items() if t[0][1] == current_title]
-        if display_list:
-            for (ck3, title_key), attila in display_list:
-                title_name = title_names_dict.get(title_key, title_key)
-                formatted_list.append(f"[{title_name}] {ck3}   => {attila}")
-        else:
-            formatted_list = []
+        display_list = [t for t in mappings_dict.items() if t[0][1] == current_title]
+        for (ck3, title_key), attila in display_list:
+            title_name = title_names_dict.get(title_key, title_key)
+            formatted_list.append(f"[{title_name}] {ck3}   => {attila}")
 
         window['TITLE_MAPPING_LIST_KEY'].update(sorted(formatted_list), visible=False)
         mapping_widget.yview_moveto(current_y)
@@ -1028,6 +1028,8 @@ def title_window(title_mapping_dict, title_names_dict, src):
     ]
 
     window = sg.Window('Title-Based Unit Mapping', layout, finalize=True, element_justification='center', resizable=True, modal=True)
+    window.bind('<Return>', 'TITLE_ADD_MAPPING_KEY')
+    window.bind('<Delete>', 'TITLE_REMOVE_MAPPING_KEY')
 
     if title_mapping_dict:
         update_title_mappings_list(window, title_mapping_dict)
@@ -1107,15 +1109,16 @@ def title_window(title_mapping_dict, title_names_dict, src):
         elif event == 'TITLE_REMOVE_MAPPING_KEY':
             if values['TITLE_MAPPING_LIST_KEY']:
                 for formatted_mapping in values['TITLE_MAPPING_LIST_KEY']:
-                    if formatted_mapping.startswith('['):
-                        parts = formatted_mapping.split('] ')
-                        display_name = parts[0].strip('[')
-                        ck3_key_to_remove = parts[1].split(' => ')[0].strip()
-                        title_key_to_remove = current_title
-                        for tk, tn in title_names_dict.items():
-                            if tn == display_name:
-                                title_key_to_remove = tk
-                                break
+                    if not formatted_mapping.startswith('['):
+                        continue
+                    parts = formatted_mapping.split('] ')
+                    display_name = parts[0].strip('[')
+                    ck3_key_to_remove = parts[1].split(' => ')[0].strip()
+                    title_key_to_remove = current_title
+                    for tk, tn in title_names_dict.items():
+                        if tn == display_name:
+                            title_key_to_remove = tk
+                            break
 
                     key_to_remove = (ck3_key_to_remove, title_key_to_remove)
                     if key_to_remove in title_mapping_dict:
@@ -1270,6 +1273,8 @@ def mapping_window(src):
     ]
 
     window = sg.Window('Custom Unit Mapper', mapper_layout, finalize=True, element_justification='center', resizable=True)
+    window.bind('<Return>', 'ADD_MAPPING_KEY')
+    window.bind('<Delete>', 'REMOVE_MAPPING_KEY')
 
     selected_ck3 = None
     selected_attila = None
@@ -1279,15 +1284,10 @@ def mapping_window(src):
         mapping_widget = window['MAPPING_LISTS_KEY'].Widget
         current_y = mapping_widget.yview()[0]
 
-        display_list = []
         formatted_list = []
-        for (ck3, faction), attila in mappings_dict.items():
-            display_list = [t for t in mappings_dict.items() if t[0][1] == current_faction]
-        if display_list:
-            for (ck3, faction), attila in display_list:
-                formatted_list.append(f"[{faction}] {ck3}   => {attila}")
-        else:
-            formatted_list = []
+        display_list = [t for t in mappings_dict.items() if t[0][1] == current_faction]
+        for (ck3, faction), attila in display_list:
+            formatted_list.append(f"[{faction}] {ck3}   => {attila}")
 
         window['MAPPING_LISTS_KEY'].update(sorted(formatted_list), visible=False)
         mapping_widget.yview_moveto(current_y)
@@ -1295,7 +1295,7 @@ def mapping_window(src):
         window['REMOVE_MAPPING_KEY'].update(disabled=len(formatted_list) == 0)
 
     def check_add_button(window):
-        is_ready = selected_ck3 is not None and selected_attila is not None and values[FACTION_KEY] != ''
+        is_ready = selected_ck3 is not None and selected_attila is not None and current_faction != ''
         window['ADD_MAPPING_KEY'].update(disabled=not is_ready)
 
     while True:
@@ -1354,7 +1354,7 @@ def mapping_window(src):
                     MAPPER_NAME = name
                     has_unsaved_changes = False
                     sg.popup_auto_close(f"Mapper '{name}' saved!", auto_close_duration=2, non_blocking=True, title='Save successful')
-                except Exception as e:
+                except (OSError, ValueError) as e:
                     sg.popup_error(f'Error saving mapper: {e}', title='Save error')
             window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
 
@@ -1383,17 +1383,17 @@ def mapping_window(src):
                 current_title_names = loaded_title_names
                 available_factions = list(set([item[0][1] for item in current_mappings.items()]))
                 FACTION_LIST = sorted(available_factions)
-            MAPPER_NAME = map_name
-            has_unsaved_changes = False
-            update_mappings_list(window, current_mappings)
-            window[FACTION_KEY].update(values=FACTION_LIST)
-            window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
-            if diff:
-                window['SUBTEXT'].update('⚠️ Warning: Missing sources for loaded mapper, continue at your own risk!\nRecommended to only add or modify existing maps', text_color="#E9D502")
-                window['VIEW_MISSING_BUTTON'].update(visible=True)
-            else:
-                window['SUBTEXT'].update('Each FACTION is assigned to one or many HERITAGE.', text_color="#FFFFFF")
-                window['VIEW_MISSING_BUTTON'].update(visible=False)
+                MAPPER_NAME = map_name
+                has_unsaved_changes = False
+                update_mappings_list(window, current_mappings)
+                window[FACTION_KEY].update(values=FACTION_LIST)
+                window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
+                if diff:
+                    window['SUBTEXT'].update('⚠️ Warning: Missing sources for loaded mapper, continue at your own risk!\nRecommended to only add or modify existing maps', text_color="#E9D502")
+                    window['VIEW_MISSING_BUTTON'].update(visible=True)
+                else:
+                    window['SUBTEXT'].update('Each FACTION is assigned to one or many HERITAGE.', text_color="#FFFFFF")
+                    window['VIEW_MISSING_BUTTON'].update(visible=False)
 
         elif event == 'VIEW_MISSING_BUTTON':
             popup_missing_keys(missing_keys)
@@ -1440,10 +1440,11 @@ def mapping_window(src):
         elif event == 'REMOVE_MAPPING_KEY':
             if values['MAPPING_LISTS_KEY']:
                 for formatted_mapping in values['MAPPING_LISTS_KEY']:
-                    if formatted_mapping.startswith('['):
-                        parts = formatted_mapping.split('] ')
-                        faction_key = parts[0].strip('[')
-                        ck3_key_to_remove = parts[1].split(' => ')[0].strip()
+                    if not formatted_mapping.startswith('['):
+                        continue
+                    parts = formatted_mapping.split('] ')
+                    faction_key = parts[0].strip('[')
+                    ck3_key_to_remove = parts[1].split(' => ')[0].strip()
 
                     key_to_remove = (ck3_key_to_remove, faction_key)
 
@@ -1504,7 +1505,7 @@ def mapping_window(src):
                 has_unsaved_changes = True
 
         elif event == 'TITLE_EDIT_BUTTON_KEY':
-            old_title_mappings = dict(current_title_mappings)
+            old_title_mappings = copy.deepcopy(current_title_mappings)
             old_title_names = dict(current_title_names)
             current_title_mappings, current_title_names = title_window(
                 current_title_mappings, current_title_names, src
@@ -1521,7 +1522,7 @@ def mapping_window(src):
         elif event == 'XML_BUTTON':
             if has_unsaved_changes:
                 confirm = sg.popup_yes_no(
-                    'You have unsaved changes. Importing will discard them.\nContinue?',
+                    'You have unsaved changes.\nContinue?',
                     title='Unsaved changes'
                 )
                 if confirm != 'Yes':
@@ -1532,12 +1533,12 @@ def mapping_window(src):
                 import_maa = xml_import[1]
                 import_heritage = xml_import[2]
                 import_mods = xml_import[3]
-                import_titles = xml_import[4] if len(xml_import) > 4 else {}
-                import_title_names = xml_import[5] if len(xml_import) > 5 else {}
+                import_titles = xml_import[4]
+                import_title_names = xml_import[5]
                 try:
                     save_mapper(import_name, import_maa, import_heritage, import_mods, import_titles, import_title_names)
                     add_map_config(import_name, import_mods)
-                except Exception as e:
+                except (OSError, ValueError) as e:
                     sg.popup_error(f'Error saving imported mapper: {e}', title='Save error')
                     continue
 
@@ -1549,7 +1550,7 @@ def mapping_window(src):
                 current_title_names = import_title_names
                 available_factions = list(set([item[0][1] for item in current_mappings.items()]))
                 FACTION_LIST = sorted(available_factions)
-                current_faction = FACTION_LIST[0] if FACTION_LIST else 'DEFAULT'
+                current_faction = FACTION_LIST[0] if FACTION_LIST else ''
                 update_mappings_list(window, current_mappings)
                 window[FACTION_KEY].update(values=FACTION_LIST, value=current_faction)
                 window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
@@ -1565,8 +1566,8 @@ def mapping_window(src):
                     else:
                         window['SUBTEXT'].update('Each FACTION is assigned to one or many HERITAGE.', text_color="#FFFFFF")
                         window['VIEW_MISSING_BUTTON'].update(visible=False)
-                except Exception:
-                    pass
+                except Exception as e:
+                    print(f'WARNING: Could not check imported mapper for missing keys: {e}')
 
                 has_unsaved_changes = False
 
@@ -1580,11 +1581,13 @@ def mapping_window(src):
 # ============================================================
 
 def main_window():
+    os.chdir(WORKING_DIR)
+
     # Run initial validation
     init_map_config()
     try:
         run_validation()
-    except (FileNotFoundError, SystemExit, Exception) as e:
+    except Exception as e:
         print(f'Warning: Initial validation could not complete: {e}')
         print('The GUI will still load. Use "Refresh Current Mappers" to retry.')
 
@@ -1625,14 +1628,10 @@ def main_window():
 
     window = sg.Window('Crusader Wars Mapper', layout, resizable=True).Finalize()
 
-    try:
-        if os.path.exists(os.path.join(CW_DIR, 'Crusader Wars.exe')):
-            pass
-        else:
-            raise FileNotFoundError('Executable incompatibility or not found for Crusader Wars.exe')
-    except FileNotFoundError as e:
-        sg.popup_error(f"Error: {e}\n\nPlease ensure the Crusader Wars mapping tool is stored in tools/cw_mapper")
+    if not os.path.exists(os.path.join(CW_DIR, 'Crusader Wars.exe')):
+        sg.popup_error("Error: Executable incompatibility or not found for Crusader Wars.exe\n\nPlease ensure the Crusader Wars mapping tool is stored in tools/cw_mapper")
         window.close()
+        return
 
     while True:
         event, values = window.read()
@@ -1659,6 +1658,8 @@ def main_window():
                 window['MLINE_KEY'].update(f'''Click the 'Open README' button for more details.''', append=True)
                 window['VALIDATE_KEY'].update(disabled=False)
             else:
+                window['MLINE_KEY'].update('Validating mappers, please wait...\n')
+                window.refresh()
                 try:
                     run_validation()
                     # Reload source data after validation
@@ -1672,7 +1673,7 @@ def main_window():
                     else:
                         new_summary = "ERROR: Could not read summary_log.txt"
                     window['MLINE_KEY'].update(f'{new_summary}', append=True)
-                except (FileNotFoundError, SystemExit, Exception) as e:
+                except Exception as e:
                     window['MLINE_KEY'].update(f'ERROR: Validation failed: {e}\n', append=True)
                 window['VALIDATE_KEY'].update(disabled=False)
 

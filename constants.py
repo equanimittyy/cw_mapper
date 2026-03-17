@@ -26,9 +26,9 @@ CONFIG_DIR = os.path.join('config')
 MAP_CONFIG = os.path.join(CONFIG_DIR, 'mod_config.json')
 DEFAULT_CONFIG_PATH = os.path.join('config', 'default.json')
 
-# CW mapper paths (relative to CW_DIR)
-MAPPER_DIR = '../../unit mappers/attila'
-SETTINGS_DIR = '../../data/settings'
+# CW mapper paths (absolute, built from CW_DIR)
+MAPPER_DIR = os.path.join(CW_DIR, 'unit mappers', 'attila')
+SETTINGS_DIR = os.path.join(CW_DIR, 'data', 'settings')
 
 # Source report paths
 ATTILA_SOURCE_PATH = os.path.join(REPORT_OUTPUT_DIR, 'source_attila_keys.csv')

@@ -2,9 +2,7 @@
 
 import os
 import re
-import sys
 import csv
-import webbrowser
 import xml.etree.ElementTree as ET
 
 from io import StringIO
@@ -14,13 +12,10 @@ import configparser
 import pandas as pd
 
 from constants import (
-    WORKING_DIR, ATTILA_EXPORT_DIR, MAPPER_DIR, SETTINGS_DIR,
+    ATTILA_EXPORT_DIR, MAPPER_DIR, SETTINGS_DIR,
     REPORT_OUTPUT_DIR, CW_CUSTOM_VALUES, RANK_MAP,
 )
-from utils import get_config, init_map_config, get_ck3_mods_from_config
-
-os.makedirs(REPORT_OUTPUT_DIR, exist_ok=True)
-os.chdir(WORKING_DIR)
+from utils import get_config, get_ck3_mods_from_config
 
 _ASCII = None
 
@@ -166,10 +161,7 @@ def get_keys(cw_config):
     # TW:ATTILA UNIT KEYS
     os.makedirs(ATTILA_EXPORT_DIR, exist_ok=True)
     if not any(file.endswith('.tsv') for file in os.listdir(ATTILA_EXPORT_DIR)):
-        print(f'== No .tsv Atilla unit keys were found in {ATTILA_EXPORT_DIR} ==')
-        print(f'Please read the readme.txt!')
-        webbrowser.open("readme.txt")
-        sys.exit(1)
+        raise FileNotFoundError(f'No .tsv Attila unit keys were found in {ATTILA_EXPORT_DIR}')
     else:
         print(f'== Atilla unit keys found in {ATTILA_EXPORT_DIR}! ==')
 
@@ -273,10 +265,8 @@ def mapping_validation(game_keys):
 
     mapper_results = {}
 
-    if not os.listdir(MAPPER_DIR):
-        print()
-        print(f'== No CW mapping files were found in {MAPPER_DIR}... ==')
-        sys.exit(1)
+    if not os.path.exists(MAPPER_DIR) or not os.listdir(MAPPER_DIR):
+        raise FileNotFoundError(f'No CW mapping files were found in {MAPPER_DIR}')
     else:
         print()
         print(f'== Found mapping directories: {os.listdir(MAPPER_DIR)} ==')
@@ -369,6 +359,7 @@ def mapping_validation(game_keys):
 
 def write_reports(mapper_results, game_keys):
     """Write CSV reports from validation results to disk."""
+    os.makedirs(REPORT_OUTPUT_DIR, exist_ok=True)
     for mapping, results in mapper_results.items():
         os.makedirs(os.path.join(REPORT_OUTPUT_DIR, mapping), exist_ok=True)
 
@@ -405,7 +396,7 @@ def summary():
         else:
             print(f'== No reports were found in {REPORT_OUTPUT_DIR}. No summary can be made until reports are produced based on your CK3/Attila install... ==', file=sum_f)
             print('', file=sum_f)
-            sys.exit(1)
+            raise FileNotFoundError(f'No reports were found in {REPORT_OUTPUT_DIR}')
 
         for mapping in os.listdir(REPORT_OUTPUT_DIR):
             map_folder = os.path.join(REPORT_OUTPUT_DIR, mapping)

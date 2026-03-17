@@ -3,6 +3,7 @@
 import os
 import json
 import re
+import tempfile
 import xml.etree.ElementTree as ET
 
 from constants import (
@@ -26,9 +27,8 @@ def init_map_config():
             with open(MAP_CONFIG, 'w') as f:
                 json.dump(_get_default_config(), f, indent=4)
             print(f'Initialised mapper config at {MAP_CONFIG}')
-        except Exception as e:
-            print(f'Error: {e}')
-            exit(1)
+        except OSError as e:
+            raise OSError(f'Failed to initialize mapper config at {MAP_CONFIG}: {e}') from e
 
 def get_config(mapping):
     target_config = []
@@ -77,25 +77,21 @@ def add_map_config(mapper_name, mods):
         add_map_config(mapper_name, mods)
         return
     except json.JSONDecodeError as e:
-        print(f'ERROR: {e}, the file {MAP_CONFIG} exists but is not valid JSON or is corrupt')
-        exit(1)
+        raise ValueError(f'The file {MAP_CONFIG} exists but is not valid JSON or is corrupt: {e}') from e
 
     cur_CK3_mods = [v for k, v in mods.items() if k == 'CK3']
     new_ck3_mods = []
     if cur_CK3_mods:
         for v in cur_CK3_mods[0]:
-            name, id = v.split(':', 1)
-            mod = tuple((name, int(id)))
+            try:
+                name, id = v.split(':', 1)
+                mod = tuple((name, int(id)))
+            except (ValueError, TypeError):
+                print(f'WARNING: Skipping malformed CK3 mod entry: {v} (expected Name:ID format)')
+                continue
             new_ck3_mods.append(mod)
 
-    if mapper_name not in data:
-        data[mapper_name] = new_ck3_mods
-    else:
-        data[mapper_name] = []
-        for v in cur_CK3_mods[0]:
-            name, id = v.split(':', 1)
-            mod = tuple((name, int(id)))
-            data[mapper_name].append(mod)
+    data[mapper_name] = new_ck3_mods
 
     try:
         with open(MAP_CONFIG, 'w') as f:
@@ -138,17 +134,20 @@ def save_mapper(name, faction_mapping, heritage_mapping, mods, title_mapping=Non
             seperator.join(k): v
             for k, v in (title_mapping or {}).items()
         },
-        'TITLE_NAMES': {
-            k: v
-            for k, v in (title_names or {}).items()
-        },
-        'MODS': {
-            k: v
-            for k, v in mods.items()
-        }
+        'TITLE_NAMES': dict(title_names or {}),
+        'MODS': dict(mods),
     }
-    with open(output_path, 'w', encoding='utf-8-sig') as f:
-        json.dump(save_format, f, indent=4)
+    fd, tmp_path = tempfile.mkstemp(dir=CUSTOM_MAPPER_DIR, suffix='.tmp', prefix='.save_')
+    try:
+        with os.fdopen(fd, 'w', encoding='utf-8-sig') as f:
+            json.dump(save_format, f, indent=4)
+        os.replace(tmp_path, output_path)
+    except BaseException:
+        try:
+            os.unlink(tmp_path)
+        except OSError:
+            pass
+        raise
 
 def load_mapper(file, maa_source_keys, attila_source_keys, cultures_source_keys, title_source_keys):
     """Load a mapper .txt (JSON) file and validate keys against source data.
@@ -180,7 +179,7 @@ def load_mapper(file, maa_source_keys, attila_source_keys, cultures_source_keys,
     missing_keys = []
 
     loaded_faction_mapping = {
-        tuple(k.split(seperator)): v
+        tuple(k.split(seperator, 1)): v
         for k, v in faction_data.items()
     }
     for k in loaded_faction_mapping.keys():
@@ -196,7 +195,7 @@ def load_mapper(file, maa_source_keys, attila_source_keys, cultures_source_keys,
             missing_keys.append([attila, 'Attila Unit'])
 
     loaded_heritage_mapping = {
-        tuple(k.split(seperator)): v[0]
+        tuple(k.split(seperator, 1)): v[0] if v else ''
         for k, v in heritage_data.items()
     }
     for k in loaded_heritage_mapping.keys():
@@ -215,7 +214,7 @@ def load_mapper(file, maa_source_keys, attila_source_keys, cultures_source_keys,
     title_data = loaded_data.get('TITLES_AND_MAA', {})
     title_names_data = loaded_data.get('TITLE_NAMES', {})
     loaded_title_mapping = {
-        tuple(k.split(seperator)): v
+        tuple(k.split(seperator, 1)): v
         for k, v in title_data.items()
     }
     loaded_title_names = dict(title_names_data)
@@ -238,15 +237,15 @@ def load_mapper(file, maa_source_keys, attila_source_keys, cultures_source_keys,
             missing_keys.append([tk, 'CK3 Title'])
 
     if maa_diff == 1:
-        diff_message = diff_message + '⚠️ Detected missing MAA source! (CK3/CK3 mods)\n'
+        diff_message = diff_message + '\u26a0\ufe0f Detected missing MAA source! (CK3/CK3 mods)\n'
     if attila_diff == 1:
-        diff_message = diff_message + '⚠️ Detected missing Attila source! (Attila/Attila mods)\n'
+        diff_message = diff_message + '\u26a0\ufe0f Detected missing Attila source! (Attila/Attila mods)\n'
     if heritage_diff == 1:
-        diff_message = diff_message + '⚠️ Detected missing heritage source! (CK3/CK3 mods)\n'
+        diff_message = diff_message + '\u26a0\ufe0f Detected missing heritage source! (CK3/CK3 mods)\n'
     if culture_diff == 1:
-        diff_message = diff_message + '⚠️ Detected missing culture source! (CK3/CK3 mods)\n'
+        diff_message = diff_message + '\u26a0\ufe0f Detected missing culture source! (CK3/CK3 mods)\n'
     if title_diff == 1:
-        diff_message = diff_message + '⚠️ Detected missing title source! (CK3/CK3 mods)\n'
+        diff_message = diff_message + '\u26a0\ufe0f Detected missing title source! (CK3/CK3 mods)\n'
 
     if diff_message:
         overall_diff = 1
@@ -269,21 +268,24 @@ def import_xml(import_folder):
     import_mods = os.path.join(import_folder, 'Mods.xml')
 
     # Cultures
-    for file in os.listdir(import_cultures):
-        if file.endswith('.xml'):
-            file_path = os.path.join(import_cultures, file)
-            tree = ET.parse(file_path)
-            root = tree.getroot()
-            for heritage in root:
-                heritage_name = heritage.get('name')
-                heritage_faction = heritage.get('faction')
-                imported_heritage_mappings[(heritage_name, 'PARENT_KEY')] = heritage_faction
-                for culture in heritage:
-                    culture_name = culture.get('name')
-                    culture_faction = culture.get('faction')
-                    imported_heritage_mappings[(heritage_name, culture_name)] = culture_faction
+    if os.path.exists(import_cultures):
+        for file in os.listdir(import_cultures):
+            if file.endswith('.xml'):
+                file_path = os.path.join(import_cultures, file)
+                tree = ET.parse(file_path)
+                root = tree.getroot()
+                for heritage in root:
+                    heritage_name = heritage.get('name')
+                    heritage_faction = heritage.get('faction')
+                    imported_heritage_mappings[(heritage_name, 'PARENT_KEY')] = heritage_faction
+                    for culture in heritage:
+                        culture_name = culture.get('name')
+                        culture_faction = culture.get('faction')
+                        imported_heritage_mappings[(heritage_name, culture_name)] = culture_faction
 
     # Factions
+    if not os.path.exists(import_factions):
+        return imported_mappings, imported_heritage_mappings, imported_mods, imported_title_mappings, imported_title_names
     for file in os.listdir(import_factions):
         if file.endswith('.xml'):
             file_path = os.path.join(import_factions, file)
@@ -313,7 +315,10 @@ def import_xml(import_folder):
                         maa_key = 'LEVY-IMPORTED_' + str(levy_count)
                         attila_key = key.get('key')
                         size = 'LEVY'
-                        percentage = int(key.get('porcentage'))
+                        try:
+                            percentage = int(key.get('porcentage', 0))
+                        except (ValueError, TypeError):
+                            percentage = 0
                         imported_mappings[(maa_key, faction_name)] = [attila_key, size, percentage]
 
     # Titles
@@ -344,11 +349,12 @@ def import_xml(import_folder):
                                 imported_title_mappings[('KNIGHTS', title_key)] = [attila_key, 'KNIGHTS']
 
     # Mods
-    tree = ET.parse(import_mods)
-    root = tree.getroot()
-    imported_mods['Attila'] = []
-    for mod in root:
-        imported_mods['Attila'].append(mod.text)
+    if os.path.exists(import_mods):
+        tree = ET.parse(import_mods)
+        root = tree.getroot()
+        imported_mods['Attila'] = []
+        for mod in root:
+            imported_mods['Attila'].append(mod.text)
 
     return imported_mappings, imported_heritage_mappings, imported_mods, imported_title_mappings, imported_title_names
 
@@ -378,16 +384,16 @@ def export_xml(file, tag, s_date, e_date):
         title_names_data = export_dict.get('TITLE_NAMES', {})
 
         loaded_faction_mapping = {
-            tuple(k.split(seperator)): v
+            tuple(k.split(seperator, 1)): v
             for k, v in faction_data.items()
         }
         loaded_heritage_mapping = {
-            tuple(k.split(seperator)): v[0]
+            tuple(k.split(seperator, 1)): v[0]
             for k, v in heritage_data.items()
         }
         loaded_mods = dict(mod_data)
         loaded_title_mapping = {
-            tuple(k.split(seperator)): v
+            tuple(k.split(seperator, 1)): v
             for k, v in title_data.items()
         }
         loaded_title_names = dict(title_names_data)
@@ -423,11 +429,13 @@ def export_xml(file, tag, s_date, e_date):
     # Export CULTURE mapping to XML file
     c_output = os.path.join(cultures_dir, file_name + '_Cultures.xml')
     c_root = ET.Element("Cultures")
+    heritage_elements = {}
     for key, value in loaded_heritage_mapping.items():
         if key[1] == 'PARENT_KEY':
-            heritage = ET.SubElement(c_root, "Heritage", name=key[0], faction=value)
-        else:
-            culture = ET.SubElement(heritage, "Culture", name=key[1], faction=value)
+            heritage_elements[key[0]] = ET.SubElement(c_root, "Heritage", name=key[0], faction=value)
+    for key, value in loaded_heritage_mapping.items():
+        if key[1] != 'PARENT_KEY' and key[0] in heritage_elements:
+            ET.SubElement(heritage_elements[key[0]], "Culture", name=key[1], faction=value)
 
     c_tree = ET.ElementTree(c_root)
     try:
@@ -453,7 +461,8 @@ def export_xml(file, tag, s_date, e_date):
                 elif key[0] == 'KNIGHTS':
                     ET.SubElement(faction, "Knights", key=value[0])
                 else:
-                    ET.SubElement(faction, 'Levies', porcentage=str(value[2]), key=value[0], max='LEVY')
+                    percentage = str(value[2]) if len(value) > 2 else '0'
+                    ET.SubElement(faction, 'Levies', porcentage=percentage, key=value[0], max='LEVY')
             else:
                 if value[1]:
                     ET.SubElement(faction, "MenAtArm", type=key[0], key=value[0], max=value[1])
@@ -532,9 +541,9 @@ def export_xml(file, tag, s_date, e_date):
     date_output = export_time
     date_root = ET.Element("TimePeriod")
     date_start = ET.SubElement(date_root, "StartDate")
-    date_start.text = s_date
+    date_start.text = s_date if s_date is not None else '0'
     date_end = ET.SubElement(date_root, "EndDate")
-    date_end.text = e_date
+    date_end.text = e_date if e_date is not None else '9999'
     date_tree = ET.ElementTree(date_root)
     try:
         ET.indent(date_tree, space="\t", level=0)
@@ -545,8 +554,8 @@ def export_xml(file, tag, s_date, e_date):
     # Create mod file
     mod_output = export_mods
     mod_root = ET.Element("Mods")
-    mod_list = [v for k, v in loaded_mods.items() if k == 'Attila']
-    for mod in mod_list[0]:
+    mod_list = loaded_mods.get('Attila', [])
+    for mod in mod_list:
         mod_child = ET.SubElement(mod_root, 'Mod')
         mod_child.text = mod
     mod_tree = ET.ElementTree(mod_root)
