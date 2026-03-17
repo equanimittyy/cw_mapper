@@ -5,7 +5,6 @@ import copy
 
 import csv
 import re
-import webbrowser
 import FreeSimpleGUI as sg
 
 import cw_map_checker
@@ -938,19 +937,19 @@ def title_window(title_mapping_dict, title_names_dict, src):
         window['TITLE_ADD_MAPPING_KEY'].update(disabled=not is_ready)
 
     col1_layout = [
-        [sg.Text('Available CK3 MAA (No Levies)', font=('Courier New', 12, 'bold'), text_color='#6D0000', background_color='#DDDDDD', relief=sg.RELIEF_RIDGE),
-         sg.Text('Filter CK3 source:'), sg.Combo(
+        [sg.Text('Available CK3 MAA (No Levies)', font=('Courier New', 12, 'bold'), text_color='#6D0000', background_color='#DDDDDD', relief=sg.RELIEF_RIDGE)],
+        [sg.Text('Filter CK3 source:'), sg.Combo(
             values=MAA_LIST_SOURCE,
             default_value=MAA_LIST_SOURCE[0],
             size=(20, 1),
             key='TITLE_CK3_SOURCE_KEY',
             readonly=True,
             enable_events=True
-        )],
-        [sg.Text('Search...', background_color='#DDDDDD', text_color="#000000"), sg.Input(key='TITLE_CK3_SEARCH_KEY', enable_events=True)],
+        ), sg.Push(background_color='#DDDDDD')],
+        [sg.Text('Search...', background_color='#DDDDDD', text_color="#000000"), sg.Input(key='TITLE_CK3_SEARCH_KEY', enable_events=True, size=(15, 1)), sg.Push(background_color='#DDDDDD')],
         [sg.Listbox(
             values=sorted([item['ck3_maa'] for item in TITLE_MAA_KEYS]),
-            size=(30, 15),
+            size=(20, 15),
             key='TITLE_CK3_LIST_KEY',
             enable_events=True,
             select_mode=sg.LISTBOX_SELECT_MODE_EXTENDED,
@@ -961,26 +960,27 @@ def title_window(title_mapping_dict, title_names_dict, src):
     ]
 
     col2_layout = [
-        [sg.Text('Available ATTILA UNIT KEYS', font=('Courier New', 12, 'bold'), text_color='#006D00', background_color='#DDDDDD', relief=sg.RELIEF_RIDGE),
-         sg.Text('Filter Attila source:'), sg.Combo(
+        [sg.Text('Available ATTILA UNIT KEYS', font=('Courier New', 12, 'bold'), text_color='#006D00', background_color='#DDDDDD', relief=sg.RELIEF_RIDGE)],
+        [sg.Text('Filter Attila source:'), sg.Combo(
             values=ATTILA_UNIT_LIST_SOURCE,
             default_value=ATTILA_UNIT_LIST_SOURCE[0],
             size=(20, 1),
             key='TITLE_ATTILA_SOURCE_KEY',
             readonly=True,
             enable_events=True
-        )],
-        [sg.Text('Search...', background_color='#DDDDDD', text_color="#000000"), sg.Input(key='TITLE_ATTILA_SEARCH_KEY', enable_events=True), sg.Text('Select unit size:'), sg.Combo(
+        ), sg.Push(background_color='#DDDDDD')],
+        [sg.Text('Search...', background_color='#DDDDDD', text_color="#000000"), sg.Input(key='TITLE_ATTILA_SEARCH_KEY', enable_events=True, size=(15, 1)), sg.Push(background_color='#DDDDDD')],
+        [sg.Text('Select unit size:'), sg.Combo(
             values=SIZE_LIST,
             default_value=SIZE_LIST[0],
             size=(10, 1),
             key='TITLE_MAA_SIZE_SELECT',
             readonly=True,
             enable_events=True
-        )],
+        ), sg.Push(background_color='#DDDDDD')],
         [sg.Listbox(
             values=sorted([item['attila_map_key'] for item in src.attila_keys]),
-            size=(30, 15),
+            size=(20, 15),
             key='TITLE_ATTILA_LIST_KEY',
             enable_events=True,
             select_mode=sg.LISTBOX_SELECT_MODE_SINGLE,
@@ -1181,19 +1181,19 @@ def mapping_window(src):
 
     # Column 1: CK3 MAA Selector
     col1_layout = [
-        [sg.Text('Available CK3 MAA', font=('Courier New', 12, 'bold'), text_color='#6D0000', background_color='#DDDDDD', relief=sg.RELIEF_RIDGE),
-         sg.Text('Filter CK3 source:'), sg.Combo(
+        [sg.Text('Available CK3 MAA', font=('Courier New', 12, 'bold'), text_color='#6D0000', background_color='#DDDDDD', relief=sg.RELIEF_RIDGE)],
+        [sg.Text('Filter CK3 source:'), sg.Combo(
             values=MAA_LIST_SOURCE,
             default_value=MAA_LIST_SOURCE[0],
             size=(20, 1),
             key=CK3_SOURCE_KEY,
             readonly=True,
             enable_events=True
-        )],
-        [sg.Text('Search...', background_color='#DDDDDD', text_color="#000000"), sg.Input(key='CK3_SEARCH_KEY', enable_events=True)],
+        ),sg.Push(background_color='#DDDDDD')],
+        [sg.Text('Search...', background_color='#DDDDDD', text_color="#000000"), sg.Input(key='CK3_SEARCH_KEY', enable_events=True, size=(15, 1)),sg.Push(background_color='#DDDDDD')],
         [sg.Listbox(
             values=sorted([item['ck3_maa'] for item in src.maa_keys]),
-            size=(30, 15),
+            size=(20, 15),
             key='CK3_LIST_KEY',
             enable_events=True,
             select_mode=sg.LISTBOX_SELECT_MODE_EXTENDED,
@@ -1205,16 +1205,17 @@ def mapping_window(src):
 
     # Column 2: ATTILA UNIT KEY Selector
     col2_layout = [
-        [sg.Text('Available ATTILA UNIT KEYS', font=('Courier New', 12, 'bold'), text_color='#006D00', background_color='#DDDDDD', relief=sg.RELIEF_RIDGE),
-         sg.Text('Filter Attila source:'), sg.Combo(
+        [sg.Text('Available ATTILA UNIT KEYS', font=('Courier New', 12, 'bold'), text_color='#006D00', background_color='#DDDDDD', relief=sg.RELIEF_RIDGE)],
+        [sg.Text('Filter Attila source:'), sg.Combo(
             values=ATTILA_UNIT_LIST_SOURCE,
             default_value=ATTILA_UNIT_LIST_SOURCE[0],
             size=(20, 1),
             key=ATTILA_SOURCE_KEY,
             readonly=True,
             enable_events=True
-        )],
-        [sg.Text('Search...', background_color='#DDDDDD', text_color="#000000"), sg.Input(key='ATTILA_SEARCH_KEY', enable_events=True), sg.Text('Select unit size:'), sg.Combo(
+        ),sg.Push(background_color='#DDDDDD')],
+        [sg.Text('Search...', background_color='#DDDDDD', text_color="#000000"), sg.Input(key='ATTILA_SEARCH_KEY', enable_events=True, size=(15, 1)),sg.Push(background_color='#DDDDDD'),
+        sg.Text('Select unit size:'), sg.Combo(
             values=SIZE_LIST,
             default_value=SIZE_LIST[0],
             size=(10, 1),
@@ -1224,7 +1225,7 @@ def mapping_window(src):
         )],
         [sg.Listbox(
             values=sorted([item['attila_map_key'] for item in src.attila_keys]),
-            size=(30, 15),
+            size=(20, 15),
             key='ATTILA_LIST_KEY',
             enable_events=True,
             select_mode=sg.LISTBOX_SELECT_MODE_SINGLE,
@@ -1244,10 +1245,11 @@ def mapping_window(src):
             key=FACTION_KEY,
             readonly=True,
             enable_events=True
-        ), sg.Push(background_color='#DDDDDD'), sg.Button('Save', key='SAVE_BUTTON_KEY', size=(15, 2), button_color=('white', '#444444')), sg.Input(key='FILE_LOAD_KEY', visible=False, enable_events=True), sg.FileBrowse('Load', target='FILE_LOAD_KEY', size=(15, 2), initial_folder=CUSTOM_MAPPER_DIR, button_color=('white', '#444444'), file_types=((('Text Files', '*.txt'),))), sg.Button('Import/Export XML', key='XML_BUTTON', size=(15, 2), button_color=('white', "#008670"))],
+        ),sg.Push(background_color='#DDDDDD'),sg.Button('Save', key='SAVE_BUTTON_KEY', size=(15, 2), button_color=('white', '#444444')), sg.Input(key='FILE_LOAD_KEY', visible=False, enable_events=True), sg.FileBrowse('Load', target='FILE_LOAD_KEY', size=(15, 2), initial_folder=CUSTOM_MAPPER_DIR, button_color=('white', '#444444'), file_types=((('Text Files', '*.txt'),))), sg.Button('Import/Export XML', key='XML_BUTTON', size=(15, 2), button_color=('white', "#008670"))],
+        [sg.Button('Open Title mapping', key='TITLE_EDIT_BUTTON_KEY', size=(16, 2), button_color=('white', '#F78702')), sg.Button('Open Heritage mapping', key='HERITAGE_EDIT_BUTTON_KEY', size=(20, 2), button_color=('white', '#F78702')),sg.Push(background_color='#DDDDDD')],
         [sg.Listbox(
             values=[],
-            size=(35, 13),
+            size=(15, 15),
             key='MAPPING_LISTS_KEY',
             select_mode=sg.LISTBOX_SELECT_MODE_EXTENDED,
             background_color='#E8E8FF',
@@ -1255,13 +1257,13 @@ def mapping_window(src):
             expand_y=True,
             enable_events=True
         )],
-        [sg.Button('Add Mapping', key='ADD_MAPPING_KEY', size=(15, 2), button_color=('white', '#004D40'), disabled=True), sg.Button('Remove Selected', key='REMOVE_MAPPING_KEY', size=(15, 2), button_color=('white', '#CC0000'), disabled=True), sg.Push(background_color='#DDDDDD'), sg.Button('Edit levy percentages', key='LEVY_PERCENTAGE_BUTTON_KEY', size=(20, 2), button_color=('white', "#444444")), sg.Button('Edit faction list', key='FACTION_LIST_EDIT_BUTTON_KEY', size=(15, 2), button_color=('white', '#444444')), sg.Button('Mod configuration', key='MOD_CONFIG_BUTTON', size=(15, 2), button_color=('white', '#444444'))],
-        [sg.Button('Copy from faction', key='FACTION_COPY_BUTTON_KEY', size=(15, 2), button_color=('white', "#008670")), sg.Push(background_color='#DDDDDD'), sg.Button('Open Title mapping', key='TITLE_EDIT_BUTTON_KEY', size=(16, 2), button_color=('white', '#F78702')), sg.Button('Open Heritage mapping', key='HERITAGE_EDIT_BUTTON_KEY', size=(20, 2), button_color=('white', '#F78702'))]
+        [sg.Button('Add Mapping', key='ADD_MAPPING_KEY', size=(15, 2), button_color=('white', '#004D40'), disabled=True), sg.Button('Remove Selected', key='REMOVE_MAPPING_KEY', size=(15, 2), button_color=('white', '#CC0000'), disabled=True), sg.Push(background_color='#DDDDDD'), sg.Button('Edit levy percentages', key='LEVY_PERCENTAGE_BUTTON_KEY', size=(20, 2), button_color=('white', "#444444")), sg.Button('Edit faction list', key='FACTION_LIST_EDIT_BUTTON_KEY', size=(15, 2), button_color=('white', '#444444'))],
+        [sg.Button('Copy from faction', key='FACTION_COPY_BUTTON_KEY', size=(15, 2), button_color=('white', "#008670")), sg.Push(background_color='#DDDDDD'), sg.Button('Mod configuration', key='MOD_CONFIG_BUTTON', size=(15, 2), button_color=('white', '#444444'))]
     ]
 
     mapper_layout = [
         [sg.Image(ASCII_ART_MAPPER)],
-        [sg.Text('Create your "MAA => UNIT" mapping, per FACTION here. Each FACTION can have as many "MAA => UNIT" mappings as you like. Any missing "MAA => UNIT" mappings will fallback to faction DEFAULT, or crash if not present.', font=('Courier New', 10, 'bold'), justification='center', expand_x=True)],
+        [sg.Text('Create your "MAA => UNIT" mapping, per FACTION here. Each FACTION can have as many "MAA => UNIT" mappings as you like.\n Any missing "MAA => UNIT" mappings will fallback to faction DEFAULT, or crash if not present.', font=('Courier New', 10, 'bold'), justification='center', expand_x=True)],
         [sg.Column([[sg.Text('Each FACTION is assigned to one or many HERITAGE.', font=('Courier New', 10, 'bold'), key='SUBTEXT', justification='center'), sg.Button('⚠️ View missing keys', key='VIEW_MISSING_BUTTON', size=(20, 1), button_color=('white', "#CABD2E"), visible=False), sg.Button('? Help', key='HELP_GUIDE_BUTTON', size=(10, 1), button_color=('white', '#2266AA'))]], element_justification='center')],
         [
             sg.Column(col1_layout, element_justification='center', vertical_alignment='top', pad=(10, 10), background_color='#DDDDDD', expand_x=True, expand_y=True),
@@ -1603,10 +1605,9 @@ def main_window():
     layout = [
     [sg.Image(ASCII_ART_MAIN)],
     [sg.Text(text='''A mapping tool for FarayC's Crusader Wars, developed by equanimity''', font=('Courier New', 10))],
-    [sg.Text(text='Instructions: Click the "Refresh Current Mappers" button to refresh the summary, \n or click "Create Custom Mapper" to open the custom mapping window.', font=('Courier New', 10))],
+    [sg.Text(text='Click "Refresh Current Mappers" to refresh the summary,\nor "Create Custom Mapper" to open the mapping window.', font=('Courier New', 10))],
 
     [
-        sg.Button('Open README', key='README_KEY'),
         sg.Button('Refresh Current Mappers', key='VALIDATE_KEY'),
         sg.Button('Create Custom Mapper', key='CUSTOM_MAPPER_KEY'),
     ],
@@ -1639,9 +1640,6 @@ def main_window():
         if event == sg.WIN_CLOSED or event == 'Exit':
             break
 
-        elif event == 'README_KEY':
-            webbrowser.open("readme.txt")
-
         elif event == 'VALIDATE_KEY':
             window['MLINE_KEY'].update('')
             window['VALIDATE_KEY'].update(disabled=True)
@@ -1655,7 +1653,7 @@ def main_window():
                 window['MLINE_KEY'].update('''You may need to create this subfolder.\n''', append=True)
                 window['MLINE_KEY'].update('''> **Tip:** You may need to rename the `.tsv` files if you export from multiple Attila sources to prevent overwriting.\n''', append=True)
                 window['MLINE_KEY'].update(f'\n', append=True)
-                window['MLINE_KEY'].update(f'''Click the 'Open README' button for more details.''', append=True)
+                window['MLINE_KEY'].update('Use the Help button in the mapper window for more details.', append=True)
                 window['VALIDATE_KEY'].update(disabled=False)
             else:
                 window['MLINE_KEY'].update('Validating mappers, please wait...\n')
