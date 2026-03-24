@@ -296,14 +296,12 @@ def popup_faction_list(factions):
             size=(40, 15),
             key='FACTION_LISTBOX',
             select_mode=sg.LISTBOX_SELECT_MODE_SINGLE,
-            enable_events=True,
             expand_x=True,
             expand_y=True
         )],
         [sg.Input(key='FACTION_INPUT', size=(30, 1), expand_x=True)],
         [sg.Button('Add', key='FACTION_ADD', size=(10, 1), expand_x=True),
-         sg.Button('Remove', key='FACTION_REMOVE', size=(10, 1), expand_x=True),
-         sg.Button('Rename', key='FACTION_RENAME', size=(10, 1), expand_x=True)],
+         sg.Button('Remove', key='FACTION_REMOVE', size=(10, 1), expand_x=True)],
         [sg.Button('OK', expand_x=True), sg.Button('Cancel', expand_x=True)]
     ]
 
@@ -316,11 +314,6 @@ def popup_faction_list(factions):
         if event in (sg.WIN_CLOSED, 'Cancel'):
             window.close()
             return None
-
-        elif event == 'FACTION_LISTBOX':
-            selected = values['FACTION_LISTBOX']
-            if selected:
-                window['FACTION_INPUT'].update(selected[0])
 
         elif event == 'FACTION_ADD':
             new_name = values['FACTION_INPUT'].strip()
@@ -339,25 +332,8 @@ def popup_faction_list(factions):
             if selected:
                 working_factions.remove(selected[0])
                 window['FACTION_LISTBOX'].update(working_factions)
-                window['FACTION_INPUT'].update('')
             else:
                 sg.popup_error('Select a faction to remove.')
-
-        elif event == 'FACTION_RENAME':
-            selected = values['FACTION_LISTBOX']
-            new_name = values['FACTION_INPUT'].strip()
-            if not selected:
-                sg.popup_error('Select a faction to rename.')
-                continue
-            if not new_name:
-                sg.popup_error('New name cannot be empty.')
-                continue
-            if new_name in working_factions and new_name != selected[0]:
-                sg.popup_error(f"Faction '{new_name}' already exists.")
-                continue
-            idx = working_factions.index(selected[0])
-            working_factions[idx] = new_name
-            window['FACTION_LISTBOX'].update(working_factions)
 
         elif event == 'OK':
             clean = [f for f in working_factions if f.strip()]
@@ -388,8 +364,8 @@ def popup_heritage_pick_faction(factions, heritage_mapping_dict, selected_map):
         if values['FACTION_HERITAGE_KEY'] == []:
             return None
         selected_map = selected_map[0].split(sep=': ', maxsplit=1)[1]
-        current_faction = selected_map.split(sep='--', maxsplit=1)[1].strip()
-        selected_map = selected_map.split(sep='--', maxsplit=1)[0].strip()
+        current_faction = selected_map.split(sep=HERITAGE_SEPARATOR, maxsplit=1)[1].strip()
+        selected_map = selected_map.split(sep=HERITAGE_SEPARATOR, maxsplit=1)[0].strip()
         target_faction = values['FACTION_HERITAGE_KEY'][0]
 
         for pair in heritage_mapping_dict:
@@ -743,6 +719,8 @@ def popup_title_name(title_key):
 # Heritage window
 # ============================================================
 
+HERITAGE_SEPARATOR = '  |  '
+
 def heritage_window(heritage_mapping_dict, factions, src):
     available_heritages = []
 
@@ -854,9 +832,9 @@ def heritage_window(heritage_mapping_dict, factions, src):
                 parent_faction = faction
             else:
                 if h_count == 1:
-                    display_list.append(f'HERITAGE: {pair[0]}   -- {parent_faction}')
+                    display_list.append(f'HERITAGE: {pair[0]}{HERITAGE_SEPARATOR}{parent_faction}')
                 h_count = h_count + 1
-                display_list.append(f'   ->: {pair[1]}   -- {faction}')
+                display_list.append(f'   ->: {pair[1]}{HERITAGE_SEPARATOR}{faction}')
 
         window['HERITAGE_MAP_LIST'].update(display_list, visible=False)
         heritages_widget.yview_moveto(current_y_h)
@@ -892,7 +870,7 @@ def heritage_window(heritage_mapping_dict, factions, src):
 
     def remove_heritage(available_heritages, heritage_mapping_dict, selected_key):
         removed_key = selected_key.split(sep=': ', maxsplit=1)[1]
-        removed_key = removed_key.split(sep='--', maxsplit=1)[0].strip()
+        removed_key = removed_key.split(sep=HERITAGE_SEPARATOR, maxsplit=1)[0].strip()
         if removed_key in [heritage[0] for heritage in heritage_mapping_dict]:
             removed_mapping = [heritage for heritage in heritage_mapping_dict if heritage[0] == removed_key]
             heritage_mapping_dict = {
@@ -976,13 +954,15 @@ def heritage_window(heritage_mapping_dict, factions, src):
         for heritage in heritage_missing_parent:
             available_heritages.append((heritage, 'PARENT_KEY'))
 
+    original_heritage_mappings = dict(heritage_mapping_dict)
     refresh_display_lists(window, available_heritages, heritage_mapping_dict)
 
     while True:
         event, values = window.read()
 
         if event == sg.WIN_CLOSED:
-            break
+            window.close()
+            return original_heritage_mappings
 
         elif event in ('HERITAGE_AVAIL_SEARCH', 'HERITAGE_MAP_SEARCH'):
             refresh_display_lists(window, available_heritages, heritage_mapping_dict)
@@ -1016,7 +996,7 @@ def heritage_window(heritage_mapping_dict, factions, src):
             window.close()
             return heritage_mapping_dict
     window.close()
-    return heritage_mapping_dict
+    return original_heritage_mappings
 
 # ============================================================
 # Title window
@@ -1034,6 +1014,27 @@ def title_window(title_mapping_dict, title_names_dict, src):
     selected_attila = None
     current_title = TITLE_LIST[0] if TITLE_LIST else ''
 
+    TITLE_MAP_SEPARATOR = '   => '
+
+    def format_title_mapping(prefix, label, ck3, attila):
+        return f"{prefix}[{label}] {ck3}{TITLE_MAP_SEPARATOR}{attila}"
+
+    def parse_title_mapping(entry):
+        """Returns (display_name, ck3_key) or (None, None) if unparseable."""
+        clean = entry
+        for marker in ('[*] ', '[+] '):
+            if clean.startswith(marker):
+                clean = clean[len(marker):]
+                break
+        if not clean.startswith('['):
+            return None, None
+        parts = clean.split('] ', 1)
+        if len(parts) < 2:
+            return None, None
+        display_name = parts[0].strip('[')
+        ck3_key = parts[1].split(TITLE_MAP_SEPARATOR, 1)[0].strip()
+        return display_name, ck3_key
+
     def update_title_mappings_list(window, mappings_dict):
         mapping_widget = window['TITLE_MAPPING_LIST_KEY'].Widget
         current_y = mapping_widget.yview()[0]
@@ -1048,7 +1049,7 @@ def title_window(title_mapping_dict, title_names_dict, src):
                 prefix = '[+] '
             else:
                 prefix = ''
-            formatted_list.append(f"{prefix}[{title_name}] {ck3}   => {attila}")
+            formatted_list.append(format_title_mapping(prefix, title_name, ck3, attila))
 
         window['TITLE_MAPPING_LIST_KEY'].update(sorted(formatted_list), visible=False)
         mapping_widget.yview_moveto(current_y)
@@ -1232,16 +1233,9 @@ def title_window(title_mapping_dict, title_names_dict, src):
         elif event == 'TITLE_REMOVE_MAPPING_KEY':
             if values['TITLE_MAPPING_LIST_KEY']:
                 for formatted_mapping in values['TITLE_MAPPING_LIST_KEY']:
-                    clean = formatted_mapping
-                    for marker in ('[*] ', '[+] '):
-                        if clean.startswith(marker):
-                            clean = clean[len(marker):]
-                            break
-                    if not clean.startswith('['):
+                    display_name, ck3_key_to_remove = parse_title_mapping(formatted_mapping)
+                    if display_name is None:
                         continue
-                    parts = clean.split('] ')
-                    display_name = parts[0].strip('[')
-                    ck3_key_to_remove = parts[1].split(' => ')[0].strip()
                     title_key_to_remove = current_title
                     for tk, tn in title_names_dict.items():
                         if tn == display_name:
@@ -1410,6 +1404,27 @@ def mapping_window(src):
     selected_attila = None
     current_faction = FACTION_LIST[0]
 
+    MAP_SEPARATOR = '   => '
+
+    def format_mapping(prefix, label, ck3, attila):
+        return f"{prefix}[{label}] {ck3}{MAP_SEPARATOR}{attila}"
+
+    def parse_mapping(entry):
+        """Returns (label_key, ck3_key) or (None, None) if unparseable."""
+        clean = entry
+        for marker in ('[*] ', '[+] ', '[%] '):
+            if clean.startswith(marker):
+                clean = clean[len(marker):]
+                break
+        if not clean.startswith('['):
+            return None, None
+        parts = clean.split('] ', 1)
+        if len(parts) < 2:
+            return None, None
+        label_key = parts[0].strip('[')
+        ck3_key = parts[1].split(MAP_SEPARATOR, 1)[0].strip()
+        return label_key, ck3_key
+
     def update_mappings_list(window, mappings_dict):
         mapping_widget = window['MAPPING_LISTS_KEY'].Widget
         current_y = mapping_widget.yview()[0]
@@ -1425,7 +1440,7 @@ def mapping_window(src):
                 prefix = '[%] '
             else:
                 prefix = ''
-            formatted_list.append(f"{prefix}[{faction}] {ck3}   => {attila}")
+            formatted_list.append(format_mapping(prefix, faction, ck3, attila))
 
         window['MAPPING_LISTS_KEY'].update(sorted(formatted_list), visible=False)
         mapping_widget.yview_moveto(current_y)
@@ -1584,16 +1599,9 @@ def mapping_window(src):
         elif event == 'REMOVE_MAPPING_KEY':
             if values['MAPPING_LISTS_KEY']:
                 for formatted_mapping in values['MAPPING_LISTS_KEY']:
-                    clean = formatted_mapping
-                    for marker in ('[*] ', '[+] ', '[%] '):
-                        if clean.startswith(marker):
-                            clean = clean[len(marker):]
-                            break
-                    if not clean.startswith('['):
+                    faction_key, ck3_key_to_remove = parse_mapping(formatted_mapping)
+                    if faction_key is None:
                         continue
-                    parts = clean.split('] ')
-                    faction_key = parts[0].strip('[')
-                    ck3_key_to_remove = parts[1].split(' => ')[0].strip()
 
                     key_to_remove = (ck3_key_to_remove, faction_key)
 
