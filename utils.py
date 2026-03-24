@@ -142,7 +142,7 @@ def save_mapper(name, faction_mapping, heritage_mapping, mods, title_mapping=Non
         with os.fdopen(fd, 'w', encoding='utf-8-sig') as f:
             json.dump(save_format, f, indent=4)
         os.replace(tmp_path, output_path)
-    except BaseException:
+    except (OSError, ValueError, TypeError):
         try:
             os.unlink(tmp_path)
         except OSError:

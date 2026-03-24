@@ -246,7 +246,7 @@ def popup_missing_keys(missing_keys):
         [sg.Table(
             values=missing_keys,
             headings=headings,
-            key='LEVY_PERCENTAGE_TABLE',
+            key='MISSING_KEYS_TABLE',
             max_col_width=30,
             auto_size_columns=True,
             justification='left',
@@ -281,28 +281,84 @@ def popup_faction_copy(factions):
     return None
 
 def popup_faction_list(factions):
-    formatted_faction_list = ''
-    for faction in factions:
-        line = faction
-        formatted_faction_list += line + '\n'
     layout = [
-        [sg.Text('Faction list, seperate with a new line')],
-        [sg.Multiline(
-            formatted_faction_list,
-            size=(50, 20),
-            key='FACTION_EDIT_LIST'
+        [sg.Text('Edit faction list', font=('Courier New', 12, 'bold'))],
+        [sg.Listbox(
+            values=list(factions),
+            size=(40, 15),
+            key='FACTION_LISTBOX',
+            select_mode=sg.LISTBOX_SELECT_MODE_SINGLE,
+            enable_events=True,
+            expand_x=True,
+            expand_y=True
         )],
-        [sg.Button('OK'), sg.Button('Cancel')]
+        [sg.Input(key='FACTION_INPUT', size=(30, 1), expand_x=True)],
+        [sg.Button('Add', key='FACTION_ADD', size=(10, 1), expand_x=True),
+         sg.Button('Remove', key='FACTION_REMOVE', size=(10, 1), expand_x=True),
+         sg.Button('Rename', key='FACTION_RENAME', size=(10, 1), expand_x=True)],
+        [sg.Button('OK', expand_x=True), sg.Button('Cancel', expand_x=True)]
     ]
 
-    window = sg.Window('Edit faction list', layout, modal=True)
-    event, values = window.read(close=True)
+    window = sg.Window('Edit faction list', layout, modal=True, resizable=True, finalize=True)
+    working_factions = list(factions)
 
-    if event == 'OK':
-        new_faction_list = values['FACTION_EDIT_LIST'].split('\n')
-        clean_faction_list = [item.strip() for item in new_faction_list]
-        if clean_faction_list:
-            return clean_faction_list
+    while True:
+        event, values = window.read()
+
+        if event in (sg.WIN_CLOSED, 'Cancel'):
+            window.close()
+            return None
+
+        elif event == 'FACTION_LISTBOX':
+            selected = values['FACTION_LISTBOX']
+            if selected:
+                window['FACTION_INPUT'].update(selected[0])
+
+        elif event == 'FACTION_ADD':
+            new_name = values['FACTION_INPUT'].strip()
+            if not new_name:
+                sg.popup_error('Faction name cannot be empty.')
+                continue
+            if new_name in working_factions:
+                sg.popup_error(f"Faction '{new_name}' already exists.")
+                continue
+            working_factions.append(new_name)
+            window['FACTION_LISTBOX'].update(working_factions)
+            window['FACTION_INPUT'].update('')
+
+        elif event == 'FACTION_REMOVE':
+            selected = values['FACTION_LISTBOX']
+            if selected:
+                working_factions.remove(selected[0])
+                window['FACTION_LISTBOX'].update(working_factions)
+                window['FACTION_INPUT'].update('')
+            else:
+                sg.popup_error('Select a faction to remove.')
+
+        elif event == 'FACTION_RENAME':
+            selected = values['FACTION_LISTBOX']
+            new_name = values['FACTION_INPUT'].strip()
+            if not selected:
+                sg.popup_error('Select a faction to rename.')
+                continue
+            if not new_name:
+                sg.popup_error('New name cannot be empty.')
+                continue
+            if new_name in working_factions and new_name != selected[0]:
+                sg.popup_error(f"Faction '{new_name}' already exists.")
+                continue
+            idx = working_factions.index(selected[0])
+            working_factions[idx] = new_name
+            window['FACTION_LISTBOX'].update(working_factions)
+
+        elif event == 'OK':
+            clean = [f for f in working_factions if f.strip()]
+            window.close()
+            if clean:
+                return clean
+            return None
+
+    window.close()
     return None
 
 def popup_heritage_pick_faction(factions, heritage_mapping_dict, selected_map):
@@ -504,15 +560,37 @@ def popup_xml_import_export(src):
                 return mapper_name, imported_maa_map, imported_heritage_map, imported_mods, imported_title_map, imported_title_names
 
     if event == 'Export':
-        export_mapper_file = sg.popup_get_file(title='Find mapper file to export', message='Please select the mapping file you wish to export', initial_folder=CUSTOM_MAPPER_DIR)
-        if export_mapper_file:
-            tag = sg.popup_get_text(title='Assign mod tag', message='Define a tag used for your mapper set, which can be used to identify\nmulti-mappers for different time periods')
-            s_date = sg.popup_get_text(title='Define start date', message='Define the start date (please enter numbers only, e.g.: 768)', default_text='0')
-            e_date = sg.popup_get_text(title='Define end date', message='Define the end date (please enter numbers only, e.g.: 768)', default_text='9999')
-            if s_date is None or e_date is None:
-                return None
-            export_dir = export_xml(export_mapper_file, tag, s_date, e_date)
-            sg.popup(f"Mapper exported to '{export_dir}'!")
+        export_layout = [
+            [sg.Text('Export mapper to XML format', font=('Courier New', 12, 'bold'))],
+            [sg.Text('Mapper file:'), sg.Input(key='EXPORT_FILE', size=(40, 1), expand_x=True),
+             sg.FileBrowse('Browse', initial_folder=CUSTOM_MAPPER_DIR, file_types=(('Text Files', '*.txt'),))],
+            [sg.Text('Mapper tag:'), sg.Input(key='EXPORT_TAG', size=(40, 1), expand_x=True,
+             tooltip='Tag used to identify multi-mappers for different time periods')],
+            [sg.Text('Start date:'), sg.Input(key='EXPORT_START', default_text='0', size=(15, 1), expand_x=True),
+             sg.Text('End date:'), sg.Input(key='EXPORT_END', default_text='9999', size=(15, 1), expand_x=True)],
+            [sg.Button('Export', size=(15, 2), button_color=('white', '#004D40'), expand_x=True),
+             sg.Button('Cancel', size=(15, 2), button_color=('white', '#444444'), expand_x=True)]
+        ]
+
+        export_window = sg.Window('Export to XML', export_layout, modal=True, resizable=True)
+
+        while True:
+            e_event, e_values = export_window.read()
+            if e_event in (sg.WIN_CLOSED, 'Cancel'):
+                break
+            elif e_event == 'Export':
+                export_file = e_values['EXPORT_FILE']
+                if not export_file:
+                    sg.popup_error('Please select a mapper file to export.')
+                    continue
+                tag = e_values['EXPORT_TAG']
+                s_date = e_values['EXPORT_START']
+                e_date = e_values['EXPORT_END']
+                export_dir = export_xml(export_file, tag, s_date, e_date)
+                sg.popup(f"Mapper exported to '{export_dir}'!")
+                break
+
+        export_window.close()
     return None
 
 def popup_title_pick(current_title_list, current_title_names, src):
@@ -713,7 +791,22 @@ def heritage_window(heritage_mapping_dict, factions, src):
         available_heritages = sorted(available_heritages, key=sort_heritages_key)
         available_heritages = deduplicate_in_order(available_heritages)
 
+        # Filter available heritages by search term
+        avail_search = window['HERITAGE_AVAIL_SEARCH'].get().lower().strip()
+        if avail_search:
+            matching = {h for h, c in available_heritages
+                        if avail_search in h.lower() or (c != 'PARENT_KEY' and avail_search in c.lower())}
+            available_heritages = [(h, c) for h, c in available_heritages if h in matching]
+
         heritage_mapping_dict = dict(sorted(heritage_mapping_dict.items(), key=sort_heritages_key))
+
+        # Filter mapped heritages by search term
+        map_search = window['HERITAGE_MAP_SEARCH'].get().lower().strip()
+        if map_search:
+            matching_mapped = {h for (h, c) in heritage_mapping_dict
+                               if map_search in h.lower() or (c != 'PARENT_KEY' and map_search in c.lower())}
+            heritage_mapping_dict = {k: v for k, v in heritage_mapping_dict.items() if k[0] in matching_mapped}
+
         h_count = 0
         for pair in available_heritages:
             if pair[1] == 'PARENT_KEY':
@@ -811,6 +904,7 @@ def heritage_window(heritage_mapping_dict, factions, src):
     heritage1_col_layout = [
         [sg.Text('Available Heritages and Cultures', font=('Courier New', 12, 'bold'), text_color='#6D0000', background_color='#DDDDDD', relief=sg.RELIEF_RIDGE)],
         [sg.Text('''⚠️ Important: It is highly recommended to manually map "Unassigned"\ncultures, as they're not specifically tied to a heritage and cannot fall back\non heritage "Unassigned" (it doesn't exist in-game)''')],
+        [sg.Text('Search...', background_color='#DDDDDD', text_color="#000000"), sg.Input(key='HERITAGE_AVAIL_SEARCH', enable_events=True, size=(15, 1), expand_x=True)],
         [sg.Listbox(
             values=available_heritages_display_list,
             size=(50, 20),
@@ -830,6 +924,7 @@ def heritage_window(heritage_mapping_dict, factions, src):
     heritage3_col_layout = [
         [sg.Text('Heritage/Culture to Faction Mapping', font=('Courier New', 12, 'bold'), text_color='#00006D', background_color='#DDDDDD', relief=sg.RELIEF_RIDGE)],
         [sg.Button('Assign Faction', size=(20, 1), button_color=('white', '#008670'), disabled=True)],
+        [sg.Text('Search...', background_color='#DDDDDD', text_color="#000000"), sg.Input(key='HERITAGE_MAP_SEARCH', enable_events=True, size=(15, 1), expand_x=True)],
         [sg.Listbox(
             values=display_list,
             size=(50, 20),
@@ -869,6 +964,9 @@ def heritage_window(heritage_mapping_dict, factions, src):
 
         if event == sg.WIN_CLOSED:
             break
+
+        elif event in ('HERITAGE_AVAIL_SEARCH', 'HERITAGE_MAP_SEARCH'):
+            refresh_display_lists(window, available_heritages, heritage_mapping_dict)
 
         elif event == 'Add >>>':
             selected_heritage_to_add = values['HERITAGE_AVAILABLE_LIST']
@@ -925,7 +1023,13 @@ def title_window(title_mapping_dict, title_names_dict, src):
         display_list = [t for t in mappings_dict.items() if t[0][1] == current_title]
         for (ck3, title_key), attila in display_list:
             title_name = title_names_dict.get(title_key, title_key)
-            formatted_list.append(f"[{title_name}] {ck3}   => {attila}")
+            if ck3 == 'GENERAL':
+                prefix = '[*] '
+            elif ck3 == 'KNIGHTS':
+                prefix = '[+] '
+            else:
+                prefix = ''
+            formatted_list.append(f"{prefix}[{title_name}] {ck3}   => {attila}")
 
         window['TITLE_MAPPING_LIST_KEY'].update(sorted(formatted_list), visible=False)
         mapping_widget.yview_moveto(current_y)
@@ -1109,9 +1213,14 @@ def title_window(title_mapping_dict, title_names_dict, src):
         elif event == 'TITLE_REMOVE_MAPPING_KEY':
             if values['TITLE_MAPPING_LIST_KEY']:
                 for formatted_mapping in values['TITLE_MAPPING_LIST_KEY']:
-                    if not formatted_mapping.startswith('['):
+                    clean = formatted_mapping
+                    for marker in ('[*] ', '[+] '):
+                        if clean.startswith(marker):
+                            clean = clean[len(marker):]
+                            break
+                    if not clean.startswith('['):
                         continue
-                    parts = formatted_mapping.split('] ')
+                    parts = clean.split('] ')
                     display_name = parts[0].strip('[')
                     ck3_key_to_remove = parts[1].split(' => ')[0].strip()
                     title_key_to_remove = current_title
@@ -1245,7 +1354,7 @@ def mapping_window(src):
             key=FACTION_KEY,
             readonly=True,
             enable_events=True
-        ),sg.Push(background_color='#DDDDDD'),sg.Button('Save', key='SAVE_BUTTON_KEY', size=(15, 2), button_color=('white', '#444444')), sg.Input(key='FILE_LOAD_KEY', visible=False, enable_events=True), sg.FileBrowse('Load', target='FILE_LOAD_KEY', size=(15, 2), initial_folder=CUSTOM_MAPPER_DIR, button_color=('white', '#444444'), file_types=((('Text Files', '*.txt'),))), sg.Button('Import/Export XML', key='XML_BUTTON', size=(15, 2), button_color=('white', "#008670"))],
+        ),sg.Push(background_color='#DDDDDD'),sg.Button('Save', key='SAVE_BUTTON_KEY', size=(15, 2), button_color=('white', '#444444'), expand_x=True), sg.Button('Save As', key='SAVE_AS_BUTTON_KEY', size=(15, 2), button_color=('white', '#444444'), expand_x=True), sg.Input(key='FILE_LOAD_KEY', visible=False, enable_events=True), sg.FileBrowse('Load', target='FILE_LOAD_KEY', size=(15, 2), initial_folder=CUSTOM_MAPPER_DIR, button_color=('white', '#444444'), file_types=((('Text Files', '*.txt'),)), expand_x=True), sg.Button('Import/Export XML', key='XML_BUTTON', size=(15, 2), button_color=('white', "#008670"), expand_x=True)],
         [sg.Button('Open Title mapping', key='TITLE_EDIT_BUTTON_KEY', size=(16, 2), button_color=('white', '#F78702')), sg.Button('Open Heritage mapping', key='HERITAGE_EDIT_BUTTON_KEY', size=(20, 2), button_color=('white', '#F78702')),sg.Push(background_color='#DDDDDD')],
         [sg.Listbox(
             values=[],
@@ -1289,7 +1398,15 @@ def mapping_window(src):
         formatted_list = []
         display_list = [t for t in mappings_dict.items() if t[0][1] == current_faction]
         for (ck3, faction), attila in display_list:
-            formatted_list.append(f"[{faction}] {ck3}   => {attila}")
+            if ck3 == 'GENERAL':
+                prefix = '[*] '
+            elif ck3 == 'KNIGHTS':
+                prefix = '[+] '
+            elif re.search(r'^LEVY-', ck3):
+                prefix = '[%] '
+            else:
+                prefix = ''
+            formatted_list.append(f"{prefix}[{faction}] {ck3}   => {attila}")
 
         window['MAPPING_LISTS_KEY'].update(sorted(formatted_list), visible=False)
         mapping_widget.yview_moveto(current_y)
@@ -1349,6 +1466,19 @@ def mapping_window(src):
 
         elif event == 'SAVE_BUTTON_KEY':
             name = MAPPER_NAME if MAPPER_NAME else popup_mapper_name_input()
+            if name:
+                try:
+                    save_mapper(name, current_mappings, current_heritage_mappings, current_mods, current_title_mappings, current_title_names)
+                    add_map_config(name, current_mods)
+                    MAPPER_NAME = name
+                    has_unsaved_changes = False
+                    sg.popup_auto_close(f"Mapper '{name}' saved!", auto_close_duration=2, non_blocking=True, title='Save successful')
+                except (OSError, ValueError) as e:
+                    sg.popup_error(f'Error saving mapper: {e}', title='Save error')
+            window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
+
+        elif event == 'SAVE_AS_BUTTON_KEY':
+            name = popup_mapper_name_input()
             if name:
                 try:
                     save_mapper(name, current_mappings, current_heritage_mappings, current_mods, current_title_mappings, current_title_names)
@@ -1442,9 +1572,14 @@ def mapping_window(src):
         elif event == 'REMOVE_MAPPING_KEY':
             if values['MAPPING_LISTS_KEY']:
                 for formatted_mapping in values['MAPPING_LISTS_KEY']:
-                    if not formatted_mapping.startswith('['):
+                    clean = formatted_mapping
+                    for marker in ('[*] ', '[+] ', '[%] '):
+                        if clean.startswith(marker):
+                            clean = clean[len(marker):]
+                            break
+                    if not clean.startswith('['):
                         continue
-                    parts = formatted_mapping.split('] ')
+                    parts = clean.split('] ')
                     faction_key = parts[0].strip('[')
                     ck3_key_to_remove = parts[1].split(' => ')[0].strip()
 
@@ -1659,11 +1794,31 @@ def main_window():
                 window['MLINE_KEY'].update('Validating mappers, please wait...\n')
                 window.refresh()
                 try:
-                    run_validation()
+                    window['MLINE_KEY'].update('Initialising configuration...\n', append=True)
+                    window.refresh()
+                    init_map_config()
+
+                    window['MLINE_KEY'].update('Loading game keys (CK3 + Attila)...\n', append=True)
+                    window.refresh()
+                    cw_config = cw_map_checker.get_cw_config()
+                    game_keys = cw_map_checker.get_keys(cw_config)
+
+                    window['MLINE_KEY'].update('Validating mapper files...\n', append=True)
+                    window.refresh()
+                    results, game_keys = cw_map_checker.mapping_validation(game_keys)
+
+                    window['MLINE_KEY'].update('Writing reports...\n', append=True)
+                    window.refresh()
+                    cw_map_checker.write_reports(results, game_keys)
+
+                    window['MLINE_KEY'].update('Generating summary...\n', append=True)
+                    window.refresh()
+                    cw_map_checker.summary()
+
                     # Reload source data after validation
                     src = load_source_data()
 
-                    window['MLINE_KEY'].update(f'*** Crusader Wars mappers refreshed! \n', append=True)
+                    window['MLINE_KEY'].update(f'\n*** Crusader Wars mappers refreshed! \n', append=True)
                     window['MLINE_KEY'].update(f'\n', append=True)
                     if os.path.exists(SUMMARY_LOG):
                         with open(SUMMARY_LOG, 'r', encoding="utf-8-sig") as f:
