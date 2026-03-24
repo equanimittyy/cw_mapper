@@ -1367,8 +1367,8 @@ def mapping_window(src):
             key=FACTION_KEY,
             readonly=True,
             enable_events=True
-        ),sg.Push(background_color='#DDDDDD'),sg.Button('Save', key='SAVE_BUTTON_KEY', size=(15, 2), button_color=('white', '#444444'), expand_x=True), sg.Button('Save As', key='SAVE_AS_BUTTON_KEY', size=(15, 2), button_color=('white', '#444444'), expand_x=True), sg.Input(key='FILE_LOAD_KEY', visible=False, enable_events=True), sg.FileBrowse('Load', target='FILE_LOAD_KEY', size=(15, 2), initial_folder=CUSTOM_MAPPER_DIR, button_color=('white', '#444444'), file_types=((('Text Files', '*.txt'),)), expand_x=True), sg.Button('Import/Export XML', key='XML_BUTTON', size=(15, 2), button_color=('white', "#008670"), expand_x=True)],
-        [sg.Button('Open Title mapping', key='TITLE_EDIT_BUTTON_KEY', size=(16, 2), button_color=('white', '#F78702')), sg.Button('Open Heritage mapping', key='HERITAGE_EDIT_BUTTON_KEY', size=(20, 2), button_color=('white', '#F78702')),sg.Push(background_color='#DDDDDD')],
+        ),sg.Push(background_color='#DDDDDD'),sg.Button('Save', key='SAVE_BUTTON_KEY', size=(15, 2), button_color=('white', '#444444'), expand_x=True), sg.Button('Save As', key='SAVE_AS_BUTTON_KEY', size=(15, 2), button_color=('white', '#444444'), expand_x=True), sg.Input(key='FILE_LOAD_KEY', visible=False, enable_events=True), sg.FileBrowse('Load', target='FILE_LOAD_KEY', size=(15, 2), initial_folder=CUSTOM_MAPPER_DIR, button_color=('white', '#444444'), file_types=((('Text Files', '*.txt'),)), expand_x=True)],
+        [sg.Button('Open Title mapping', key='TITLE_EDIT_BUTTON_KEY', size=(16, 2), button_color=('white', '#F78702')), sg.Button('Open Heritage mapping', key='HERITAGE_EDIT_BUTTON_KEY', size=(20, 2), button_color=('white', '#F78702')),sg.Push(background_color='#DDDDDD'), sg.Button('Import/Export XML', key='XML_BUTTON', size=(15, 2), button_color=('white', "#008670"), expand_x=True)],
         [sg.Listbox(
             values=[],
             size=(15, 15),
