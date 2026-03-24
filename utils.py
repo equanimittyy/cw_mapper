@@ -31,7 +31,6 @@ def init_map_config():
             raise OSError(f'Failed to initialize mapper config at {MAP_CONFIG}: {e}') from e
 
 def get_config(mapping):
-    target_config = []
     with open(MAP_CONFIG, 'r') as f:
         config = json.load(f)
         target_config = config.get(mapping)
@@ -262,6 +261,8 @@ def import_xml(import_folder):
     imported_mappings = {}
     imported_heritage_mappings = {}
     imported_mods = {}
+    imported_title_mappings = {}
+    imported_title_names = {}
     import_cultures = os.path.join(import_folder, 'Cultures')
     import_factions = os.path.join(import_folder, 'Factions')
     import_titles = os.path.join(import_folder, 'Titles')

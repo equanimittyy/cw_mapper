@@ -4,6 +4,7 @@ import os
 import copy
 
 import csv
+import json
 import re
 import FreeSimpleGUI as sg
 
@@ -83,12 +84,19 @@ def load_source_data():
         title_sources=title_sources,
     )
 
-def run_validation():
-    """Run the CW validation pipeline (init config, validate, write reports, summarize)."""
+def run_validation(on_step=None):
+    """Run the CW validation pipeline (init config, validate, write reports, summarize).
+    If on_step callback is provided, it is called with a status message before each step."""
+    if on_step: on_step('Initialising configuration...')
     init_map_config()
-    game_keys = cw_map_checker.get_keys(cw_map_checker.get_cw_config())
+    if on_step: on_step('Loading game keys (CK3 + Attila)...')
+    cw_config = cw_map_checker.get_cw_config()
+    game_keys = cw_map_checker.get_keys(cw_config)
+    if on_step: on_step('Validating mapper files...')
     results, game_keys = cw_map_checker.mapping_validation(game_keys)
+    if on_step: on_step('Writing reports...')
     cw_map_checker.write_reports(results, game_keys)
+    if on_step: on_step('Generating summary...')
     cw_map_checker.summary()
 
 # ============================================================
@@ -533,7 +541,7 @@ def popup_help_guide():
             break
     window.close()
 
-def popup_xml_import_export(src):
+def popup_xml_import_export():
     cw_mapper_dir = MAPPER_DIR
 
     layout = [
@@ -551,7 +559,11 @@ def popup_xml_import_export(src):
                 sg.popup_error('Error: Not a valid mapping directory!', title='Directory Error')
             else:
                 _, mapper_name = os.path.split(import_folder)
-                imported_maa_map, imported_heritage_map, imported_mods, imported_title_map, imported_title_names = import_xml(import_folder)
+                try:
+                    imported_maa_map, imported_heritage_map, imported_mods, imported_title_map, imported_title_names = import_xml(import_folder)
+                except Exception as e:
+                    sg.popup_error(f'Failed to parse mapper folder:\n{e}', title='Import Error')
+                    return None
                 imported_mods, found = resolve_import_mods(mapper_name, imported_mods)
                 if not found:
                     sg.popup(f"Note: No CK3 mod configuration found for '{mapper_name}' in config.\nYou can configure mods after loading the mapper.")
@@ -584,10 +596,17 @@ def popup_xml_import_export(src):
                     sg.popup_error('Please select a mapper file to export.')
                     continue
                 tag = e_values['EXPORT_TAG']
-                s_date = e_values['EXPORT_START']
-                e_date = e_values['EXPORT_END']
-                export_dir = export_xml(export_file, tag, s_date, e_date)
-                sg.popup(f"Mapper exported to '{export_dir}'!")
+                s_date = e_values['EXPORT_START'].strip() or '0'
+                e_date = e_values['EXPORT_END'].strip() or '9999'
+                if not s_date.lstrip('-').isdigit() or not e_date.lstrip('-').isdigit():
+                    sg.popup_error('Start date and End date must be numeric (e.g. 0, 919, 9999).')
+                    continue
+                try:
+                    export_dir = export_xml(export_file, tag, s_date, e_date)
+                    sg.popup(f"Mapper exported to '{export_dir}'!")
+                except (OSError, json.JSONDecodeError, ValueError) as e:
+                    sg.popup_error(f'Export failed:\n{e}', title='Export Error')
+                    continue
                 break
 
         export_window.close()
@@ -798,14 +817,14 @@ def heritage_window(heritage_mapping_dict, factions, src):
                         if avail_search in h.lower() or (c != 'PARENT_KEY' and avail_search in c.lower())}
             available_heritages = [(h, c) for h, c in available_heritages if h in matching]
 
-        heritage_mapping_dict = dict(sorted(heritage_mapping_dict.items(), key=sort_heritages_key))
+        display_mapping = dict(sorted(heritage_mapping_dict.items(), key=sort_heritages_key))
 
         # Filter mapped heritages by search term
         map_search = window['HERITAGE_MAP_SEARCH'].get().lower().strip()
         if map_search:
-            matching_mapped = {h for (h, c) in heritage_mapping_dict
+            matching_mapped = {h for (h, c) in display_mapping
                                if map_search in h.lower() or (c != 'PARENT_KEY' and map_search in c.lower())}
-            heritage_mapping_dict = {k: v for k, v in heritage_mapping_dict.items() if k[0] in matching_mapped}
+            display_mapping = {k: v for k, v in display_mapping.items() if k[0] in matching_mapped}
 
         h_count = 0
         for pair in available_heritages:
@@ -828,8 +847,8 @@ def heritage_window(heritage_mapping_dict, factions, src):
 
         h_count = 0
         parent_faction = ''
-        for pair in heritage_mapping_dict:
-            faction = heritage_mapping_dict[pair]
+        for pair in display_mapping:
+            faction = display_mapping[pair]
             if pair[1] == 'PARENT_KEY':
                 h_count = 1
                 parent_faction = faction
@@ -1417,6 +1436,19 @@ def mapping_window(src):
         is_ready = selected_ck3 is not None and selected_attila is not None and current_faction != ''
         window['ADD_MAPPING_KEY'].update(disabled=not is_ready)
 
+    def _do_save(name):
+        nonlocal MAPPER_NAME, has_unsaved_changes
+        if name:
+            try:
+                save_mapper(name, current_mappings, current_heritage_mappings, current_mods, current_title_mappings, current_title_names)
+                add_map_config(name, current_mods)
+                MAPPER_NAME = name
+                has_unsaved_changes = False
+                sg.popup_auto_close(f"Mapper '{name}' saved!", auto_close_duration=2, non_blocking=True, title='Save successful')
+            except (OSError, ValueError) as e:
+                sg.popup_error(f'Error saving mapper: {e}', title='Save error')
+        window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
+
     while True:
         event, values = window.read()
 
@@ -1465,30 +1497,10 @@ def mapping_window(src):
             check_add_button(window)
 
         elif event == 'SAVE_BUTTON_KEY':
-            name = MAPPER_NAME if MAPPER_NAME else popup_mapper_name_input()
-            if name:
-                try:
-                    save_mapper(name, current_mappings, current_heritage_mappings, current_mods, current_title_mappings, current_title_names)
-                    add_map_config(name, current_mods)
-                    MAPPER_NAME = name
-                    has_unsaved_changes = False
-                    sg.popup_auto_close(f"Mapper '{name}' saved!", auto_close_duration=2, non_blocking=True, title='Save successful')
-                except (OSError, ValueError) as e:
-                    sg.popup_error(f'Error saving mapper: {e}', title='Save error')
-            window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
+            _do_save(MAPPER_NAME if MAPPER_NAME else popup_mapper_name_input())
 
         elif event == 'SAVE_AS_BUTTON_KEY':
-            name = popup_mapper_name_input()
-            if name:
-                try:
-                    save_mapper(name, current_mappings, current_heritage_mappings, current_mods, current_title_mappings, current_title_names)
-                    add_map_config(name, current_mods)
-                    MAPPER_NAME = name
-                    has_unsaved_changes = False
-                    sg.popup_auto_close(f"Mapper '{name}' saved!", auto_close_duration=2, non_blocking=True, title='Save successful')
-                except (OSError, ValueError) as e:
-                    sg.popup_error(f'Error saving mapper: {e}', title='Save error')
-            window['MAPPER_COL_TITLE_KEY'].update(f'Unit Key Mapper: {MAPPER_NAME}')
+            _do_save(popup_mapper_name_input())
 
         elif event == 'FILE_LOAD_KEY':
             if has_unsaved_changes:
@@ -1664,7 +1676,7 @@ def mapping_window(src):
                 )
                 if confirm != 'Yes':
                     continue
-            xml_import = popup_xml_import_export(src)
+            xml_import = popup_xml_import_export()
             if xml_import:
                 import_name = xml_import[0]
                 import_maa = xml_import[1]
@@ -1794,26 +1806,10 @@ def main_window():
                 window['MLINE_KEY'].update('Validating mappers, please wait...\n')
                 window.refresh()
                 try:
-                    window['MLINE_KEY'].update('Initialising configuration...\n', append=True)
-                    window.refresh()
-                    init_map_config()
-
-                    window['MLINE_KEY'].update('Loading game keys (CK3 + Attila)...\n', append=True)
-                    window.refresh()
-                    cw_config = cw_map_checker.get_cw_config()
-                    game_keys = cw_map_checker.get_keys(cw_config)
-
-                    window['MLINE_KEY'].update('Validating mapper files...\n', append=True)
-                    window.refresh()
-                    results, game_keys = cw_map_checker.mapping_validation(game_keys)
-
-                    window['MLINE_KEY'].update('Writing reports...\n', append=True)
-                    window.refresh()
-                    cw_map_checker.write_reports(results, game_keys)
-
-                    window['MLINE_KEY'].update('Generating summary...\n', append=True)
-                    window.refresh()
-                    cw_map_checker.summary()
+                    def on_step(msg):
+                        window['MLINE_KEY'].update(msg + '\n', append=True)
+                        window.refresh()
+                    run_validation(on_step)
 
                     # Reload source data after validation
                     src = load_source_data()
