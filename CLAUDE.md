@@ -40,6 +40,8 @@ A FreeSimpleGUI desktop application that lets users create their own custom unit
   constants.py          # Shared constants: paths, directories, domain constants (NON_MAA_KEYS, etc.)
   cw_map_checker.py     # Validation logic - reads CK3/Attila data, parses CW XMLs, produces reports
   utils.py              # Utilities - config management, XML import/export, save/load mapper, list filtering
+  cw_mapper.ico         # Application icon (used by PyInstaller build)
+  main.spec             # PyInstaller build spec - run: pyinstaller main.spec
   pyproject.toml        # Project config (Python >=3.13, deps: configparser, freesimplegui, pandas)
 
   config/

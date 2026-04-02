@@ -6,7 +6,6 @@
 build/
 dist/
 custom_mappers/
-*.spec
 __pycache__
 .vscode
 
