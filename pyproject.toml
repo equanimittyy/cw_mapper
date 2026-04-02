@@ -9,3 +9,8 @@ dependencies = [
     "freesimplegui>=5.2.0.post1",
     "pandas>=2.3.3",
 ]
+
+[dependency-groups]
+dev = [
+    "pyinstaller>=6.19.0",
+]
