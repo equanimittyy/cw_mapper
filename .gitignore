@@ -1,6 +1,7 @@
 *.csv
 *.csv#
 *.tsv
+!attila_exports/db/main_units_tables/*
 *.rar
 *.zip
 build/
