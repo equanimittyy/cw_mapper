@@ -37,6 +37,8 @@ A FreeSimpleGUI desktop application that lets users create their own custom unit
 ```
 /workspace
   main.py               # GUI application (FreeSimpleGUI) - main window + custom mapper window
+  cli.py                # CLI interface for Claude-assisted mapper creation
+  source_data.py        # Shared source data loading (used by both GUI and CLI)
   constants.py          # Shared constants: paths, directories, domain constants (NON_MAA_KEYS, etc.)
   cw_map_checker.py     # Validation logic - reads CK3/Attila data, parses CW XMLs, produces reports
   utils.py              # Utilities - config management, XML import/export, save/load mapper, list filtering
@@ -64,6 +66,7 @@ A FreeSimpleGUI desktop application that lets users create their own custom unit
         tag.txt         # Identifier tag for multi-mapper sets
         background.png  # UI background image
 
+  cli_data/             # CK3 source exports for CLI use (gitignored, produced via GUI or CLI)
   reports/              # Generated CSV reports from validation runs
   summary_log.txt       # Human-readable validation summary
 ```
@@ -80,7 +83,25 @@ Business logic utilities — no GUI imports, no module-level side effects.
 - **Config**: `init_map_config()`, `get_config()`, `get_full_config()`, `get_ck3_mods_from_config()`, `add_map_config()`, `resolve_import_mods()`
 - **Save/Load**: `save_mapper()`, `load_mapper()` — JSON serialization/deserialization with key validation
 - **XML I/O**: `import_xml()`, `export_xml()`
-- **Helpers**: `filter_source_list()` — shared filter+search for GUI list widgets
+- **Mapping rules**: `build_mapping_entry()` — shared business logic for GENERAL/KNIGHTS/LEVY auto-sizing (used by both GUI and CLI)
+- **Helpers**: `filter_source_list()`, `filter_culture_list()` — shared filter+search for list data
+
+### source_data.py
+Shared source data loading — used by both GUI (`main.py`) and CLI (`cli.py`). No GUI imports.
+- **`SourceData`**: NamedTuple holding loaded source keys
+- **`load_source_data()`**: Reads Attila keys from TSV exports + CK3 keys from `cli_data/` (or `reports/` fallback)
+- **`export_cli_source_data()`**: Exports CK3 source data to `cli_data/` for CLI use
+- **`run_validation()`**: Full validation pipeline (lazy-imports `cw_map_checker`)
+
+### cli.py
+CLI interface for Claude-assisted mapper creation. Argparse with subcommands. JSON output to stdout, status/warnings to stderr.
+- **Source queries**: `source maa|attila|cultures|titles|list-sources|export`
+- **Mapper lifecycle**: `mapper list|create|show|copy|delete`
+- **Mapping operations**: `mapping add|remove|copy-faction|set-levy|batch`
+- **Heritage operations**: `heritage add|add-parent|remove|batch`
+- **Title operations**: `title add-key|remove-key|add|remove|batch`
+- **Mod config**: `mod show|add-ck3|remove-ck3|add-attila|remove-attila`
+- **Import/Export**: `export`, `import`
 
 ### cw_map_checker.py
 Validation engine — reads game data, validates mappers, writes reports.
@@ -91,11 +112,10 @@ Validation engine — reads game data, validates mappers, writes reports.
 - **Summary**: `summary()` reads reports and writes summary_log.txt
 
 ### main.py
-GUI layer — FreeSimpleGUI windows and event loops. Delegates all business logic to utils/cw_map_checker.
-- **SourceData**: NamedTuple holding loaded source keys, passed explicitly to all window functions
-- **`load_source_data()`**: Reads CSV reports into a SourceData (replaces module-level globals)
-- **`run_validation()`**: Orchestrates the full validation pipeline
+GUI layer — FreeSimpleGUI windows and event loops. Delegates all business logic to utils/source_data/cw_map_checker.
+- Imports `SourceData`, `load_source_data()`, `run_validation()`, `export_cli_source_data()` from `source_data.py`
 - **Window functions**: `main_window()`, `mapping_window(src)`, `heritage_window(..., src)`, `title_window(..., src)` — all receive SourceData explicitly
+- **"Export Source Data for CLI"** button in main window — calls `export_cli_source_data()` to write CK3 data to `cli_data/`
 
 ## Key Data Flows
 
@@ -191,6 +211,10 @@ NOTE: If 'Levies', the 'porcentage' (mispelling of percentage) of all Levies mus
 
 - Built as executable via PyInstaller (`main.spec`)
 - Distributed as `cw_mapper.zip`
+
+## CLI (cli.py) — Claude-Assisted Mapper Creation
+
+See **[CLI_GUIDE.md](CLI_GUIDE.md)** for the full CLI documentation including setup, collaborative workflow, command reference, and batch JSON formats.
 
 ## Post-Code Agent Suite
 
