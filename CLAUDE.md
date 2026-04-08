@@ -216,6 +216,8 @@ NOTE: If 'Levies', the 'porcentage' (mispelling of percentage) of all Levies mus
 
 See **[CLI_GUIDE.md](CLI_GUIDE.md)** for the full CLI documentation including setup, collaborative workflow, command reference, and batch JSON formats.
 
+**Limitation:** The CLI `validate` command runs the validation pipeline but only returns a status message — it does not surface the summary/missing-key data as JSON. To see what's missing per mapper, read `summary_log.txt` or the CSVs in `reports/` after the user runs validation through the GUI. Source data export also requires the user's CK3/Attila install, so it must be done manually on their machine.
+
 ## Post-Code Agent Suite
 
 After completing code changes, **prompt the user** to run the post-code review agents. These live in `.claude/agents/` and should be offered as a follow-up step after any non-trivial implementation or refactor.
