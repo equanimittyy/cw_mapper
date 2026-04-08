@@ -380,9 +380,15 @@ def write_reports(mapper_results, game_keys):
     game_keys.titles.to_csv(os.path.join(REPORT_OUTPUT_DIR, 'source_ck3_title_keys.csv'))
     print(f'Report produced for source key files.')
 
-def summary():
-    output_columns = 4
+def _print_key_list(keys, sum_f, columns=4, col_width=30):
+    """Print a list of keys in a formatted column layout."""
+    for i in range(0, len(keys), columns):
+        row = keys[i:i + columns]
+        formatted_row = "  ".join(key.ljust(col_width) for key in row)
+        print(f'\t  {formatted_row}', file=sum_f)
 
+
+def summary():
     ck3_culture_key_file = os.path.join(REPORT_OUTPUT_DIR, 'source_ck3_cultures_keys.csv')
     ck3_maa_key_file = os.path.join(REPORT_OUTPUT_DIR, 'source_ck3_maa_keys.csv')
     attila_key_file = os.path.join(REPORT_OUTPUT_DIR, 'source_attila_keys.csv')
@@ -391,7 +397,7 @@ def summary():
     with open('summary_log.txt', 'w', encoding="utf-8-sig") as sum_f:
         print(_get_ascii(), file=sum_f)
         if os.listdir(REPORT_OUTPUT_DIR):
-            print(f'== Found reports in report directory ==', file=sum_f)
+            print('== Found reports in report directory ==', file=sum_f)
             print('==================================================', file=sum_f)
         else:
             print(f'== No reports were found in {REPORT_OUTPUT_DIR}. No summary can be made until reports are produced based on your CK3/Attila install... ==', file=sum_f)
@@ -402,17 +408,28 @@ def summary():
             map_folder = os.path.join(REPORT_OUTPUT_DIR, mapping)
 
             if os.path.isdir(map_folder):
-                print('◆ Mapper: ' + mapping, file=sum_f)
+                print(f'◆ Mapper: {mapping}', file=sum_f)
                 target_config = get_config(mapping)
 
+                # Build mod name/ID lookup
                 source_ids = []
-                for mods in target_config:
-                    id = str(mods[1])
-                    source_ids.append(id)
+                id_to_name = {}
+                for mod in target_config:
+                    mod_name, mod_id = mod[0], str(mod[1])
+                    source_ids.append(mod_id)
+                    id_to_name[mod_id] = mod_name
 
+                # ── Required Mods ──
                 print('', file=sum_f)
-                print(f'\t🛠 Sources: {target_config}', file=sum_f)
+                print('\t🛠 Required CK3 Mods for this mapper:', file=sum_f)
+                for mod in target_config:
+                    mod_name, mod_id = mod[0], mod[1]
+                    if mod_id == 0:
+                        print(f'\t  - {mod_name}', file=sum_f)
+                    else:
+                        print(f'\t  - {mod_name} (Workshop ID: {mod_id})', file=sum_f)
 
+                # ── Load source key data ──
                 expected_culture_keys = []
                 expected_maa_keys = []
                 source_attila_keys = []
@@ -445,99 +462,101 @@ def summary():
                             expected_title_keys.append(key)
                             found_mods.append(key.get("mod_id"))
 
-                missing_mods = set(source_ids) - set(found_mods)
-                if missing_mods:
-                    print(f'\t↳ ⚠ Sources missing: {missing_mods}\n\tMissing sources can cause inaccuracies when checking for keys', file=sum_f)
-                    print('', file=sum_f)
+                # ── Missing Mods ──
+                missing_mod_ids = set(source_ids) - set(found_mods)
+                print('', file=sum_f)
+                if missing_mod_ids:
+                    missing_mod_names = [f'{id_to_name.get(mid, "Unknown")} (ID: {mid})' for mid in sorted(missing_mod_ids)]
+                    print(f'\t⚠ MODS NOT FOUND ON PC ({len(missing_mod_ids)}):', file=sum_f)
+                    print(f'\t  These mods were not detected in your CK3 install.', file=sum_f)
+                    print(f'\t  Missing mods means their cultures/MAA will not be checked.', file=sum_f)
+                    for name in missing_mod_names:
+                        print(f'\t  - {name}', file=sum_f)
                 else:
-                    print(f'\t↳ ✓ No missing sources', file=sum_f)
-                    print('', file=sum_f)
+                    print('\t✓ All required mods found on PC', file=sum_f)
+                print('', file=sum_f)
 
+                # ── Process report files ──
                 files = os.listdir(map_folder)
-                if files:
-                    for file in files:
-                        missing_keys = []
-                        missing_attila_keys = []
-                        title_rows = []
-                        missing_title_keys = []
-                        # CULTURES
-                        if file.endswith('cultures.csv'):
-                            print(f'\t⚑ Cultures: ', file=sum_f)
-                            file_path = os.path.join(map_folder, file)
+                if not files:
+                    print(f'\t⚠ No reports were found in {map_folder}', file=sum_f)
+                    print('==================================================', file=sum_f)
+                    continue
 
-                            with open(file_path, 'r') as f:
-                                report_data = csv.DictReader(f)
-                                expected_cultures = [d["ck3_culture"] for d in expected_culture_keys]
-                                report_cultures = [d["ck3_culture"] for d in report_data]
-                                missing_keys = sorted(list(set(expected_cultures) - set(report_cultures)))
+                if not (expected_culture_keys and expected_maa_keys):
+                    print('\t⚠ Missing source key files — cannot check for missing keys.', file=sum_f)
+                    print('==================================================', file=sum_f)
+                    continue
 
-                        # MAN AT ARMS
-                        if file.endswith('maa.csv'):
-                            print(f'\t⚔ ManAtArms: ', file=sum_f)
-                            file_path = os.path.join(map_folder, file)
+                # Gather all missing data from report files
+                missing_cultures = []
+                missing_maa = []
+                missing_attila = []
+                missing_titles = []
 
-                            with open(file_path, 'r') as f:
-                                report_data = list(csv.DictReader(f))
-                                expected_maa = [d["ck3_maa"] for d in expected_maa_keys]
-                                report_maa = [d["cw_maa"] for d in report_data]
-                                missing_keys = sorted(set(expected_maa) - set(report_maa))
+                for file in files:
+                    file_path = os.path.join(map_folder, file)
 
-                                report_attila_keys = [d["attila_map_key"] for d in report_data]
-                                expected_attila_keys = [d["attila_map_key"] for d in source_attila_keys]
-                                missing_attila_keys = sorted(set(report_attila_keys) - set(expected_attila_keys) - CW_CUSTOM_VALUES)
+                    if file.endswith('cultures.csv'):
+                        with open(file_path, 'r') as f:
+                            report_data = csv.DictReader(f)
+                            expected = [d["ck3_culture"] for d in expected_culture_keys]
+                            found = [d["ck3_culture"] for d in report_data]
+                            missing_cultures = sorted(set(expected) - set(found))
 
-                        # TITLES
-                        if file.endswith('titles.csv'):
-                            print(f'\t♠ Titles: ', file=sum_f)
-                            file_path = os.path.join(map_folder, file)
+                    elif file.endswith('maa.csv'):
+                        with open(file_path, 'r') as f:
+                            report_data = list(csv.DictReader(f))
+                            expected_maa = [d["ck3_maa"] for d in expected_maa_keys]
+                            report_maa = [d["cw_maa"] for d in report_data]
+                            missing_maa = sorted(set(expected_maa) - set(report_maa))
 
-                            with open(file_path, 'r') as f:
-                                title_rows = list(csv.DictReader(f))
-                                if title_rows:
-                                    report_title_keys = set(d["title_key"] for d in title_rows)
-                                    expected_title_key_set = set(d["title_key"] for d in expected_title_keys)
-                                    missing_title_keys = sorted(report_title_keys - expected_title_key_set)
+                            report_attila = [d["attila_map_key"] for d in report_data]
+                            expected_attila = [d["attila_map_key"] for d in source_attila_keys]
+                            missing_attila = sorted(set(report_attila) - set(expected_attila) - CW_CUSTOM_VALUES)
 
-                        if expected_culture_keys and expected_maa_keys:
-                            if file.endswith('cultures.csv') or file.endswith('maa.csv'):
-                                if missing_keys:
-                                    print(f'\t↳ ⚠ Missing keys: {len(missing_keys)} missing keys', file=sum_f)
-                                    for i in range(0, len(missing_keys), output_columns):
-                                        row = missing_keys[i:i + output_columns]
-                                        formatted_row = " ".join(key.ljust(30) for key in row)
-                                        print(formatted_row, file=sum_f)
-                                    print('', file=sum_f)
-                                else:
-                                    print(f'\t↳ ✓ No missing keys found for {file}', file=sum_f)
-                                    print('', file=sum_f)
+                    elif file.endswith('titles.csv'):
+                        with open(file_path, 'r') as f:
+                            title_rows = list(csv.DictReader(f))
+                            if title_rows:
+                                report_title_keys = set(d["title_key"] for d in title_rows)
+                                expected_title_set = set(d["title_key"] for d in expected_title_keys)
+                                missing_titles = sorted(report_title_keys - expected_title_set)
 
-                                if missing_attila_keys:
-                                    print(f'\t↳ ⚠ Missing keys from Total War Attila: {len(missing_attila_keys)} missing keys', file=sum_f)
-                                    for i in range(0, len(missing_attila_keys), output_columns):
-                                        row = missing_attila_keys[i:i + output_columns]
-                                        formatted_row = " ".join(key.ljust(30) for key in row)
-                                        print(formatted_row, file=sum_f)
-                                    print('', file=sum_f)
-                                else:
-                                    if file.endswith('maa.csv'):
-                                        print(f'\t↳ ✓ No missing Attila keys were found for {file}', file=sum_f)
-                                        print('', file=sum_f)
-
-                            if file.endswith('titles.csv'):
-                                if missing_title_keys:
-                                    print(f'\t↳ ⚠ Missing title keys: {len(missing_title_keys)} missing keys', file=sum_f)
-                                    for i in range(0, len(missing_title_keys), output_columns):
-                                        row = missing_title_keys[i:i + output_columns]
-                                        formatted_row = " ".join(key.ljust(30) for key in row)
-                                        print(formatted_row, file=sum_f)
-                                    print('', file=sum_f)
-                                else:
-                                    print(f'\t↳ ✓ No missing title keys found', file=sum_f)
-                                    print('', file=sum_f)
-                        else:
-                            print(f'\t↳ ⚠ Missing all source files for keys: {file}. Skipping...', file=sum_f)
-                            print('', file=sum_f)
-
+                # ── Missing CK3 Cultures (defaults to DEFAULT faction) ──
+                print('\t⚑ CK3 Cultures:', file=sum_f)
+                if missing_cultures:
+                    print(f'\t  ⚠ {len(missing_cultures)} missing — these cultures will fall back to the DEFAULT faction', file=sum_f)
+                    _print_key_list(missing_cultures, sum_f)
                 else:
-                    print(f'↳ ⚠ No reports were found in {map_folder}', file=sum_f)
+                    print('\t  ✓ All CK3 cultures are mapped', file=sum_f)
+                print('', file=sum_f)
+
+                # ── Missing CK3 MAA (causes crash) ──
+                print('\t⚔ CK3 Men-at-Arms:', file=sum_f)
+                if missing_maa:
+                    print(f'\t  ⚠ {len(missing_maa)} missing — WILL CAUSE CRASH if these MAA are used in battle', file=sum_f)
+                    _print_key_list(missing_maa, sum_f)
+                else:
+                    print('\t  ✓ All CK3 MAA types are mapped', file=sum_f)
+                print('', file=sum_f)
+
+                # ── Missing Attila Keys (causes crash) ──
+                print('\t⚔ Attila Unit Keys:', file=sum_f)
+                if missing_attila:
+                    print(f'\t  ⚠ {len(missing_attila)} missing — WILL CAUSE CRASH (keys used in mapper but not found in Attila exports)', file=sum_f)
+                    _print_key_list(missing_attila, sum_f)
+                else:
+                    print('\t  ✓ All Attila unit keys are valid', file=sum_f)
+                print('', file=sum_f)
+
+                # ── Missing Title Keys ──
+                print('\t♠ Title Keys:', file=sum_f)
+                if missing_titles:
+                    print(f'\t  ⚠ {len(missing_titles)} missing title keys', file=sum_f)
+                    _print_key_list(missing_titles, sum_f)
+                else:
+                    print('\t  ✓ All title keys are valid', file=sum_f)
+                print('', file=sum_f)
+
                 print('==================================================', file=sum_f)
