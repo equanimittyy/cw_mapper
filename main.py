@@ -10,12 +10,13 @@ import FreeSimpleGUI as sg
 from constants import (
     CW_DIR, WORKING_DIR, ASCII_ART_MAIN, ASCII_ART_MAPPER, SUMMARY_LOG,
     ATTILA_EXPORT_DIR, MAPPER_DIR, CUSTOM_MAPPER_DIR,
-    NON_MAA_KEYS, DEFAULT_LEVY_PERCENTAGES,
+    NON_MAA_KEYS,
     TITLE_NON_MAA_KEYS,
 )
 from utils import (
     init_map_config, import_xml, export_xml, add_map_config,
     save_mapper, load_mapper, resolve_import_mods, filter_source_list,
+    build_mapping_entry,
 )
 from source_data import SourceData, load_source_data, run_validation
 
@@ -1128,17 +1129,7 @@ def title_window(title_mapping_dict, title_names_dict, src):
 
                     if mapping_key in title_mapping_dict:
                         del title_mapping_dict[mapping_key]
-
-                    override_size = ''
-                    if re.search(r'^GENERAL\b', mapping_key[0]):
-                        override_size = 'GENERAL'
-                    if re.search(r'^KNIGHTS\b', mapping_key[0]):
-                        override_size = 'KNIGHTS'
-
-                    if override_size:
-                        title_mapping_dict[mapping_key] = selected_attila + [override_size]
-                    else:
-                        title_mapping_dict[mapping_key] = selected_attila + [size]
+                    title_mapping_dict[mapping_key] = build_mapping_entry(mapping_key[0], selected_attila[0], size, is_title=True)
 
                     update_title_mappings_list(window, title_mapping_dict)
                     check_title_add_button(window)
@@ -1488,21 +1479,7 @@ def mapping_window(src):
 
                     if mapping_key in current_mappings:
                         del current_mappings[mapping_key]
-                    override_size = ''
-                    if re.search(r'^LEVY-', mapping_key[0]):
-                        override_size = 'LEVY'
-                        levy_size = DEFAULT_LEVY_PERCENTAGES.get(mapping_key[0])
-                    if re.search(r'^GENERAL\b', mapping_key[0]):
-                        override_size = 'GENERAL'
-                    if re.search(r'^KNIGHTS\b', mapping_key[0]):
-                        override_size = 'KNIGHTS'
-
-                    if override_size == 'LEVY':
-                        current_mappings[mapping_key] = selected_attila + [override_size] + [levy_size]
-                    elif override_size:
-                        current_mappings[mapping_key] = selected_attila + [override_size]
-                    else:
-                        current_mappings[mapping_key] = selected_attila + [size]
+                    current_mappings[mapping_key] = build_mapping_entry(mapping_key[0], selected_attila[0], size)
 
                     update_mappings_list(window, current_mappings)
                     check_add_button(window)

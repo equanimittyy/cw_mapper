@@ -9,13 +9,13 @@ import os
 import sys
 
 from constants import (
-    CUSTOM_MAPPER_DIR, DEFAULT_LEVY_PERCENTAGES,
-    RANK_MAP,
+    CUSTOM_MAPPER_DIR, RANK_MAP,
     ATTILA_SOURCE_PATH, CULTURES_SOURCE_PATH, MAA_SOURCE_PATH, TITLE_SOURCE_PATH,
 )
 from utils import (
     save_mapper, load_mapper, export_xml, import_xml,
-    add_map_config, resolve_import_mods, filter_source_list, init_map_config,
+    add_map_config, resolve_import_mods, filter_source_list, filter_culture_list,
+    init_map_config, build_mapping_entry,
 )
 from source_data import load_source_data, run_validation
 
@@ -35,12 +35,17 @@ def _output(data):
     print()
 
 def _ensure_source_data():
-    sources_exist = any(os.path.exists(p) for p in [
-        ATTILA_SOURCE_PATH, CULTURES_SOURCE_PATH, MAA_SOURCE_PATH, TITLE_SOURCE_PATH,
-    ])
-    if not sources_exist:
-        _error('Source CSV reports not found. Run "python cli.py validate" first to generate them.')
+    missing = [p for p in [ATTILA_SOURCE_PATH, CULTURES_SOURCE_PATH, MAA_SOURCE_PATH, TITLE_SOURCE_PATH]
+               if not os.path.exists(p)]
+    if missing:
+        _error(f'Missing source CSV reports: {", ".join(missing)}. Run "python cli.py validate" first.')
     return load_source_data()
+
+def _validate_name(name, label='Mapper'):
+    if not name or not name.strip():
+        _error(f'{label} name cannot be empty')
+    if os.sep in name or '/' in name or '\\' in name:
+        _error(f'{label} name cannot contain path separators')
 
 def _mapper_path(name):
     return os.path.join(CUSTOM_MAPPER_DIR, f'{name}.txt')
@@ -64,18 +69,31 @@ def _get_factions(faction_mapping):
     return sorted(set(k[1] for k in faction_mapping.keys()))
 
 def _add_mapping(faction_mapping, maa, faction, attila, size):
-    if maa == 'GENERAL':
-        faction_mapping[(maa, faction)] = [attila, 'GENERAL']
-    elif maa == 'KNIGHTS':
-        faction_mapping[(maa, faction)] = [attila, 'KNIGHTS']
-    elif maa.startswith('LEVY-'):
-        pct = DEFAULT_LEVY_PERCENTAGES.get(maa, 0)
-        faction_mapping[(maa, faction)] = [attila, 'LEVY', pct]
-    else:
-        if not size:
-            size = 'INFANTRY'
-        faction_mapping[(maa, faction)] = [attila, size]
+    faction_mapping[(maa, faction)] = build_mapping_entry(maa, attila, size)
     return faction_mapping
+
+def _copy_faction_entries(fm, source_faction, destinations):
+    """Copy all mappings from source_faction to each destination. Returns count of entries copied."""
+    source_entries = {k: v for k, v in fm.items() if k[1] == source_faction}
+    count = 0
+    for dest in destinations:
+        for (maa, _), value in source_entries.items():
+            fm[(maa, dest)] = list(value)
+            count += 1
+    return count
+
+def _set_levy_percentage(fm, levy_key, faction, percentage):
+    """Set levy percentage for a specific levy mapping. Returns the updated value."""
+    key = (levy_key, faction)
+    if key not in fm:
+        return None
+    value = fm[key]
+    if len(value) > 2:
+        value[2] = percentage
+    else:
+        value.append(percentage)
+    fm[key] = value
+    return value
 
 def _read_json_input(args):
     if hasattr(args, 'input') and args.input:
@@ -111,20 +129,8 @@ def cmd_source_attila(args):
 
 def cmd_source_cultures(args):
     src = _ensure_source_data()
-    if args.search:
-        search_lower = args.search.lower()
-        filtered = [
-            item for item in src.cultures_keys
-            if (args.source is None or args.source == 'ALL' or item['ck3_source'] == args.source)
-            and (search_lower in item['ck3_culture'].lower() or search_lower in item['heritage'].lower())
-        ]
-    else:
-        if args.source and args.source != 'ALL':
-            filtered = [item for item in src.cultures_keys if item['ck3_source'] == args.source]
-        else:
-            filtered = list(src.cultures_keys)
-    filtered.sort(key=lambda x: (x['heritage'], x['ck3_culture']))
-    _output(filtered)
+    result = filter_culture_list(src.cultures_keys, args.source or 'ALL', args.search or '')
+    _output(result)
 
 def cmd_source_titles(args):
     src = _ensure_source_data()
@@ -158,6 +164,7 @@ def cmd_mapper_list(args):
     _output(mappers)
 
 def cmd_mapper_create(args):
+    _validate_name(args.name)
     path = _mapper_path(args.name)
     if os.path.exists(path):
         _error(f"Mapper '{args.name}' already exists")
@@ -246,29 +253,22 @@ def cmd_mapping_remove(args):
 
 def cmd_mapping_copy_faction(args):
     fm, hm, mods, tm, tn = _load_mapper(args.mapper)
-    source_entries = {k: v for k, v in fm.items() if k[1] == args.source_faction}
-    if not source_entries:
+    if not any(k[1] == args.source_faction for k in fm):
         _error(f"No mappings found for faction '{args.source_faction}'")
-    destinations = [d.strip() for d in args.dest_factions.split(',')]
-    count = 0
-    for dest in destinations:
-        for (maa, _), value in source_entries.items():
-            fm[(maa, dest)] = list(value)
-            count += 1
+    destinations = [d.strip() for d in args.dest_factions.split(',') if d.strip()]
+    if not destinations:
+        _error('No valid destination factions provided')
+    count = _copy_faction_entries(fm, args.source_faction, destinations)
     _save_mapper(args.mapper, fm, hm, mods, tm, tn)
     _output({'status': 'ok', 'copied': count, 'from': args.source_faction, 'to': destinations})
 
 def cmd_mapping_set_levy(args):
+    if not 0 <= args.percentage <= 100:
+        _error(f'Percentage must be between 0 and 100, got {args.percentage}')
     fm, hm, mods, tm, tn = _load_mapper(args.mapper)
-    key = (args.levy_key, args.faction)
-    if key not in fm:
+    result = _set_levy_percentage(fm, args.levy_key, args.faction, args.percentage)
+    if result is None:
         _error(f"Levy mapping ({args.levy_key}, {args.faction}) not found")
-    value = fm[key]
-    if len(value) > 2:
-        value[2] = args.percentage
-    else:
-        value.append(args.percentage)
-    fm[key] = value
     _save_mapper(args.mapper, fm, hm, mods, tm, tn)
 
     # Check total
@@ -301,23 +301,12 @@ def cmd_mapping_batch(args):
                 else:
                     results.append({'op': 'remove', 'maa': op['maa'], 'faction': op['faction'], 'status': 'not_found'})
             elif op_type == 'copy_faction':
-                source_entries = {k: v for k, v in fm.items() if k[1] == op['from']}
-                destinations = [d.strip() for d in op['to'].split(',')] if isinstance(op['to'], str) else op['to']
-                count = 0
-                for dest in destinations:
-                    for (maa, _), value in source_entries.items():
-                        fm[(maa, dest)] = list(value)
-                        count += 1
+                destinations = [d.strip() for d in op['to'].split(',') if d.strip()] if isinstance(op['to'], str) else op['to']
+                count = _copy_faction_entries(fm, op['from'], destinations)
                 results.append({'op': 'copy_faction', 'from': op['from'], 'to': destinations, 'copied': count, 'status': 'ok'})
             elif op_type == 'set_levy':
-                key = (op['levy'], op['faction'])
-                if key in fm:
-                    value = fm[key]
-                    if len(value) > 2:
-                        value[2] = op['percentage']
-                    else:
-                        value.append(op['percentage'])
-                    fm[key] = value
+                result = _set_levy_percentage(fm, op['levy'], op['faction'], op['percentage'])
+                if result is not None:
                     results.append({'op': 'set_levy', 'levy': op['levy'], 'faction': op['faction'], 'status': 'ok'})
                 else:
                     results.append({'op': 'set_levy', 'levy': op['levy'], 'faction': op['faction'], 'status': 'not_found'})
@@ -438,16 +427,12 @@ def cmd_title_remove_key(args):
     _output({'status': 'ok', 'removed': {'title_key': args.title_key, 'mappings_removed': len(keys_to_remove)}})
 
 def cmd_title_add(args):
-    if args.maa.startswith('LEVY-'):
-        _error('Title mappings do not support levy types')
+    try:
+        entry = build_mapping_entry(args.maa, args.attila, args.size, is_title=True)
+    except ValueError as e:
+        _error(str(e))
     fm, hm, mods, tm, tn = _load_mapper(args.mapper)
-    if args.maa == 'GENERAL':
-        tm[(args.maa, args.title_key)] = [args.attila, 'GENERAL']
-    elif args.maa == 'KNIGHTS':
-        tm[(args.maa, args.title_key)] = [args.attila, 'KNIGHTS']
-    else:
-        size = args.size or 'INFANTRY'
-        tm[(args.maa, args.title_key)] = [args.attila, size]
+    tm[(args.maa, args.title_key)] = entry
     _save_mapper(args.mapper, fm, hm, mods, tm, tn)
     _output({'status': 'ok', 'added': {'maa': args.maa, 'title_key': args.title_key, 'attila': args.attila}})
 
@@ -473,16 +458,12 @@ def cmd_title_batch(args):
                 results.append({'op': 'add_key', 'title_key': op['title_key'], 'status': 'ok'})
             elif op_type == 'add':
                 maa = op['maa']
-                if maa.startswith('LEVY-'):
-                    results.append({'op': 'add', 'maa': maa, 'index': i, 'status': 'error', 'message': 'Title mappings do not support levy types'})
+                try:
+                    entry = build_mapping_entry(maa, op['attila'], op.get('size'), is_title=True)
+                except ValueError as e:
+                    results.append({'op': 'add', 'maa': maa, 'index': i, 'status': 'error', 'message': str(e)})
                     continue
-                if maa == 'GENERAL':
-                    tm[(maa, op['title_key'])] = [op['attila'], 'GENERAL']
-                elif maa == 'KNIGHTS':
-                    tm[(maa, op['title_key'])] = [op['attila'], 'KNIGHTS']
-                else:
-                    size = op.get('size', 'INFANTRY')
-                    tm[(maa, op['title_key'])] = [op['attila'], size]
+                tm[(maa, op['title_key'])] = entry
                 results.append({'op': 'add', 'maa': maa, 'title_key': op['title_key'], 'status': 'ok'})
             elif op_type == 'remove':
                 key = (op['maa'], op['title_key'])

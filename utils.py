@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 
 from constants import (
     CONFIG_DIR, MAP_CONFIG, DEFAULT_CONFIG_PATH, CUSTOM_MAPPER_DIR,
-    NON_MAA_KEYS, TITLE_NON_MAA_KEYS,
+    NON_MAA_KEYS, TITLE_NON_MAA_KEYS, DEFAULT_LEVY_PERCENTAGES,
 )
 
 _DEFAULT_CONFIG = None
@@ -569,6 +569,33 @@ def export_xml(file, tag, s_date, e_date):
     return export_dir
 
 # ============================================================
+# Shared helper: build mapping entry (used by CLI and GUI)
+# ============================================================
+
+def build_mapping_entry(maa_key, attila_key, size, is_title=False):
+    """Build a mapping value list applying business rules for special unit types.
+
+    Args:
+        maa_key: CK3 MAA key (e.g. 'huscarl', 'GENERAL', 'LEVY-SPEAR')
+        attila_key: Attila unit key string
+        size: Size type (INFANTRY, CAVALRY, RANGED, or numeric string). Ignored for special types.
+        is_title: If True, reject LEVY-* keys (titles don't support levies)
+
+    Returns:
+        List: [attila_key, size] or [attila_key, 'LEVY', percentage] for levy types
+    """
+    if is_title and re.search(r'^LEVY-', maa_key):
+        raise ValueError('Title mappings do not support levy types')
+    if re.search(r'^GENERAL\b', maa_key):
+        return [attila_key, 'GENERAL']
+    if re.search(r'^KNIGHTS\b', maa_key):
+        return [attila_key, 'KNIGHTS']
+    if re.search(r'^LEVY-', maa_key):
+        pct = DEFAULT_LEVY_PERCENTAGES.get(maa_key, 0)
+        return [attila_key, 'LEVY', pct]
+    return [attila_key, size or 'INFANTRY']
+
+# ============================================================
 # Shared helper: filter source lists (used by GUI windows)
 # ============================================================
 
@@ -595,3 +622,26 @@ def filter_source_list(items, key_field, source_field, source_value, search_term
         result = [v for v in result if search_lower in v.lower()]
 
     return sorted(result)
+
+def filter_culture_list(items, source_value, search_term):
+    """Filter culture key dicts by source and search term (searches both culture and heritage).
+
+    Args:
+        items: List of {'ck3_culture':..., 'heritage':..., 'ck3_source':...} dicts
+        source_value: Source filter value, or 'ALL' for no filter
+        search_term: Search string (case-insensitive, matches culture or heritage), or empty string
+
+    Returns:
+        List of matching culture dicts, sorted by (heritage, culture)
+    """
+    if source_value == 'ALL':
+        result = list(items)
+    else:
+        result = [item for item in items if item['ck3_source'] == source_value]
+
+    if search_term:
+        search_lower = search_term.lower()
+        result = [item for item in result
+                  if search_lower in item['ck3_culture'].lower() or search_lower in item['heritage'].lower()]
+
+    return sorted(result, key=lambda x: (x['heritage'], x['ck3_culture']))
