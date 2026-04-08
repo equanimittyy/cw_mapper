@@ -9,15 +9,15 @@ import os
 import sys
 
 from constants import (
-    CUSTOM_MAPPER_DIR, RANK_MAP,
-    ATTILA_SOURCE_PATH, CULTURES_SOURCE_PATH, MAA_SOURCE_PATH, TITLE_SOURCE_PATH,
+    CUSTOM_MAPPER_DIR, RANK_MAP, ATTILA_EXPORT_DIR,
+    CLI_CULTURES_PATH, CLI_MAA_PATH, CLI_TITLE_PATH,
 )
 from utils import (
     save_mapper, load_mapper, export_xml, import_xml,
     add_map_config, resolve_import_mods, filter_source_list, filter_culture_list,
     init_map_config, build_mapping_entry,
 )
-from source_data import load_source_data, run_validation
+from source_data import load_source_data, run_validation, export_cli_source_data
 
 # ============================================================
 # Helpers
@@ -35,10 +35,15 @@ def _output(data):
     print()
 
 def _ensure_source_data():
-    missing = [p for p in [ATTILA_SOURCE_PATH, CULTURES_SOURCE_PATH, MAA_SOURCE_PATH, TITLE_SOURCE_PATH]
-               if not os.path.exists(p)]
-    if missing:
-        _error(f'Missing source CSV reports: {", ".join(missing)}. Run "python cli.py validate" first.')
+    # Attila keys come from TSVs already in the repo
+    if not os.path.exists(ATTILA_EXPORT_DIR) or not any(f.endswith('.tsv') for f in os.listdir(ATTILA_EXPORT_DIR)):
+        _error(f'No Attila TSV exports found in {ATTILA_EXPORT_DIR}')
+    # CK3 keys come from cli_data/ (exported via GUI or "python cli.py source export")
+    missing_ck3 = [p for p in [CLI_CULTURES_PATH, CLI_MAA_PATH, CLI_TITLE_PATH]
+                   if not os.path.exists(p)]
+    if missing_ck3:
+        _error(f'Missing CK3 source data: {", ".join(missing_ck3)}.\n'
+               f'Export from GUI ("Export Source Data for CLI") or run: python cli.py source export')
     return load_source_data()
 
 def _validate_name(name, label='Mapper'):
@@ -112,6 +117,10 @@ def _read_json_input(args):
 def cmd_validate(args):
     run_validation(on_step=lambda msg: print(msg, file=sys.stderr))
     _output({'status': 'ok', 'message': 'Validation complete. Source CSV reports generated.'})
+
+def cmd_source_export(args):
+    export_cli_source_data(on_step=lambda msg: print(msg, file=sys.stderr))
+    _output({'status': 'ok', 'message': 'CK3 source data exported to cli_data/. Attila keys read from attila_exports/ TSVs.'})
 
 # ============================================================
 # Command: source
@@ -603,6 +612,9 @@ def build_parser():
 
     p_src_list = source_sub.add_parser('list-sources', help='List all available source names')
     p_src_list.set_defaults(func=cmd_source_list_sources)
+
+    p_src_export = source_sub.add_parser('export', help='Export source key CSVs from game data (faster than full validate)')
+    p_src_export.set_defaults(func=cmd_source_export)
 
     # --- mapper ---
     p_mapper = subparsers.add_parser('mapper', help='Manage mappers')

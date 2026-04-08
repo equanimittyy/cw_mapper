@@ -30,11 +30,17 @@ DEFAULT_CONFIG_PATH = os.path.join('config', 'default.json')
 MAPPER_DIR = os.path.join(CW_DIR, 'unit mappers', 'attila')
 SETTINGS_DIR = os.path.join(CW_DIR, 'data', 'settings')
 
-# Source report paths
+# Source report paths (used by validation)
 ATTILA_SOURCE_PATH = os.path.join(REPORT_OUTPUT_DIR, 'source_attila_keys.csv')
 CULTURES_SOURCE_PATH = os.path.join(REPORT_OUTPUT_DIR, 'source_ck3_cultures_keys.csv')
 MAA_SOURCE_PATH = os.path.join(REPORT_OUTPUT_DIR, 'source_ck3_maa_keys.csv')
 TITLE_SOURCE_PATH = os.path.join(REPORT_OUTPUT_DIR, 'source_ck3_title_keys.csv')
+
+# CLI data paths (CK3 source exports for CLI use — Attila keys read directly from TSVs)
+CLI_DATA_DIR = 'cli_data'
+CLI_CULTURES_PATH = os.path.join(CLI_DATA_DIR, 'ck3_cultures.csv')
+CLI_MAA_PATH = os.path.join(CLI_DATA_DIR, 'ck3_maa.csv')
+CLI_TITLE_PATH = os.path.join(CLI_DATA_DIR, 'ck3_titles.csv')
 
 # Domain constants
 NON_MAA_KEYS = [

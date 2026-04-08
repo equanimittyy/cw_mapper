@@ -18,7 +18,7 @@ from utils import (
     save_mapper, load_mapper, resolve_import_mods, filter_source_list,
     build_mapping_entry,
 )
-from source_data import SourceData, load_source_data, run_validation
+from source_data import SourceData, load_source_data, run_validation, export_cli_source_data
 
 # ============================================================
 # Popup dialogs
@@ -1662,6 +1662,7 @@ def main_window():
     [
         sg.Button('Refresh Current Mappers', key='VALIDATE_KEY'),
         sg.Button('Create Custom Mapper', key='CUSTOM_MAPPER_KEY'),
+        sg.Button('Export Source Data for CLI', key='EXPORT_CLI_KEY'),
     ],
 
     [
@@ -1730,6 +1731,22 @@ def main_window():
                 except Exception as e:
                     window['MLINE_KEY'].update(f'ERROR: Validation failed: {e}\n', append=True)
                 window['VALIDATE_KEY'].update(disabled=False)
+
+        elif event == 'EXPORT_CLI_KEY':
+            window['EXPORT_CLI_KEY'].update(disabled=True)
+            window['MLINE_KEY'].update('Exporting source data for CLI...\n')
+            window.refresh()
+            try:
+                def on_export_step(msg):
+                    window['MLINE_KEY'].update(msg + '\n', append=True)
+                    window.refresh()
+                export_cli_source_data(on_export_step)
+                window['MLINE_KEY'].update('\nCK3 source data exported to cli_data/ folder.\n', append=True)
+                window['MLINE_KEY'].update('Attila keys are read directly from attila_exports/.\n', append=True)
+                window['MLINE_KEY'].update('CLI commands can now read game keys via: python cli.py source ...\n', append=True)
+            except Exception as e:
+                window['MLINE_KEY'].update(f'ERROR: Export failed: {e}\n', append=True)
+            window['EXPORT_CLI_KEY'].update(disabled=False)
 
         elif event == 'CUSTOM_MAPPER_KEY':
                 mapping_window(src)
