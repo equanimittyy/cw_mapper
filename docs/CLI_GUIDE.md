@@ -345,6 +345,12 @@ All commands output JSON to stdout. Warnings and status messages go to stderr.
 }
 ```
 
+## Default Faction Requirement
+
+**Every MAA added to any faction MUST also have a corresponding mapping in the `Default` faction.** The Default faction is a crash-prevention fallback. When a culture's assigned faction doesn't have a mapping for a specific MAA (e.g. a Norse culture triggers a Chinese MAA that doesn't exist in the Viking faction), CW falls back to the Default faction's mapping for that MAA. Without a Default entry, this causes a crash.
+
+When using the CLI to add MAA mappings, always ensure the same MAA key is also mapped in the Default faction. For batch operations, include Default entries alongside faction-specific entries.
+
 ## Interoperability with GUI
 
 The CLI and GUI share the same save format (`custom_mappers/*.txt`). A mapper created in the CLI can be opened and edited in the GUI, and vice versa. Both use the same `utils.py` functions for save/load/export/import.

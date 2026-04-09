@@ -193,6 +193,18 @@ NOTE: If 'Levies', the 'porcentage' (mispelling of percentage) of all Levies mus
 - **LEVY\***: Levy units with percentage allocations (must sum to 100% per faction)
 - **MenAtArm**: Regular MAA with size types: INFANTRY, CAVALRY, RANGED, or a manual number
 
+## Default Faction Requirement
+
+**Every MAA added to any faction MUST also have a corresponding mapping in the `Default` faction.** The Default faction acts as a crash-prevention fallback: if a culture doesn't have a specific MAA in its assigned faction (e.g. a Norse culture triggers a Chinese MAA that doesn't exist in the Viking faction), CW falls back to the Default faction's mapping for that MAA. Without a Default entry, this causes a crash.
+
+**Rule:** When adding a new MAA mapping to a faction, always ensure the same MAA key also exists in the Default faction.
+
+## MAA Faction Assignment Rules
+
+When determining which faction a CK3 MAA belongs to, **always research the actual CK3/mod source** to find which culture, heritage, or tradition unlocks that MAA in-game. Do NOT guess from the unit name or historical inference alone — names can be misleading (e.g. `black_armor_cavalry` sounds Abbasid but is actually a Chinese MAA in CK3). If uncertain, ask the user for confirmation rather than guessing — they can check the game directly.
+
+East Asian MAA (Chinese, Japanese, SEA, etc.) should be assigned to **Tibetan** or **Eastern Steppe** factions as a fallback, since Total War: Attila has no unit packs for those regions.
+
 ## Configuration
 
 - `mod_config.json`: Maps mapper names to lists of `[mod_name, steam_workshop_id]` pairs
@@ -214,7 +226,7 @@ NOTE: If 'Levies', the 'porcentage' (mispelling of percentage) of all Levies mus
 
 ## CLI (cli.py) — Claude-Assisted Mapper Creation
 
-See **[CLI_GUIDE.md](CLI_GUIDE.md)** for the full CLI documentation including setup, collaborative workflow, command reference, and batch JSON formats.
+See **[CLI_GUIDE.md](docs/CLI_GUIDE.md)** for the full CLI documentation including setup, collaborative workflow, command reference, and batch JSON formats.
 
 **Limitation:** The CLI `validate` command runs the validation pipeline but only returns a status message — it does not surface the summary/missing-key data as JSON. To see what's missing per mapper, read `summary_log.txt` or the CSVs in `reports/` after the user runs validation through the GUI. Source data export also requires the user's CK3/Attila install, so it must be done manually on their machine.
 
