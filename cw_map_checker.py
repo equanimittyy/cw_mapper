@@ -13,7 +13,7 @@ import pandas as pd
 
 from constants import (
     ATTILA_EXPORT_DIR, MAPPER_DIR, SETTINGS_DIR,
-    REPORT_OUTPUT_DIR, CW_CUSTOM_VALUES, RANK_MAP,
+    REPORT_OUTPUT_DIR, CW_CUSTOM_VALUES, NON_MAA_KEYS, RANK_MAP,
 )
 from utils import get_config, get_ck3_mods_from_config
 
@@ -488,11 +488,13 @@ def summary():
                     print('==================================================', file=sum_f)
                     continue
 
-                # Gather all missing data from report files
+                # Gather all missing/superfluous data from report files
                 missing_cultures = []
                 missing_maa = []
                 missing_attila = []
                 missing_titles = []
+                superfluous_cultures = []
+                superfluous_maa = []
 
                 for file in files:
                     file_path = os.path.join(map_folder, file)
@@ -503,6 +505,7 @@ def summary():
                             expected = [d["ck3_culture"] for d in expected_culture_keys]
                             found = [d["ck3_culture"] for d in report_data]
                             missing_cultures = sorted(set(expected) - set(found))
+                            superfluous_cultures = sorted(set(found) - set(expected))
 
                     elif file.endswith('maa.csv'):
                         with open(file_path, 'r') as f:
@@ -510,6 +513,7 @@ def summary():
                             expected_maa = [d["ck3_maa"] for d in expected_maa_keys]
                             report_maa = [d["cw_maa"] for d in report_data]
                             missing_maa = sorted(set(expected_maa) - set(report_maa))
+                            superfluous_maa = sorted(set(report_maa) - set(expected_maa) - set(NON_MAA_KEYS))
 
                             report_attila = [d["attila_map_key"] for d in report_data]
                             expected_attila = [d["attila_map_key"] for d in source_attila_keys]
@@ -530,6 +534,9 @@ def summary():
                     _print_key_list(missing_cultures, sum_f)
                 else:
                     print('\t  ✓ All CK3 cultures are mapped', file=sum_f)
+                if superfluous_cultures:
+                    print(f'\t  ⚠ {len(superfluous_cultures)} superfluous — in mapper but not found in CK3 source data', file=sum_f)
+                    _print_key_list(superfluous_cultures, sum_f)
                 print('', file=sum_f)
 
                 # ── Missing CK3 MAA (causes crash) ──
@@ -539,6 +546,9 @@ def summary():
                     _print_key_list(missing_maa, sum_f)
                 else:
                     print('\t  ✓ All CK3 MAA types are mapped', file=sum_f)
+                if superfluous_maa:
+                    print(f'\t  ⚠ {len(superfluous_maa)} superfluous — in mapper but not found in CK3 source data', file=sum_f)
+                    _print_key_list(superfluous_maa, sum_f)
                 print('', file=sum_f)
 
                 # ── Missing Attila Keys (causes crash) ──
