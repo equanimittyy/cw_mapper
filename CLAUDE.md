@@ -203,6 +203,8 @@ NOTE: If 'Levies', the 'porcentage' (mispelling of percentage) of all Levies mus
 
 When determining which faction a CK3 MAA belongs to, **always research the actual CK3/mod source** to find which culture, heritage, or tradition unlocks that MAA in-game. Do NOT guess from the unit name or historical inference alone — names can be misleading (e.g. `black_armor_cavalry` sounds Abbasid but is actually a Chinese MAA in CK3). If uncertain, ask the user for confirmation rather than guessing — they can check the game directly.
 
+**CK3 reality trumps historical interpretation.** When mapping a CK3 MAA to an Attila unit, the MAA's actual in-game classification (unit type, role, weapon) takes precedence over historical accuracy. A name that historically refers to a levy (e.g. `danish_obudshaer` = Danish military levy) may be classified as elite spearmen in CK3/mods, and a name suggesting elite retinue (e.g. `danish_svenner`) may be classified as light cavalry. Always map based on what the MAA actually does in-game, not what it meant historically. Ask the user to confirm the in-game classification if uncertain.
+
 East Asian MAA (Chinese, Japanese, SEA, etc.) should be assigned to **Tibetan** or **Eastern Steppe** factions as a fallback, since Total War: Attila has no unit packs for those regions.
 
 ## Configuration
