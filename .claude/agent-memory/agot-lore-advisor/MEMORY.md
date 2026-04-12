@@ -1,0 +1,2 @@
+- [User Profile](user_profile.md) — equanimittyy, author of CW Mapper, working on AGOT submod faction mappings
+- [AGOT Essos Faction](project_agot_essos_faction.md) — Essos faction covers heritage_valyrian + partial heritage_rhoynish cultures; no FACTIONS_AND_MAA block yet as of 2026-04-13

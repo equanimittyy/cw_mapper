@@ -1441,7 +1441,7 @@
             null
         ],
         "handpicked_faithful,Wall": [
-            "Crownlands_Dragon_MAA_Halberdiers",
+            "Crownlands_Targaryen_MAA_Halberdiers",
             null
         ],
         "maa_bandits,Wall": [
@@ -1561,6 +1561,162 @@
         ],
         "accolade_maa_skirmishers,All_Factions": [
             "BTW_Wildling_MAA_Axemen",
+            null
+        ],
+        "GENERAL,Essos": [
+            "Essos_Wise_Masters",
+            "GENERAL"
+        ],
+        "KNIGHTS,Essos": [
+            "Essos_Slaver_MAA_Lance_Cavalry",
+            "KNIGHTS"
+        ],
+        "LEVY-IMPORTED_1,Essos": [
+            "Essos_Slaver_MAA_Spearmen",
+            "LEVY",
+            25
+        ],
+        "LEVY-IMPORTED_2,Essos": [
+            "Essos_Slaver_MAA_Swordsmen",
+            "LEVY",
+            25
+        ],
+        "LEVY-IMPORTED_3,Essos": [
+            "Essos_Slaver_MAA_Longbowmen",
+            "LEVY",
+            25
+        ],
+        "LEVY-IMPORTED_4,Essos": [
+            "Essos_Slaver_MAA_Axemen",
+            "LEVY",
+            25
+        ],
+        "accolade_maa_archers,Essos": [
+            "Essos_Slaver_MAA_Longbowmen",
+            null
+        ],
+        "accolade_maa_crossbowmen,Essos": [
+            "Essos_Slaver_MAA_Crossbowmen",
+            null
+        ],
+        "accolade_maa_lancers,Essos": [
+            "Essos_Slaver_MAA_Lance_Cavalry",
+            null
+        ],
+        "accolade_maa_outriders,Essos": [
+            "Essos_Slaver_MAA_Mounted_Swordsmen",
+            null
+        ],
+        "accolade_maa_pikes,Essos": [
+            "Essos_Slaver_MAA_Pikemen",
+            null
+        ],
+        "accolade_maa_skirmishers,Essos": [
+            "Essos_Slaver_MAA_Axemen",
+            null
+        ],
+        "accolade_maa_vanguard,Essos": [
+            "Essos_Slaver_MAA_Halberdiers",
+            null
+        ],
+        "handpicked_faithful,Essos": [
+            "Essos_Slaver_MAA_Halberdiers",
+            null
+        ],
+        "house_guard,Essos": [
+            "Essos_Slaver_MAA_Halberdiers",
+            null
+        ],
+        "maa_bandits,Essos": [
+            "Essos_Slaver_MAA_Axemen",
+            null
+        ],
+        "maa_marauders,Essos": [
+            "Essos_Slaver_MAA_Mounted_Swordsmen",
+            null
+        ],
+        "maa_poachers,Essos": [
+            "Essos_Slaver_MAA_Longbowmen",
+            null
+        ],
+        "maa_thieves,Essos": [
+            "Essos_Slaver_MAA_Spearmen",
+            null
+        ],
+        "armored_footmen,Essos": [
+            "Essos_Slaver_MAA_Swordsmen",
+            null
+        ],
+        "armored_horsemen,Essos": [
+            "Essos_Slaver_MAA_Lance_Cavalry",
+            null
+        ],
+        "bowmen,Essos": [
+            "Essos_Slaver_MAA_Longbowmen",
+            null
+        ],
+        "crossbowmen,Essos": [
+            "Essos_Second_MAA_Crossbowmen",
+            null
+        ],
+        "light_footmen,Essos": [
+            "Essos_Slaver_MAA_Axemen",
+            null
+        ],
+        "light_horsemen,Essos": [
+            "Essos_Slaver_MAA_Mounted_Swordsmen",
+            null
+        ],
+        "pikemen_unit,Essos": [
+            "Essos_Slaver_MAA_Pikemen",
+            null
+        ],
+        "cohort_of_the_three_thousand,Essos": [
+            "Essos_Second_MAA_Billmen",
+            null
+        ],
+        "indentured_legion,Essos": [
+            "Essos_Targaryen_Unsullied_Spearmen",
+            null
+        ],
+        "moroshi_pikes,Essos": [
+            "Essos_Slaver_MAA_Halberdiers",
+            null
+        ],
+        "myrish_crossbows,Essos": [
+            "Essos_Second_MAA_Crossbowmen",
+            null
+        ],
+        "ornate_helms,Essos": [
+            "Essos_Slaver_MAA_Pikemen",
+            null
+        ],
+        "purple_sailors,Essos": [
+            "Essos_Slaver_MAA_Axemen",
+            null
+        ],
+        "seal_hunters,Essos": [
+            "Essos_Slaver_MAA_Axemen",
+            null
+        ],
+        "stepstone_sailors,Essos": [
+            "Essos_Slaver_MAA_Billmen",
+            null
+        ],
+        "sun_guard,Essos": [
+            "Essos_Slaver_MAA_Halberdiers",
+            null
+        ],
+        "unsullied,Essos": [
+            "Essos_Targaryen_Unsullied_Pikemen",
+            null
+        ],
+        "weeping_guard,Essos": [
+            "Essos_Slaver_MAA_Halberdiers",
+            null
+        ],
+        "westerosi_sellswords,Essos": [
+            "Essos_Slaver_MAA_Lance_Cavalry",
             null
         ]
     },
