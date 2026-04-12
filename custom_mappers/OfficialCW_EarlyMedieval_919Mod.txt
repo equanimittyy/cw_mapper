@@ -10255,16 +10255,10 @@
         "heritage_arabic,moroccan_hybrid": [
             "Maghrebi"
         ],
-        "heritage_arabic,Moroccan": [
-            "Maghrebi"
-        ],
         "heritage_arabic,algerian": [
             "Maghrebi"
         ],
         "heritage_arabic,algerian_hybrid": [
-            "Maghrebi"
-        ],
-        "heritage_arabic,Algerian": [
             "Maghrebi"
         ],
         "heritage_arabic,tripolitanian": [
@@ -10273,34 +10267,19 @@
         "heritage_arabic,tripolitanian_hybrid": [
             "Maghrebi"
         ],
-        "heritage_arabic,Tripolitanian": [
-            "Maghrebi"
-        ],
         "heritage_arabic,tunisian": [
             "Maghrebi"
         ],
         "heritage_arabic,tunisian_hybrid": [
             "Maghrebi"
         ],
-        "heritage_arabic,Tunisian": [
-            "Maghrebi"
-        ],
         "heritage_arabic,outremer": [
-            "Outremer"
-        ],
-        "heritage_arabic,Outremer": [
             "Outremer"
         ],
         "heritage_arabic,oltremare": [
             "Outremer"
         ],
-        "heritage_arabic,Oltremare": [
-            "Outremer"
-        ],
         "heritage_arabic,ultramar": [
-            "Outremer"
-        ],
-        "heritage_arabic,Ultramar": [
             "Outremer"
         ],
         "heritage_arabic,jerusalemer": [
@@ -10309,34 +10288,25 @@
         "heritage_arabic,hierosolyman": [
             "Outremer"
         ],
-        "heritage_arabic,Hierosolyman": [
-            "Outremer"
-        ],
         "heritage_arabic,jeruzaleman": [
             "Outremer"
         ],
         "heritage_arabic,jerusaleman": [
             "Outremer"
         ],
-        "heritage_arabic,Jerusaleman": [
-            "Outremer"
-        ],
         "heritage_arabic,kulfoldi": [
             "Outremer"
         ],
-        "heritage_arabic,K\u00fclf\u00f6ldi": [
+        "heritage_arabic,Külföldi": [
             "Outremer"
         ],
         "heritage_arabic,dramor": [
             "Outremer"
         ],
-        "heritage_arabic,Dramor": [
-            "Outremer"
-        ],
         "heritage_arabic,coigriche": [
             "Outremer"
         ],
-        "heritage_arabic,Coigr\u00edche": [
+        "heritage_arabic,Coigríche": [
             "Outremer"
         ],
         "heritage_arabic,himyarite": [
@@ -10348,13 +10318,7 @@
         "heritage_arabic,soqotri": [
             "Himyarite"
         ],
-        "heritage_arabic,Soqotri": [
-            "Himyarite"
-        ],
         "heritage_arabic,mahri": [
-            "South Arabian"
-        ],
-        "heritage_arabic,Mahri": [
             "South Arabian"
         ],
         "heritage_arabic,hadrami": [
@@ -10378,43 +10342,22 @@
         "heritage_arabic,lebanese_hybrid": [
             "Syriac"
         ],
-        "heritage_arabic,Lebanese": [
-            "Syriac"
-        ],
         "heritage_arabic,scota": [
-            "Gaelic"
-        ],
-        "heritage_arabic,Scota": [
             "Gaelic"
         ],
         "heritage_arabic,egyptiote_hybrid": [
             "Copt"
         ],
-        "heritage_arabic,Egyptiote": [
-            "Copt"
-        ],
         "heritage_arabic,omani": [
-            "South Arabian"
-        ],
-        "heritage_arabic,Omani": [
             "South Arabian"
         ],
         "heritage_arabic,khaleeji": [
             "Bedouin"
         ],
-        "heritage_arabic,Khaleeji": [
-            "Bedouin"
-        ],
         "heritage_arabic,syrian": [
             "Egyptian"
         ],
-        "heritage_arabic,Syrian": [
-            "Egyptian"
-        ],
         "heritage_arabic,palestinian": [
-            "Egyptian"
-        ],
-        "heritage_arabic,Palestinian": [
             "Egyptian"
         ],
         "heritage_baltic,PARENT_KEY": [
@@ -10432,16 +10375,10 @@
         "heritage_baltic,kurlander": [
             "Teutonic"
         ],
-        "heritage_baltic,Kurlander": [
-            "Teutonic"
-        ],
         "heritage_baltic,Teutonic": [
             "Teutonic"
         ],
         "heritage_baltic,livonian": [
-            "Baltic"
-        ],
-        "heritage_baltic,Livonian": [
             "Baltic"
         ],
         "heritage_baltic,sudovian": [
@@ -10483,16 +10420,10 @@
         "heritage_balto_finnic,kurlander": [
             "Teutonic"
         ],
-        "heritage_balto_finnic,Kurlander": [
-            "Teutonic"
-        ],
         "heritage_balto_finnic,Teutonic": [
             "Teutonic"
         ],
         "heritage_balto_finnic,livonian": [
-            "Baltic"
-        ],
-        "heritage_balto_finnic,Livonian": [
             "Baltic"
         ],
         "heritage_balto_finnic,ingrian": [
@@ -10519,16 +10450,10 @@
         "heritage_berber,siculo_norman": [
             "Norman"
         ],
-        "heritage_berber,Siculo-Norman": [
-            "Norman"
-        ],
         "heritage_berber,moroccan": [
             "Maghrebi"
         ],
         "heritage_berber,moroccan_hybrid": [
-            "Maghrebi"
-        ],
-        "heritage_berber,Moroccan": [
             "Maghrebi"
         ],
         "heritage_berber,algerian": [
@@ -10537,25 +10462,16 @@
         "heritage_berber,algerian_hybrid": [
             "Maghrebi"
         ],
-        "heritage_berber,Algerian": [
-            "Maghrebi"
-        ],
         "heritage_berber,tripolitanian": [
             "Maghrebi"
         ],
         "heritage_berber,tripolitanian_hybrid": [
             "Maghrebi"
         ],
-        "heritage_berber,Tripolitanian": [
-            "Maghrebi"
-        ],
         "heritage_berber,tunisian": [
             "Maghrebi"
         ],
         "heritage_berber,tunisian_hybrid": [
-            "Maghrebi"
-        ],
-        "heritage_berber,Tunisian": [
             "Maghrebi"
         ],
         "heritage_berber,taureg": [
@@ -10567,16 +10483,10 @@
         "heritage_berber,bari": [
             "Maghrebi"
         ],
-        "heritage_berber,Bari": [
-            "Maghrebi"
-        ],
         "heritage_berber,neapolitan": [
             "Maghrebi"
         ],
         "heritage_berber,neapolitan_hybrid": [
-            "Lombard"
-        ],
-        "heritage_berber,Neapolitan": [
             "Lombard"
         ],
         "heritage_brythonic,PARENT_KEY": [
@@ -10600,19 +10510,10 @@
         "heritage_brythonic,dramor": [
             "Outremer"
         ],
-        "heritage_brythonic,Dramor": [
-            "Outremer"
-        ],
         "heritage_brythonic,arvorigeg": [
             "Breton"
         ],
-        "heritage_brythonic,Arvorigeg": [
-            "Breton"
-        ],
         "heritage_brythonic,gallo": [
-            "Breton"
-        ],
-        "heritage_brythonic,Gallo": [
             "Breton"
         ],
         "heritage_brythonic,dumnonian": [
@@ -10645,19 +10546,10 @@
         "heritage_briton,dramor": [
             "Outremer"
         ],
-        "heritage_briton,Dramor": [
-            "Outremer"
-        ],
         "heritage_briton,arvorigeg": [
             "Breton"
         ],
-        "heritage_briton,Arvorigeg": [
-            "Breton"
-        ],
         "heritage_briton,gallo": [
-            "Breton"
-        ],
-        "heritage_briton,Gallo": [
             "Breton"
         ],
         "heritage_briton,wylish": [
@@ -10702,19 +10594,10 @@
         "heritage_byzantine,siculo_norman": [
             "Norman"
         ],
-        "heritage_byzantine,Siculo-Norman": [
-            "Norman"
-        ],
         "heritage_byzantine,lebanese_hybrid": [
             "Syriac"
         ],
-        "heritage_byzantine,Lebanese": [
-            "Syriac"
-        ],
         "heritage_byzantine,aromanian": [
-            "Bulgarian"
-        ],
-        "heritage_byzantine,Aromanian": [
             "Bulgarian"
         ],
         "heritage_byzantine,dalmatian": [
@@ -10726,22 +10609,13 @@
         "heritage_byzantine,dalmatian_hybrid": [
             "Dalmatian"
         ],
-        "heritage_byzantine,Dalmatian": [
-            "Dalmatian"
-        ],
         "heritage_byzantine,neapolitan": [
             "Lombard"
         ],
         "heritage_byzantine,neapolitan_hybrid": [
             "Lombard"
         ],
-        "heritage_byzantine,Neapolitan": [
-            "Lombard"
-        ],
         "heritage_byzantine,arvanite_hybrid": [
-            "Bulgarian"
-        ],
-        "heritage_byzantine,Arvanite": [
             "Bulgarian"
         ],
         "heritage_byzantine,gasmouloi_hybrid": [
@@ -10756,34 +10630,19 @@
         "heritage_byzantine,griko_hybrid": [
             "Byzantine"
         ],
-        "heritage_byzantine,Griko": [
-            "Byzantine"
-        ],
         "heritage_byzantine,egyptiote": [
             "Byzantine"
         ],
         "heritage_byzantine,egyptiote_hybrid": [
             "Copt"
         ],
-        "heritage_byzantine,Egyptiote": [
-            "Copt"
-        ],
         "heritage_byzantine,pontic": [
-            "Byzantine"
-        ],
-        "heritage_byzantine,Pontic": [
             "Byzantine"
         ],
         "heritage_byzantine,cappadocian": [
             "Byzantine"
         ],
-        "heritage_byzantine,Cappadocian": [
-            "Byzantine"
-        ],
         "heritage_byzantine,cypriot": [
-            "Byzantine"
-        ],
-        "heritage_byzantine,Cypriot": [
             "Byzantine"
         ],
         "heritage_central_african,PARENT_KEY": [
@@ -10834,49 +10693,25 @@
         "heritage_central_germanic,lothringian": [
             "Franconian"
         ],
-        "heritage_central_germanic,Lothringian": [
-            "Franconian"
-        ],
         "heritage_central_germanic,alsatian": [
-            "Frankish"
-        ],
-        "heritage_central_germanic,Alsatian": [
             "Frankish"
         ],
         "heritage_central_germanic,austrian": [
             "Saxon"
         ],
-        "heritage_central_germanic,Austrian": [
-            "Saxon"
-        ],
         "heritage_central_germanic,flemish": [
-            "Frankish"
-        ],
-        "heritage_central_germanic,Flemish": [
             "Frankish"
         ],
         "heritage_central_germanic,vlaemsch": [
             "Frankish"
         ],
-        "heritage_central_germanic,Vlaemsch": [
-            "Frankish"
-        ],
         "heritage_central_germanic,rhinelander": [
-            "Franconian"
-        ],
-        "heritage_central_germanic,Rhinelander": [
             "Franconian"
         ],
         "heritage_central_germanic,swiss": [
             "Franconian"
         ],
-        "heritage_central_germanic,Swiss": [
-            "Franconian"
-        ],
         "heritage_central_germanic,kurlander": [
-            "Teutonic"
-        ],
-        "heritage_central_germanic,Kurlander": [
             "Teutonic"
         ],
         "heritage_central_germanic,Teutonic": [
@@ -10886,9 +10721,6 @@
             "Outremer"
         ],
         "heritage_central_germanic,hierosolyman": [
-            "Outremer"
-        ],
-        "heritage_central_germanic,Hierosolyman": [
             "Outremer"
         ],
         "heritage_central_germanic,markish": [
@@ -10924,9 +10756,6 @@
         "heritage_central_germanic,upper_saxon_hybrid": [
             "Saxon"
         ],
-        "heritage_central_germanic,Upper Saxon": [
-            "Saxon"
-        ],
         "heritage_central_germanic,wendish_hybrid": [
             "Wendish"
         ],
@@ -10936,7 +10765,7 @@
         "heritage_central_germanic,bohemian_hybrid": [
             "Slavic"
         ],
-        "heritage_central_germanic,B\u00f6hmisch": [
+        "heritage_central_germanic,Böhmisch": [
             "Slavic"
         ],
         "heritage_chinese,PARENT_KEY": [
@@ -10970,9 +10799,6 @@
             "Indian"
         ],
         "heritage_dravidian,parsi_hybrid": [
-            "Indo Persian"
-        ],
-        "heritage_dravidian,Parsi": [
             "Indo Persian"
         ],
         "heritage_west_african,PARENT_KEY": [
@@ -11083,34 +10909,19 @@
         "heritage_east_slavic,jerusaleman": [
             "Outremer"
         ],
-        "heritage_east_slavic,Jerusaleman": [
-            "Outremer"
-        ],
         "heritage_east_slavic,belocroat": [
             "Rus"
         ],
         "heritage_east_slavic,ruthenian": [
             "Rus"
         ],
-        "heritage_east_slavic,Ruthenian": [
-            "Rus"
-        ],
         "heritage_east_slavic,belarusian": [
-            "Rus"
-        ],
-        "heritage_east_slavic,Belarusian": [
             "Rus"
         ],
         "heritage_east_slavic,red_ruthenian": [
             "Rus"
         ],
-        "heritage_east_slavic,Red Ruthenian": [
-            "Rus"
-        ],
         "heritage_east_slavic,novgorodian": [
-            "Rus"
-        ],
-        "heritage_east_slavic,Novgorodian": [
             "Rus"
         ],
         "heritage_frankish,PARENT_KEY": [
@@ -11131,28 +10942,16 @@
         "heritage_frankish,lorrainian": [
             "Frankish"
         ],
-        "heritage_frankish,Lorrainian": [
-            "Frankish"
-        ],
         "heritage_frankish,alsatian": [
             "Frankish"
         ],
-        "heritage_frankish,Alsatian": [
-            "Frankish"
-        ],
         "heritage_frankish,burgundian": [
-            "Frankish"
-        ],
-        "heritage_frankish,Burgundian": [
             "Frankish"
         ],
         "heritage_frankish,aquitainian": [
             "Frankish"
         ],
         "heritage_frankish,aquitanian_hybrid": [
-            "Frankish"
-        ],
-        "heritage_frankish,Aquitanian": [
             "Frankish"
         ],
         "heritage_frankish,auvergnat": [
@@ -11164,19 +10963,10 @@
         "heritage_frankish,siculo_norman": [
             "Norman"
         ],
-        "heritage_frankish,Siculo-Norman": [
-            "Norman"
-        ],
         "heritage_frankish,rhinelander": [
             "Franconian"
         ],
-        "heritage_frankish,Rhinelander": [
-            "Franconian"
-        ],
         "heritage_frankish,swiss": [
-            "Franconian"
-        ],
-        "heritage_frankish,Swiss": [
             "Franconian"
         ],
         "heritage_frankish,walloon": [
@@ -11185,13 +10975,7 @@
         "heritage_frankish,vlaemsch": [
             "Frankish"
         ],
-        "heritage_frankish,Vlaemsch": [
-            "Frankish"
-        ],
         "heritage_frankish,outremer": [
-            "Outremer"
-        ],
-        "heritage_frankish,Outremer": [
             "Outremer"
         ],
         "heritage_frankish,arpitan": [
@@ -11203,19 +10987,10 @@
         "heritage_frankish,arpitan_hybrid": [
             "Frankish"
         ],
-        "heritage_frankish,Arpitan": [
-            "Frankish"
-        ],
         "heritage_frankish,arvorigeg": [
             "Breton"
         ],
-        "heritage_frankish,Arvorigeg": [
-            "Breton"
-        ],
         "heritage_frankish,gallo": [
-            "Breton"
-        ],
-        "heritage_frankish,Gallo": [
             "Breton"
         ],
         "heritage_frankish,romansh_hybrid": [
@@ -11230,13 +11005,7 @@
         "heritage_frankish,angevin_hybrid": [
             "Norman"
         ],
-        "heritage_frankish,Angevin": [
-            "Norman"
-        ],
         "heritage_frankish,bari": [
-            "Maghrebi"
-        ],
-        "heritage_frankish,Bari": [
             "Maghrebi"
         ],
         "heritage_frankish,gasmouloi_hybrid": [
@@ -11244,12 +11013,6 @@
         ],
         "heritage_frankish,Gasmoulos": [
             "Lombard"
-        ],
-        "heritage_frankish,Auvergnat": [
-            "Frankish"
-        ],
-        "heritage_frankish,Lengadocian": [
-            "Frankish"
         ],
         "heritage_goidelic,PARENT_KEY": [
             "Irish"
@@ -11263,9 +11026,6 @@
         "heritage_goidelic,norse_gael": [
             "Norse Gael"
         ],
-        "heritage_goidelic,Norse-Gael": [
-            "Norse Gael"
-        ],
         "heritage_goidelic,ulster_scots": [
             "Gaelic"
         ],
@@ -11275,7 +11035,7 @@
         "heritage_goidelic,coigriche": [
             "Outremer"
         ],
-        "heritage_goidelic,Coigr\u00edche": [
+        "heritage_goidelic,Coigríche": [
             "Outremer"
         ],
         "heritage_guinean_uplander,PARENT_KEY": [
@@ -11377,16 +11137,10 @@
         "heritage_iberian,ultramar": [
             "Outremer"
         ],
-        "heritage_iberian,Ultramar": [
-            "Outremer"
-        ],
         "heritage_iberian,moroccan": [
             "Maghrebi"
         ],
         "heritage_iberian,moroccan_hybrid": [
-            "Maghrebi"
-        ],
-        "heritage_iberian,Moroccan": [
             "Maghrebi"
         ],
         "heritage_iberian,algerian": [
@@ -11395,25 +11149,16 @@
         "heritage_iberian,algerian_hybrid": [
             "Maghrebi"
         ],
-        "heritage_iberian,Algerian": [
-            "Maghrebi"
-        ],
         "heritage_iberian,tripolitanian": [
             "Maghrebi"
         ],
         "heritage_iberian,tripolitanian_hybrid": [
             "Maghrebi"
         ],
-        "heritage_iberian,Tripolitanian": [
-            "Maghrebi"
-        ],
         "heritage_iberian,tunisian": [
             "Maghrebi"
         ],
         "heritage_iberian,tunisian_hybrid": [
-            "Maghrebi"
-        ],
-        "heritage_iberian,Tunisian": [
             "Maghrebi"
         ],
         "heritage_israelite,PARENT_KEY": [
@@ -11444,9 +11189,6 @@
             "Himyarite"
         ],
         "heritage_israelite,kuzarim": [
-            "Crimean Steppe"
-        ],
-        "heritage_israelite,Kuzarim": [
             "Crimean Steppe"
         ],
         "heritage_israelite,hebrew": [
@@ -11515,13 +11257,7 @@
         "heritage_indo_aryan,hindustani_proper": [
             "Indo Persian"
         ],
-        "heritage_indo_aryan,Hindustani": [
-            "Indo Persian"
-        ],
         "heritage_indo_aryan,parsi_hybrid": [
-            "Indo Persian"
-        ],
-        "heritage_indo_aryan,Parsi": [
             "Indo Persian"
         ],
         "heritage_indo_aryan,brahui": [
@@ -11566,13 +11302,7 @@
         "heritage_iranian,gorani": [
             "Kurdish"
         ],
-        "heritage_iranian,Gorani": [
-            "Kurdish"
-        ],
         "heritage_iranian,tabari": [
-            "Daylamite"
-        ],
-        "heritage_iranian,Tabari": [
             "Daylamite"
         ],
         "heritage_iranian,turko_iranian": [
@@ -11584,9 +11314,6 @@
         "heritage_iranian,turko_afghan": [
             "Hephthalite"
         ],
-        "heritage_iranian,Turko-Afghan": [
-            "Hephthalite"
-        ],
         "heritage_iranian,hephthalite": [
             "Hephthalite"
         ],
@@ -11595,9 +11322,6 @@
         ],
         "heritage_iranian,pamiri": [
             "Khorasani"
-        ],
-        "heritage_iranian,turco-hephthalite": [
-            "Hephthalite"
         ],
         "heritage_iranian,pashtun": [
             "Indo Persian"
@@ -11638,9 +11362,6 @@
         "heritage_iranian,parsi_hybrid": [
             "Indo Persian"
         ],
-        "heritage_iranian,Parsi": [
-            "Indo Persian"
-        ],
         "heritage_iranian,tati": [
             "Kurdish"
         ],
@@ -11648,9 +11369,6 @@
             "Kurdish"
         ],
         "heritage_iranian,shirvani": [
-            "Kurdish"
-        ],
-        "heritage_iranian,Shirvani": [
             "Kurdish"
         ],
         "heritage_iranian,taleshi": [
@@ -11674,25 +11392,13 @@
         "heritage_iranian,azeri_hybrid": [
             "Western Steppe"
         ],
-        "heritage_iranian,Azeri": [
-            "Western Steppe"
-        ],
         "heritage_iranian,hindustani_proper": [
-            "Indo Persian"
-        ],
-        "heritage_iranian,Hindustani": [
             "Indo Persian"
         ],
         "heritage_iranian,mervi": [
             "Khorasani"
         ],
-        "heritage_iranian,Mervi": [
-            "Khorasani"
-        ],
         "heritage_iranian,luri": [
-            "Kurdish"
-        ],
-        "heritage_iranian,Luri": [
             "Kurdish"
         ],
         "heritage_elamite,PARENT_KEY": [
@@ -11728,22 +11434,13 @@
         "heritage_latin,venetian_ce": [
             "Lombard"
         ],
-        "heritage_latin,Venetian": [
-            "Lombard"
-        ],
         "heritage_latin,friuli_mpe": [
             "Lombard"
         ],
         "heritage_latin,ligurian": [
             "Lombard"
         ],
-        "heritage_latin,Ligurian": [
-            "Lombard"
-        ],
         "heritage_latin,romagnol": [
-            "Lombard"
-        ],
-        "heritage_latin,Romagnol": [
             "Lombard"
         ],
         "heritage_latin,tuscan": [
@@ -11752,13 +11449,7 @@
         "heritage_latin,tuscan_ce": [
             "Lombard"
         ],
-        "heritage_latin,Tuscan": [
-            "Lombard"
-        ],
         "heritage_latin,umbrian": [
-            "Lombard"
-        ],
-        "heritage_latin,Umbrian": [
             "Lombard"
         ],
         "heritage_latin,neapolitan": [
@@ -11767,25 +11458,13 @@
         "heritage_latin,neapolitan_hybrid": [
             "Lombard"
         ],
-        "heritage_latin,Neapolitan": [
-            "Lombard"
-        ],
         "heritage_latin,siculo_norman": [
-            "Norman"
-        ],
-        "heritage_latin,Siculo-Norman": [
             "Norman"
         ],
         "heritage_latin,swiss": [
             "Franconian"
         ],
-        "heritage_latin,Swiss": [
-            "Franconian"
-        ],
         "heritage_latin,oltremare": [
-            "Outremer"
-        ],
-        "heritage_latin,Oltremare": [
             "Outremer"
         ],
         "heritage_latin,arpitan": [
@@ -11797,9 +11476,6 @@
         "heritage_latin,arpitan_hybrid": [
             "Frankish"
         ],
-        "heritage_latin,Arpitan": [
-            "Frankish"
-        ],
         "heritage_latin,dalmatian": [
             "Dalmatian"
         ],
@@ -11807,9 +11483,6 @@
             "Dalmatian"
         ],
         "heritage_latin,dalmatian_hybrid": [
-            "Dalmatian"
-        ],
-        "heritage_latin,Dalmatian": [
             "Dalmatian"
         ],
         "heritage_latin,latin_mpe": [
@@ -11851,9 +11524,6 @@
         "heritage_latin,bari": [
             "Maghrebi"
         ],
-        "heritage_latin,Bari": [
-            "Maghrebi"
-        ],
         "heritage_latin,gasmouloi_hybrid": [
             "Lombard"
         ],
@@ -11861,9 +11531,6 @@
             "Lombard"
         ],
         "heritage_latin,griko_hybrid": [
-            "Lombard"
-        ],
-        "heritage_latin,Griko": [
             "Lombard"
         ],
         "heritage_magyar,PARENT_KEY": [
@@ -11881,13 +11548,10 @@
         "heritage_magyar,transylvanian": [
             "Hungarian"
         ],
-        "heritage_magyar,Transylvanian": [
-            "Hungarian"
-        ],
         "heritage_magyar,kulfoldi": [
             "Outremer"
         ],
-        "heritage_magyar,K\u00fclf\u00f6ldi": [
+        "heritage_magyar,Külföldi": [
             "Outremer"
         ],
         "heritage_yugrian,PARENT_KEY": [
@@ -11905,13 +11569,10 @@
         "heritage_yugrian,transylvanian": [
             "Hungarian"
         ],
-        "heritage_yugrian,Transylvanian": [
-            "Hungarian"
-        ],
         "heritage_yugrian,kulfoldi": [
             "Outremer"
         ],
-        "heritage_yugrian,K\u00fclf\u00f6ldi": [
+        "heritage_yugrian,Külföldi": [
             "Outremer"
         ],
         "heritage_mongolic,PARENT_KEY": [
@@ -11923,13 +11584,7 @@
         "heritage_mongolic,kazakh": [
             "Eastern Steppe"
         ],
-        "heritage_mongolic,Kazakh": [
-            "Eastern Steppe"
-        ],
         "heritage_mongolic,new_english_hybrid": [
-            "New English"
-        ],
-        "heritage_mongolic,New English": [
             "New English"
         ],
         "heritage_mongolic,mongol": [
@@ -11977,31 +11632,16 @@
         "heritage_north_germanic,geatish": [
             "Viking"
         ],
-        "heritage_north_germanic,Geatish": [
-            "Viking"
-        ],
         "heritage_north_germanic,gutish": [
-            "Viking"
-        ],
-        "heritage_north_germanic,Gutish": [
             "Viking"
         ],
         "heritage_north_germanic,icelandic": [
             "Viking"
         ],
-        "heritage_north_germanic,Icelandic": [
-            "Viking"
-        ],
         "heritage_north_germanic,norse_gael": [
             "Norse Gael"
         ],
-        "heritage_north_germanic,Norse-Gael": [
-            "Norse Gael"
-        ],
         "heritage_north_germanic,danelander": [
-            "Danelander"
-        ],
-        "heritage_north_germanic,Danelander": [
             "Danelander"
         ],
         "heritage_north_germanic,anglo_norse": [
@@ -12013,16 +11653,13 @@
         "heritage_north_germanic,engelsk": [
             "Danelander"
         ],
-        "heritage_north_germanic,\u00c6nglish": [
+        "heritage_north_germanic,Ænglish": [
             "Danelander"
         ],
         "heritage_north_germanic,jerusalemer": [
             "Outremer"
         ],
         "heritage_north_germanic,hierosolyman": [
-            "Outremer"
-        ],
-        "heritage_north_germanic,Hierosolyman": [
             "Outremer"
         ],
         "heritage_north_germanic,greenlandic": [
@@ -12142,9 +11779,6 @@
         "heritage_south_slavic,jerusaleman": [
             "Outremer"
         ],
-        "heritage_south_slavic,Jerusaleman": [
-            "Outremer"
-        ],
         "heritage_south_slavic,slavonian": [
             "Slavic"
         ],
@@ -12198,12 +11832,6 @@
         ],
         "heritage_south_slavic,dalmatian_hybrid": [
             "Dalmatian"
-        ],
-        "heritage_south_slavic,Dalmatian": [
-            "Dalmatian"
-        ],
-        "heritage_south_slavic,Albanian": [
-            "Slavic"
         ],
         "heritage_tibetan,PARENT_KEY": [
             "Tibetan"
@@ -12298,9 +11926,6 @@
         "heritage_turkic,azeri_hybrid": [
             "Western Steppe"
         ],
-        "heritage_turkic,Azeri": [
-            "Western Steppe"
-        ],
         "heritage_turkic,turko_iranian": [
             "Khorasani"
         ],
@@ -12314,9 +11939,6 @@
             "Hephthalite"
         ],
         "heritage_turkic,anatolian_turkish": [
-            "Turkic"
-        ],
-        "heritage_turkic,Anatolian Turkish": [
             "Turkic"
         ],
         "heritage_turkic,torkil": [
@@ -12340,31 +11962,16 @@
         "heritage_turkic,hindustani_proper": [
             "Indo Persian"
         ],
-        "heritage_turkic,Hindustani": [
-            "Indo Persian"
-        ],
         "heritage_turkic,kazakh": [
-            "Eastern Steppe"
-        ],
-        "heritage_turkic,Kazakh": [
             "Eastern Steppe"
         ],
         "heritage_turkic,kuzarim": [
             "Crimean Steppe"
         ],
-        "heritage_turkic,Kuzarim": [
-            "Crimean Steppe"
-        ],
         "heritage_turkic,new_english_hybrid": [
             "New English"
         ],
-        "heritage_turkic,New English": [
-            "New English"
-        ],
         "heritage_turkic,dobrujan": [
-            "Hungarian"
-        ],
-        "heritage_turkic,Dobrujan": [
             "Hungarian"
         ],
         "heritage_ugro_permian,PARENT_KEY": [
@@ -12403,19 +12010,10 @@
         "heritage_vlach,transylvanian": [
             "Hungarian"
         ],
-        "heritage_vlach,Transylvanian": [
-            "Hungarian"
-        ],
         "heritage_vlach,dobrujan": [
             "Hungarian"
         ],
-        "heritage_vlach,Dobrujan": [
-            "Hungarian"
-        ],
         "heritage_vlach,aromanian": [
-            "Bulgarian"
-        ],
-        "heritage_vlach,Aromanian": [
             "Bulgarian"
         ],
         "heritage_volga_finnic,PARENT_KEY": [
@@ -12493,9 +12091,6 @@
         "heritage_west_germanic,danelander": [
             "Danelander"
         ],
-        "heritage_west_germanic,Danelander": [
-            "Danelander"
-        ],
         "heritage_west_germanic,anglo_norse": [
             "Danelander"
         ],
@@ -12505,7 +12100,7 @@
         "heritage_west_germanic,engelsk": [
             "Danelander"
         ],
-        "heritage_west_germanic,\u00c6nglish": [
+        "heritage_west_germanic,Ænglish": [
             "Danelander"
         ],
         "heritage_west_germanic,ulster_scots": [
@@ -12520,9 +12115,6 @@
         "heritage_west_germanic,hierosolyman": [
             "Outremer"
         ],
-        "heritage_west_germanic,Hierosolyman": [
-            "Outremer"
-        ],
         "heritage_west_germanic,frisian": [
             "Saxon"
         ],
@@ -12532,22 +12124,13 @@
         "heritage_west_germanic,angevin_hybrid": [
             "Norman"
         ],
-        "heritage_west_germanic,Angevin": [
-            "Norman"
-        ],
         "heritage_west_germanic,new_english": [
             "Anglo Saxon"
         ],
         "heritage_west_germanic,new_english_hybrid": [
             "New English"
         ],
-        "heritage_west_germanic,New English": [
-            "New English"
-        ],
         "heritage_west_germanic,scota": [
-            "Gaelic"
-        ],
-        "heritage_west_germanic,Scota": [
             "Gaelic"
         ],
         "heritage_west_germanic,wendish_hybrid": [
@@ -12559,25 +12142,13 @@
         "heritage_west_germanic,bohemian_hybrid": [
             "Slavic"
         ],
-        "heritage_west_germanic,B\u00f6hmisch": [
+        "heritage_west_germanic,Böhmisch": [
             "Slavic"
         ],
         "heritage_west_germanic,flemish": [
             "Frankish"
         ],
-        "heritage_west_germanic,Flemish": [
-            "Frankish"
-        ],
-        "heritage_west_germanic,Mercian": [
-            "Anglo Saxon"
-        ],
-        "heritage_west_germanic,Northumbrian": [
-            "Anglo Saxon"
-        ],
         "heritage_west_germanic,northerner": [
-            "Anglo Saxon"
-        ],
-        "heritage_west_germanic,Northerner": [
             "Anglo Saxon"
         ],
         "heritage_west_slavic,PARENT_KEY": [
@@ -12634,13 +12205,7 @@
         "heritage_west_slavic,jerusaleman": [
             "Outremer"
         ],
-        "heritage_west_slavic,Jerusaleman": [
-            "Outremer"
-        ],
         "heritage_west_slavic,silesian": [
-            "Slavic"
-        ],
-        "heritage_west_slavic,Silesian": [
             "Slavic"
         ],
         "heritage_west_slavic,slovene": [
@@ -12673,9 +12238,6 @@
         "heritage_west_slavic,upper_saxon_hybrid": [
             "Saxon"
         ],
-        "heritage_west_slavic,Upper Saxon": [
-            "Saxon"
-        ],
         "heritage_west_slavic,wendish_hybrid": [
             "Wendish"
         ],
@@ -12685,7 +12247,7 @@
         "heritage_west_slavic,bohemian_hybrid": [
             "Slavic"
         ],
-        "heritage_west_slavic,B\u00f6hmisch": [
+        "heritage_west_slavic,Böhmisch": [
             "Slavic"
         ],
         "heritage_caucasian,PARENT_KEY": [
@@ -12751,9 +12313,6 @@
         "heritage_egyptian,scota": [
             "Gaelic"
         ],
-        "heritage_egyptian,Scota": [
-            "Gaelic"
-        ],
         "heritage_gurma,PARENT_KEY": [
             "West African"
         ],
@@ -12788,9 +12347,6 @@
             "Bulgarian"
         ],
         "heritage_albanian,arvanite_hybrid": [
-            "Bulgarian"
-        ],
-        "heritage_albanian,Arvanite": [
             "Bulgarian"
         ],
         "heritage_albanian,albanian": [
@@ -12850,16 +12406,10 @@
         "heritage_imazigen,siculo_norman": [
             "Norman"
         ],
-        "heritage_imazigen,Siculo-Norman": [
-            "Norman"
-        ],
         "heritage_imazigen,moroccan": [
             "Maghrebi"
         ],
         "heritage_imazigen,moroccan_hybrid": [
-            "Maghrebi"
-        ],
-        "heritage_imazigen,Moroccan": [
             "Maghrebi"
         ],
         "heritage_imazigen,algerian": [
@@ -12868,25 +12418,16 @@
         "heritage_imazigen,algerian_hybrid": [
             "Maghrebi"
         ],
-        "heritage_imazigen,Algerian": [
-            "Maghrebi"
-        ],
         "heritage_imazigen,tripolitanian": [
             "Maghrebi"
         ],
         "heritage_imazigen,tripolitanian_hybrid": [
             "Maghrebi"
         ],
-        "heritage_imazigen,Tripolitanian": [
-            "Maghrebi"
-        ],
         "heritage_imazigen,tunisian": [
             "Maghrebi"
         ],
         "heritage_imazigen,tunisian_hybrid": [
-            "Maghrebi"
-        ],
-        "heritage_imazigen,Tunisian": [
             "Maghrebi"
         ],
         "heritage_imazigen,taureg": [
@@ -12898,16 +12439,10 @@
         "heritage_imazigen,bari": [
             "Maghrebi"
         ],
-        "heritage_imazigen,Bari": [
-            "Maghrebi"
-        ],
         "heritage_imazigen,neapolitan": [
             "Maghrebi"
         ],
         "heritage_imazigen,neapolitan_hybrid": [
-            "Lombard"
-        ],
-        "heritage_imazigen,Neapolitan": [
             "Lombard"
         ],
         "heritage_khorasani,PARENT_KEY": [
