@@ -15612,6 +15612,30 @@
         "RICE_drokpa_horsemen,Default": [
             "earl_gold_t2_cavalry",
             "CAVALRY"
+        ],
+        "danish_obudshaer,Danelander": [
+            "mk_merc_bra_t1_brabanzonen_voulgier",
+            "INFANTRY"
+        ],
+        "danish_obudshaer,Default": [
+            "mk_merc_bra_t1_brabanzonen_voulgier",
+            "INFANTRY"
+        ],
+        "danish_svenner,Danelander": [
+            "earl_dan_t1_cavalry",
+            "CAVALRY"
+        ],
+        "danish_svenner,Default": [
+            "earl_dan_t1_cavalry",
+            "CAVALRY"
+        ],
+        "outremer_bowmen,Outremer": [
+            "mk_merc_arm_t1_armenian_archers",
+            "RANGED"
+        ],
+        "outremer_bowmen,Default": [
+            "mk_merc_arm_t1_armenian_archers",
+            "RANGED"
         ]
     },
     "HERITAGES_AND_CULTURES": {
