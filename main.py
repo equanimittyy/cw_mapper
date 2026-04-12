@@ -471,7 +471,7 @@ def popup_xml_import_export():
     if event == 'Export':
         export_layout = [
             [sg.Text('Export mapper to XML format', font=('Courier New', 12, 'bold'))],
-            [sg.Text('Mapper file:'), sg.Input(key='EXPORT_FILE', size=(40, 1), expand_x=True),
+            [sg.Text('Mapper file:'), sg.Input(key='EXPORT_FILE', size=(40, 1), expand_x=True, enable_events=True),
              sg.FileBrowse('Browse', initial_folder=CUSTOM_MAPPER_DIR, file_types=(('Text Files', '*.txt'),))],
             [sg.Text('Mapper tag:'), sg.Input(key='EXPORT_TAG', size=(40, 1), expand_x=True,
              tooltip='Tag used to identify multi-mappers for different time periods')],
@@ -487,6 +487,21 @@ def popup_xml_import_export():
             e_event, e_values = export_window.read()
             if e_event in (sg.WIN_CLOSED, 'Cancel'):
                 break
+            elif e_event == 'EXPORT_FILE':
+                # Pre-populate tag/dates from saved mapper file
+                selected_file = e_values['EXPORT_FILE']
+                if selected_file and os.path.exists(selected_file):
+                    try:
+                        with open(selected_file, 'r', encoding='utf-8-sig') as ef:
+                            saved_data = json.load(ef)
+                        saved_tag = saved_data.get('TAG', '')
+                        saved_start = saved_data.get('START_DATE', '0')
+                        saved_end = saved_data.get('END_DATE', '9999')
+                        export_window['EXPORT_TAG'].update(saved_tag)
+                        export_window['EXPORT_START'].update(saved_start)
+                        export_window['EXPORT_END'].update(saved_end)
+                    except (json.JSONDecodeError, OSError):
+                        pass
             elif e_event == 'Export':
                 export_file = e_values['EXPORT_FILE']
                 if not export_file:
