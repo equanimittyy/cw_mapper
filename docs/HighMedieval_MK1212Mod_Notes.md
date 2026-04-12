@@ -50,20 +50,40 @@ Same 17 as Early Medieval PLUS 2 MK1212-specific siege:
 | `bulgarian_testudos` | ⏭️ Ignore | Siege (battering ram) |
 | `cloud_ladder` | ⏭️ Ignore | Siege equipment |
 | `siege_tower` | ⏭️ Ignore | Siege equipment |
-| `black_armor_cavalry` | TODO | Chinese MAA → Tibetan |
-| `RICE_iron_forest` | TODO | Chinese MAA → Tibetan |
-| `chasseur` | TODO | → Outremer (after fixing misspelling) |
-| `landsknecht` | TODO | → Teutonic (after fixing misspelling) |
-| `palace_guards` | TODO | → Default (after fixing misspelling) |
-| `danish_obudshaer` | TODO | → Danelander (elite spearmen per CK3) |
-| `danish_svenner` | TODO | → Danelander (light cavalry per CK3) |
+| `black_armor_cavalry` | ✅ | Tibetan + Default → `mk_mon_t1_keshiq_lancers` (CAVALRY) |
+| `RICE_iron_forest` | ✅ | Tibetan + Default → `mk_gold_t1_khorchi_khisigten` (CAVALRY) |
+| `RICE_drokpa_horsemen` | ✅ | Tibetan + Default → `earl_gold_t2_cavalry` (CAVALRY) |
+| `chasseur` | ✅ | Outremer + Default → `mk_jer_t1_ministeriales` (CAVALRY) — from misspelling fix |
+| `landsknecht` | ✅ | Teutonic + Default → `mk_hre_t3_doppelsoldner_pikemen` (INFANTRY) — from misspelling fix |
+| `palace_guards` | ✅ | Default → `mk_khw_t1_junior_ghulaman` (INFANTRY) — from misspelling fix. TODO: all factions |
+| `danish_obudshaer` | ✅ | Danelander + Default → `mk_merc_bra_t1_brabanzonen_voulgier` (INFANTRY) |
+| `danish_svenner` | ✅ | Danelander + Default → `earl_dan_t1_cavalry` / "Hestevend" (CAVALRY) |
 | `outremer_bowmen` | TODO | → Outremer |
 | `outremer_heavy_cavalry` | TODO | → Outremer |
 | `outremer_turcopoles` | TODO | → Outremer |
 | `RICE_alodian_cavalry` | TODO | → Horn African |
-| `RICE_drokpa_horsemen` | TODO | → Tibetan |
 | `RICE_nilotic_raiders` | TODO | → Horn African |
 | `RICE_sudanese_highlanders` | TODO | → Horn African |
+
+### Tier Progression Notes (for Late Medieval / Renaissance mappers)
+
+These MAA should follow their natural tier progression when mapping Late Medieval and Renaissance. Source column shows how the progression was determined.
+
+| MAA | High | Late | Renaissance | Source |
+|---|---|---|---|---|
+| `black_armor_cavalry` | `mk_mon_t1_keshiq_lancers` | `mk_mon_t2_golden_keshiq_lancers` | `mk_mon_t3_golden_keshiq_lancers` | Shared with `samurai` in Default |
+| `RICE_iron_forest` | `mk_gold_t1_khorchi_khisigten` | `mk_gold_t2_khorchi_khisigten` | `mk_gold_t3_khorchi_khisigten` | Shared with `mongolian_horse_archers` in Default |
+| `RICE_drokpa_horsemen` | `earl_gold_t2_cavalry` | `earl_gold_t3_cavalry` | (use T3 or verify) | Natural T1→T2→T3 progression (started at T2) |
+| `chasseur` | `mk_jer_t1_ministeriales` | `mk_jer_t2_turcopole_scouts` | `mk_jer_t3_turcopole_scouts` | From misspelled `chasseurs` in Late/Ren |
+| `landsknecht` | `mk_hre_t3_doppelsoldner_pikemen` | `mk_hre_t3_doppelsoldner_pikemen` | `mk_hre_t3_doppelsoldner_pikemen` | Stays T3 across all (from misspelled `landsknechts`) |
+| `palace_guards` | `mk_khw_t1_junior_ghulaman` | `mk_khw_t2_qullughchi` | `mk_khw_t3_qullughchi` | Shared with `accolade_maa_archers` in Daylamite |
+| `danish_obudshaer` | `mk_merc_bra_t1_brabanzonen_voulgier` | `mk_bur_t2_pavise_spearmen` | `mk_merc_swi_t3_swiss_pikemen` | Shared with `accolade_maa_pikes` in Breton |
+| `danish_svenner` | `earl_dan_t1_cavalry` | `earl_dan_t2_cavalry` | `earl_dan_t3_cavalry` | Natural progression |
+
+**Notes:**
+- `landsknecht` stays T3 across all mappers — no T1/T2 variants exist for doppelsoldner pikemen (historically accurate: landsknechts are a late-period unit)
+- `chasseur` Late/Ren keys come from the misspelled `chasseurs` entries that already exist in those mappers — fix the misspelling and inherit the key
+- `RICE_drokpa_horsemen` started at T2 in High Medieval (user chose T2 over T1 for visual reasons)
 
 **Actionable:** 14 (same as Early Medieval)
 **Siege ignored:** 5
