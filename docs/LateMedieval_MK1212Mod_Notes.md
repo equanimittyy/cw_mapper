@@ -33,7 +33,7 @@ All fixes replicated from High Medieval mapper with T2 tier progression.
 | `outremer_bowmen` | Outremer | `mk_merc_arm_t2_armenian_archers` |
 | `outremer_heavy_cavalry` | Outremer | `mk_mio_t2_templar_knights` |
 | `outremer_turcopoles` | Outremer | `mk_jer_t2_turcopoles` |
-| `RICE_alodian_cavalry` | Horn African | `mk_zag_t2_general_bodyguard` |
+| `RICE_alodian_cavalry` | Horn African | `mk_mak_t2_nubian_knights` |
 | `RICE_nilotic_raiders` | Horn African | `mk_mak_t2_nubian_slingers` |
 | `RICE_sudanese_highlanders` | Horn African | `mk_mak_t2_nubian_footmen` |
 | `chasseur` | Outremer | `mk_jer_t2_turcopole_scouts` |

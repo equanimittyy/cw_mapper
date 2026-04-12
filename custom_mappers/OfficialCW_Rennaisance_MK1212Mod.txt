@@ -15722,11 +15722,11 @@
       "CAVALRY"
     ],
     "RICE_alodian_cavalry,Horn African": [
-      "mk_ayy_t3_awlad_an_nas",
+      "mk_mak_t3_nubian_knights",
       "CAVALRY"
     ],
     "RICE_alodian_cavalry,Default": [
-      "mk_ayy_t3_awlad_an_nas",
+      "mk_mak_t3_nubian_knights",
       "CAVALRY"
     ],
     "RICE_nilotic_raiders,Horn African": [

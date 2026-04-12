@@ -15657,11 +15657,11 @@
       "CAVALRY"
     ],
     "RICE_alodian_cavalry,Horn African": [
-      "mk_zag_t2_general_bodyguard",
+      "mk_mak_t2_nubian_knights",
       "CAVALRY"
     ],
     "RICE_alodian_cavalry,Default": [
-      "mk_zag_t2_general_bodyguard",
+      "mk_mak_t2_nubian_knights",
       "CAVALRY"
     ],
     "RICE_nilotic_raiders,Horn African": [

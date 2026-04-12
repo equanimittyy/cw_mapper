@@ -83,7 +83,7 @@ These MAA should follow their natural tier progression when mapping Late Medieva
 | `outremer_bowmen` | `mk_merc_arm_t1_armenian_archers` | `mk_merc_arm_t2_armenian_archers` | `mk_merc_arm_t3_armenian_archers` | Natural progression |
 | `outremer_heavy_cavalry` | `mk_mio_t1_templar_knights` | `mk_mio_t2_templar_knights` | (verify T3) | Natural progression |
 | `outremer_turcopoles` | `mk_jer_t1_turcopoles` | `mk_jer_t2_turcopoles` | (verify T3) | Natural progression |
-| `RICE_alodian_cavalry` | `mk_mak_t1_alodian_horsemen` | (follow `accolade_maa_lancers`) | (follow `accolade_maa_lancers`) | Shared with `accolade_maa_lancers` in Horn African |
+| `RICE_alodian_cavalry` | `mk_mak_t1_alodian_horsemen` | `mk_mak_t2_nubian_knights` | `mk_mak_t3_nubian_knights` | Stays Nubian — Alodia was a Nubian kingdom (sibling to Makuria) |
 | `RICE_nilotic_raiders` | `mk_mak_t1_nubian_slingers` | `mk_mak_t2_nubian_slingers` | `mk_mak_t3_nubian_quilted_spearmen` | User-specified progression |
 | `RICE_sudanese_highlanders` | `mk_mak_t1_nubian_quilted_infantry` | `mk_mak_t2_nubian_footmen` | `mk_mak_t3_nubian_footmen` | User-specified progression |
 
