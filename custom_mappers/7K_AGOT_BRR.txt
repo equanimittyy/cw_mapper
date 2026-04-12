@@ -294,7 +294,7 @@
         ],
         "riverlands_light_infantry,Default": [
             "Riverlands_Tully_MAA_Crossbowmen",
-            "RANGED"
+            "INFANTRY"
         ],
         "westerlands_knights,Default": [
             "Westerlands_Lannister_MAA_Lance_Cavalry",
@@ -751,7 +751,7 @@
         ],
         "riverlands_light_infantry,Riverlands": [
             "Riverlands_Tully_MAA_Axemen",
-            "RANGED"
+            "INFANTRY"
         ],
         "light_horsemen,Riverlands": [
             "Riverlands_Tully_MAA_Mounted_Swordsmen",
@@ -1422,11 +1422,11 @@
         ],
         "trackers,Wall": [
             "BTW_Nights_Watch_MAA_Mounted_Swordsmen",
-            "RANGED"
+            "CAVALRY"
         ],
         "sworn_brothers,Wall": [
             "BTW_Nights_Watch_MAA_Mounted_Swordsmen",
-            "RANGED"
+            "CAVALRY"
         ],
         "rangers,Wall": [
             "BTW_Nights_Watch_Guard_Rangers",
@@ -8802,7 +8802,7 @@
         ],
         "accolade_maa_outriders,d_godsgrace": [
             "Dorne_Allyrion_MAA_Mounted_Archers",
-            "RANGED"
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_godsgrace": [
             "Dorne_Allyrion_MAA_Pikemen",
@@ -8878,7 +8878,7 @@
         ],
         "accolade_maa_outriders,d_blackmont": [
             "Dorne_Blackmont_MAA_Mounted_Archers",
-            "RANGED"
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_blackmont": [
             "Dorne_Blackmont_MAA_Pikemen",
@@ -8954,7 +8954,7 @@
         ],
         "accolade_maa_outriders,d_lemonwood": [
             "Dorne_Dalt_MAA_Mounted_Archers",
-            "RANGED"
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_lemonwood": [
             "Dorne_Dalt_MAA_Pikemen",
@@ -9030,7 +9030,7 @@
         ],
         "accolade_maa_outriders,d_the_princes_pass": [
             "Dorne_Fowler_MAA_Mounted_Archers",
-            "RANGED"
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_the_princes_pass": [
             "Dorne_Fowler_MAA_Pikemen",
@@ -9106,7 +9106,7 @@
         ],
         "accolade_maa_outriders,d_salt_shore": [
             "Dorne_Gargalen_MAA_Mounted_Archers",
-            "RANGED"
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_salt_shore": [
             "Dorne_Gargalen_MAA_Pikemen",
@@ -9182,7 +9182,7 @@
         ],
         "accolade_maa_outriders,d_the_tor": [
             "Dorne_Jordayne_MAA_Mounted_Archers",
-            "RANGED"
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_the_tor": [
             "Dorne_Jordayne_MAA_Pikemen",
@@ -9258,7 +9258,7 @@
         ],
         "accolade_maa_outriders,d_redmarch": [
             "Dorne_Manwoody_MAA_Mounted_Archers",
-            "RANGED"
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_redmarch": [
             "Dorne_Manwoody_MAA_Pikemen",
@@ -9334,7 +9334,7 @@
         ],
         "accolade_maa_outriders,d_sandstone": [
             "Dorne_Qorgyle_MAA_Mounted_Archers",
-            "RANGED"
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_sandstone": [
             "Dorne_Qorgyle_MAA_Pikemen",
@@ -9410,7 +9410,7 @@
         ],
         "accolade_maa_outriders,d_ghost_hills": [
             "Dorne_Toland_MAA_Mounted_Archers",
-            "RANGED"
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_ghost_hills": [
             "Dorne_Toland_MAA_Pikemen",
@@ -9486,7 +9486,7 @@
         ],
         "accolade_maa_outriders,d_red_dunes": [
             "Dorne_Vaith_MAA_Mounted_Archers",
-            "RANGED"
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_red_dunes": [
             "Dorne_Vaith_MAA_Pikemen",
@@ -9562,7 +9562,7 @@
         ],
         "accolade_maa_outriders,d_the_stone_way": [
             "Dorne_Wyl_MAA_Mounted_Archers",
-            "RANGED"
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_the_stone_way": [
             "Dorne_Wyl_MAA_Pikemen",
