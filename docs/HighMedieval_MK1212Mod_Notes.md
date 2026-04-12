@@ -15,16 +15,17 @@ See [MK1212_Tier_Reference.md](MK1212_Tier_Reference.md) for full tier breakdown
 
 ---
 
-## Initial State (from summary_log.txt)
+## Status
 
-| Category | Count | Severity |
-|---|---|---|
-| Missing MAA (crash risk) | 19 | 🔴 |
-| Missing Attila Unit Keys | 2 | 🔴 |
-| Missing Title Keys | 30 | 🟡 |
-| Superfluous MAA | 21 | 🟡 |
-| Missing Cultures | 134 | 🟡 |
-| Superfluous Cultures | 224 | 🟡 |
+| Category | Initial | Resolved | Remaining |
+|---|---|---|---|
+| Missing MAA (crash risk) | 19 | 14 mapped + 5 siege ignored | **0** ✅ |
+| Missing Attila Unit Keys | 2 | 2 fixed (wrong key references) | **0** ✅ |
+| Missing Title Keys | 30 | 30 fixed (trailing spaces in keys) | **0** ✅ |
+| Superfluous MAA | 21 | 15 deleted + 5 misspellings fixed + 1 typo fixed | **0** ✅ |
+| Missing Cultures | 134 | 132 mapped | **2** (placeholders, deferred) |
+| Superfluous Cultures | 224 | Not addressed | 224 |
+| Trailing spaces in keys | ~582 | All trimmed (TITLES_AND_MAA, TITLE_NAMES, FACTIONS_AND_MAA) | **0** ✅ |
 
 ---
 
