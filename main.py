@@ -457,7 +457,7 @@ def popup_xml_import_export():
             else:
                 _, mapper_name = os.path.split(import_folder)
                 try:
-                    imported_maa_map, imported_heritage_map, imported_mods, imported_title_map, imported_title_names = import_xml(import_folder)
+                    imported_maa_map, imported_heritage_map, imported_mods, imported_title_map, imported_title_names, imported_tag, imported_start_date, imported_end_date = import_xml(import_folder)
                 except Exception as e:
                     sg.popup_error(f'Failed to parse mapper folder:\n{e}', title='Import Error')
                     return None
@@ -466,7 +466,7 @@ def popup_xml_import_export():
                     sg.popup(f"Note: No CK3 mod configuration found for '{mapper_name}' in config.\nYou can configure mods after loading the mapper.")
 
                 sg.popup(f"Mapper '{mapper_name}' imported!\n\nMapper imported and loaded into the editor!")
-                return mapper_name, imported_maa_map, imported_heritage_map, imported_mods, imported_title_map, imported_title_names
+                return mapper_name, imported_maa_map, imported_heritage_map, imported_mods, imported_title_map, imported_title_names, imported_tag, imported_start_date, imported_end_date
 
     if event == 'Export':
         export_layout = [
@@ -1439,7 +1439,7 @@ def mapping_window(src):
                     continue
             if not values['FILE_LOAD_KEY']:
                 continue
-            loaded_faction_mapping, loaded_heritage_mapping, loaded_mods, diff, missing_keys, loaded_title_mapping, loaded_title_names, diff_message = load_mapper(
+            loaded_faction_mapping, loaded_heritage_mapping, loaded_mods, diff, missing_keys, loaded_title_mapping, loaded_title_names, diff_message, loaded_tag, loaded_start_date, loaded_end_date = load_mapper(
                 values['FILE_LOAD_KEY'], src.maa_keys, src.attila_keys, src.cultures_keys, src.title_keys
             )
             if diff_message:
@@ -1589,8 +1589,11 @@ def mapping_window(src):
                 import_mods = xml_import[3]
                 import_titles = xml_import[4]
                 import_title_names = xml_import[5]
+                import_tag = xml_import[6]
+                import_start_date = xml_import[7]
+                import_end_date = xml_import[8]
                 try:
-                    save_mapper(import_name, import_maa, import_heritage, import_mods, import_titles, import_title_names)
+                    save_mapper(import_name, import_maa, import_heritage, import_mods, import_titles, import_title_names, import_tag, import_start_date, import_end_date)
                     add_map_config(import_name, import_mods)
                 except (OSError, ValueError) as e:
                     sg.popup_error(f'Error saving imported mapper: {e}', title='Save error')
@@ -1611,7 +1614,7 @@ def mapping_window(src):
 
                 try:
                     mapper_file = os.path.join(CUSTOM_MAPPER_DIR, f'{import_name}.txt')
-                    _, _, _, diff, missing_keys, _, _, diff_message = load_mapper(
+                    _, _, _, diff, missing_keys, _, _, diff_message, _, _, _ = load_mapper(
                         mapper_file, src.maa_keys, src.attila_keys, src.cultures_keys, src.title_keys
                     )
                     if diff:

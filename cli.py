@@ -61,13 +61,13 @@ def _load_mapper(name):
         _error(f"Mapper '{name}' not found at {path}")
     src = _ensure_source_data()
     result = load_mapper(path, src.maa_keys, src.attila_keys, src.cultures_keys, src.title_keys)
-    faction_mapping, heritage_mapping, mods, has_diff, missing_keys, title_mapping, title_names, diff_message = result
+    faction_mapping, heritage_mapping, mods, has_diff, missing_keys, title_mapping, title_names, diff_message, _tag, _start, _end = result
     if diff_message:
         _warn(diff_message.strip())
     return faction_mapping, heritage_mapping, mods, title_mapping, title_names
 
-def _save_mapper(name, faction_mapping, heritage_mapping, mods, title_mapping, title_names):
-    save_mapper(name, faction_mapping, heritage_mapping, mods, title_mapping, title_names)
+def _save_mapper(name, faction_mapping, heritage_mapping, mods, title_mapping, title_names, tag=None, start_date=None, end_date=None):
+    save_mapper(name, faction_mapping, heritage_mapping, mods, title_mapping, title_names, tag, start_date, end_date)
     add_map_config(name, mods)
 
 def _get_factions(faction_mapping):
@@ -561,12 +561,12 @@ def cmd_export(args):
 def cmd_import(args):
     if not os.path.exists(args.folder):
         _error(f"Import folder '{args.folder}' not found")
-    mappings, heritage_mappings, imported_mods, title_mappings, title_names = import_xml(args.folder)
+    mappings, heritage_mappings, imported_mods, title_mappings, title_names, imported_tag, imported_start_date, imported_end_date = import_xml(args.folder)
     name = args.name or os.path.basename(args.folder.rstrip('/\\'))
     imported_mods, found = resolve_import_mods(name, imported_mods)
     if not found:
         _warn(f"No CK3 mod config found for '{name}' in mod_config.json")
-    _save_mapper(name, mappings, heritage_mappings, imported_mods, title_mappings, title_names)
+    _save_mapper(name, mappings, heritage_mappings, imported_mods, title_mappings, title_names, imported_tag, imported_start_date, imported_end_date)
     _output({'status': 'ok', 'mapper': name, 'factions': len(set(k[1] for k in mappings.keys())),
              'heritage_entries': len(heritage_mappings), 'title_entries': len(title_mappings)})
 

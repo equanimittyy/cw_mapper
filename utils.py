@@ -116,7 +116,7 @@ def resolve_import_mods(import_folder_name, imported_mods):
 # Save / Load mapper (moved from main.py mapping_window scope)
 # ============================================================
 
-def save_mapper(name, faction_mapping, heritage_mapping, mods, title_mapping=None, title_names=None):
+def save_mapper(name, faction_mapping, heritage_mapping, mods, title_mapping=None, title_names=None, tag=None, start_date=None, end_date=None):
     output_path = os.path.join(CUSTOM_MAPPER_DIR, f'{name}.txt')
     os.makedirs(CUSTOM_MAPPER_DIR, exist_ok=True)
     seperator = ','
@@ -135,6 +135,9 @@ def save_mapper(name, faction_mapping, heritage_mapping, mods, title_mapping=Non
         },
         'TITLE_NAMES': dict(title_names or {}),
         'MODS': dict(mods),
+        'TAG': tag or name,
+        'START_DATE': start_date or '0',
+        'END_DATE': end_date or '9999',
     }
     fd, tmp_path = tempfile.mkstemp(dir=CUSTOM_MAPPER_DIR, suffix='.tmp', prefix='.save_')
     try:
@@ -209,6 +212,11 @@ def load_mapper(file, maa_source_keys, attila_source_keys, cultures_source_keys,
 
     loaded_mods = dict(mod_data)
 
+    # Load tag and time period (backward compatible with old saves)
+    loaded_tag = loaded_data.get('TAG', '')
+    loaded_start_date = loaded_data.get('START_DATE', '0')
+    loaded_end_date = loaded_data.get('END_DATE', '9999')
+
     # Load title data (backward compatible with old saves)
     title_data = loaded_data.get('TITLES_AND_MAA', {})
     title_names_data = loaded_data.get('TITLE_NAMES', {})
@@ -251,7 +259,7 @@ def load_mapper(file, maa_source_keys, attila_source_keys, cultures_source_keys,
         unique = sorted(set(tuple(x) for x in missing_keys))
         missing_keys = [list(x) for x in unique]
 
-    return loaded_faction_mapping, loaded_heritage_mapping, loaded_mods, overall_diff, missing_keys, loaded_title_mapping, loaded_title_names, diff_message
+    return loaded_faction_mapping, loaded_heritage_mapping, loaded_mods, overall_diff, missing_keys, loaded_title_mapping, loaded_title_names, diff_message, loaded_tag, loaded_start_date, loaded_end_date
 
 # ============================================================
 # XML Import / Export
@@ -263,10 +271,15 @@ def import_xml(import_folder):
     imported_mods = {}
     imported_title_mappings = {}
     imported_title_names = {}
+    imported_tag = ''
+    imported_start_date = '0'
+    imported_end_date = '9999'
     import_cultures = os.path.join(import_folder, 'Cultures')
     import_factions = os.path.join(import_folder, 'Factions')
     import_titles = os.path.join(import_folder, 'Titles')
     import_mods = os.path.join(import_folder, 'Mods.xml')
+    import_tag = os.path.join(import_folder, 'tag.txt')
+    import_time = os.path.join(import_folder, 'Time Period.xml')
 
     # Cultures
     if os.path.exists(import_cultures):
@@ -357,9 +370,25 @@ def import_xml(import_folder):
         for mod in root:
             imported_mods['Attila'].append(mod.text)
 
-    return imported_mappings, imported_heritage_mappings, imported_mods, imported_title_mappings, imported_title_names
+    # Tag
+    if os.path.exists(import_tag):
+        with open(import_tag, 'r', encoding='utf-8-sig') as f:
+            imported_tag = f.read().strip()
 
-def export_xml(file, tag, s_date, e_date):
+    # Time Period
+    if os.path.exists(import_time):
+        tree = ET.parse(import_time)
+        root = tree.getroot()
+        start_el = root.find('StartDate')
+        end_el = root.find('EndDate')
+        if start_el is not None and start_el.text:
+            imported_start_date = start_el.text.strip()
+        if end_el is not None and end_el.text:
+            imported_end_date = end_el.text.strip()
+
+    return imported_mappings, imported_heritage_mappings, imported_mods, imported_title_mappings, imported_title_names, imported_tag, imported_start_date, imported_end_date
+
+def export_xml(file, tag=None, s_date=None, e_date=None):
     file_name, _ = os.path.splitext(os.path.split(file)[1])
     export_dir = os.path.join(CUSTOM_MAPPER_DIR, 'export', file_name)
     os.makedirs(export_dir, exist_ok=True)
@@ -383,6 +412,13 @@ def export_xml(file, tag, s_date, e_date):
         mod_data = export_dict.get('MODS', {})
         title_data = export_dict.get('TITLES_AND_MAA', {})
         title_names_data = export_dict.get('TITLE_NAMES', {})
+        # Use saved tag/dates from file, with parameter overrides
+        if not tag:
+            tag = export_dict.get('TAG', '')
+        if not s_date:
+            s_date = export_dict.get('START_DATE', '0')
+        if not e_date:
+            e_date = export_dict.get('END_DATE', '9999')
 
         loaded_faction_mapping = {
             tuple(k.split(seperator, 1)): v
