@@ -895,10 +895,6 @@
             "att_des_es_marz_archers",
             null
         ],
-        "crossbowmen,West African": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,West African": [
             "GARAM_tribal_horsemen",
             null
@@ -975,10 +971,6 @@
             "att_des_es_behers_chosen",
             null
         ],
-        "accolade_maa_crossbowers,West African": [
-            "DEFAULT",
-            null
-        ],
         "onager,West African": [
             "att_des_onager",
             "RANGED"
@@ -1037,10 +1029,6 @@
         ],
         "bowmen,Bedouin": [
             "mubs_bedouin_bowmen",
-            null
-        ],
-        "crossbowmen,Bedouin": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Bedouin": [
@@ -1123,10 +1111,6 @@
             "att_des_es_noble_al_rahrain",
             null
         ],
-        "accolade_maa_crossbowers,Bedouin": [
-            "DEFAULT",
-            null
-        ],
         "onager,Bedouin": [
             "att_des_onager",
             "RANGED"
@@ -1185,10 +1169,6 @@
         ],
         "bowmen,Abbasid": [
             "mubs_bowmen",
-            null
-        ],
-        "crossbowmen,Abbasid": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Abbasid": [
@@ -1275,10 +1255,6 @@
             "att_des_es_noble_al_rahrain",
             null
         ],
-        "accolade_maa_crossbowers,Abbasid": [
-            "DEFAULT",
-            null
-        ],
         "onager,Abbasid": [
             "cha_mus_onager",
             "RANGED"
@@ -1337,10 +1313,6 @@
         ],
         "bowmen,Egyptian": [
             "mubs_bowmen",
-            null
-        ],
-        "crossbowmen,Egyptian": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Egyptian": [
@@ -1423,10 +1395,6 @@
             "att_des_es_athars_chosen",
             null
         ],
-        "accolade_maa_crossbowers,Egyptian": [
-            "DEFAULT",
-            null
-        ],
         "onager,Egyptian": [
             "cha_mus_onager",
             "RANGED"
@@ -1480,10 +1448,6 @@
         ],
         "bowmen,Himyarite": [
             "att_des_elite_nubian_archers",
-            null
-        ],
-        "crossbowmen,Himyarite": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Himyarite": [
@@ -1570,10 +1534,6 @@
             "att_des_es_khahyahlim",
             null
         ],
-        "accolade_maa_crossbowers,Himyarite": [
-            "DEFAULT",
-            null
-        ],
         "onager,Himyarite": [
             "att_merc_est_onager",
             "RANGED"
@@ -1632,10 +1592,6 @@
         ],
         "bowmen,South Arabian": [
             "att_des_elite_nubian_archers",
-            null
-        ],
-        "crossbowmen,South Arabian": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,South Arabian": [
@@ -1718,10 +1674,6 @@
             "att_des_es_athars_chosen",
             null
         ],
-        "accolade_maa_crossbowers,South Arabian": [
-            "DEFAULT",
-            null
-        ],
         "onager,South Arabian": [
             "att_des_onager",
             "RANGED"
@@ -1785,10 +1737,6 @@
         ],
         "bowmen,Andalusian": [
             "cha_mus_armoured_archers",
-            null
-        ],
-        "crossbowmen,Andalusian": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Andalusian": [
@@ -1875,10 +1823,6 @@
             "att_des_es_athars_chosen",
             null
         ],
-        "accolade_maa_crossbowers,Andalusian": [
-            "DEFAULT",
-            null
-        ],
         "onager,Andalusian": [
             "cha_mus_onager",
             "RANGED"
@@ -1937,10 +1881,6 @@
         ],
         "bowmen,Maghrebi": [
             "mubs_bowmen",
-            null
-        ],
-        "crossbowmen,Maghrebi": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Maghrebi": [
@@ -2023,10 +1963,6 @@
             "att_des_es_noble_al_rahrain",
             null
         ],
-        "accolade_maa_crossbowers,Maghrebi": [
-            "DEFAULT",
-            null
-        ],
         "onager,Maghrebi": [
             "cha_mus_onager",
             "RANGED"
@@ -2087,10 +2023,6 @@
             "BAL_archers",
             null
         ],
-        "crossbowmen,Baltic": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Baltic": [
             "BAL_nordic_retinue",
             null
@@ -2129,10 +2061,6 @@
         ],
         "accolade_maa_vanguards,Baltic": [
             "BAL_kursi_retinue",
-            null
-        ],
-        "accolade_maa_crossbowers,Baltic": [
-            "DEFAULT",
             null
         ],
         "onager,Baltic": [
@@ -2195,10 +2123,6 @@
             "att_slav_posion_archers",
             null
         ],
-        "crossbowmen,Finnic": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Finnic": [
             "att_slav_raiders",
             null
@@ -2237,10 +2161,6 @@
         ],
         "accolade_maa_vanguards,Finnic": [
             "att_slav_horse_butchers",
-            null
-        ],
-        "accolade_maa_crossbowers,Finnic": [
-            "DEFAULT",
             null
         ],
         "onager,Finnic": [
@@ -2301,10 +2221,6 @@
         ],
         "bowmen,Baranis": [
             "mubs_maghrebi_bowmen",
-            null
-        ],
-        "crossbowmen,Baranis": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Baranis": [
@@ -2391,10 +2307,6 @@
             "cha_mus_andalusian_warriors",
             null
         ],
-        "accolade_maa_crossbowers,Baranis": [
-            "DEFAULT",
-            null
-        ],
         "onager,Baranis": [
             "att_des_onager",
             "RANGED"
@@ -2453,10 +2365,6 @@
         ],
         "bowmen,Butr": [
             "mubs_maghrebi_bowmen",
-            null
-        ],
-        "crossbowmen,Butr": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Butr": [
@@ -2543,10 +2451,6 @@
             "cha_mus_andalusian_warriors",
             null
         ],
-        "accolade_maa_crossbowers,Butr": [
-            "DEFAULT",
-            null
-        ],
         "onager,Butr": [
             "att_des_onager",
             "RANGED"
@@ -2600,10 +2504,6 @@
         ],
         "bowmen,Sahelian": [
             "att_des_garamantian_hunters",
-            null
-        ],
-        "crossbowmen,Sahelian": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Sahelian": [
@@ -2686,10 +2586,6 @@
             "att_des_es_noble_al_rahrain",
             null
         ],
-        "accolade_maa_crossbowers,Sahelian": [
-            "DEFAULT",
-            null
-        ],
         "onager,Sahelian": [
             "att_des_onager",
             "RANGED"
@@ -2745,10 +2641,6 @@
             "cha_cel_welsh_archers",
             null
         ],
-        "crossbowmen,Breton": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Breton": [
             "cha_gen_horsemen",
             null
@@ -2787,10 +2679,6 @@
         ],
         "accolade_maa_vanguards,Breton": [
             "cha_fra_mounted_swordsmen",
-            null
-        ],
-        "accolade_maa_crossbowers,Breton": [
-            "DEFAULT",
             null
         ],
         "onager,Breton": [
@@ -3157,10 +3045,6 @@
             "KOK_steppe_bows",
             null
         ],
-        "crossbowmen,Burmese": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Burmese": [
             "HEP_steppe_hordes",
             null
@@ -3229,10 +3113,6 @@
             "KOK_cha_gen_armoured_sword",
             null
         ],
-        "accolade_maa_crossbowers,Burmese": [
-            "DEFAULT",
-            null
-        ],
         "onager,Burmese": [
             "cha_avar_onager",
             "RANGED"
@@ -3291,10 +3171,6 @@
         ],
         "bowmen,Alan": [
             "ALAN_alanoi_archers",
-            null
-        ],
-        "crossbowmen,Alan": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Alan": [
@@ -3367,10 +3243,6 @@
         ],
         "accolade_maa_vanguards,Alan": [
             "att_ger_agathyrsi_warriors",
-            null
-        ],
-        "accolade_maa_crossbowers,Alan": [
-            "DEFAULT",
             null
         ],
         "onager,Alan": [
@@ -3570,10 +3442,6 @@
         ],
         "bowmen,Georgian": [
             "ALAN_alanoi_archers",
-            null
-        ],
-        "crossbowmen,Georgian": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Georgian": [
@@ -4134,10 +4002,6 @@
             "cha_sax_archers",
             null
         ],
-        "crossbowmen,Saxon": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Saxon": [
             "cha_sax_cav",
             null
@@ -4176,10 +4040,6 @@
         ],
         "accolade_maa_vanguards,Saxon": [
             "cha_sax_sword_veterans",
-            null
-        ],
-        "accolade_maa_crossbowers,Saxon": [
-            "DEFAULT",
             null
         ],
         "onager,Saxon": [
@@ -4237,10 +4097,6 @@
             "cha_fra_mounted_archers",
             null
         ],
-        "crossbowmen,Franconian": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Franconian": [
             "cha_fra_horsemen",
             null
@@ -4279,10 +4135,6 @@
         ],
         "accolade_maa_vanguards,Franconian": [
             "cha_sax_sword_veterans",
-            null
-        ],
-        "accolade_maa_crossbowers,Franconian": [
-            "DEFAULT",
             null
         ],
         "onager,Franconian": [
@@ -4340,10 +4192,6 @@
             "cha_lom_archers",
             null
         ],
-        "crossbowmen,Lombard": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Lombard": [
             "cha_lom_horsemen",
             null
@@ -4382,10 +4230,6 @@
         ],
         "accolade_maa_vanguards,Lombard": [
             "cha_lom_gastald_swordsmen",
-            null
-        ],
-        "accolade_maa_crossbowers,Lombard": [
-            "DEFAULT",
             null
         ],
         "onager,Lombard": [
@@ -4441,10 +4285,6 @@
         ],
         "bowmen,Tibetan": [
             "KOK_steppe_bows",
-            null
-        ],
-        "crossbowmen,Tibetan": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Tibetan": [
@@ -4515,10 +4355,6 @@
             "KOK_axe_warriors",
             null
         ],
-        "accolade_maa_crossbowers,Tibetan": [
-            "DEFAULT",
-            null
-        ],
         "onager,Tibetan": [
             "cha_avar_onager",
             "RANGED"
@@ -4572,10 +4408,6 @@
         ],
         "bowmen,Indian": [
             "HEP_hindi_archers",
-            null
-        ],
-        "crossbowmen,Indian": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Indian": [
@@ -4654,10 +4486,6 @@
             "att_des_es_athars_chosen",
             null
         ],
-        "accolade_maa_crossbowers,Indian": [
-            "DEFAULT",
-            null
-        ],
         "onager,Indian": [
             "att_merc_est_onager",
             "RANGED"
@@ -4716,10 +4544,6 @@
         ],
         "bowmen,Horn African": [
             "ALL_garrison_archers",
-            null
-        ],
-        "crossbowmen,Horn African": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Horn African": [
@@ -4802,10 +4626,6 @@
             "att_des_kushite_shotelai",
             null
         ],
-        "accolade_maa_crossbowers,Horn African": [
-            "DEFAULT",
-            null
-        ],
         "onager,Horn African": [
             "att_des_onager",
             "RANGED"
@@ -4859,10 +4679,6 @@
         ],
         "bowmen,Coptic": [
             "BLEMM_archer",
-            null
-        ],
-        "crossbowmen,Coptic": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Coptic": [
@@ -4941,10 +4757,6 @@
             "att_des_es_masqal_spearmen",
             null
         ],
-        "accolade_maa_crossbowers,Coptic": [
-            "DEFAULT",
-            null
-        ],
         "onager,Coptic": [
             "att_des_onager",
             "RANGED"
@@ -5000,10 +4812,6 @@
             "att_slav_hunters",
             null
         ],
-        "crossbowmen,Rus": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Rus": [
             "att_slav_horse_raiders",
             null
@@ -5042,10 +4850,6 @@
         ],
         "accolade_maa_vanguards,Rus": [
             "att_slav_axe_warriors",
-            null
-        ],
-        "accolade_maa_crossbowers,Rus": [
-            "DEFAULT",
             null
         ],
         "onager,Rus": [
@@ -5103,10 +4907,6 @@
             "cha_fra_archers",
             null
         ],
-        "crossbowmen,Frankish": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Frankish": [
             "cha_fra_horsemen",
             null
@@ -5145,10 +4945,6 @@
         ],
         "accolade_maa_vanguards,Frankish": [
             "cha_fra_mounted_swordsmen",
-            null
-        ],
-        "accolade_maa_crossbowers,Frankish": [
-            "DEFAULT",
             null
         ],
         "onager,Frankish": [
@@ -5206,10 +5002,6 @@
             "cha_fra_mounted_archers",
             null
         ],
-        "crossbowmen,Norman": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Norman": [
             "cha_nor_riddarar",
             null
@@ -5248,10 +5040,6 @@
         ],
         "accolade_maa_vanguards,Norman": [
             "cha_fra_mounted_swordsmen",
-            null
-        ],
-        "accolade_maa_crossbowers,Norman": [
-            "DEFAULT",
             null
         ],
         "onager,Norman": [
@@ -5309,10 +5097,6 @@
             "att_ger_elite_germanic_archers",
             null
         ],
-        "crossbowmen,Iberian": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Iberian": [
             "cha_spa_raider_cav",
             null
@@ -5351,10 +5135,6 @@
         ],
         "accolade_maa_vanguards,Iberian": [
             "cha_spa_royal_guardsmen",
-            null
-        ],
-        "accolade_maa_crossbowers,Iberian": [
-            "DEFAULT",
             null
         ],
         "onager,Iberian": [
@@ -5415,10 +5195,6 @@
         ],
         "bowmen,Persian": [
             "SAS_syrian_archers",
-            null
-        ],
-        "crossbowmen,Persian": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Persian": [
@@ -5501,10 +5277,6 @@
             "SAS_soghdian_footmen",
             null
         ],
-        "accolade_maa_crossbowers,Persian": [
-            "DEFAULT",
-            null
-        ],
         "onager,Persian": [
             "att_est_onager",
             "RANGED"
@@ -5558,10 +5330,6 @@
         ],
         "bowmen,Daylamite": [
             "SAS_syrian_archers",
-            null
-        ],
-        "crossbowmen,Daylamite": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Daylamite": [
@@ -5644,10 +5412,6 @@
             "att_est_royal_persian_archers",
             null
         ],
-        "accolade_maa_crossbowers,Daylamite": [
-            "DEFAULT",
-            null
-        ],
         "onager,Daylamite": [
             "att_est_onager",
             "RANGED"
@@ -5706,10 +5470,6 @@
         ],
         "bowmen,Kurdish": [
             "att_est_kurdish_archers",
-            null
-        ],
-        "crossbowmen,Kurdish": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Kurdish": [
@@ -5792,10 +5552,6 @@
             "att_est_elite_dailamite_infantry",
             null
         ],
-        "accolade_maa_crossbowers,Kurdish": [
-            "DEFAULT",
-            null
-        ],
         "onager,Kurdish": [
             "att_est_onager",
             "RANGED"
@@ -5854,10 +5610,6 @@
         ],
         "bowmen,Khorasani": [
             "SAS_syrian_archers",
-            null
-        ],
-        "crossbowmen,Khorasani": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Khorasani": [
@@ -5940,10 +5692,6 @@
             "att_est_elite_dailamite_infantry",
             null
         ],
-        "accolade_maa_crossbowers,Khorasani": [
-            "DEFAULT",
-            null
-        ],
         "onager,Khorasani": [
             "att_est_onager",
             "RANGED"
@@ -5997,10 +5745,6 @@
         ],
         "bowmen,Turkic": [
             "KOK_steppe_bows",
-            null
-        ],
-        "crossbowmen,Turkic": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Turkic": [
@@ -6111,10 +5855,6 @@
             "KOK_axe_warriors",
             null
         ],
-        "accolade_maa_crossbowers,Turkic": [
-            "DEFAULT",
-            null
-        ],
         "onager,Turkic": [
             "cha_avar_onager",
             "RANGED"
@@ -6168,10 +5908,6 @@
         ],
         "bowmen,Eastern Steppe": [
             "att_nom_steppe_bows",
-            null
-        ],
-        "crossbowmen,Eastern Steppe": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Eastern Steppe": [
@@ -6282,10 +6018,6 @@
             "att_wh_khingilas_khandas",
             null
         ],
-        "accolade_maa_crossbowers,Eastern Steppe": [
-            "DEFAULT",
-            null
-        ],
         "onager,Eastern Steppe": [
             "cha_avar_onager",
             "RANGED"
@@ -6339,10 +6071,6 @@
         ],
         "bowmen,Western Steppe": [
             "att_nom_uar_archers",
-            null
-        ],
-        "crossbowmen,Western Steppe": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Western Steppe": [
@@ -6445,10 +6173,6 @@
             "cha_avar_noble_sword",
             null
         ],
-        "accolade_maa_crossbowers,Western Steppe": [
-            "DEFAULT",
-            null
-        ],
         "onager,Western Steppe": [
             "att_nom_onager",
             "RANGED"
@@ -6502,10 +6226,6 @@
         ],
         "bowmen,Crimean Steppe": [
             "cha_avar_tribesmen",
-            null
-        ],
-        "crossbowmen,Crimean Steppe": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Crimean Steppe": [
@@ -6608,10 +6328,6 @@
             "cha_avar_noble_sword",
             null
         ],
-        "accolade_maa_crossbowers,Crimean Steppe": [
-            "DEFAULT",
-            null
-        ],
         "onager,Crimean Steppe": [
             "cha_avar_onager",
             "RANGED"
@@ -6665,10 +6381,6 @@
         ],
         "bowmen,Bolghar": [
             "att_nom_steppe_shield_archers",
-            null
-        ],
-        "crossbowmen,Bolghar": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Bolghar": [
@@ -6840,10 +6552,6 @@
             "att_ger_germanic_archers",
             null
         ],
-        "crossbowmen,Bulgarian": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Bulgarian": [
             "att_nom_hunnic_horsemen",
             null
@@ -6980,10 +6688,6 @@
             "cha_avar_foot_archers",
             null
         ],
-        "crossbowmen,Hungarian": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Hungarian": [
             "cha_avar_lancers",
             null
@@ -7044,10 +6748,6 @@
             "cha_avar_noble_sword",
             null
         ],
-        "accolade_maa_crossbowers,Hungarian": [
-            "DEFAULT",
-            null
-        ],
         "onager,Hungarian": [
             "cha_slav_onager",
             "RANGED"
@@ -7101,10 +6801,6 @@
         ],
         "bowmen,Hephthalite": [
             "att_nom_uar_archers",
-            null
-        ],
-        "crossbowmen,Hephthalite": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Hephthalite": [
@@ -7215,10 +6911,6 @@
             "att_est_sogdian_warriors",
             null
         ],
-        "accolade_maa_crossbowers,Hephthalite": [
-            "DEFAULT",
-            null
-        ],
         "onager,Hephthalite": [
             "att_merc_est_onager",
             "RANGED"
@@ -7272,10 +6964,6 @@
         ],
         "bowmen,Indo Persian": [
             "HEP_hindi_archers",
-            null
-        ],
-        "crossbowmen,Indo Persian": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Indo Persian": [
@@ -7358,10 +7046,6 @@
             "att_est_elite_dailamite_infantry",
             null
         ],
-        "accolade_maa_crossbowers,Indo Persian": [
-            "DEFAULT",
-            null
-        ],
         "onager,Indo Persian": [
             "att_merc_est_onager",
             "RANGED"
@@ -7415,10 +7099,6 @@
         ],
         "bowmen,Papal": [
             "cha_gen_archers",
-            null
-        ],
-        "crossbowmen,Papal": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Papal": [
@@ -7520,10 +7200,6 @@
             "cha_vik_hunters",
             null
         ],
-        "crossbowmen,Viking": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Viking": [
             "cha_nor_riddarar",
             null
@@ -7562,10 +7238,6 @@
         ],
         "accolade_maa_vanguards,Viking": [
             "cha_vik_berserkers",
-            null
-        ],
-        "accolade_maa_crossbowers,Viking": [
-            "DEFAULT",
             null
         ],
         "onager,Viking": [
@@ -7628,10 +7300,6 @@
             "cha_slav_archers",
             null
         ],
-        "crossbowmen,Slavic": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Slavic": [
             "cha_slav_raiders",
             null
@@ -7670,10 +7338,6 @@
         ],
         "accolade_maa_vanguards,Slavic": [
             "cha_slav_prvaci",
-            null
-        ],
-        "accolade_maa_crossbowers,Slavic": [
-            "DEFAULT",
             null
         ],
         "onager,Slavic": [
@@ -7729,10 +7393,6 @@
         ],
         "bowmen,Permian": [
             "att_nom_steppe_shield_archers",
-            null
-        ],
-        "crossbowmen,Permian": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Permian": [
@@ -7801,10 +7461,6 @@
         ],
         "accolade_maa_vanguards,Permian": [
             "NOM_axes",
-            null
-        ],
-        "accolade_maa_crossbowers,Permian": [
-            "DEFAULT",
             null
         ],
         "onager,Permian": [
@@ -8176,10 +7832,6 @@
             "att_slav_archers",
             null
         ],
-        "crossbowmen,Wendish": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Wendish": [
             "att_ger_germanic_mounted_warband",
             null
@@ -8222,10 +7874,6 @@
         ],
         "accolade_maa_vanguards,Wendish": [
             "att_nor_huscarls",
-            null
-        ],
-        "accolade_maa_crossbowers,Wendish": [
-            "DEFAULT",
             null
         ],
         "onager,Wendish": [
@@ -8288,10 +7936,6 @@
             "cha_vik_hunters",
             null
         ],
-        "crossbowmen,Norse Gael": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Norse Gael": [
             "cha_cel_horsemen",
             null
@@ -8330,10 +7974,6 @@
         ],
         "accolade_maa_vanguards,Norse Gael": [
             "cha_vik_berserkers",
-            null
-        ],
-        "accolade_maa_crossbowers,Norse Gael": [
-            "DEFAULT",
             null
         ],
         "onager,Norse Gael": [
@@ -8396,10 +8036,6 @@
             "cha_eng_select_archers",
             null
         ],
-        "crossbowmen,Danelander": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Danelander": [
             "cha_eng_horsemen",
             null
@@ -8438,10 +8074,6 @@
         ],
         "accolade_maa_vanguards,Danelander": [
             "cha_vik_berserkers",
-            null
-        ],
-        "accolade_maa_crossbowers,Danelander": [
-            "DEFAULT",
             null
         ],
         "onager,Danelander": [
@@ -8497,10 +8129,6 @@
         ],
         "bowmen,Outremer": [
             "cha_mus_armoured_archers",
-            null
-        ],
-        "crossbowmen,Outremer": [
-            "DEFAULT",
             null
         ],
         "light_horsemen,Outremer": [
@@ -8563,10 +8191,6 @@
             "cha_fra_mounted_swordsmen",
             null
         ],
-        "accolade_maa_crossbowers,Outremer": [
-            "DEFAULT",
-            null
-        ],
         "onager,Outremer": [
             "cha_fra_onager",
             "RANGED"
@@ -8622,10 +8246,6 @@
             "cha_sax_archers",
             null
         ],
-        "crossbowmen,Teutonic": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Teutonic": [
             "cha_sax_cav",
             null
@@ -8664,10 +8284,6 @@
         ],
         "accolade_maa_vanguards,Teutonic": [
             "BAL_kursi_retinue",
-            null
-        ],
-        "accolade_maa_crossbowers,Teutonic": [
-            "DEFAULT",
             null
         ],
         "onager,Teutonic": [
@@ -8840,10 +8456,6 @@
             "cha_lom_archers",
             null
         ],
-        "crossbowmen,Dalmatian": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Dalmatian": [
             "cha_lom_horsemen",
             null
@@ -8882,10 +8494,6 @@
         ],
         "accolade_maa_vanguards,Dalmatian": [
             "cha_lom_gastald_swordsmen",
-            null
-        ],
-        "accolade_maa_crossbowers,Dalmatian": [
-            "DEFAULT",
             null
         ],
         "onager,Dalmatian": [
@@ -9409,10 +9017,6 @@
             "att_des_desert_bowmen",
             null
         ],
-        "crossbowmen,Copt": [
-            "DEFAULT",
-            null
-        ],
         "light_horsemen,Copt": [
             "GHAS_hippeis",
             null
@@ -9487,10 +9091,6 @@
         ],
         "accolade_maa_vanguards,Copt": [
             "att_des_es_sahnegohrim",
-            null
-        ],
-        "accolade_maa_crossbowers,Copt": [
-            "DEFAULT",
             null
         ],
         "onager,Copt": [
