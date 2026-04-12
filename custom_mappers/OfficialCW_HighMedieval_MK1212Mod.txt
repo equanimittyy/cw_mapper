@@ -18768,6 +18768,405 @@
         ],
         "heritage_hmongic,yao": [
             "Tibetan"
+        ],
+        "heritage_buyeo,PARENT_KEY": [
+            "Tibetan"
+        ],
+        "heritage_byzantine,RICE_aegean": [
+            "Byzantine"
+        ],
+        "heritage_tibetan,RICE_balti_hybrid": [
+            "Tibetan"
+        ],
+        "heritage_arabic,RICE_harranian": [
+            "Abbasid"
+        ],
+        "heritage_arabic,RICE_jibbali": [
+            "Abbasid"
+        ],
+        "heritage_iranian,RICE_kalash": [
+            "Persian"
+        ],
+        "heritage_turkic,RICE_kanjina": [
+            "Turkic"
+        ],
+        "heritage_turkic,RICE_khalaj": [
+            "Turkic"
+        ],
+        "heritage_turkic,RICE_khallukh": [
+            "Turkic"
+        ],
+        "heritage_tibetan,RICE_monguor": [
+            "Tibetan"
+        ],
+        "heritage_west_germanic,RICE_scarboroughian": [
+            "Anglo Saxon"
+        ],
+        "heritage_iranian,RICE_shina": [
+            "Persian"
+        ],
+        "heritage_berber,RICE_siwi": [
+            "Baranis"
+        ],
+        "heritage_arabic,RICE_wahati": [
+            "Abbasid"
+        ],
+        "heritage_arabic,RICE_wahati_hybrid": [
+            "Abbasid"
+        ],
+        "heritage_iranian,RICE_wakhi": [
+            "Persian"
+        ],
+        "heritage_central_african,abakwariga": [
+            "West African"
+        ],
+        "heritage_yoruba,akpoto": [
+            "West African"
+        ],
+        "heritage_frankish,aquitanian": [
+            "Frankish"
+        ],
+        "heritage_chinese,asian_american": [
+            "Tibetan"
+        ],
+        "heritage_indo_aryan,avadhi": [
+            "Indian"
+        ],
+        "heritage_somalian,aweer": [
+            "Horn African"
+        ],
+        "heritage_yoruba,baatonu": [
+            "West African"
+        ],
+        "heritage_arabic,baggara": [
+            "Abbasid"
+        ],
+        "heritage_mon_khmer,bahnar": [
+            "Burmese"
+        ],
+        "heritage_austronesian,batak": [
+            "Burmese"
+        ],
+        "heritage_east_african,beta_israeli": [
+            "Coptic"
+        ],
+        "heritage_indo_aryan,bihari": [
+            "Indian"
+        ],
+        "heritage_goidelic,breatnach": [
+            "Irish"
+        ],
+        "heritage_north_germanic,bretagner": [
+            "Viking"
+        ],
+        "heritage_austronesian,bungku": [
+            "Burmese"
+        ],
+        "heritage_east_slavic,byelorusian": [
+            "Rus"
+        ],
+        "heritage_byzantine,cappadocian": [
+            "Byzantine"
+        ],
+        "heritage_bantu,chagga": [
+            "West African"
+        ],
+        "heritage_east_slavic,chernigovan": [
+            "Rus"
+        ],
+        "heritage_mon_khmer,chong": [
+            "Burmese"
+        ],
+        "heritage_somalian,dahalo": [
+            "Horn African"
+        ],
+        "heritage_austronesian,danao": [
+            "Burmese"
+        ],
+        "heritage_indo_aryan,dhundari": [
+            "Indian"
+        ],
+        "heritage_elamite,elamite": [
+            "Persian"
+        ],
+        "heritage_central_african,fur": [
+            "West African"
+        ],
+        "heritage_frankish,gascon": [
+            "Frankish"
+        ],
+        "heritage_austronesian,gorontalo": [
+            "Burmese"
+        ],
+        "heritage_korean,goryeo_hybrid": [
+            "Tibetan"
+        ],
+        "heritage_east_african,gurage": [
+            "Coptic"
+        ],
+        "heritage_tibetan,gyalrong": [
+            "Tibetan"
+        ],
+        "heritage_east_african,hadiyya": [
+            "Coptic"
+        ],
+        "heritage_east_african,harari": [
+            "Coptic"
+        ],
+        "heritage_berber,haratin": [
+            "Baranis"
+        ],
+        "heritage_somalian,harla": [
+            "Horn African"
+        ],
+        "heritage_arabic,hedjazi": [
+            "Abbasid"
+        ],
+        "heritage_arabic,hejazi": [
+            "Abbasid"
+        ],
+        "heritage_tibetan,himalayan": [
+            "Tibetan"
+        ],
+        "heritage_yoruba,ijaw": [
+            "West African"
+        ],
+        "heritage_arabic,iraqi": [
+            "Abbasid"
+        ],
+        "heritage_byzantine,italo_greek": [
+            "Byzantine"
+        ],
+        "heritage_byzantine,italo_greek_calabria": [
+            "Byzantine"
+        ],
+        "heritage_brythonic,iwerddonian": [
+            "Brythonic"
+        ],
+        "heritage_austronesian,jakun": [
+            "Burmese"
+        ],
+        "heritage_berber,kabylian": [
+            "Baranis"
+        ],
+        "heritage_israelite,kaifengim": [
+            "Himyarite"
+        ],
+        "heritage_indo_aryan,kathiawari": [
+            "Indian"
+        ],
+        "heritage_tibetan,khalkha": [
+            "Tibetan"
+        ],
+        "heritage_gur,kibsi": [
+            "West African"
+        ],
+        "heritage_israelite,kochinim": [
+            "Himyarite"
+        ],
+        "heritage_gur,kurumba": [
+            "West African"
+        ],
+        "heritage_mon_khmer,kuy": [
+            "Burmese"
+        ],
+        "heritage_austronesian,lampung": [
+            "Burmese"
+        ],
+        "heritage_gur,lilse": [
+            "West African"
+        ],
+        "heritage_central_african,maban": [
+            "West African"
+        ],
+        "heritage_arabic,madan": [
+            "Abbasid"
+        ],
+        "heritage_indo_aryan,magadhi": [
+            "Indian"
+        ],
+        "heritage_indo_aryan,maithili": [
+            "Indian"
+        ],
+        "heritage_bantu,makonde": [
+            "West African"
+        ],
+        "heritage_bantu,makua": [
+            "West African"
+        ],
+        "heritage_dravidian,malayali": [
+            "Indian"
+        ],
+        "heritage_ugro_permian,mansi": [
+            "Permian"
+        ],
+        "heritage_indo_aryan,marwari": [
+            "Indian"
+        ],
+        "heritage_iranian,mazandarani": [
+            "Persian"
+        ],
+        "heritage_burman,meitei": [
+            "Burmese"
+        ],
+        "heritage_indo_aryan,mewari": [
+            "Indian"
+        ],
+        "heritage_bantu,mijikenda": [
+            "West African"
+        ],
+        "heritage_austronesian,moklen": [
+            "Burmese"
+        ],
+        "heritage_volga_finnic,moksha": [
+            "Finnic"
+        ],
+        "heritage_indo_aryan,munda": [
+            "Indian"
+        ],
+        "heritage_viet,muong": [
+            "Tibetan"
+        ],
+        "heritage_frankish,new_frankish": [
+            "Frankish"
+        ],
+        "heritage_bantu,nguni": [
+            "West African"
+        ],
+        "heritage_indo_aryan,nimadi": [
+            "Indian"
+        ],
+        "heritage_brythonic,old_brythonic": [
+            "Brythonic"
+        ],
+        "heritage_east_african,ongamo": [
+            "Coptic"
+        ],
+        "heritage_somalian,oromo": [
+            "Horn African"
+        ],
+        "heritage_frankish,poitevin": [
+            "Frankish"
+        ],
+        "heritage_bantu,pokomo": [
+            "West African"
+        ],
+        "heritage_frankish,provancale": [
+            "Frankish"
+        ],
+        "heritage_burman,pyu": [
+            "Burmese"
+        ],
+        "heritage_burman,rakhine": [
+            "Burmese"
+        ],
+        "heritage_bantu,ruvu": [
+            "West African"
+        ],
+        "heritage_east_slavic,ryazanian": [
+            "Rus"
+        ],
+        "heritage_austronesian,sama": [
+            "Burmese"
+        ],
+        "heritage_buyeo,samhan_hybrid": [
+            "Tibetan"
+        ],
+        "heritage_goidelic,sassenach": [
+            "Irish"
+        ],
+        "heritage_north_germanic,scanian": [
+            "Viking"
+        ],
+        "heritage_central_germanic,schwiizer": [
+            "Franconian"
+        ],
+        "heritage_austronesian,seletar": [
+            "Burmese"
+        ],
+        "heritage_austronesian,semang": [
+            "Burmese"
+        ],
+        "heritage_gur,senufo": [
+            "West African"
+        ],
+        "heritage_bantu,seuta": [
+            "West African"
+        ],
+        "heritage_bantu,shirazi": [
+            "West African"
+        ],
+        "heritage_bantu,shona": [
+            "West African"
+        ],
+        "heritage_berber,siculo_barbari": [
+            "Baranis"
+        ],
+        "heritage_byzantine,siculo_greek": [
+            "Byzantine"
+        ],
+        "heritage_byzantine,siculo_greek_hybrid": [
+            "Byzantine"
+        ],
+        "heritage_east_african,siddi": [
+            "Coptic"
+        ],
+        "heritage_bantu,sotho_tswana": [
+            "West African"
+        ],
+        "heritage_central_germanic,suisse": [
+            "Franconian"
+        ],
+        "heritage_austronesian,sumba": [
+            "Burmese"
+        ],
+        "heritage_austronesian,sunda": [
+            "Burmese"
+        ],
+        "heritage_central_germanic,svcizzero": [
+            "Franconian"
+        ],
+        "heritage_austronesian,timor": [
+            "Burmese"
+        ],
+        "heritage_austronesian,tolaki": [
+            "Burmese"
+        ],
+        "heritage_central_african,tora": [
+            "West African"
+        ],
+        "heritage_central_african,toubou": [
+            "West African"
+        ],
+        "heritage_bantu,tsonga": [
+            "West African"
+        ],
+        "heritage_berber,tuareg": [
+            "Baranis"
+        ],
+        "heritage_north_germanic,vender": [
+            "Viking"
+        ],
+        "heritage_east_slavic,vladimirian": [
+            "Rus"
+        ],
+        "heritage_east_slavic,volyn_": [
+            "Rus"
+        ],
+        "heritage_mon_khmer,wa": [
+            "Burmese"
+        ],
+        "heritage_bantu,wamvita": [
+            "West African"
+        ],
+        "heritage_chinese,wenmo": [
+            "Tibetan"
+        ],
+        "heritage_siberian,yeniseian": [
+            "Permian"
+        ],
+        "heritage_sahelian,zarma": [
+            "Sahelian"
         ]
     },
     "TITLES_AND_MAA": {
