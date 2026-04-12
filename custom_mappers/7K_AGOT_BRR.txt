@@ -298,7 +298,7 @@
         ],
         "westerlands_knights,Default": [
             "Westerlands_Lannister_MAA_Lance_Cavalry",
-            "INFANTRY"
+            "CAVALRY"
         ],
         "stormlands_heavy_infantry,Default": [
             "Stormlands_Baratheon_Guard_Spearmen",
@@ -306,7 +306,7 @@
         ],
         "westerosi_sellswords,Default": [
             "Essos_Slaver_MAA_Lance_Cavalry",
-            "INFANTRY"
+            "CAVALRY"
         ],
         "goldcloaks,Default": [
             "Crownlands_Kings_Landing_Goldcloak_Swordsmen",
@@ -382,7 +382,7 @@
         ],
         "accolade_maa_crossbowers,Default": [
             "Essos_Slaver_MAA_Crossbowmen",
-            "INFANTRY"
+            "RANGED"
         ],
         "GENERAL,North": [
             "North_Stark_MAA_Lance_Cavalry",

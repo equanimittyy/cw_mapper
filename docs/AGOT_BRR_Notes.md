@@ -26,7 +26,7 @@ The 7K Attila mod's Slaver units have generic bronze-and-leather equipment with 
 | Essos faction | **NEW — NEEDS USER REVIEW** | 38 entries added by Claude, not verified in-game |
 | Wall Targaryen fix | Done | `handpicked_faithful,Wall` fixed from Dragon to Targaryen |
 | Missing Default entries | Done | 6 added: `accolade_maa_crossbowmen`, `accolade_maa_vanguard`, `giant_regiment`, `gold_cloaks`, `iron_bows`, `iron_pikes` |
-| Size/type mismatches | 3 flagged | `westerlands_knights`, `westerosi_sellswords`, `accolade_maa_crossbowers` |
+| Size/type mismatches | Done | 3 fixed: `westerlands_knights` CAVALRY, `westerosi_sellswords` CAVALRY, `accolade_maa_crossbowers` RANGED |
 | MAA only in Default | 45 | Likely intentional (region-specific fallbacks) |
 | None-sized MAA | 224/318 | Needs confirmation if intentional |
 
