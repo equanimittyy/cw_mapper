@@ -8,6 +8,7 @@ build/
 dist/
 custom_mappers/*
 !custom_mappers/OfficialCW_*.txt
+!custom_mappers/7K_AGOT*.txt
 cli_data/
 __pycache__
 .vscode
