@@ -117,11 +117,11 @@
             "INFANTRY"
         ],
         "royal_crossbowmen,Default": [
-            "Crownlands_Dragon_MAA_Crossbowmen",
+            "Crownlands_Targaryen_MAA_Crossbowmen",
             "RANGED"
         ],
         "marsh_walker,Default": [
-            "Crownlands_Dragon_MAA_Billmen",
+            "Crownlands_Targaryen_MAA_Billmen",
             "INFANTRY"
         ],
         "dragonkeepers,Default": [
@@ -129,7 +129,7 @@
             "INFANTRY"
         ],
         "sea_snakes,Default": [
-            "Crownlands_Dragon_MAA_Billmen",
+            "Crownlands_Targaryen_MAA_Billmen",
             "INFANTRY"
         ],
         "winged_knights,Default": [
@@ -201,7 +201,7 @@
             "INFANTRY"
         ],
         "outriders,Default": [
-            "Crownlands_Dragon_MAA_Mounted_Swordsmen",
+            "Crownlands_Targaryen_MAA_Mounted_Swordsmen",
             "CAVALRY"
         ],
         "stolen_spears,Default": [
@@ -285,7 +285,7 @@
             "INFANTRY"
         ],
         "crownlands_spears,Default": [
-            "Crownlands_Dragon_MAA_Billmen",
+            "Crownlands_Targaryen_MAA_Billmen",
             "INFANTRY"
         ],
         "reach_light_cavalry,Default": [
