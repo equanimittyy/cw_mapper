@@ -149,6 +149,12 @@ These MAA exist in regional factions but have no Default fallback (crash risk if
 | `westerosi_sellswords,Default` | `Essos_Slaver_MAA_Lance_Cavalry` | INFANTRY | CAVALRY? |
 | `accolade_maa_crossbowers,Default` | `Essos_Slaver_MAA_Crossbowmen` | INFANTRY | RANGED? |
 
+### Default Mapping Fix — `riverlands_light_infantry`
+
+Changed from `Riverlands_Tully_MAA_Crossbowmen` (RANGED Attila unit) to `Riverlands_Tully_MAA_Axemen` (INFANTRY). The CK3 MAA is "light infantry" so an infantry Attila unit is correct. Uses the Riverlands-specific unit rather than Essos_Slaver because the MAA is Riverlands-specific.
+
+**USER CHECK:** Verify what `Riverlands_Tully_MAA_Axemen` actually looks like in Attila. It's now the Default fallback for `riverlands_light_infantry` — make sure its visual appearance fits "light infantry" and not heavy axe troops.
+
 ### Faction MAA Size Backfill (256 entries)
 
 All regional faction MAA entries originally had `null` sizes — only Default had explicit size types. Sizes were inferred by copying the Default faction's size for the same CK3 MAA key across all regional factions.
