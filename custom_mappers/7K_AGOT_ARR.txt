@@ -281,7 +281,7 @@
             "CAVALRY"
         ],
         "riverlands_light_infantry,Default": [
-            "Riverlands_Tully_MAA_Crossbowmen",
+            "Riverlands_Tully_MAA_Axemen",
             "INFANTRY"
         ],
         "westerlands_knights,Default": [
