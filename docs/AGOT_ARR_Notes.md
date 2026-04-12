@@ -45,6 +45,12 @@
 | `westerosi_sellswords,Default` | `Essos_Slaver_MAA_Lance_Cavalry` | INFANTRY | CAVALRY |
 | `accolade_maa_crossbowers,Default` | `Essos_Slaver_MAA_Crossbowmen` | INFANTRY | RANGED |
 
+### Default Mapping Fix — `riverlands_light_infantry`
+
+Changed from `Riverlands_Tully_MAA_Crossbowmen` to `Riverlands_Tully_MAA_Axemen` (INFANTRY). Same fix as BRR.
+
+**USER CHECK:** Verify what `Riverlands_Tully_MAA_Axemen` looks like in Attila — should fit "light infantry" visually.
+
 ### Faction MAA Size Backfill
 
 - **172 entries** filled from Default's size assignment
