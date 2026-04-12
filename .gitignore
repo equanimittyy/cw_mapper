@@ -6,7 +6,8 @@
 *.zip
 build/
 dist/
-custom_mappers/
+custom_mappers/*
+!custom_mappers/official/
 cli_data/
 __pycache__
 .vscode
