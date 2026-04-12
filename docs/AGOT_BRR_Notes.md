@@ -31,7 +31,7 @@ The 7K Attila mod's Slaver units have generic bronze-and-leather equipment with 
 | Faction MAA sizes | Done | 256 None-sized entries filled (see below) |
 | MAA only in Default | 45 | Confirmed intentional — all region-specific |
 | Title MAA sizes | Done | 2,351 None-sized entries filled (suffix inference + 2 manual) |
-| Duplicate keys | 1 flagged | `accolade_maa_vanguards` vs `accolade_maa_vanguard` — needs CK3 verification |
+| Duplicate keys | N/A | `accolade_maa_vanguards` vs `accolade_maa_vanguard` — distinct CK3 keys, both mapped |
 
 ---
 

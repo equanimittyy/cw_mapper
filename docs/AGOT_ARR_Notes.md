@@ -19,7 +19,7 @@
 | Faction MAA sizes | Done | 174 None-sized entries filled + 1 numeric `400` changed to INFANTRY + 2 `winter_wolves` set to INFANTRY |
 | Title MAA sizes | Done | 2,316 None-sized entries filled (176 from Attila key match, 2,140 from suffix pattern) |
 | Heritage orphan factions | `Essos` | Will resolve when Essos faction is added |
-| Duplicate keys | 1 flagged | `accolade_maa_vanguards` vs `accolade_maa_vanguard` — needs CK3 verification |
+| Duplicate keys | N/A | `accolade_maa_vanguards` vs `accolade_maa_vanguard` — distinct CK3 keys, both mapped |
 
 ---
 
