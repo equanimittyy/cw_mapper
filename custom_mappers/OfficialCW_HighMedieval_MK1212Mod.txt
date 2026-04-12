@@ -15636,6 +15636,46 @@
         "outremer_bowmen,Default": [
             "mk_merc_arm_t1_armenian_archers",
             "RANGED"
+        ],
+        "outremer_heavy_cavalry,Outremer": [
+            "mk_mio_t1_templar_knights",
+            "CAVALRY"
+        ],
+        "outremer_heavy_cavalry,Default": [
+            "mk_mio_t1_templar_knights",
+            "CAVALRY"
+        ],
+        "outremer_turcopoles,Outremer": [
+            "mk_jer_t1_turcopoles",
+            "CAVALRY"
+        ],
+        "outremer_turcopoles,Default": [
+            "mk_jer_t1_turcopoles",
+            "CAVALRY"
+        ],
+        "RICE_alodian_cavalry,Horn African": [
+            "mk_mak_t1_alodian_horsemen",
+            "CAVALRY"
+        ],
+        "RICE_alodian_cavalry,Default": [
+            "mk_mak_t1_alodian_horsemen",
+            "CAVALRY"
+        ],
+        "RICE_nilotic_raiders,Horn African": [
+            "mk_mak_t1_nubian_slingers",
+            "INFANTRY"
+        ],
+        "RICE_nilotic_raiders,Default": [
+            "mk_mak_t1_nubian_slingers",
+            "INFANTRY"
+        ],
+        "RICE_sudanese_highlanders,Horn African": [
+            "mk_mak_t1_nubian_quilted_infantry",
+            "INFANTRY"
+        ],
+        "RICE_sudanese_highlanders,Default": [
+            "mk_mak_t1_nubian_quilted_infantry",
+            "INFANTRY"
         ]
     },
     "HERITAGES_AND_CULTURES": {

@@ -58,12 +58,12 @@ Same 17 as Early Medieval PLUS 2 MK1212-specific siege:
 | `palace_guards` | ✅ | Default → `mk_khw_t1_junior_ghulaman` (INFANTRY) — from misspelling fix. TODO: all factions |
 | `danish_obudshaer` | ✅ | Danelander + Default → `mk_merc_bra_t1_brabanzonen_voulgier` (INFANTRY) |
 | `danish_svenner` | ✅ | Danelander + Default → `earl_dan_t1_cavalry` / "Hestevend" (CAVALRY) |
-| `outremer_bowmen` | TODO | → Outremer |
-| `outremer_heavy_cavalry` | TODO | → Outremer |
-| `outremer_turcopoles` | TODO | → Outremer |
-| `RICE_alodian_cavalry` | TODO | → Horn African |
-| `RICE_nilotic_raiders` | TODO | → Horn African |
-| `RICE_sudanese_highlanders` | TODO | → Horn African |
+| `outremer_bowmen` | ✅ | Outremer + Default → `mk_merc_arm_t1_armenian_archers` (RANGED) |
+| `outremer_heavy_cavalry` | ✅ | Outremer + Default → `mk_mio_t1_templar_knights` (CAVALRY) — matches existing Default mapping |
+| `outremer_turcopoles` | ✅ | Outremer + Default → `mk_jer_t1_turcopoles` (CAVALRY) — matches existing Default mapping |
+| `RICE_alodian_cavalry` | ✅ | Horn African + Default → `mk_mak_t1_alodian_horsemen` (CAVALRY) — follows accolade_maa_lancers |
+| `RICE_nilotic_raiders` | ✅ | Horn African + Default → `mk_mak_t1_nubian_slingers` (INFANTRY) |
+| `RICE_sudanese_highlanders` | ✅ | Horn African + Default → `mk_mak_t1_nubian_quilted_infantry` (INFANTRY) — melee fighters despite CK3 skirmisher tag |
 
 ### Tier Progression Notes (for Late Medieval / Renaissance mappers)
 
@@ -79,11 +79,19 @@ These MAA should follow their natural tier progression when mapping Late Medieva
 | `palace_guards` | `mk_khw_t1_junior_ghulaman` | `mk_khw_t2_qullughchi` | `mk_khw_t3_qullughchi` | Shared with `accolade_maa_archers` in Daylamite |
 | `danish_obudshaer` | `mk_merc_bra_t1_brabanzonen_voulgier` | `mk_bur_t2_pavise_spearmen` | `mk_merc_swi_t3_swiss_pikemen` | Shared with `accolade_maa_pikes` in Breton |
 | `danish_svenner` | `earl_dan_t1_cavalry` | `earl_dan_t2_cavalry` | `earl_dan_t3_cavalry` | Natural progression |
+| `outremer_bowmen` | `mk_merc_arm_t1_armenian_archers` | `mk_merc_arm_t2_armenian_archers` | `mk_merc_arm_t3_armenian_archers` | Natural progression |
+| `outremer_heavy_cavalry` | `mk_mio_t1_templar_knights` | `mk_mio_t2_templar_knights` | (verify T3) | Natural progression |
+| `outremer_turcopoles` | `mk_jer_t1_turcopoles` | `mk_jer_t2_turcopoles` | (verify T3) | Natural progression |
+| `RICE_alodian_cavalry` | `mk_mak_t1_alodian_horsemen` | (follow `accolade_maa_lancers`) | (follow `accolade_maa_lancers`) | Shared with `accolade_maa_lancers` in Horn African |
+| `RICE_nilotic_raiders` | `mk_mak_t1_nubian_slingers` | `mk_mak_t2_nubian_slingers` | `mk_mak_t3_nubian_quilted_spearmen` | User-specified progression |
+| `RICE_sudanese_highlanders` | `mk_mak_t1_nubian_quilted_infantry` | `mk_mak_t2_nubian_footmen` | `mk_mak_t3_nubian_footmen` | User-specified progression |
 
 **Notes:**
 - `landsknecht` stays T3 across all mappers — no T1/T2 variants exist for doppelsoldner pikemen (historically accurate: landsknechts are a late-period unit)
 - `chasseur` Late/Ren keys come from the misspelled `chasseurs` entries that already exist in those mappers — fix the misspelling and inherit the key
 - `RICE_drokpa_horsemen` started at T2 in High Medieval (user chose T2 over T1 for visual reasons)
+- `RICE_nilotic_raiders` switches from slingers (T1/T2) to quilted spearmen (T3) — represents evolution of Nilotic warfare
+- `RICE_sudanese_highlanders` uses melee infantry despite CK3 skirmisher tag — represents Sudanese melee fighters, gives different progression from nilotic raiders
 
 **Actionable:** 14 (same as Early Medieval)
 **Siege ignored:** 5
