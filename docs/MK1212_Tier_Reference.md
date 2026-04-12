@@ -91,3 +91,34 @@ Examples:
 ### Realistic Overhaul Keys
 
 Some unit keys use the `earl_` prefix — these come from the **Realistic Infantry/Cavalry/Missile Overhaul** submods rather than MK1212 base. They follow the same tier system.
+
+## Key Progression Across Mappers
+
+When mapping the same MAA across High/Late/Renaissance mappers, **follow existing key progressions** rather than researching from scratch.
+
+### How it works
+
+1. Find an existing MAA in the mapper that already uses the same Attila key you picked for High Medieval
+2. Check what that MAA uses in Late Medieval and Renaissance
+3. Use those keys for your new MAA in Late/Renaissance
+
+### Example
+
+`danish_obudshaer` needs mapping in all three MK1212 mappers.
+
+In High Medieval, we assigned it `mk_merc_bra_t1_brabanzonen_voulgier`. That key is also used by `accolade_maa_pikes` in High Medieval.
+
+So for Late Medieval and Renaissance, check what `accolade_maa_pikes` uses in those mappers and assign the same key to `danish_obudshaer`:
+
+```
+High Medieval:  accolade_maa_pikes → mk_merc_bra_t1_brabanzonen_voulgier (T1)
+Late Medieval:  accolade_maa_pikes → mk_merc_bra_t2_???              (T2)
+Renaissance:    accolade_maa_pikes → mk_merc_bra_t3_???              (T3)
+                                     ↑ copy these for danish_obudshaer
+```
+
+### Why
+
+- Saves research time — the mapper author already picked appropriate tier progressions
+- Ensures visual consistency — units sharing a role look right together
+- Maintains the natural T1→T2→T3 upgrade path across time periods
