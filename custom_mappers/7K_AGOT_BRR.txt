@@ -1718,6 +1718,30 @@
         "westerosi_sellswords,Essos": [
             "Essos_Slaver_MAA_Lance_Cavalry",
             null
+        ],
+        "accolade_maa_crossbowmen,Default": [
+            "Essos_Slaver_MAA_Crossbowmen",
+            "RANGED"
+        ],
+        "accolade_maa_vanguard,Default": [
+            "Essos_Slaver_MAA_Halberdiers",
+            "INFANTRY"
+        ],
+        "giant_regiment,Default": [
+            "BTW_Wildling_MAA_Spearmen",
+            "INFANTRY"
+        ],
+        "gold_cloaks,Default": [
+            "Essos_Slaver_MAA_Swordsmen",
+            "INFANTRY"
+        ],
+        "iron_bows,Default": [
+            "Essos_Slaver_MAA_Longbowmen",
+            "RANGED"
+        ],
+        "iron_pikes,Default": [
+            "Essos_Slaver_MAA_Spearmen",
+            "INFANTRY"
         ]
     },
     "HERITAGES_AND_CULTURES": {

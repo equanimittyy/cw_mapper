@@ -9,13 +9,23 @@
 **Required CK3 Mods:** A Game of Thrones (2962333032)
 **Required Attila Mods:** 7K_Overhaul, 7K_Models_and_Textures, 7K_Additional_Houses, 7K_Additional_Houses_2, Lord_Of_The_Tides_Submod_V0.4, 7k_submod_2
 
+## Default Faction Design — Why Essos Slaver Units?
+
+The Default faction uses `Essos_Slaver_MAA_*` units for nearly all its mappings, with `Essos_Wise_Masters` as General. This is a deliberate **aesthetic neutrality** choice, not a lore statement.
+
+The 7K Attila mod's Slaver units have generic bronze-and-leather equipment with no house colors or heraldic identity — they read as anonymous armed men on the battlefield. If a culture falls through to Default (e.g. a Dornish lord triggers a MAA that doesn't exist in the Dorne faction), a generic sellsword appearance is preferable to a recognizable Westerosi house showing up in the wrong context (Stark banners on a Reachman, Lannister reds on Ironborn, etc.).
+
+`Essos_Wise_Masters` as General follows the same logic — a wealthy, non-Westerosi command figure that doesn't visually clash with any specific house.
+
+**Rule:** When adding new Default fallback entries, prefer `Essos_Slaver_MAA_*` keys unless there's a strong reason to use a region-specific unit (e.g. `gold_cloaks` using Targaryen-era Crownlands swordsmen, or `giant_regiment` using Wildling spearmen).
+
 ## Current Status
 
 | Category | Status | Notes |
 |---|---|---|
 | Essos faction | **NEW — NEEDS USER REVIEW** | 38 entries added by Claude, not verified in-game |
 | Wall Targaryen fix | Done | `handpicked_faithful,Wall` fixed from Dragon to Targaryen |
-| Missing Default entries | 6 remaining | `accolade_maa_crossbowmen`, `accolade_maa_vanguard`, `giant_regiment`, `gold_cloaks`, `iron_bows`, `iron_pikes` |
+| Missing Default entries | Done | 6 added: `accolade_maa_crossbowmen`, `accolade_maa_vanguard`, `giant_regiment`, `gold_cloaks`, `iron_bows`, `iron_pikes` |
 | Size/type mismatches | 3 flagged | `westerlands_knights`, `westerosi_sellswords`, `accolade_maa_crossbowers` |
 | MAA only in Default | 45 | Likely intentional (region-specific fallbacks) |
 | None-sized MAA | 224/318 | Needs confirmation if intentional |
