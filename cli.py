@@ -552,10 +552,9 @@ def cmd_export(args):
     path = _mapper_path(args.mapper)
     if not os.path.exists(path):
         _error(f"Mapper '{args.mapper}' not found")
-    tag = args.tag or ''
-    s_date = args.start or '0'
-    e_date = args.end or '9999'
-    export_dir = export_xml(path, tag, s_date, e_date)
+    # Pass None for unset flags so export_xml falls back to TAG/START_DATE/END_DATE
+    # stored in the mapper .txt (and its own '0'/'9999' defaults if those are absent).
+    export_dir = export_xml(path, args.tag, args.start, args.end)
     _output({'status': 'ok', 'export_dir': export_dir})
 
 def cmd_import(args):
