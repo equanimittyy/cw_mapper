@@ -14,6 +14,7 @@
 | Category | Status | Notes |
 |---|---|---|
 | Essos split | **USER VERIFIED (2026-04-13)** | Free_Cities (32 entries) + Slaver_Cities (32 entries) copied from BRR |
+| Default Slaver → Second swap | Done (2026-04-13) | 37 Slaver MAA → Second MAA rows; GENERAL/KNIGHTS now mirror Free_Cities pattern (`Essos_Second_MAA_Lance_Cavalry` / `Essos_Second_MAA_Mounted_Swordsmen`). Slaver_Cities faction unchanged. |
 | Missing Default entries | Done | 7 added (same 6 as BRR + `wolfswood_hunters`) |
 | Size/type mismatches | Done | 3 fixed: `westerlands_knights` CAVALRY, `westerosi_sellswords` CAVALRY, `accolade_maa_crossbowers` RANGED |
 | Faction MAA sizes | Done | 174 None-sized entries filled + 1 numeric `400` changed to INFANTRY + 2 `winter_wolves` set to INFANTRY |

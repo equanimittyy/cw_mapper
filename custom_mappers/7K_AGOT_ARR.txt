@@ -1,83 +1,83 @@
 ﻿{
     "FACTIONS_AND_MAA": {
         "GENERAL,Default": [
-            "Essos_Wise_Masters",
+            "Essos_Second_MAA_Lance_Cavalry",
             "GENERAL"
         ],
         "KNIGHTS,Default": [
-            "Essos_Slaver_MAA_Lance_Cavalry",
+            "Essos_Second_MAA_Mounted_Swordsmen",
             "KNIGHTS"
         ],
         "LEVY-IMPORTED_1,Default": [
-            "Essos_Slaver_MAA_Spearmen",
+            "Essos_Second_MAA_Spearmen",
             "LEVY",
             50
         ],
         "LEVY-IMPORTED_2,Default": [
-            "Essos_Slaver_MAA_Swordsmen",
+            "Essos_Second_MAA_Swordsmen",
             "LEVY",
             15
         ],
         "LEVY-IMPORTED_3,Default": [
-            "Essos_Slaver_MAA_Longbowmen",
+            "Essos_Second_MAA_Longbowmen",
             "LEVY",
             15
         ],
         "LEVY-IMPORTED_4,Default": [
-            "Essos_Slaver_MAA_Axemen",
+            "Essos_Second_MAA_Axemen",
             "LEVY",
             20
         ],
         "light_footmen,Default": [
-            "Essos_Slaver_MAA_Axemen",
+            "Essos_Second_MAA_Axemen",
             "INFANTRY"
         ],
         "armored_footmen,Default": [
-            "Essos_Slaver_MAA_Swordsmen",
+            "Essos_Second_MAA_Swordsmen",
             "INFANTRY"
         ],
         "pikemen_unit,Default": [
-            "Essos_Slaver_MAA_Pikemen",
+            "Essos_Second_MAA_Pikemen",
             "INFANTRY"
         ],
         "bowmen,Default": [
-            "Essos_Slaver_MAA_Longbowmen",
+            "Essos_Second_MAA_Longbowmen",
             "RANGED"
         ],
         "crossbowmen,Default": [
-            "Essos_Slaver_MAA_Crossbowmen",
+            "Essos_Second_MAA_Crossbowmen",
             "RANGED"
         ],
         "light_horsemen,Default": [
-            "Essos_Slaver_MAA_Mounted_Swordsmen",
+            "Essos_Second_MAA_Mounted_Swordsmen",
             "CAVALRY"
         ],
         "armored_horsemen,Default": [
-            "Essos_Slaver_MAA_Lance_Cavalry",
+            "Essos_Second_MAA_Lance_Cavalry",
             "CAVALRY"
         ],
         "house_guard,Default": [
-            "Essos_Slaver_MAA_Halberdiers",
+            "Essos_Second_MAA_Halberdiers",
             "INFANTRY"
         ],
         "handpicked_faithful,Default": [
-            "Essos_Slaver_MAA_Halberdiers",
+            "Essos_Second_MAA_Halberdiers",
             "INFANTRY"
         ],
         "maa_bandits,Default": [
-            "Essos_Slaver_MAA_Axemen",
+            "Essos_Second_MAA_Axemen",
             "INFANTRY"
         ],
         "maa_poachers,Default": [
-            "Essos_Slaver_MAA_Longbowmen",
+            "Essos_Second_MAA_Longbowmen",
             "RANGED"
         ],
         "maa_marauders,Default": [
-            "Essos_Slaver_MAA_Mounted_Swordsmen",
+            "Essos_Second_MAA_Mounted_Swordsmen",
             "CAVALRY"
         ],
         "maa_thieves,Default": [
-            "Essos_Slaver_MAA_Axemen",
+            "Essos_Second_MAA_Axemen",
             "INFANTRY"
         ],
         "winter_wolves,Default": [
@@ -213,15 +213,15 @@
             "INFANTRY"
         ],
         "purple_sailors,Default": [
-            "Essos_Slaver_MAA_Axemen",
+            "Essos_Second_MAA_Axemen",
             "INFANTRY"
         ],
         "seal_hunters,Default": [
-            "Essos_Slaver_MAA_Axemen",
+            "Essos_Second_MAA_Axemen",
             "INFANTRY"
         ],
         "weeping_guard,Default": [
-            "Essos_Slaver_MAA_Halberdiers",
+            "Essos_Second_MAA_Halberdiers",
             "INFANTRY"
         ],
         "myrish_crossbows,Default": [
@@ -237,11 +237,11 @@
             "INFANTRY"
         ],
         "stepstone_sailors,Default": [
-            "Essos_Slaver_MAA_Billmen",
+            "Essos_Second_MAA_Billmen",
             "INFANTRY"
         ],
         "ornate_helms,Default": [
-            "Essos_Slaver_MAA_Pikemen",
+            "Essos_Second_MAA_Pikemen",
             "INFANTRY"
         ],
         "unsullied,Default": [
@@ -293,7 +293,7 @@
             "INFANTRY"
         ],
         "westerosi_sellswords,Default": [
-            "Essos_Slaver_MAA_Lance_Cavalry",
+            "Essos_Second_MAA_Lance_Cavalry",
             "CAVALRY"
         ],
         "goldcloaks,Default": [
@@ -337,35 +337,35 @@
             "CAVALRY"
         ],
         "accolade_maa_cameliers,Default": [
-            "Essos_Slaver_MAA_Mounted_Swordsmen",
+            "Essos_Second_MAA_Mounted_Swordsmen",
             "CAVALRY"
         ],
         "accolade_maa_archers,Default": [
-            "Essos_Slaver_MAA_Longbowmen",
+            "Essos_Second_MAA_Longbowmen",
             "RANGED"
         ],
         "accolade_maa_lancers,Default": [
-            "Essos_Slaver_MAA_Lance_Cavalry",
+            "Essos_Second_MAA_Lance_Cavalry",
             "CAVALRY"
         ],
         "accolade_maa_outriders,Default": [
-            "Essos_Slaver_MAA_Lance_Cavalry",
+            "Essos_Second_MAA_Lance_Cavalry",
             "CAVALRY"
         ],
         "accolade_maa_pikes,Default": [
-            "Essos_Slaver_MAA_Pikemen",
+            "Essos_Second_MAA_Pikemen",
             "INFANTRY"
         ],
         "accolade_maa_skirmishers,Default": [
-            "Essos_Slaver_MAA_Axemen",
+            "Essos_Second_MAA_Axemen",
             "INFANTRY"
         ],
         "accolade_maa_vanguards,Default": [
-            "Essos_Slaver_MAA_Halberdiers",
+            "Essos_Second_MAA_Halberdiers",
             "INFANTRY"
         ],
         "accolade_maa_crossbowers,Default": [
-            "Essos_Slaver_MAA_Crossbowmen",
+            "Essos_Second_MAA_Crossbowmen",
             "RANGED"
         ],
         "GENERAL,North": [
@@ -1554,11 +1554,11 @@
             "INFANTRY"
         ],
         "accolade_maa_crossbowmen,Default": [
-            "Essos_Slaver_MAA_Crossbowmen",
+            "Essos_Second_MAA_Crossbowmen",
             "RANGED"
         ],
         "accolade_maa_vanguard,Default": [
-            "Essos_Slaver_MAA_Halberdiers",
+            "Essos_Second_MAA_Halberdiers",
             "INFANTRY"
         ],
         "giant_regiment,Default": [
@@ -1566,15 +1566,15 @@
             "INFANTRY"
         ],
         "gold_cloaks,Default": [
-            "Essos_Slaver_MAA_Swordsmen",
+            "Essos_Second_MAA_Swordsmen",
             "INFANTRY"
         ],
         "iron_bows,Default": [
-            "Essos_Slaver_MAA_Longbowmen",
+            "Essos_Second_MAA_Longbowmen",
             "RANGED"
         ],
         "iron_pikes,Default": [
-            "Essos_Slaver_MAA_Spearmen",
+            "Essos_Second_MAA_Spearmen",
             "INFANTRY"
         ],
         "wolfswood_hunters,Default": [

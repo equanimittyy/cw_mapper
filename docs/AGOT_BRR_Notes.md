@@ -9,31 +9,22 @@
 **Required CK3 Mods:** A Game of Thrones (2962333032)
 **Required Attila Mods:** 7K_Overhaul, 7K_Models_and_Textures, 7K_Additional_Houses, 7K_Additional_Houses_2, Lord_Of_The_Tides_Submod_V0.4, 7k_submod_2
 
-## Default Faction Design — Why Essos Slaver Units?
+## Default Faction Design — Second Sons Sellsword Aesthetic (UPDATED 2026-04-13)
 
-The Default faction uses `Essos_Slaver_MAA_*` units for nearly all its mappings, with `Essos_Wise_Masters` as General.
+**Current:** The Default faction uses `Essos_Second_MAA_*` units for all its mappings — **mirrors the Free_Cities faction pattern** (GENERAL = `Essos_Second_MAA_Lance_Cavalry`, KNIGHTS = `Essos_Second_MAA_Mounted_Swordsmen`).
 
-**IMPORTANT — visual caveat (user-flagged 2026-04-13):** `Essos_Slaver_MAA_Spearmen` and `Essos_Slaver_MAA_Swordsmen` are **actually Ghiscari professional heavy infantry** (Meereenese/Yunkai/Astapor style), not generic sellswords. This means the "aesthetic neutrality" argument is weaker than initially assumed — a Westerosi lord falling back to Default will see tokar-wearing Ghiscari troops, not anonymous armed men.
+**Why:** Second Sons is a sellsword company — visually **generic/mercenary-looking** without tokar-wearing Ghiscari professional aesthetics. Appropriate as a fallback that "shouldn't have fired" because a Westerosi lord seeing foreign-looking sellsword troops is a weaker visual misfit than seeing tokar-wearing heavy infantry. No unique-character unit (e.g. Daario) is used — generic fallback should not have a named commander.
 
-The original author likely chose these because:
-- They're still the **least-Westerosi** option (no recognizable house heraldry)
-- The 7K mod may not have a truly neutral generic unit set
-- Ghiscari-style troops are at least **foreign-looking** — visually signals "out of place" which is appropriate for a fallback that shouldn't have fired
+**History:** Originally used `Essos_Slaver_MAA_*` (Ghiscari professional heavy infantry) + `Essos_Wise_Masters` GENERAL, which user flagged as visually wrong for a neutral fallback. Swapped 2026-04-13: 39 Slaver MAA rows → Second MAA, GENERAL/KNIGHTS realigned to Free_Cities pattern. Slaver_Cities faction (Ghiscari remnants) unchanged.
 
-**USER CHECK:** Consider whether a different Default unit set would be more appropriate. Options to investigate:
-- `Essos_Second_MAA_*` (Second Sons — closer to true sellsword aesthetic)
-- `Crownlands_Kings_Landing_Golden_Company_*` (sellsword company but limited unit types)
-- A Westeros-generic unit set if one exists
-
-`Essos_Wise_Masters` as General — also Ghiscari-flavored, same caveat applies.
-
-**Rule (for now):** When adding new Default fallback entries, prefer `Essos_Slaver_MAA_*` keys to stay consistent with the existing pattern. Use region-specific units when the CK3 MAA itself is region-specific (e.g. `riverlands_light_infantry` uses Riverlands_Tully_MAA_Axemen).
+**Rule:** When adding new Default fallback entries, prefer `Essos_Second_MAA_*` keys to stay consistent with the sellsword aesthetic. Use region-specific units only when the CK3 MAA itself is region-specific (e.g. `riverlands_light_infantry` uses Riverlands_Tully_MAA_Axemen).
 
 ## Current Status
 
 | Category | Status | Notes |
 |---|---|---|
 | Essos split | **USER VERIFIED (2026-04-13)** | Replaced single Essos faction with Free_Cities (32 entries) + Slaver_Cities (32 entries) |
+| Default Slaver → Second swap | Done (2026-04-13) | 39 Slaver MAA → Second MAA rows; GENERAL/KNIGHTS now mirror Free_Cities pattern. Slaver_Cities faction unchanged. |
 | Wall Targaryen fix | Done | `handpicked_faithful,Wall` fixed from Dragon to Targaryen |
 | Dragon→Targaryen fixes | Done | 5 Default entries fixed: `royal_crossbowmen`, `marsh_walker`, `sea_snakes`, `outriders`, `crownlands_spears` |
 | Missing Default entries | Done | 6 added: `accolade_maa_crossbowmen`, `accolade_maa_vanguard`, `giant_regiment`, `gold_cloaks`, `iron_bows`, `iron_pikes` |
