@@ -8285,6 +8285,6 @@
         ]
     },
     "TAG": "RealmsInExile",
-    "START_DATE": "DEFAULT",
-    "END_DATE": "DEFAULT"
+    "START_DATE": "0",
+    "END_DATE": "99999"
 }
