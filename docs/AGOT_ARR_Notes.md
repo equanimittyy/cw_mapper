@@ -13,7 +13,7 @@
 
 | Category | Status | Notes |
 |---|---|---|
-| Essos faction | **PENDING** | Will be copied from BRR once reviewed in-game |
+| Essos split | **NEW — NEEDS USER REVIEW** | Free_Cities (32 entries) + Slaver_Cities (32 entries) copied from BRR |
 | Missing Default entries | Done | 7 added (same 6 as BRR + `wolfswood_hunters`) |
 | Size/type mismatches | Done | 3 fixed: `westerlands_knights` CAVALRY, `westerosi_sellswords` CAVALRY, `accolade_maa_crossbowers` RANGED |
 | Faction MAA sizes | Done | 174 None-sized entries filled + 1 numeric `400` changed to INFANTRY + 2 `winter_wolves` set to INFANTRY |
@@ -64,8 +64,11 @@ Changed from `Riverlands_Tully_MAA_Crossbowmen` to `Riverlands_Tully_MAA_Axemen`
 
 ---
 
-## Pending: Essos Faction
+## Essos Split Applied
 
-The BRR mapper has a new Essos faction (38 entries) that needs user review in Attila/CK3 before being copied to ARR. Until then, the 20 Essosi cultures assigned to `Essos` in the heritage mappings will fall through to Default.
+Replicated the BRR Essos split to ARR:
 
-See `AGOT_BRR_Notes.md` for the full Essos faction documentation and review checklist.
+- **Free_Cities** (32 entries) — `Essos_Second_MAA_*` base, serves 10 cultures (Braavos, Lys, Myr, Volantis, etc.)
+- **Slaver_Cities** (32 entries) — `Essos_Slaver_MAA_*` + Unsullied base, serves 10 cultures (Tolos, Elyria, Mantarys, Rhoynish, etc.)
+
+Identical to BRR — see `AGOT_BRR_Notes.md` for full faction documentation and review checklist. Any changes made to BRR's Free_Cities or Slaver_Cities during review should be re-applied to ARR.

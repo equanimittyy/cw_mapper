@@ -11,19 +11,29 @@
 
 ## Default Faction Design — Why Essos Slaver Units?
 
-The Default faction uses `Essos_Slaver_MAA_*` units for nearly all its mappings, with `Essos_Wise_Masters` as General. This is a deliberate **aesthetic neutrality** choice, not a lore statement.
+The Default faction uses `Essos_Slaver_MAA_*` units for nearly all its mappings, with `Essos_Wise_Masters` as General.
 
-The 7K Attila mod's Slaver units have generic bronze-and-leather equipment with no house colors or heraldic identity — they read as anonymous armed men on the battlefield. If a culture falls through to Default (e.g. a Dornish lord triggers a MAA that doesn't exist in the Dorne faction), a generic sellsword appearance is preferable to a recognizable Westerosi house showing up in the wrong context (Stark banners on a Reachman, Lannister reds on Ironborn, etc.).
+**IMPORTANT — visual caveat (user-flagged 2026-04-13):** `Essos_Slaver_MAA_Spearmen` and `Essos_Slaver_MAA_Swordsmen` are **actually Ghiscari professional heavy infantry** (Meereenese/Yunkai/Astapor style), not generic sellswords. This means the "aesthetic neutrality" argument is weaker than initially assumed — a Westerosi lord falling back to Default will see tokar-wearing Ghiscari troops, not anonymous armed men.
 
-`Essos_Wise_Masters` as General follows the same logic — a wealthy, non-Westerosi command figure that doesn't visually clash with any specific house.
+The original author likely chose these because:
+- They're still the **least-Westerosi** option (no recognizable house heraldry)
+- The 7K mod may not have a truly neutral generic unit set
+- Ghiscari-style troops are at least **foreign-looking** — visually signals "out of place" which is appropriate for a fallback that shouldn't have fired
 
-**Rule:** When adding new Default fallback entries, prefer `Essos_Slaver_MAA_*` keys unless there's a strong reason to use a region-specific unit (e.g. `giant_regiment` using Wildling spearmen).
+**USER CHECK:** Consider whether a different Default unit set would be more appropriate. Options to investigate:
+- `Essos_Second_MAA_*` (Second Sons — closer to true sellsword aesthetic)
+- `Crownlands_Kings_Landing_Golden_Company_*` (sellsword company but limited unit types)
+- A Westeros-generic unit set if one exists
+
+`Essos_Wise_Masters` as General — also Ghiscari-flavored, same caveat applies.
+
+**Rule (for now):** When adding new Default fallback entries, prefer `Essos_Slaver_MAA_*` keys to stay consistent with the existing pattern. Use region-specific units when the CK3 MAA itself is region-specific (e.g. `riverlands_light_infantry` uses Riverlands_Tully_MAA_Axemen).
 
 ## Current Status
 
 | Category | Status | Notes |
 |---|---|---|
-| Essos faction | **NEW — NEEDS USER REVIEW** | 38 entries added by Claude, not verified in-game |
+| Essos split | **NEW — NEEDS USER REVIEW** | Replaced single Essos faction with Free_Cities (33 entries) + Slaver_Cities (31 entries) |
 | Wall Targaryen fix | Done | `handpicked_faithful,Wall` fixed from Dragon to Targaryen |
 | Dragon→Targaryen fixes | Done | 5 Default entries fixed: `royal_crossbowmen`, `marsh_walker`, `sea_snakes`, `outriders`, `crownlands_spears` |
 | Missing Default entries | Done | 6 added: `accolade_maa_crossbowmen`, `accolade_maa_vanguard`, `giant_regiment`, `gold_cloaks`, `iron_bows`, `iron_pikes` |
@@ -35,9 +45,38 @@ The 7K Attila mod's Slaver units have generic bronze-and-leather equipment with 
 
 ---
 
-## Essos Faction (NEW — NEEDS USER REVIEW IN ATTILA/CK3)
+## Essos Split: Free_Cities + Slaver_Cities Factions (NEEDS USER REVIEW)
 
-Added 38 entries to serve the 20 Essosi cultures that previously referenced a non-existent `Essos` faction (falling through to Default). Built based on Default faction patterns and lore reasoning. **User must verify all unit assignments visually in Attila before shipping.**
+Originally added a single `Essos` faction using `Essos_Slaver_MAA_*` as base. User flagged that those units are Ghiscari professional heavy infantry, NOT generic sellswords — wrong cultural fit for Free Cities. Split into two factions:
+
+### Free_Cities (33 entries)
+**Cultures (10):** essosi_valyrian, braavosi, lyseni, myrish, norvoshi, pentoshi, qohorik, tyroshi, volantene, lorathi
+**Unit base:** `Essos_Second_MAA_*` (Second Sons sellsword aesthetic)
+**GENERAL:** `Essos_Second_MAA_Lance_Cavalry`
+**KNIGHTS:** `Essos_Second_MAA_Mounted_Swordsmen`
+**LEVY:** Spearmen 35% / Swordsmen 25% / Crossbowmen 25% / Axemen 15% (Myrish crossbow flavor)
+**Free Cities-specific MAA:** cohort_of_the_three_thousand, myrish_crossbows, purple_sailors, stepstone_sailors, sun_guard, weeping_guard, westerosi_sellswords
+
+### Slaver_Cities (31 entries)
+**Cultures (10):** gogossosi, mantaryan, tolosi, elyrian, essarian, hartalari, painted_clansman, rhoynish, selhori, summer_rhoynish
+**Unit base:** `Essos_Slaver_MAA_*` (Ghiscari professional heavy infantry) + `Essos_Targaryen_Unsullied_*` flavoring
+**GENERAL:** `Essos_Slaver_MAA_Lance_Cavalry`
+**KNIGHTS:** `Essos_Slaver_MAA_Mounted_Swordsmen`
+**LEVY:** Spearmen 35% / Swordsmen 25% / Longbowmen 20% / Axemen 20%
+**Slaver Cities-specific MAA:** indentured_legion, moroshi_pikes, ornate_helms, seal_hunters, unsullied
+
+### Logic
+- **Free_Cities** covers western/mercantile Free Cities — sellsword-hiring, cosmopolitan. Second Sons aesthetic fits.
+- **Slaver_Cities** covers eastern Valyrian remnants (Tolos, Elyria, Mantarys, Gogossos) which are slave economies close to Slaver's Bay culturally, plus the Rhoynish (spear-focused, Unsullied as closest fit) and painted_clansman.
+- No dedicated Rhoynish unit set exists — merging with Slaver_Cities is the least-bad option.
+
+### Review Checklist
+- [ ] Verify Second Sons units visually fit the Free Cities cultures (Braavos, Myr, Volantis, etc.)
+- [ ] Verify Slaver units visually fit the Valyrian Remnants + Rhoynish cultures
+- [ ] Check `Essos_Daario_Naharis` as GENERAL — is he appropriate for a faction-wide commander or too specific?
+- [ ] Confirm levy compositions play well (both at 100%)
+- [ ] Verify Rhoynish cultures (rhoynish, selhori, summer_rhoynish) in Slaver_Cities look acceptable despite lore mismatch
+- [ ] Once reviewed, apply same split to `7K_AGOT_ARR.txt`
 
 ### Structure
 

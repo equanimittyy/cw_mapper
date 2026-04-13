@@ -1580,6 +1580,270 @@
         "wolfswood_hunters,Default": [
             "North_Stark_MAA_Longbowmen",
             "RANGED"
+        ],
+        "GENERAL,Free_Cities": [
+            "Essos_Second_MAA_Lance_Cavalry",
+            "GENERAL"
+        ],
+        "KNIGHTS,Free_Cities": [
+            "Essos_Second_MAA_Mounted_Swordsmen",
+            "KNIGHTS"
+        ],
+        "LEVY-IMPORTED_1,Free_Cities": [
+            "Essos_Second_MAA_Spearmen",
+            "LEVY",
+            35
+        ],
+        "LEVY-IMPORTED_2,Free_Cities": [
+            "Essos_Second_MAA_Swordsmen",
+            "LEVY",
+            25
+        ],
+        "LEVY-IMPORTED_3,Free_Cities": [
+            "Essos_Second_MAA_Crossbowmen",
+            "LEVY",
+            25
+        ],
+        "LEVY-IMPORTED_4,Free_Cities": [
+            "Essos_Second_MAA_Axemen",
+            "LEVY",
+            15
+        ],
+        "accolade_maa_archers,Free_Cities": [
+            "Essos_Second_MAA_Longbowmen",
+            "RANGED"
+        ],
+        "accolade_maa_crossbowmen,Free_Cities": [
+            "Essos_Second_MAA_Crossbowmen",
+            "RANGED"
+        ],
+        "accolade_maa_lancers,Free_Cities": [
+            "Essos_Second_MAA_Lance_Cavalry",
+            "CAVALRY"
+        ],
+        "accolade_maa_outriders,Free_Cities": [
+            "Essos_Second_MAA_Mounted_Swordsmen",
+            "CAVALRY"
+        ],
+        "accolade_maa_pikes,Free_Cities": [
+            "Essos_Second_MAA_Pikemen",
+            "INFANTRY"
+        ],
+        "accolade_maa_skirmishers,Free_Cities": [
+            "Essos_Second_MAA_Longbowmen",
+            "RANGED"
+        ],
+        "accolade_maa_vanguard,Free_Cities": [
+            "Essos_Second_MAA_Halberdiers",
+            "INFANTRY"
+        ],
+        "handpicked_faithful,Free_Cities": [
+            "Essos_Second_MAA_Halberdiers",
+            "INFANTRY"
+        ],
+        "house_guard,Free_Cities": [
+            "Essos_Second_MAA_Swordsmen",
+            "INFANTRY"
+        ],
+        "maa_bandits,Free_Cities": [
+            "Essos_Second_MAA_Axemen",
+            "INFANTRY"
+        ],
+        "maa_marauders,Free_Cities": [
+            "Essos_Second_MAA_Mounted_Swordsmen",
+            "CAVALRY"
+        ],
+        "maa_poachers,Free_Cities": [
+            "Essos_Second_MAA_Crossbowmen",
+            "RANGED"
+        ],
+        "maa_thieves,Free_Cities": [
+            "Essos_Second_MAA_Spearmen",
+            "INFANTRY"
+        ],
+        "armored_footmen,Free_Cities": [
+            "Essos_Second_MAA_Swordsmen",
+            "INFANTRY"
+        ],
+        "armored_horsemen,Free_Cities": [
+            "Essos_Second_MAA_Lance_Cavalry",
+            "CAVALRY"
+        ],
+        "bowmen,Free_Cities": [
+            "Essos_Second_MAA_Longbowmen",
+            "RANGED"
+        ],
+        "crossbowmen,Free_Cities": [
+            "Essos_Second_MAA_Crossbowmen",
+            "RANGED"
+        ],
+        "light_footmen,Free_Cities": [
+            "Essos_Second_MAA_Axemen",
+            "INFANTRY"
+        ],
+        "light_horsemen,Free_Cities": [
+            "Essos_Second_MAA_Mounted_Swordsmen",
+            "CAVALRY"
+        ],
+        "pikemen_unit,Free_Cities": [
+            "Essos_Second_MAA_Pikemen",
+            "INFANTRY"
+        ],
+        "myrish_crossbows,Free_Cities": [
+            "Essos_Second_MAA_Crossbowmen",
+            "RANGED"
+        ],
+        "purple_sailors,Free_Cities": [
+            "Essos_Second_MAA_Axemen",
+            "INFANTRY"
+        ],
+        "stepstone_sailors,Free_Cities": [
+            "Essos_Second_MAA_Billmen",
+            "INFANTRY"
+        ],
+        "sun_guard,Free_Cities": [
+            "Essos_Second_MAA_Halberdiers",
+            "INFANTRY"
+        ],
+        "weeping_guard,Free_Cities": [
+            "Essos_Second_MAA_Halberdiers",
+            "INFANTRY"
+        ],
+        "westerosi_sellswords,Free_Cities": [
+            "Essos_Second_MAA_Lance_Cavalry",
+            "CAVALRY"
+        ],
+        "GENERAL,Slaver_Cities": [
+            "Essos_Slaver_MAA_Lance_Cavalry",
+            "GENERAL"
+        ],
+        "KNIGHTS,Slaver_Cities": [
+            "Essos_Slaver_MAA_Mounted_Swordsmen",
+            "KNIGHTS"
+        ],
+        "LEVY-IMPORTED_1,Slaver_Cities": [
+            "Essos_Slaver_MAA_Spearmen",
+            "LEVY",
+            35
+        ],
+        "LEVY-IMPORTED_2,Slaver_Cities": [
+            "Essos_Slaver_MAA_Swordsmen",
+            "LEVY",
+            25
+        ],
+        "LEVY-IMPORTED_3,Slaver_Cities": [
+            "Essos_Slaver_MAA_Longbowmen",
+            "LEVY",
+            20
+        ],
+        "LEVY-IMPORTED_4,Slaver_Cities": [
+            "Essos_Slaver_MAA_Axemen",
+            "LEVY",
+            20
+        ],
+        "accolade_maa_archers,Slaver_Cities": [
+            "Essos_Slaver_MAA_Longbowmen",
+            "RANGED"
+        ],
+        "accolade_maa_crossbowmen,Slaver_Cities": [
+            "Essos_Slaver_MAA_Crossbowmen",
+            "RANGED"
+        ],
+        "accolade_maa_lancers,Slaver_Cities": [
+            "Essos_Slaver_MAA_Lance_Cavalry",
+            "CAVALRY"
+        ],
+        "accolade_maa_outriders,Slaver_Cities": [
+            "Essos_Slaver_MAA_Mounted_Swordsmen",
+            "CAVALRY"
+        ],
+        "accolade_maa_pikes,Slaver_Cities": [
+            "Essos_Slaver_MAA_Pikemen",
+            "INFANTRY"
+        ],
+        "accolade_maa_skirmishers,Slaver_Cities": [
+            "Essos_Slaver_MAA_Axemen",
+            "INFANTRY"
+        ],
+        "accolade_maa_vanguard,Slaver_Cities": [
+            "Essos_Slaver_MAA_Halberdiers",
+            "INFANTRY"
+        ],
+        "handpicked_faithful,Slaver_Cities": [
+            "Essos_Slaver_MAA_Halberdiers",
+            "INFANTRY"
+        ],
+        "house_guard,Slaver_Cities": [
+            "Essos_Slaver_MAA_Billmen",
+            "INFANTRY"
+        ],
+        "maa_bandits,Slaver_Cities": [
+            "Essos_Slaver_MAA_Axemen",
+            "INFANTRY"
+        ],
+        "maa_marauders,Slaver_Cities": [
+            "Essos_Slaver_MAA_Mounted_Swordsmen",
+            "CAVALRY"
+        ],
+        "maa_poachers,Slaver_Cities": [
+            "Essos_Slaver_MAA_Longbowmen",
+            "RANGED"
+        ],
+        "maa_thieves,Slaver_Cities": [
+            "Essos_Slaver_MAA_Spearmen",
+            "INFANTRY"
+        ],
+        "armored_footmen,Slaver_Cities": [
+            "Essos_Slaver_MAA_Swordsmen",
+            "INFANTRY"
+        ],
+        "armored_horsemen,Slaver_Cities": [
+            "Essos_Slaver_MAA_Lance_Cavalry",
+            "CAVALRY"
+        ],
+        "bowmen,Slaver_Cities": [
+            "Essos_Slaver_MAA_Longbowmen",
+            "RANGED"
+        ],
+        "crossbowmen,Slaver_Cities": [
+            "Essos_Slaver_MAA_Crossbowmen",
+            "RANGED"
+        ],
+        "light_footmen,Slaver_Cities": [
+            "Essos_Slaver_MAA_Axemen",
+            "INFANTRY"
+        ],
+        "light_horsemen,Slaver_Cities": [
+            "Essos_Slaver_MAA_Mounted_Swordsmen",
+            "CAVALRY"
+        ],
+        "pikemen_unit,Slaver_Cities": [
+            "Essos_Slaver_MAA_Pikemen",
+            "INFANTRY"
+        ],
+        "indentured_legion,Slaver_Cities": [
+            "Essos_Targaryen_Unsullied_Spearmen",
+            "INFANTRY"
+        ],
+        "moroshi_pikes,Slaver_Cities": [
+            "Essos_Slaver_MAA_Halberdiers",
+            "INFANTRY"
+        ],
+        "ornate_helms,Slaver_Cities": [
+            "Essos_Slaver_MAA_Pikemen",
+            "INFANTRY"
+        ],
+        "seal_hunters,Slaver_Cities": [
+            "Essos_Slaver_MAA_Axemen",
+            "INFANTRY"
+        ],
+        "unsullied,Slaver_Cities": [
+            "Essos_Targaryen_Unsullied_Pikemen",
+            "INFANTRY"
+        ],
+        "cohort_of_the_three_thousand,Slaver_Cities": [
+            "Essos_Targaryen_Unsullied_Spearmen",
+            "INFANTRY"
         ]
     },
     "HERITAGES_AND_CULTURES": {
@@ -1707,7 +1971,7 @@
             "Dorne"
         ],
         "heritage_rhoynish,rhoynish": [
-            "Essos"
+            "Slaver_Cities"
         ],
         "heritage_rhoynish,greenblood": [
             "Dorne"
@@ -1719,10 +1983,10 @@
             "Dorne"
         ],
         "heritage_rhoynish,selhori": [
-            "Essos"
+            "Slaver_Cities"
         ],
         "heritage_rhoynish,summer_rhoynish": [
-            "Essos"
+            "Slaver_Cities"
         ],
         "heritage_valyrian,PARENT_KEY": [
             "Crownlands"
@@ -1734,55 +1998,55 @@
             "Crownlands"
         ],
         "heritage_valyrian,essosi_valyrian": [
-            "Essos"
+            "Free_Cities"
         ],
         "heritage_valyrian,braavosi": [
-            "Essos"
+            "Free_Cities"
         ],
         "heritage_valyrian,gogossosi": [
-            "Essos"
+            "Slaver_Cities"
         ],
         "heritage_valyrian,mantaryan": [
-            "Essos"
+            "Slaver_Cities"
         ],
         "heritage_valyrian,tolosi": [
-            "Essos"
+            "Slaver_Cities"
         ],
         "heritage_valyrian,elyrian": [
-            "Essos"
+            "Slaver_Cities"
         ],
         "heritage_valyrian,volantene": [
-            "Essos"
+            "Free_Cities"
         ],
         "heritage_valyrian,painted_clansman": [
-            "Essos"
+            "Slaver_Cities"
         ],
         "heritage_valyrian,essarian": [
-            "Essos"
+            "Slaver_Cities"
         ],
         "heritage_valyrian,lorathi": [
-            "Essos"
+            "Free_Cities"
         ],
         "heritage_valyrian,lyseni": [
-            "Essos"
+            "Free_Cities"
         ],
         "heritage_valyrian,myrish": [
-            "Essos"
+            "Free_Cities"
         ],
         "heritage_valyrian,hartalari": [
-            "Essos"
+            "Slaver_Cities"
         ],
         "heritage_valyrian,norvoshi": [
-            "Essos"
+            "Free_Cities"
         ],
         "heritage_valyrian,pentoshi": [
-            "Essos"
+            "Free_Cities"
         ],
         "heritage_valyrian,qohorik": [
-            "Essos"
+            "Free_Cities"
         ],
         "heritage_valyrian,tyroshi": [
-            "Essos"
+            "Free_Cities"
         ]
     },
     "TITLES_AND_MAA": {
