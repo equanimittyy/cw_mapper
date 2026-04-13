@@ -132,3 +132,21 @@ These MAA should follow their natural tier progression when mapping Late Medieva
 **Duchies (15):** d_burgundy, d_cephalonia, d_dyrrachion, d_epirus, d_flanders, d_genoa, d_knights_hospitaler, d_knights_templar, d_osterreich, d_pisa, d_savoie, d_swiss, d_teutonic_order, d_upper_burgundy, d_upper_lorraine
 
 **Kingdoms (6):** k_genoa, k_naples, k_pisa, k_romagna, k_saxony, k_switzerland
+
+---
+
+## Elephant Size Caveat (flagged 2026-04-13)
+
+During the Attila-inferred size-fill pass, 3 elephant rows in this mapper were set from `null` → `CAVALRY`:
+
+- `accolade_maa_lancers,Nubian` → `earl_mak_t1_nubian_elephants`
+- `accolade_maa_lancers,Ethiopian` → `earl_zag_t1_war_elephants`
+- `accolade_maa_outriders,Ethiopian` → `earl_zag_t1_elephants`
+
+**Concern:** CW XML output passes size as `max="CAVALRY"` verbatim. Unclear whether CW's parser interprets this as "a cavalry-typical count (~80-100)" or as "just a classifier, let Attila's native `num_men` apply." If it's the former, elephants would spawn at cavalry-unit sizes — ~100 elephants per unit is nonsense.
+
+**Other mappers for reference:**
+- **MK1212 High/Late/Ren Default elephant rows** were already `CAVALRY` pre-session (authored that way) — if this is a bug, it's a pre-existing one.
+- **LOTR (RiE)** uses numeric caps (`20`, `6`, `3`) for elephants — possibly indicating the LOTR author explicitly capped counts to avoid the CAVALRY scaling issue.
+
+**Decision (2026-04-13):** Leave as `CAVALRY` for now (matches pre-existing mapper convention). If in-game testing shows 100-elephant units spawning, revert these 3 rows to `null` or set small numeric caps (e.g. `6`).

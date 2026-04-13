@@ -39,3 +39,23 @@ All fixes replicated from High Medieval mapper with T3 tier progression.
 | `chasseur` | Outremer | `mk_jer_t3_turcopole_scouts` |
 | `landsknecht` | Teutonic | `mk_hre_t3_doppelsoldner_pikemen` (stays T3) |
 | `palace_guards` | Default | `mk_ghu_t3_royal_paiks` |
+
+---
+
+## Elephant Size Caveat (flagged 2026-04-13)
+
+During the Attila-inferred size-fill pass, 5 elephant rows in this mapper were set from `null` → `CAVALRY`:
+
+- `accolade_maa_lancers,Nubian` → `earl_mak_t3_nubian_elephants`
+- `accolade_maa_lancers,Ethiopian` → `earl_zag_t3_war_elephants`
+- `accolade_maa_outriders,Ethiopian` → `earl_zag_t3_elephants`
+- `accolade_maa_elephantiers,Burmese` → `mk_ghu_t3_hathnal_cannon_elephants`
+- `accolade_maa_elephantiers,Indian` → `mk_ghu_t3_war_elephants`
+
+**Concern:** CW XML output passes size as `max="CAVALRY"` verbatim. Unclear whether CW's parser interprets this as "a cavalry-typical count (~80-100)" or as "just a classifier, let Attila's native `num_men` apply." If it's the former, elephants would spawn at cavalry-unit sizes — ~100 elephants per unit is nonsense.
+
+**Other mappers for reference:**
+- **MK1212 High/Late/Ren Default elephant rows** were already `CAVALRY` pre-session (authored that way) — if this is a bug, it's a pre-existing one.
+- **LOTR (RiE)** uses numeric caps (`20`, `6`, `3`) for elephants — possibly indicating the LOTR author explicitly capped counts to avoid the CAVALRY scaling issue.
+
+**Decision (2026-04-13):** Leave as `CAVALRY` for now (matches pre-existing mapper convention). If in-game testing shows 100-elephant units spawning, revert these 5 rows to `null` or set small numeric caps (e.g. `6`).
