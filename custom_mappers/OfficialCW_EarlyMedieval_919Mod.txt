@@ -438,7 +438,7 @@
     ],
     "light_footmen,Default": [
       "cha_gen_skirm",
-      "400"
+      "INFANTRY"
     ],
     "armored_footmen,Default": [
       "cha_gen_armoured_sword",
@@ -881,51 +881,51 @@
     ],
     "light_footmen,West African": [
       "AKS_spear_throwers",
-      null
+      "RANGED"
     ],
     "armored_footmen,West African": [
       "att_des_es_afar_raidmasters",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,West African": [
       "GARAM_amxzni_spears",
-      null
+      "INFANTRY"
     ],
     "bowmen,West African": [
       "att_des_es_marz_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,West African": [
       "GARAM_tribal_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,West African": [
       "att_des_amazigh_raiders",
-      null
+      "CAVALRY"
     ],
     "house_guard,West African": [
       "att_des_es_behers_chosen",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,West African": [
       "att_des_es_behers_chosen",
-      null
+      "INFANTRY"
     ],
     "camel_rider,West African": [
       "att_des_es_afar_camel_riders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,West African": [
       "att_des_es_afar_camel_riders",
-      null
+      "CAVALRY"
     ],
     "horse_archers,West African": [
       "att_des_es_mounted_marz_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,West African": [
       "att_des_es_mounted_marz_archers",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,West African": [
       "att_des_es_behers_chosen",
@@ -949,27 +949,27 @@
     ],
     "accolade_maa_archers,West African": [
       "att_des_es_marz_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,West African": [
       "att_des_kushite_mounted_shotelai",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,West African": [
       "att_des_desert_raiders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,West African": [
       "GARAM_amxzni_spears",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,West African": [
       "att_des_es_afar_raidmasters",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,West African": [
       "att_des_es_behers_chosen",
-      null
+      "INFANTRY"
     ],
     "onager,West African": [
       "att_des_onager",
@@ -1017,55 +1017,55 @@
     ],
     "light_footmen,Bedouin": [
       "mubs_bedouin_light_footmen",
-      null
+      "RANGED"
     ],
     "armored_footmen,Bedouin": [
       "mubs_bedouin_armored_footmen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Bedouin": [
       "mubs_bedouin_pikemen",
-      null
+      "INFANTRY"
     ],
     "bowmen,Bedouin": [
       "mubs_bedouin_bowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,Bedouin": [
       "mubs_bedouin_light_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Bedouin": [
       "mubs_bedouin_armored_horsemen",
-      null
+      "CAVALRY"
     ],
     "house_guard,Bedouin": [
       "mubs_house_guards",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Bedouin": [
       "mubs_house_guards",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Bedouin": [
       "mubs_camel_riders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Bedouin": [
       "att_des_es_jamal_al_baltha",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Bedouin": [
       "att_des_es_mounted_marz_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Bedouin": [
       "att_des_es_zodiac_archers",
-      null
+      "CAVALRY"
     ],
     "cataphract,Bedouin": [
       "mubs_cataphracts",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Bedouin": [
       "att_des_es_athars_chosen",
@@ -1089,27 +1089,27 @@
     ],
     "accolade_maa_archers,Bedouin": [
       "mubs_rumat",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Bedouin": [
       "att_des_es_al_shahba",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Bedouin": [
       "mubs_mulathanum",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Bedouin": [
       "att_des_es_tanukhid_pikes",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Bedouin": [
       "mubs_rijal",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Bedouin": [
       "att_des_es_noble_al_rahrain",
-      null
+      "INFANTRY"
     ],
     "onager,Bedouin": [
       "att_des_onager",
@@ -1157,59 +1157,59 @@
     ],
     "light_footmen,Abbasid": [
       "mubs_light_footmen",
-      null
+      "RANGED"
     ],
     "armored_footmen,Abbasid": [
       "mubs_armored_footmen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Abbasid": [
       "mubs_pikemen",
-      null
+      "INFANTRY"
     ],
     "bowmen,Abbasid": [
       "mubs_bowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,Abbasid": [
       "mubs_light_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Abbasid": [
       "mubs_armored_horsemen",
-      null
+      "CAVALRY"
     ],
     "house_guard,Abbasid": [
       "mubs_house_guards",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Abbasid": [
       "mubs_house_guards",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Abbasid": [
       "att_des_camel_lancers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Abbasid": [
       "mubs_camel_riders",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Abbasid": [
       "att_des_es_zodiac_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Abbasid": [
       "mubs_asawira",
-      null
+      "CAVALRY"
     ],
     "asawira,Abbasid": [
       "mubs_asawira",
-      null
+      "CAVALRY"
     ],
     "cataphract,Abbasid": [
       "mubs_cataphracts",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Abbasid": [
       "att_des_es_athars_chosen",
@@ -1233,27 +1233,27 @@
     ],
     "accolade_maa_archers,Abbasid": [
       "cha_mus_armoured_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Abbasid": [
       "mubs_cataphracts",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Abbasid": [
       "mubs_mulathanum",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Abbasid": [
       "cha_mus_umayyad_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Abbasid": [
       "mubs_rijal",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Abbasid": [
       "att_des_es_noble_al_rahrain",
-      null
+      "INFANTRY"
     ],
     "onager,Abbasid": [
       "cha_mus_onager",
@@ -1301,55 +1301,55 @@
     ],
     "light_footmen,Egyptian": [
       "att_des_es_tanukhid_ambushers",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,Egyptian": [
       "mubs_armored_footmen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Egyptian": [
       "mubs_pikemen",
-      null
+      "INFANTRY"
     ],
     "bowmen,Egyptian": [
       "mubs_bowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,Egyptian": [
       "mubs_light_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Egyptian": [
       "mubs_armored_horsemen",
-      null
+      "CAVALRY"
     ],
     "house_guard,Egyptian": [
       "mubs_house_guards",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Egyptian": [
       "mubs_house_guards",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Egyptian": [
       "att_des_camel_warriors",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Egyptian": [
       "att_des_camel_lancers",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Egyptian": [
       "att_des_es_mounted_marz_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Egyptian": [
       "att_des_es_zodiac_archers",
-      null
+      "CAVALRY"
     ],
     "cataphract,Egyptian": [
       "mubs_cataphracts",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Egyptian": [
       "att_des_es_athars_chosen",
@@ -1373,27 +1373,27 @@
     ],
     "accolade_maa_archers,Egyptian": [
       "cha_mus_armoured_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Egyptian": [
       "mubs_asawira",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Egyptian": [
       "mubs_mulathanum",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Egyptian": [
       "cha_mus_umayyad_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Egyptian": [
       "mubs_rijal",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Egyptian": [
       "att_des_es_athars_chosen",
-      null
+      "INFANTRY"
     ],
     "onager,Egyptian": [
       "cha_mus_onager",
@@ -1436,59 +1436,59 @@
     ],
     "light_footmen,Himyarite": [
       "att_des_es_rumha_skirmishers",
-      null
+      "RANGED"
     ],
     "armored_footmen,Himyarite": [
       "att_des_es_baltha_defenders",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Himyarite": [
       "att_des_es_tanukhid_pikes",
-      null
+      "INFANTRY"
     ],
     "bowmen,Himyarite": [
       "att_des_elite_nubian_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Himyarite": [
       "att_des_desert_raiders",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Himyarite": [
       "HIM_banu_abs_lancer",
-      null
+      "CAVALRY"
     ],
     "house_guard,Himyarite": [
       "att_des_es_zafar_sentinels",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Himyarite": [
       "att_des_es_zafar_sentinels",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Himyarite": [
       "att_des_es_jamal_al_rumha",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Himyarite": [
       "att_des_es_jamal_al_baltha",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Himyarite": [
       "att_des_es_mounted_marz_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Himyarite": [
       "att_des_es_zodiac_archers",
-      null
+      "CAVALRY"
     ],
     "cataphract,Himyarite": [
       "mubs_cataphracts",
-      null
+      "CAVALRY"
     ],
     "abudrar,Himyarite": [
       "att_des_es_rumha_warriors",
-      null
+      "RANGED"
     ],
     "handpicked_faithful,Himyarite": [
       "att_des_es_athars_chosen",
@@ -1512,27 +1512,27 @@
     ],
     "accolade_maa_archers,Himyarite": [
       "mubs_rumat",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Himyarite": [
       "att_des_es_almaqahs_lancers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Himyarite": [
       "att_des_es_zodiac_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Himyarite": [
       "att_des_es_tanukhid_pikes",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Himyarite": [
       "att_des_es_zealot_sicarius",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Himyarite": [
       "att_des_es_khahyahlim",
-      null
+      "INFANTRY"
     ],
     "onager,Himyarite": [
       "att_merc_est_onager",
@@ -1580,55 +1580,55 @@
     ],
     "light_footmen,South Arabian": [
       "att_des_desert_tribesmen",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,South Arabian": [
       "att_des_es_noble_al_rahrain",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,South Arabian": [
       "GHAS_banu_judham_spears",
-      null
+      "INFANTRY"
     ],
     "bowmen,South Arabian": [
       "att_des_elite_nubian_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,South Arabian": [
       "att_des_desert_mounted_javelinmen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,South Arabian": [
       "att_des_es_al_shahba",
-      null
+      "CAVALRY"
     ],
     "house_guard,South Arabian": [
       "att_des_es_noble_al_rahrain",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,South Arabian": [
       "att_des_es_noble_al_rahrain",
-      null
+      "INFANTRY"
     ],
     "camel_rider,South Arabian": [
       "att_des_camel_lancers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,South Arabian": [
       "att_des_es_jamal_al_baltha",
-      null
+      "CAVALRY"
     ],
     "horse_archers,South Arabian": [
       "att_des_es_mounted_marz_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,South Arabian": [
       "att_des_es_zodiac_archers",
-      null
+      "CAVALRY"
     ],
     "cataphract,South Arabian": [
       "mubs_cataphracts",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,South Arabian": [
       "att_des_es_athars_chosen",
@@ -1652,27 +1652,27 @@
     ],
     "accolade_maa_archers,South Arabian": [
       "att_des_es_ashum",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,South Arabian": [
       "att_des_es_wadai",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,South Arabian": [
       "att_des_es_al_dawser",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,South Arabian": [
       "att_des_es_tanukhid_pikes",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,South Arabian": [
       "att_des_es_tanukhid_ambushers",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,South Arabian": [
       "att_des_es_athars_chosen",
-      null
+      "INFANTRY"
     ],
     "onager,South Arabian": [
       "att_des_onager",
@@ -1725,59 +1725,59 @@
     ],
     "light_footmen,Andalusian": [
       "cha_mus_andalusian_skirm",
-      null
+      "RANGED"
     ],
     "armored_footmen,Andalusian": [
       "cha_mus_andalusian_warriors",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Andalusian": [
       "cha_mus_berber_warriors",
-      null
+      "INFANTRY"
     ],
     "bowmen,Andalusian": [
       "cha_mus_armoured_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Andalusian": [
       "cha_mus_berber_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Andalusian": [
       "cha_mus_andalusian_cav",
-      null
+      "CAVALRY"
     ],
     "house_guard,Andalusian": [
       "cha_mus_umayyad_guardsmen",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Andalusian": [
       "cha_mus_umayyad_guardsmen",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Andalusian": [
       "att_des_camel_warriors",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Andalusian": [
       "att_des_camel_lancers",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Andalusian": [
       "att_des_es_mounted_marz_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Andalusian": [
       "att_des_es_zodiac_archers",
-      null
+      "CAVALRY"
     ],
     "caballero,Andalusian": [
       "cha_mus_berber_jinetes",
-      null
+      "CAVALRY"
     ],
     "cataphract,Andalusian": [
       "mubs_cataphracts",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Andalusian": [
       "att_des_es_athars_chosen",
@@ -1801,27 +1801,27 @@
     ],
     "accolade_maa_archers,Andalusian": [
       "cha_mus_armoured_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Andalusian": [
       "cha_mus_armoured_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Andalusian": [
       "cha_mus_andalusian_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Andalusian": [
       "cha_mus_umayyad_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Andalusian": [
       "cha_mus_slingers",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Andalusian": [
       "att_des_es_athars_chosen",
-      null
+      "INFANTRY"
     ],
     "onager,Andalusian": [
       "cha_mus_onager",
@@ -1869,55 +1869,55 @@
     ],
     "light_footmen,Maghrebi": [
       "mubs_maghrebi_light_footmen",
-      null
+      "RANGED"
     ],
     "armored_footmen,Maghrebi": [
       "mubs_bedouin_armored_footmen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Maghrebi": [
       "mubs_maghrebi_pikemen",
-      null
+      "INFANTRY"
     ],
     "bowmen,Maghrebi": [
       "mubs_bowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,Maghrebi": [
       "mubs_light_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Maghrebi": [
       "mubs_armored_horsemen",
-      null
+      "CAVALRY"
     ],
     "house_guard,Maghrebi": [
       "mubs_house_guards",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Maghrebi": [
       "mubs_house_guards",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Maghrebi": [
       "att_des_camel_warriors",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Maghrebi": [
       "att_des_camel_lancers",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Maghrebi": [
       "att_des_es_mounted_marz_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Maghrebi": [
       "att_des_es_zodiac_archers",
-      null
+      "CAVALRY"
     ],
     "cataphract,Maghrebi": [
       "mubs_cataphracts",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Maghrebi": [
       "att_des_es_athars_chosen",
@@ -1941,27 +1941,27 @@
     ],
     "accolade_maa_archers,Maghrebi": [
       "cha_mus_armoured_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Maghrebi": [
       "mubs_cataphracts",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Maghrebi": [
       "mubs_mulathanum",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Maghrebi": [
       "cha_mus_berber_warriors",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Maghrebi": [
       "mubs_rijal",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Maghrebi": [
       "att_des_es_noble_al_rahrain",
-      null
+      "INFANTRY"
     ],
     "onager,Maghrebi": [
       "cha_mus_onager",
@@ -2009,59 +2009,59 @@
     ],
     "light_footmen,Baltic": [
       "BAL_ambushers",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,Baltic": [
       "BAL_kursi_retinue",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Baltic": [
       "BAL_shieldwall",
-      null
+      "INFANTRY"
     ],
     "bowmen,Baltic": [
       "BAL_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Baltic": [
       "BAL_nordic_retinue",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Baltic": [
       "att_slav_svarogs_raiders",
-      null
+      "CAVALRY"
     ],
     "house_guard,Baltic": [
       "BAL_kursi_swords",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Baltic": [
       "att_slav_veles_chosen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Baltic": [
       "att_slav_hunters",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Baltic": [
       "BAL_armoured_retinue",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Baltic": [
       "BAL_nordic_retinue",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Baltic": [
       "BAL_heavy_ambushers",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Baltic": [
       "BAL_woodsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Baltic": [
       "BAL_kursi_retinue",
-      null
+      "INFANTRY"
     ],
     "onager,Baltic": [
       "att_slav_onager",
@@ -2109,59 +2109,59 @@
     ],
     "light_footmen,Finnic": [
       "att_slav_skirmishers",
-      null
+      "RANGED"
     ],
     "armored_footmen,Finnic": [
       "att_slav_peruns_axes",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Finnic": [
       "att_slav_spearmen",
-      null
+      "INFANTRY"
     ],
     "bowmen,Finnic": [
       "att_slav_posion_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Finnic": [
       "att_slav_raiders",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Finnic": [
       "att_slav_svarogs_raiders",
-      null
+      "CAVALRY"
     ],
     "house_guard,Finnic": [
       "att_slav_veles_chosen",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Finnic": [
       "att_slav_followers_veles",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Finnic": [
       "att_slav_hunters",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Finnic": [
       "BAL_armoured_retinue",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Finnic": [
       "att_slav_horse_raiders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Finnic": [
       "att_slav_noble_spearmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Finnic": [
       "att_slav_noble_skirmishers",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Finnic": [
       "att_slav_horse_butchers",
-      null
+      "INFANTRY"
     ],
     "onager,Finnic": [
       "att_slav_onager",
@@ -2209,59 +2209,59 @@
     ],
     "light_footmen,Baranis": [
       "mubs_maghrebi_light_footmen",
-      null
+      "RANGED"
     ],
     "armored_footmen,Baranis": [
       "mubs_maghrebi_armored_footmen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Baranis": [
       "mubs_maghrebi_pikemen",
-      null
+      "INFANTRY"
     ],
     "bowmen,Baranis": [
       "mubs_maghrebi_bowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,Baranis": [
       "mubs_maghrebi_light_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Baranis": [
       "mubs_maghrebi_armored_horsemen",
-      null
+      "CAVALRY"
     ],
     "house_guard,Baranis": [
       "mubs_house_guards",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Baranis": [
       "mubs_house_guards",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Baranis": [
       "att_des_camel_lancers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Baranis": [
       "att_des_armoured_camel_warriors",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Baranis": [
       "att_des_es_mounted_marz_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Baranis": [
       "att_des_es_zodiac_archers",
-      null
+      "CAVALRY"
     ],
     "caballero,Baranis": [
       "cha_mus_berber_jinetes",
-      null
+      "CAVALRY"
     ],
     "cataphract,Baranis": [
       "mubs_cataphracts",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Baranis": [
       "att_des_es_athars_chosen",
@@ -2285,27 +2285,27 @@
     ],
     "accolade_maa_archers,Baranis": [
       "cha_mus_armoured_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Baranis": [
       "cha_mus_armoured_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Baranis": [
       "mubs_mulathanum",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Baranis": [
       "cha_mus_berber_warriors",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Baranis": [
       "mubs_rijal",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Baranis": [
       "cha_mus_andalusian_warriors",
-      null
+      "INFANTRY"
     ],
     "onager,Baranis": [
       "att_des_onager",
@@ -2353,59 +2353,59 @@
     ],
     "light_footmen,Butr": [
       "mubs_maghrebi_light_footmen",
-      null
+      "RANGED"
     ],
     "armored_footmen,Butr": [
       "mubs_maghrebi_armored_footmen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Butr": [
       "mubs_maghrebi_pikemen",
-      null
+      "INFANTRY"
     ],
     "bowmen,Butr": [
       "mubs_maghrebi_bowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,Butr": [
       "mubs_maghrebi_light_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Butr": [
       "mubs_maghrebi_armored_horsemen",
-      null
+      "CAVALRY"
     ],
     "house_guard,Butr": [
       "mubs_house_guards",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Butr": [
       "mubs_house_guards",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Butr": [
       "att_des_camel_lancers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Butr": [
       "att_des_armoured_camel_warriors",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Butr": [
       "att_des_es_mounted_marz_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Butr": [
       "att_des_es_zodiac_archers",
-      null
+      "CAVALRY"
     ],
     "caballero,Butr": [
       "cha_mus_berber_jinetes",
-      null
+      "CAVALRY"
     ],
     "cataphract,Butr": [
       "mubs_cataphracts",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Butr": [
       "att_des_es_athars_chosen",
@@ -2429,27 +2429,27 @@
     ],
     "accolade_maa_archers,Butr": [
       "mubs_rumat",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Butr": [
       "cha_mus_armoured_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Butr": [
       "mubs_mulathanum",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Butr": [
       "cha_mus_berber_warriors",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Butr": [
       "mubs_rijal",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Butr": [
       "cha_mus_andalusian_warriors",
-      null
+      "INFANTRY"
     ],
     "onager,Butr": [
       "att_des_onager",
@@ -2492,55 +2492,55 @@
     ],
     "light_footmen,Sahelian": [
       "att_des_es_badyia_skirmishers",
-      null
+      "RANGED"
     ],
     "armored_footmen,Sahelian": [
       "att_des_es_behers_chosen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Sahelian": [
       "GARAM_tuareg_spears",
-      null
+      "INFANTRY"
     ],
     "bowmen,Sahelian": [
       "att_des_garamantian_hunters",
-      null
+      "RANGED"
     ],
     "light_horsemen,Sahelian": [
       "att_des_garamantian_lancers",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Sahelian": [
       "att_des_amazigh_lancers",
-      null
+      "CAVALRY"
     ],
     "house_guard,Sahelian": [
       "att_des_es_behers_chosen",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Sahelian": [
       "att_des_es_behers_chosen",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Sahelian": [
       "att_des_tuareg_camel_spearmen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Sahelian": [
       "att_des_camel_lancers",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Sahelian": [
       "att_des_es_mounted_marz_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Sahelian": [
       "att_des_es_zodiac_archers",
-      null
+      "CAVALRY"
     ],
     "cataphract,Sahelian": [
       "mubs_cataphracts",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Sahelian": [
       "att_des_es_behers_chosen",
@@ -2564,27 +2564,27 @@
     ],
     "accolade_maa_archers,Sahelian": [
       "att_des_es_marz_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Sahelian": [
       "att_des_es_al_shahba",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Sahelian": [
       "att_des_es_mavias_chosen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Sahelian": [
       "att_des_es_tanukhid_pikes",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Sahelian": [
       "att_des_es_rumha_warriors",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Sahelian": [
       "att_des_es_noble_al_rahrain",
-      null
+      "INFANTRY"
     ],
     "onager,Sahelian": [
       "att_des_onager",
@@ -2627,59 +2627,59 @@
     ],
     "light_footmen,Breton": [
       "cha_cel_javelinmen",
-      null
+      "RANGED"
     ],
     "armored_footmen,Breton": [
       "cha_gen_armoured_sword",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Breton": [
       "cha_fra_mounted_spear",
-      null
+      "INFANTRY"
     ],
     "bowmen,Breton": [
       "cha_cel_welsh_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Breton": [
       "cha_gen_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Breton": [
       "cha_gen_noble_cavalry",
-      null
+      "CAVALRY"
     ],
     "house_guard,Breton": [
       "cha_fra_palace_guard",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Breton": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Breton": [
       "cha_cel_welsh_longbowmen",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Breton": [
       "cha_bre_armorican_knights",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Breton": [
       "cha_cel_horsemen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Breton": [
       "cha_nor_lancent_armeure",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Breton": [
       "cha_vik_skirm",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Breton": [
       "cha_fra_mounted_swordsmen",
-      null
+      "INFANTRY"
     ],
     "onager,Breton": [
       "cha_gen_onager",
@@ -2722,67 +2722,67 @@
     ],
     "light_footmen,Brythonic": [
       "cha_cel_javelinmen",
-      null
+      "RANGED"
     ],
     "armored_footmen,Brythonic": [
       "cha_cel_armoured_spear",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Brythonic": [
       "cha_cel_spear",
-      null
+      "INFANTRY"
     ],
     "bowmen,Brythonic": [
       "cha_cel_welsh_archers",
-      null
+      "RANGED"
     ],
     "crossbowmen,Brythonic": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,Brythonic": [
       "cha_cel_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Brythonic": [
       "cha_cel_royal_horsemen",
-      null
+      "CAVALRY"
     ],
     "house_guard,Brythonic": [
       "cha_cel_kings_warband",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Brythonic": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Brythonic": [
       "cha_cel_welsh_longbowmen",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Brythonic": [
       "cha_cel_teulu",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Brythonic": [
       "cha_cel_horsemen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Brythonic": [
       "cha_cel_armoured_spear",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Brythonic": [
       "cha_cel_kerns",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Brythonic": [
       "cha_cel_fianna",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,Brythonic": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "onager,Brythonic": [
       "cha_cel_onager",
@@ -2825,67 +2825,67 @@
     ],
     "light_footmen,Gaelic": [
       "cha_cel_gaillmhigh",
-      null
+      "RANGED"
     ],
     "armored_footmen,Gaelic": [
       "cha_cel_sword_warriors",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Gaelic": [
       "cha_cel_spear",
-      null
+      "INFANTRY"
     ],
     "bowmen,Gaelic": [
       "cha_cel_pictish_archers",
-      null
+      "RANGED"
     ],
     "crossbowmen,Gaelic": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,Gaelic": [
       "cha_cel_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Gaelic": [
       "cha_cel_royal_horsemen",
-      null
+      "CAVALRY"
     ],
     "house_guard,Gaelic": [
       "cha_cel_kings_warband",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Gaelic": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Gaelic": [
       "cha_cel_pictish_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Gaelic": [
       "cha_cel_pictish_nobles",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Gaelic": [
       "cha_cel_horsemen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Gaelic": [
       "cha_cel_armoured_spear",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Gaelic": [
       "cha_cel_axemen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Gaelic": [
       "cha_cel_fianna",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,Gaelic": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "onager,Gaelic": [
       "cha_cel_onager",
@@ -2928,67 +2928,67 @@
     ],
     "light_footmen,Irish": [
       "cha_cel_kerns",
-      null
+      "RANGED"
     ],
     "armored_footmen,Irish": [
       "cha_cel_fianna",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Irish": [
       "cha_cel_spear",
-      null
+      "INFANTRY"
     ],
     "bowmen,Irish": [
       "cha_cel_levy_archers",
-      null
+      "RANGED"
     ],
     "crossbowmen,Irish": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,Irish": [
       "cha_cel_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Irish": [
       "cha_cel_pictish_nobles",
-      null
+      "CAVALRY"
     ],
     "house_guard,Irish": [
       "cha_cel_kings_warband",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Irish": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Irish": [
       "cha_cel_pictish_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Irish": [
       "cha_cel_kings_fianna",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Irish": [
       "cha_cel_horsemen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Irish": [
       "cha_cel_armoured_spear",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Irish": [
       "cha_cel_axemen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Irish": [
       "cha_cel_kings_warband",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,Irish": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "onager,Irish": [
       "cha_cel_onager",
@@ -3031,43 +3031,43 @@
     ],
     "light_footmen,Burmese": [
       "att_wh_guardians_of_the_hindu_kush",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,Burmese": [
       "att_wh_khingilas_khandas",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Burmese": [
       "att_wh_xionite_spears",
-      null
+      "INFANTRY"
     ],
     "bowmen,Burmese": [
       "KOK_steppe_bows",
-      null
+      "RANGED"
     ],
     "light_horsemen,Burmese": [
       "HEP_steppe_hordes",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Burmese": [
       "HEP_spet_xyon_horsemen",
-      null
+      "CAVALRY"
     ],
     "house_guard,Burmese": [
       "KOK_cha_gen_spear",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Burmese": [
       "KOK_cha_gen_spear",
-      null
+      "INFANTRY"
     ],
     "horse_archers,Burmese": [
       "att_nom_hunnic_ambushers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Burmese": [
       "att_nom_hunnic_horse_archers",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Burmese": [
       "att_wh_khingilas_khandas",
@@ -3091,27 +3091,27 @@
     ],
     "accolade_maa_archers,Burmese": [
       "KOK_cha_gen_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Burmese": [
       "HEP_kushan_cataphracts",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Burmese": [
       "att_nom_shamans_of_the_eternal_sky",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Burmese": [
       "KOK_cha_gen_spear",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Burmese": [
       "att_wh_khingilas_khandas",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Burmese": [
       "KOK_cha_gen_armoured_sword",
-      null
+      "INFANTRY"
     ],
     "onager,Burmese": [
       "cha_avar_onager",
@@ -3159,47 +3159,47 @@
     ],
     "light_footmen,Alan": [
       "att_alan_alani_swordsmen",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,Alan": [
       "att_alan_alani_warriors",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Alan": [
       "att_ger_alani_spearmen",
-      null
+      "INFANTRY"
     ],
     "bowmen,Alan": [
       "ALAN_alanoi_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Alan": [
       "att_alan_anti_cav_light_tier_3",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Alan": [
       "ALAN_cataphracts",
-      null
+      "CAVALRY"
     ],
     "house_guard,Alan": [
       "att_ger_agathyrsi_warriors",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Alan": [
       "att_ger_agathyrsi_warriors",
-      null
+      "INFANTRY"
     ],
     "horse_archers,Alan": [
       "att_alan_alani_horse_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Alan": [
       "att_ger_sarmatian_cataphract_archers",
-      null
+      "CAVALRY"
     ],
     "cataphract,Alan": [
       "att_alan_sarmatian_cataphracts_infantry_destroyer_tier_5",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Alan": [
       "ERE_gepids",
@@ -3223,27 +3223,27 @@
     ],
     "accolade_maa_archers,Alan": [
       "att_ger_elite_germanic_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Alan": [
       "att_alan_tank",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Alan": [
       "att_alan_anti_cav_light_tier_4",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Alan": [
       "att_nom_scirii_warriors",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Alan": [
       "att_alan_sarmatian_band",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Alan": [
       "att_ger_agathyrsi_warriors",
-      null
+      "INFANTRY"
     ],
     "onager,Alan": [
       "att_alan_onager",
@@ -3291,55 +3291,55 @@
     ],
     "light_footmen,Armenian": [
       "ARM_skirmishers",
-      null
+      "RANGED"
     ],
     "armored_footmen,Armenian": [
       "ARM_heavy_axemen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Armenian": [
       "MERC_armenian_spearmen",
-      null
+      "INFANTRY"
     ],
     "bowmen,Armenian": [
       "ARM_heavy_archers",
-      null
+      "RANGED"
     ],
     "crossbowmen,Armenian": [
       "att_rom_ballistarii",
-      null
+      "RANGED"
     ],
     "light_horsemen,Armenian": [
       "ARM_light_cavalry",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Armenian": [
       "ARM_ayriudzi",
-      null
+      "CAVALRY"
     ],
     "house_guard,Armenian": [
       "ARM_foot_guards",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Armenian": [
       "ARM_foot_guards",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Armenian": [
       "att_est_persian_camel_raiders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Armenian": [
       "att_des_camel_lancers",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Armenian": [
       "att_alan_alani_horse_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Armenian": [
       "att_est_zhayedan_immortal_cavalry",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Armenian": [
       "ERE_gepids",
@@ -3363,31 +3363,31 @@
     ],
     "accolade_maa_archers,Armenian": [
       "ARM_heavy_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Armenian": [
       "att_est_pushtighban_cataphracts",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Armenian": [
       "att_alan_anti_cav_light_tier_4",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Armenian": [
       "ARM_spear_heavy",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Armenian": [
       "ARM_light_halberdiers",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Armenian": [
       "ARM_halberdiers",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,Armenian": [
       "att_rom_elite_ballistarii",
-      null
+      "RANGED"
     ],
     "onager,Armenian": [
       "att_est_onager",
@@ -3430,43 +3430,43 @@
     ],
     "light_footmen,Georgian": [
       "ARM_skirmishers",
-      null
+      "RANGED"
     ],
     "armored_footmen,Georgian": [
       "ARM_heavy_axemen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Georgian": [
       "att_nom_scirii_warriors",
-      null
+      "INFANTRY"
     ],
     "bowmen,Georgian": [
       "ALAN_alanoi_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Georgian": [
       "att_alan_alani_cavalry_warriors",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Georgian": [
       "att_alan_anti_cav_light_tier_4",
-      null
+      "CAVALRY"
     ],
     "house_guard,Georgian": [
       "ARM_spear_heavy",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Georgian": [
       "ARM_heavy_axemen",
-      null
+      "INFANTRY"
     ],
     "horse_archers,Georgian": [
       "att_alan_alani_horse_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Georgian": [
       "att_ger_sarmatian_cataphract_archers",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Georgian": [
       "ERE_gepids",
@@ -3490,31 +3490,31 @@
     ],
     "accolade_maa_archers,Georgian": [
       "ARM_heavy_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Georgian": [
       "att_alan_tank",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Georgian": [
       "att_alan_anti_cav_light_tier_3",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Georgian": [
       "ARM_spear_heavy",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Georgian": [
       "ARM_light_halberdiers",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Georgian": [
       "ARM_halberdiers",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,Georgian": [
       "att_rom_elite_ballistarii",
-      null
+      "RANGED"
     ],
     "onager,Georgian": [
       "att_merc_est_onager",
@@ -3557,55 +3557,55 @@
     ],
     "light_footmen,Byzantine": [
       "att_rom_levis_armaturae",
-      null
+      "RANGED"
     ],
     "armored_footmen,Byzantine": [
       "ERE_bucellarii_pedites",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Byzantine": [
       "ERE_transtigritiani_spears",
-      null
+      "INFANTRY"
     ],
     "bowmen,Byzantine": [
       "att_rom_armoured_sagittarii",
-      null
+      "RANGED"
     ],
     "crossbowmen,Byzantine": [
       "att_rom_ballistarii",
-      null
+      "RANGED"
     ],
     "light_horsemen,Byzantine": [
       "ERE_equites_tertio_dalmatae",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Byzantine": [
       "ERE_patrikos_obsequium",
-      null
+      "CAVALRY"
     ],
     "house_guard,Byzantine": [
       "ERE_protectores_palatina",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Byzantine": [
       "ERE_dismounted_excubitores_2",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Byzantine": [
       "att_rom_imperial_dromedarii",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Byzantine": [
       "att_rom_imperial_dromedarii",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Byzantine": [
       "ERE_equites_toxoto_dalmatae",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Byzantine": [
       "ERE_boukelaroi_toxotai",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Byzantine": [
       "ERE_gepids",
@@ -3629,31 +3629,31 @@
     ],
     "accolade_maa_archers,Byzantine": [
       "att_rom_armoured_sagittarii",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Byzantine": [
       "ERE_leones_clib",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Byzantine": [
       "ERE_limitanei_levy_lancers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Byzantine": [
       "att_rom_numeroi",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Byzantine": [
       "att_rom_exploratores",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Byzantine": [
       "att_rom_hetaireia_guards",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,Byzantine": [
       "att_rom_elite_ballistarii",
-      null
+      "RANGED"
     ],
     "onager,Byzantine": [
       "att_rom_onager",
@@ -3701,55 +3701,55 @@
     ],
     "light_footmen,Syriac": [
       "att_est_persian_skirmishers_ERE",
-      null
+      "RANGED"
     ],
     "armored_footmen,Syriac": [
       "att_des_desert_palatina_defectors",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Syriac": [
       "GHAS_limitanei",
-      null
+      "INFANTRY"
     ],
     "bowmen,Syriac": [
       "MERC_syrian_archers",
-      null
+      "RANGED"
     ],
     "crossbowmen,Syriac": [
       "att_rom_ballistarii",
-      null
+      "RANGED"
     ],
     "light_horsemen,Syriac": [
       "GHAS_equites_promoti",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Syriac": [
       "MERC_ERE_perso_iustiniani",
-      null
+      "CAVALRY"
     ],
     "house_guard,Syriac": [
       "ERE_protectores_palatina",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Syriac": [
       "ERE_dismounted_excubitores_2",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Syriac": [
       "att_des_camel_warriors",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Syriac": [
       "att_des_camel_lancers",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Syriac": [
       "equites_sag_ERE",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Syriac": [
       "MERC_bucellarii_persian",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Syriac": [
       "att_des_es_athars_chosen",
@@ -3773,31 +3773,31 @@
     ],
     "accolade_maa_archers,Syriac": [
       "att_rom_armoured_sagittarii",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Syriac": [
       "att_rom_clibanarii",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Syriac": [
       "GHAS_judham",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Syriac": [
       "ERE_quartoparthoi_swords",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Syriac": [
       "att_rom_exculcatores",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Syriac": [
       "ERE_bucellarii_pedites",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,Syriac": [
       "att_rom_elite_ballistarii",
-      null
+      "RANGED"
     ],
     "onager,Syriac": [
       "att_merc_est_onager",
@@ -3845,59 +3845,59 @@
     ],
     "light_footmen,Assyrian": [
       "att_des_es_rebellion_militia",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,Assyrian": [
       "att_merc_est_dailamite_warriors",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Assyrian": [
       "GHAS_banu_judham_spears",
-      null
+      "INFANTRY"
     ],
     "bowmen,Assyrian": [
       "MERC_syrian_archers",
-      null
+      "RANGED"
     ],
     "crossbowmen,Assyrian": [
       "att_rom_ballistarii",
-      null
+      "RANGED"
     ],
     "light_horsemen,Assyrian": [
       "GHAS_hippeis",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Assyrian": [
       "QUR_banu_judham_lancers",
-      null
+      "CAVALRY"
     ],
     "house_guard,Assyrian": [
       "att_est_elite_dailamite_infantry",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Assyrian": [
       "ERE_dismounted_excubitores_2",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Assyrian": [
       "att_des_camel_warriors",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Assyrian": [
       "att_des_camel_lancers",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Assyrian": [
       "equites_sag_ERE",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Assyrian": [
       "MERC_bucellarii_persian",
-      null
+      "CAVALRY"
     ],
     "cataphract,Assyrian": [
       "mubs_cataphracts",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Assyrian": [
       "att_des_es_athars_chosen",
@@ -3921,31 +3921,31 @@
     ],
     "accolade_maa_archers,Assyrian": [
       "MERC_syrian_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Assyrian": [
       "att_rom_clibanarii",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Assyrian": [
       "GHAS_judham",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Assyrian": [
       "att_merc_est_armenian_spears",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Assyrian": [
       "att_merc_est_kurdish_javelinmen",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Assyrian": [
       "att_est_elite_dailamite_infantry",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,Assyrian": [
       "att_rom_elite_ballistarii",
-      null
+      "RANGED"
     ],
     "onager,Assyrian": [
       "att_merc_est_onager",
@@ -3988,59 +3988,59 @@
     ],
     "light_footmen,Saxon": [
       "cha_sax_noble_javelinmen",
-      null
+      "RANGED"
     ],
     "armored_footmen,Saxon": [
       "cha_sax_sword_veterans",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Saxon": [
       "cha_sax_spear_veterans",
-      null
+      "INFANTRY"
     ],
     "bowmen,Saxon": [
       "cha_sax_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Saxon": [
       "cha_sax_cav",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Saxon": [
       "cha_sax_hearth_cav",
-      null
+      "CAVALRY"
     ],
     "house_guard,Saxon": [
       "cha_fra_palace_guard",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Saxon": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Saxon": [
       "cha_sax_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Saxon": [
       "cha_sax_hearth_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Saxon": [
       "cha_sax_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Saxon": [
       "cha_gen_armoured_spear",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Saxon": [
       "cha_sax_noble_javelinmen",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Saxon": [
       "cha_sax_sword_veterans",
-      null
+      "INFANTRY"
     ],
     "onager,Saxon": [
       "cha_sax_onager",
@@ -4083,59 +4083,59 @@
     ],
     "light_footmen,Franconian": [
       "cha_fra_skirm",
-      null
+      "RANGED"
     ],
     "armored_footmen,Franconian": [
       "cha_fra_armoured_sword",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Franconian": [
       "cha_fra_mounted_spear",
-      null
+      "INFANTRY"
     ],
     "bowmen,Franconian": [
       "cha_fra_mounted_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Franconian": [
       "cha_fra_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Franconian": [
       "cha_sax_hearth_cav",
-      null
+      "CAVALRY"
     ],
     "house_guard,Franconian": [
       "cha_fra_palace_guard",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Franconian": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Franconian": [
       "cha_sax_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Franconian": [
       "cha_sax_hearth_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Franconian": [
       "cha_sax_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Franconian": [
       "cha_sax_spear_veterans",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Franconian": [
       "cha_sax_noble_javelinmen",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Franconian": [
       "cha_sax_sword_veterans",
-      null
+      "INFANTRY"
     ],
     "onager,Franconian": [
       "cha_fra_onager",
@@ -4178,59 +4178,59 @@
     ],
     "light_footmen,Lombard": [
       "cha_lom_skirm",
-      null
+      "RANGED"
     ],
     "armored_footmen,Lombard": [
       "cha_lom_gastald_swordsmen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Lombard": [
       "cha_lom_guardsmen",
-      null
+      "INFANTRY"
     ],
     "bowmen,Lombard": [
       "cha_lom_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Lombard": [
       "cha_lom_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Lombard": [
       "cha_gen_noble_cavalry",
-      null
+      "CAVALRY"
     ],
     "house_guard,Lombard": [
       "cha_lom_guardsmen",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Lombard": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Lombard": [
       "cha_lom_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Lombard": [
       "cha_lom_lancers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Lombard": [
       "cha_lom_gastald_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Lombard": [
       "cha_lom_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Lombard": [
       "cha_lom_skirm",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Lombard": [
       "cha_lom_gastald_swordsmen",
-      null
+      "INFANTRY"
     ],
     "onager,Lombard": [
       "cha_lom_onager",
@@ -4273,43 +4273,43 @@
     ],
     "light_footmen,Tibetan": [
       "att_nom_steppe_tribespeople",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,Tibetan": [
       "att_wh_khingilas_khandas",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Tibetan": [
       "att_wh_xionite_spears",
-      null
+      "INFANTRY"
     ],
     "bowmen,Tibetan": [
       "KOK_steppe_bows",
-      null
+      "RANGED"
     ],
     "light_horsemen,Tibetan": [
       "att_nom_steppe_mounted_brigands",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Tibetan": [
       "HEP_spet_xyon_horsemen",
-      null
+      "CAVALRY"
     ],
     "house_guard,Tibetan": [
       "KOK_axe_warriors",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Tibetan": [
       "KOK_axe_warriors",
-      null
+      "INFANTRY"
     ],
     "horse_archers,Tibetan": [
       "HEP_steppe_hordes",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Tibetan": [
       "HEP_spet_xyon_noble_horse_archers",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Tibetan": [
       "att_wh_khingilas_khandas",
@@ -4333,27 +4333,27 @@
     ],
     "accolade_maa_archers,Tibetan": [
       "KOK_cha_gen_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Tibetan": [
       "HEP_kushan_cataphracts",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Tibetan": [
       "HEP_steppe_hordes",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Tibetan": [
       "att_wh_yanda_spearmasters",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Tibetan": [
       "att_nom_steppe_warriors",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Tibetan": [
       "KOK_axe_warriors",
-      null
+      "INFANTRY"
     ],
     "onager,Tibetan": [
       "cha_avar_onager",
@@ -4396,51 +4396,51 @@
     ],
     "light_footmen,Indian": [
       "HEP_tokharistani_spear_throwers",
-      null
+      "RANGED"
     ],
     "armored_footmen,Indian": [
       "HEP_hindi_warriors",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Indian": [
       "att_des_desert_spears",
-      null
+      "INFANTRY"
     ],
     "bowmen,Indian": [
       "HEP_hindi_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Indian": [
       "att_ger_elite_agathyrsi_cavalry",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Indian": [
       "att_des_es_al_dawser",
-      null
+      "CAVALRY"
     ],
     "house_guard,Indian": [
       "att_des_es_khahyahlim",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Indian": [
       "att_des_es_zealot_sicarius",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Indian": [
       "att_des_camel_warriors",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Indian": [
       "att_des_es_jamal_al_baltha",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Indian": [
       "att_des_es_zodiac_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Indian": [
       "att_des_es_zodiac_archers",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Indian": [
       "att_des_es_athars_chosen",
@@ -4464,27 +4464,27 @@
     ],
     "accolade_maa_archers,Indian": [
       "att_des_es_ashum",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Indian": [
       "att_des_es_al_dawser",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Indian": [
       "att_des_arabic_horsemen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Indian": [
       "att_des_desert_spears",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Indian": [
       "att_des_es_rumha_warriors",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Indian": [
       "att_des_es_athars_chosen",
-      null
+      "INFANTRY"
     ],
     "onager,Indian": [
       "att_merc_est_onager",
@@ -4532,55 +4532,55 @@
     ],
     "light_footmen,Horn African": [
       "BLEMM_skirm",
-      null
+      "RANGED"
     ],
     "armored_footmen,Horn African": [
       "BLEMM_heavy_khanda",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Horn African": [
       "att_des_es_sons_of_the_invincible_mahrem",
-      null
+      "INFANTRY"
     ],
     "bowmen,Horn African": [
       "ALL_garrison_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Horn African": [
       "att_des_kushite_mounted_shotelai",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Horn African": [
       "att_des_es_abunas_guard",
-      null
+      "CAVALRY"
     ],
     "house_guard,Horn African": [
       "att_des_es_masqal_spearmen",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Horn African": [
       "att_des_es_behers_chosen",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Horn African": [
       "att_des_es_afar_camel_riders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Horn African": [
       "att_des_camel_lancers",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Horn African": [
       "att_des_es_mounted_marz_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Horn African": [
       "att_des_es_zodiac_archers",
-      null
+      "CAVALRY"
     ],
     "cataphract,Horn African": [
       "mubs_cataphracts",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Horn African": [
       "att_des_es_behers_chosen",
@@ -4604,27 +4604,27 @@
     ],
     "accolade_maa_archers,Horn African": [
       "att_des_es_marz_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Horn African": [
       "HIM_banu_abs_lancer",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Horn African": [
       "att_des_es_bet_giorgis_cavalry",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Horn African": [
       "att_des_es_elite_tor_warriors",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Horn African": [
       "att_des_es_afar_raidmasters",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Horn African": [
       "att_des_kushite_shotelai",
-      null
+      "INFANTRY"
     ],
     "onager,Horn African": [
       "att_des_onager",
@@ -4667,51 +4667,51 @@
     ],
     "light_footmen,Coptic": [
       "AKS_spear_throwers",
-      null
+      "RANGED"
     ],
     "armored_footmen,Coptic": [
       "att_des_es_behers_chosen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Coptic": [
       "att_des_es_elite_tor_warriors",
-      null
+      "INFANTRY"
     ],
     "bowmen,Coptic": [
       "BLEMM_archer",
-      null
+      "RANGED"
     ],
     "light_horsemen,Coptic": [
       "att_des_es_bet_giorgis_cavalry",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Coptic": [
       "att_des_es_abunas_guard",
-      null
+      "CAVALRY"
     ],
     "house_guard,Coptic": [
       "att_des_es_masqal_spearmen",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Coptic": [
       "att_des_es_sons_of_the_invincible_mahrem",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Coptic": [
       "att_des_es_afar_camel_riders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Coptic": [
       "att_des_es_jamal_al_baltha",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Coptic": [
       "att_des_es_mounted_marz_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Coptic": [
       "att_des_es_zodiac_archers",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Coptic": [
       "att_des_es_behers_chosen",
@@ -4735,27 +4735,27 @@
     ],
     "accolade_maa_archers,Coptic": [
       "att_des_es_marz_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Coptic": [
       "att_est_camel_clibanarii",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Coptic": [
       "att_des_kushite_mounted_shotelai",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Coptic": [
       "att_des_es_sons_of_the_invincible_mahrem",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Coptic": [
       "att_des_es_afar_swordsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Coptic": [
       "att_des_es_masqal_spearmen",
-      null
+      "INFANTRY"
     ],
     "onager,Coptic": [
       "att_des_onager",
@@ -4798,59 +4798,59 @@
     ],
     "light_footmen,Rus": [
       "REB_dediticii",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,Rus": [
       "att_slav_peruns_axes",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Rus": [
       "att_slav_chosen_shields",
-      null
+      "INFANTRY"
     ],
     "bowmen,Rus": [
       "att_slav_hunters",
-      null
+      "RANGED"
     ],
     "light_horsemen,Rus": [
       "att_slav_horse_raiders",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Rus": [
       "att_slav_svarogs_raiders",
-      null
+      "CAVALRY"
     ],
     "house_guard,Rus": [
       "cha_vik_housecarls",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Rus": [
       "cha_vik_berserkers",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Rus": [
       "att_slav_posion_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Rus": [
       "cha_slav_royal_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Rus": [
       "att_slav_svarogs_raiders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Rus": [
       "att_slav_chosen_shields",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Rus": [
       "att_slav_noble_skirmishers",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Rus": [
       "att_slav_axe_warriors",
-      null
+      "INFANTRY"
     ],
     "onager,Rus": [
       "att_slav_onager",
@@ -4893,59 +4893,59 @@
     ],
     "light_footmen,Frankish": [
       "cha_fra_levy_skirm",
-      null
+      "RANGED"
     ],
     "armored_footmen,Frankish": [
       "cha_fra_armoured_sword",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Frankish": [
       "cha_fra_armoured_spear",
-      null
+      "INFANTRY"
     ],
     "bowmen,Frankish": [
       "cha_fra_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Frankish": [
       "cha_fra_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Frankish": [
       "cha_fra_cav",
-      null
+      "CAVALRY"
     ],
     "house_guard,Frankish": [
       "cha_fra_palace_guard",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Frankish": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Frankish": [
       "cha_fra_mounted_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Frankish": [
       "cha_fra_scola_knights",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Frankish": [
       "cha_fra_cheval_javeloz",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Frankish": [
       "cha_fra_palace_guard",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Frankish": [
       "cha_fra_skirm",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Frankish": [
       "cha_fra_mounted_swordsmen",
-      null
+      "INFANTRY"
     ],
     "onager,Frankish": [
       "cha_fra_onager",
@@ -4988,59 +4988,59 @@
     ],
     "light_footmen,Norman": [
       "cha_fra_levy_skirm",
-      null
+      "RANGED"
     ],
     "armored_footmen,Norman": [
       "cha_nor_lancent_armeure",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Norman": [
       "cha_nor_lancent",
-      null
+      "INFANTRY"
     ],
     "bowmen,Norman": [
       "cha_fra_mounted_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Norman": [
       "cha_nor_riddarar",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Norman": [
       "cha_fra_cav",
-      null
+      "CAVALRY"
     ],
     "house_guard,Norman": [
       "cha_nor_lancent_armeure",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Norman": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Norman": [
       "cha_fra_mounted_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Norman": [
       "cha_nor_noblei_chevalers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Norman": [
       "cha_fra_horsemen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Norman": [
       "cha_nor_lancent_armeure",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Norman": [
       "cha_vik_skirm",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Norman": [
       "cha_fra_mounted_swordsmen",
-      null
+      "INFANTRY"
     ],
     "onager,Norman": [
       "cha_fra_onager",
@@ -5083,59 +5083,59 @@
     ],
     "light_footmen,Iberian": [
       "cha_spa_ambushers",
-      null
+      "RANGED"
     ],
     "armored_footmen,Iberian": [
       "cha_spa_armoured_sword",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Iberian": [
       "cha_spa_spear",
-      null
+      "INFANTRY"
     ],
     "bowmen,Iberian": [
       "att_ger_elite_germanic_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Iberian": [
       "cha_spa_raider_cav",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Iberian": [
       "cha_gen_noble_cav",
-      null
+      "CAVALRY"
     ],
     "house_guard,Iberian": [
       "cha_spa_royal_guardsmen",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Iberian": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Iberian": [
       "cha_mus_armoured_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Iberian": [
       "cha_gen_knights",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Iberian": [
       "cha_spa_jinetes",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Iberian": [
       "cha_gen_armoured_spear",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Iberian": [
       "cha_spa_noble_skirm",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Iberian": [
       "cha_spa_royal_guardsmen",
-      null
+      "INFANTRY"
     ],
     "onager,Iberian": [
       "cha_spa_onager",
@@ -5183,55 +5183,55 @@
     ],
     "light_footmen,Persian": [
       "att_est_kurdish_javelinmen",
-      null
+      "RANGED"
     ],
     "armored_footmen,Persian": [
       "att_est_immortals",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Persian": [
       "att_est_armenian_spears",
-      null
+      "INFANTRY"
     ],
     "bowmen,Persian": [
       "SAS_syrian_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Persian": [
       "att_est_lakhmid_scouts",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Persian": [
       "att_est_grivpanvar_cataphracts",
-      null
+      "CAVALRY"
     ],
     "house_guard,Persian": [
       "mubs_house_guards",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Persian": [
       "SAS_soghdian_footmen",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Persian": [
       "att_est_persian_camel_raiders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Persian": [
       "att_est_sogdian_camel_raiders",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Persian": [
       "att_est_persian_mounted_bowmen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Persian": [
       "att_est_persian_camel_archers",
-      null
+      "CAVALRY"
     ],
     "cataphract,Persian": [
       "mubs_cataphracts",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Persian": [
       "att_des_es_athars_chosen",
@@ -5255,27 +5255,27 @@
     ],
     "accolade_maa_archers,Persian": [
       "att_est_royal_persian_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Persian": [
       "att_est_gyan_avspar",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Persian": [
       "att_est_persian_mounted_warriors",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Persian": [
       "MERC_armenian_spearmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Persian": [
       "att_est_kurdish_javelinmen",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Persian": [
       "SAS_soghdian_footmen",
-      null
+      "INFANTRY"
     ],
     "onager,Persian": [
       "att_est_onager",
@@ -5318,55 +5318,55 @@
     ],
     "light_footmen,Daylamite": [
       "att_est_persian_brigade",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,Daylamite": [
       "att_est_elite_dailamite_infantry",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Daylamite": [
       "att_est_armenian_spears",
-      null
+      "INFANTRY"
     ],
     "bowmen,Daylamite": [
       "SAS_syrian_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Daylamite": [
       "att_est_persian_scouts",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Daylamite": [
       "att_est_persian_cataphracts",
-      null
+      "CAVALRY"
     ],
     "house_guard,Daylamite": [
       "att_est_royal_persian_archers",
-      null
+      "RANGED"
     ],
     "teutonic_knights,Daylamite": [
       "SAS_soghdian_footmen",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Daylamite": [
       "att_est_persian_camel_raiders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Daylamite": [
       "att_est_sogdian_camel_raiders",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Daylamite": [
       "att_est_persian_mounted_bowmen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Daylamite": [
       "att_est_persian_camel_archers",
-      null
+      "CAVALRY"
     ],
     "cataphract,Daylamite": [
       "att_est_gyan_avspar",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Daylamite": [
       "att_des_es_athars_chosen",
@@ -5390,27 +5390,27 @@
     ],
     "accolade_maa_archers,Daylamite": [
       "att_est_royal_persian_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Daylamite": [
       "att_est_grivpanvar_cataphracts",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Daylamite": [
       "att_est_persian_mounted_warriors",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Daylamite": [
       "att_est_immortals",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Daylamite": [
       "att_est_armenian_slingers",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Daylamite": [
       "att_est_royal_persian_archers",
-      null
+      "RANGED"
     ],
     "onager,Daylamite": [
       "att_est_onager",
@@ -5458,55 +5458,55 @@
     ],
     "light_footmen,Kurdish": [
       "att_est_kurdish_javelinmen",
-      null
+      "RANGED"
     ],
     "armored_footmen,Kurdish": [
       "att_des_es_sanai",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Kurdish": [
       "GHAS_banu_judham_spears",
-      null
+      "INFANTRY"
     ],
     "bowmen,Kurdish": [
       "att_est_kurdish_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Kurdish": [
       "att_des_desert_mounted_javelinmen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Kurdish": [
       "att_est_savaran_cataphracts",
-      null
+      "CAVALRY"
     ],
     "house_guard,Kurdish": [
       "mubs_house_guards",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Kurdish": [
       "SAS_soghdian_footmen",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Kurdish": [
       "att_des_camel_warriors",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Kurdish": [
       "att_est_sogdian_camel_raiders",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Kurdish": [
       "att_est_persian_mounted_bowmen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Kurdish": [
       "att_est_persian_camel_archers",
-      null
+      "CAVALRY"
     ],
     "cataphract,Kurdish": [
       "mubs_cataphracts",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Kurdish": [
       "att_des_es_athars_chosen",
@@ -5530,27 +5530,27 @@
     ],
     "accolade_maa_archers,Kurdish": [
       "att_est_royal_persian_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Kurdish": [
       "att_est_grivpanvar_cataphracts",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Kurdish": [
       "SAS_frasdaran",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Kurdish": [
       "att_est_immortals",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Kurdish": [
       "att_est_armenian_slingers",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Kurdish": [
       "att_est_elite_dailamite_infantry",
-      null
+      "INFANTRY"
     ],
     "onager,Kurdish": [
       "att_est_onager",
@@ -5598,55 +5598,55 @@
     ],
     "light_footmen,Khorasani": [
       "SAS_Nomad_javelinmen",
-      null
+      "RANGED"
     ],
     "armored_footmen,Khorasani": [
       "SAS_soghdian_footmen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Khorasani": [
       "att_est_persian_levy",
-      null
+      "INFANTRY"
     ],
     "bowmen,Khorasani": [
       "SAS_syrian_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Khorasani": [
       "att_est_persian_mounted_warriors",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Khorasani": [
       "att_est_grivpanvar_cataphracts",
-      null
+      "CAVALRY"
     ],
     "house_guard,Khorasani": [
       "mubs_house_guards",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Khorasani": [
       "SAS_soghdian_footmen",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Khorasani": [
       "att_est_persian_camel_raiders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Khorasani": [
       "att_est_sogdian_camel_raiders",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Khorasani": [
       "att_est_savaran_cavalry",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Khorasani": [
       "att_est_persian_camel_archers",
-      null
+      "CAVALRY"
     ],
     "cataphract,Khorasani": [
       "att_est_gyan_avspar",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Khorasani": [
       "att_des_es_athars_chosen",
@@ -5670,27 +5670,27 @@
     ],
     "accolade_maa_archers,Khorasani": [
       "att_est_royal_persian_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Khorasani": [
       "att_est_pushtighban_cataphracts",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Khorasani": [
       "att_est_savaran_cataphracts",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Khorasani": [
       "att_est_immortals",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Khorasani": [
       "att_est_persian_brigade",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Khorasani": [
       "att_est_elite_dailamite_infantry",
-      null
+      "INFANTRY"
     ],
     "onager,Khorasani": [
       "att_est_onager",
@@ -5733,55 +5733,55 @@
     ],
     "light_footmen,Turkic": [
       "KOK_steppe_levy",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,Turkic": [
       "KOK_cha_gen_armoured_sword",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Turkic": [
       "att_nom_uar_warriors",
-      null
+      "INFANTRY"
     ],
     "bowmen,Turkic": [
       "KOK_steppe_bows",
-      null
+      "RANGED"
     ],
     "light_horsemen,Turkic": [
       "KOK_cha_bre_armorican_cav",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Turkic": [
       "KOK_cha_bre_armorican_knights",
-      null
+      "CAVALRY"
     ],
     "house_guard,Turkic": [
       "KOK_cha_gen_spear",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Turkic": [
       "att_nom_shamans_of_the_eternal_sky",
-      null
+      "CAVALRY"
     ],
     "camel_rider,Turkic": [
       "att_est_persian_camel_raiders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Turkic": [
       "att_est_sogdian_camel_raiders",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Turkic": [
       "kok_khazars",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Turkic": [
       "kok_oq_horse_archers",
-      null
+      "CAVALRY"
     ],
     "cataphract,Turkic": [
       "att_nom_noble_steppe_cataphracts",
-      null
+      "CAVALRY"
     ],
     "nomadic_riders,Turkic": [
       "KOK_cha_gen_skirm_cav",
@@ -5833,27 +5833,27 @@
     ],
     "accolade_maa_archers,Turkic": [
       "KOK_cha_gen_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Turkic": [
       "att_nom_noble_steppe_cataphracts",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Turkic": [
       "att_nom_hunnic_devil_cavalry",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Turkic": [
       "KOK_cha_gen_spear",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Turkic": [
       "att_nom_steppe_warriors",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Turkic": [
       "KOK_axe_warriors",
-      null
+      "INFANTRY"
     ],
     "onager,Turkic": [
       "cha_avar_onager",
@@ -5896,55 +5896,55 @@
     ],
     "light_footmen,Eastern Steppe": [
       "HEP_steppe_tribesmen",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,Eastern Steppe": [
       "att_wh_khingilas_khandas",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Eastern Steppe": [
       "att_wh_xionite_spears",
-      null
+      "INFANTRY"
     ],
     "bowmen,Eastern Steppe": [
       "att_nom_steppe_bows",
-      null
+      "RANGED"
     ],
     "light_horsemen,Eastern Steppe": [
       "att_wh_hephthalite_chargers",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Eastern Steppe": [
       "HEP_kushan_cataphracts",
-      null
+      "CAVALRY"
     ],
     "house_guard,Eastern Steppe": [
       "att_nom_uar_archers",
-      null
+      "RANGED"
     ],
     "teutonic_knights,Eastern Steppe": [
       "att_nom_shamans_of_the_eternal_sky",
-      null
+      "CAVALRY"
     ],
     "camel_rider,Eastern Steppe": [
       "att_est_persian_camel_raiders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Eastern Steppe": [
       "att_est_sogdian_camel_raiders",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Eastern Steppe": [
       "att_wh_spet_xyon_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Eastern Steppe": [
       "HEP_spet_xyon_noble_horse_archers",
-      null
+      "CAVALRY"
     ],
     "cataphract,Eastern Steppe": [
       "att_nom_noble_steppe_cataphracts",
-      null
+      "CAVALRY"
     ],
     "nomadic_riders,Eastern Steppe": [
       "att_nom_hunnic_horse_archers",
@@ -5996,27 +5996,27 @@
     ],
     "accolade_maa_archers,Eastern Steppe": [
       "att_nom_uar_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Eastern Steppe": [
       "att_nom_noble_steppe_cataphracts",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Eastern Steppe": [
       "att_nom_hunnic_devil_cavalry",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Eastern Steppe": [
       "att_wh_xionite_spears",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Eastern Steppe": [
       "att_nom_steppe_warriors",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Eastern Steppe": [
       "att_wh_khingilas_khandas",
-      null
+      "INFANTRY"
     ],
     "onager,Eastern Steppe": [
       "cha_avar_onager",
@@ -6059,47 +6059,47 @@
     ],
     "light_footmen,Western Steppe": [
       "att_nom_steppe_spearmen",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,Western Steppe": [
       "NOM_swords",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Western Steppe": [
       "att_nom_hunnic_spears",
-      null
+      "INFANTRY"
     ],
     "bowmen,Western Steppe": [
       "att_nom_uar_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Western Steppe": [
       "att_nom_hunnic_lancers",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Western Steppe": [
       "att_nom_elite_hunnic_lancers",
-      null
+      "CAVALRY"
     ],
     "house_guard,Western Steppe": [
       "att_nom_bosphoran_infantry",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Western Steppe": [
       "att_nom_shamans_of_the_eternal_sky",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Western Steppe": [
       "NOM_T2_horse_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Western Steppe": [
       "att_nom_hunnic_devil_archers",
-      null
+      "CAVALRY"
     ],
     "cataphract,Western Steppe": [
       "att_nom_noble_steppe_cataphracts",
-      null
+      "CAVALRY"
     ],
     "nomadic_riders,Western Steppe": [
       "att_nom_noble_horse_archers_hun",
@@ -6151,27 +6151,27 @@
     ],
     "accolade_maa_archers,Western Steppe": [
       "cha_avar_tribesmen",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Western Steppe": [
       "att_nom_noble_steppe_cataphracts",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Western Steppe": [
       "att_nom_hunnic_devil_cavalry",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Western Steppe": [
       "att_nom_scirii_warriors",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Western Steppe": [
       "att_nom_hunnic_dismounted_warband",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Western Steppe": [
       "cha_avar_noble_sword",
-      null
+      "INFANTRY"
     ],
     "onager,Western Steppe": [
       "att_nom_onager",
@@ -6214,47 +6214,47 @@
     ],
     "light_footmen,Crimean Steppe": [
       "cha_slav_ambushers",
-      null
+      "RANGED"
     ],
     "armored_footmen,Crimean Steppe": [
       "cha_avar_noble_sword",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Crimean Steppe": [
       "cha_avar_spear",
-      null
+      "INFANTRY"
     ],
     "bowmen,Crimean Steppe": [
       "cha_avar_tribesmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,Crimean Steppe": [
       "cha_avar_lancers",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Crimean Steppe": [
       "cha_avar_noble_lancers",
-      null
+      "CAVALRY"
     ],
     "house_guard,Crimean Steppe": [
       "cha_avar_noble_sword",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Crimean Steppe": [
       "att_nom_shamans_of_the_eternal_sky",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Crimean Steppe": [
       "cha_avar_noble_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Crimean Steppe": [
       "cha_avar_horse_masters",
-      null
+      "CAVALRY"
     ],
     "cataphract,Crimean Steppe": [
       "att_nom_noble_steppe_cataphracts",
-      null
+      "CAVALRY"
     ],
     "nomadic_riders,Crimean Steppe": [
       "cha_avar_horse_archers",
@@ -6306,27 +6306,27 @@
     ],
     "accolade_maa_archers,Crimean Steppe": [
       "cha_avar_tribesmen",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Crimean Steppe": [
       "cha_avar_noble_lancers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Crimean Steppe": [
       "cha_avar_lancers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Crimean Steppe": [
       "cha_slav_large_shields",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Crimean Steppe": [
       "cha_slav_ambushers",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Crimean Steppe": [
       "cha_avar_noble_sword",
-      null
+      "INFANTRY"
     ],
     "onager,Crimean Steppe": [
       "cha_avar_onager",
@@ -6369,47 +6369,47 @@
     ],
     "light_footmen,Bolghar": [
       "att_nom_hunnic_dismounted_warband",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,Bolghar": [
       "HUN_bulgar_spears",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Bolghar": [
       "att_nom_hunnic_spears",
-      null
+      "INFANTRY"
     ],
     "bowmen,Bolghar": [
       "att_nom_steppe_shield_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Bolghar": [
       "att_nom_hunnic_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Bolghar": [
       "att_nom_elite_hunnic_lancers",
-      null
+      "CAVALRY"
     ],
     "house_guard,Bolghar": [
       "att_nom_bosphoran_infantry",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Bolghar": [
       "att_nom_shamans_of_the_eternal_sky",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Bolghar": [
       "att_nom_hunnic_mounted_bows",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Bolghar": [
       "att_nom_hunnic_devil_archers",
-      null
+      "CAVALRY"
     ],
     "cataphract,Bolghar": [
       "att_nom_noble_steppe_cataphracts",
-      null
+      "CAVALRY"
     ],
     "nomadic_riders,Bolghar": [
       "att_nom_steppe_horse_archers",
@@ -6461,31 +6461,31 @@
     ],
     "accolade_maa_archers,Bolghar": [
       "att_nom_uar_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Bolghar": [
       "att_nom_noble_steppe_cataphracts",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Bolghar": [
       "NOM_T2_lancers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Bolghar": [
       "att_nom_scirii_warriors",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Bolghar": [
       "att_nom_bosphoran_warriors",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Bolghar": [
       "NOM_axes",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,Bolghar": [
       "att_rom_elite_ballistarii",
-      null
+      "RANGED"
     ],
     "onager,Bolghar": [
       "att_nom_onager",
@@ -6538,47 +6538,47 @@
     ],
     "light_footmen,Bulgarian": [
       "att_ger_germanic_band",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,Bulgarian": [
       "att_ger_godansmen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Bulgarian": [
       "LOM_gasindii_spearmen",
-      null
+      "INFANTRY"
     ],
     "bowmen,Bulgarian": [
       "att_ger_germanic_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Bulgarian": [
       "att_nom_hunnic_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Bulgarian": [
       "MERC_avars",
-      null
+      "CAVALRY"
     ],
     "house_guard,Bulgarian": [
       "att_ger_redoubtable_chieftain",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Bulgarian": [
       "ERE_dismounted_excubitores_2",
-      null
+      "INFANTRY"
     ],
     "hussar,Bulgarian": [
       "LOM_exercitales",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Bulgarian": [
       "att_nom_hunnic_mounted_bows",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Bulgarian": [
       "att_nom_hunnic_devil_archers",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Bulgarian": [
       "ERE_gepids",
@@ -6602,31 +6602,31 @@
     ],
     "accolade_maa_archers,Bulgarian": [
       "att_ger_elite_germanic_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Bulgarian": [
       "att_nom_noble_steppe_cataphracts",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Bulgarian": [
       "NOM_T2_lancers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Bulgarian": [
       "att_rom_numeroi",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Bulgarian": [
       "LOM_fara_skirm",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Bulgarian": [
       "att_ger_scaled_clubmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,Bulgarian": [
       "att_rom_elite_ballistarii",
-      null
+      "RANGED"
     ],
     "onager,Bulgarian": [
       "att_ger_onager",
@@ -6674,35 +6674,35 @@
     ],
     "light_footmen,Hungarian": [
       "cha_slav_ambushers",
-      null
+      "RANGED"
     ],
     "armored_footmen,Hungarian": [
       "cha_slav_champions",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Hungarian": [
       "cha_avar_spear",
-      null
+      "INFANTRY"
     ],
     "bowmen,Hungarian": [
       "cha_avar_foot_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Hungarian": [
       "cha_avar_lancers",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Hungarian": [
       "cha_avar_noble_lancers",
-      null
+      "CAVALRY"
     ],
     "house_guard,Hungarian": [
       "cha_avar_noble_sword",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Hungarian": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "handpicked_faithful,Hungarian": [
       "ERE_gepids",
@@ -6726,27 +6726,27 @@
     ],
     "accolade_maa_archers,Hungarian": [
       "cha_avar_tribesmen",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Hungarian": [
       "cha_slav_royal_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Hungarian": [
       "cha_avar_lancers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Hungarian": [
       "cha_gen_spear",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Hungarian": [
       "cha_slav_ambushers",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Hungarian": [
       "cha_avar_noble_sword",
-      null
+      "INFANTRY"
     ],
     "onager,Hungarian": [
       "cha_slav_onager",
@@ -6789,55 +6789,55 @@
     ],
     "light_footmen,Hephthalite": [
       "HEP_tokharistani_spear_throwers",
-      null
+      "RANGED"
     ],
     "armored_footmen,Hephthalite": [
       "KOK_axe_warriors",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Hephthalite": [
       "att_est_persian_levy",
-      null
+      "INFANTRY"
     ],
     "bowmen,Hephthalite": [
       "att_nom_uar_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Hephthalite": [
       "HEP_spet_xyon_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Hephthalite": [
       "HEP_kushan_cataphracts",
-      null
+      "CAVALRY"
     ],
     "house_guard,Hephthalite": [
       "att_est_immortals",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Hephthalite": [
       "att_est_sogdian_warriors",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Hephthalite": [
       "att_est_sogdian_camel_raiders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Hephthalite": [
       "att_est_sogdian_camel_raiders",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Hephthalite": [
       "HEP_spet_xyon_noble_horse_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Hephthalite": [
       "att_nom_hunnic_devil_archers",
-      null
+      "CAVALRY"
     ],
     "cataphract,Hephthalite": [
       "att_nom_noble_steppe_cataphracts",
-      null
+      "CAVALRY"
     ],
     "nomadic_riders,Hephthalite": [
       "KOK_cha_gen_skirm_cav",
@@ -6889,27 +6889,27 @@
     ],
     "accolade_maa_archers,Hephthalite": [
       "att_est_royal_persian_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Hephthalite": [
       "att_est_pushtighban_cataphracts",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Hephthalite": [
       "att_nom_steppe_cataphracts",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Hephthalite": [
       "att_est_armenian_spears",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Hephthalite": [
       "att_est_armenian_slingers",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Hephthalite": [
       "att_est_sogdian_warriors",
-      null
+      "INFANTRY"
     ],
     "onager,Hephthalite": [
       "att_merc_est_onager",
@@ -6952,55 +6952,55 @@
     ],
     "light_footmen,Indo Persian": [
       "HEP_tokharistani_spear_throwers",
-      null
+      "RANGED"
     ],
     "armored_footmen,Indo Persian": [
       "att_est_sogdian_warriors",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Indo Persian": [
       "att_est_armenian_spears",
-      null
+      "INFANTRY"
     ],
     "bowmen,Indo Persian": [
       "HEP_hindi_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Indo Persian": [
       "att_est_persian_scouts",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Indo Persian": [
       "att_est_persian_cataphracts",
-      null
+      "CAVALRY"
     ],
     "house_guard,Indo Persian": [
       "att_est_immortals",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Indo Persian": [
       "att_est_sogdian_warriors",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Indo Persian": [
       "att_est_persian_camel_raiders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Indo Persian": [
       "att_est_sogdian_camel_raiders",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Indo Persian": [
       "att_est_savaran_cavalry",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Indo Persian": [
       "att_est_persian_camel_archers",
-      null
+      "CAVALRY"
     ],
     "cataphract,Indo Persian": [
       "att_est_gyan_avspar",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Indo Persian": [
       "att_des_es_athars_chosen",
@@ -7024,27 +7024,27 @@
     ],
     "accolade_maa_archers,Indo Persian": [
       "att_est_royal_persian_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Indo Persian": [
       "att_est_pushtighban_cataphracts",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Indo Persian": [
       "att_est_persian_mounted_warriors",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Indo Persian": [
       "att_est_elite_immortals",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Indo Persian": [
       "att_est_kurdish_javelinmen",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Indo Persian": [
       "att_est_elite_dailamite_infantry",
-      null
+      "INFANTRY"
     ],
     "onager,Indo Persian": [
       "att_merc_est_onager",
@@ -7087,63 +7087,63 @@
     ],
     "light_footmen,Papal": [
       "cha_spa_skirm",
-      null
+      "RANGED"
     ],
     "armored_footmen,Papal": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Papal": [
       "cha_gen_spear",
-      null
+      "INFANTRY"
     ],
     "bowmen,Papal": [
       "cha_gen_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Papal": [
       "cha_gen_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Papal": [
       "cha_gen_noble_cav",
-      null
+      "CAVALRY"
     ],
     "house_guard,Papal": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Papal": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Papal": [
       "cha_fra_mounted_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Papal": [
       "cha_gen_knights",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Papal": [
       "cha_lom_horsemen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Papal": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Papal": [
       "cha_lom_skirm",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Papal": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,Papal": [
       "att_rom_elite_ballistarii",
-      null
+      "RANGED"
     ],
     "onager,Papal": [
       "cha_gen_onager",
@@ -7186,59 +7186,59 @@
     ],
     "light_footmen,Viking": [
       "cha_vik_skirm",
-      null
+      "RANGED"
     ],
     "armored_footmen,Viking": [
       "cha_vik_axe_hirdmen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Viking": [
       "cha_gen_armoured_spear",
-      null
+      "INFANTRY"
     ],
     "bowmen,Viking": [
       "cha_vik_hunters",
-      null
+      "RANGED"
     ],
     "light_horsemen,Viking": [
       "cha_nor_riddarar",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Viking": [
       "cha_sax_hearth_cav",
-      null
+      "CAVALRY"
     ],
     "house_guard,Viking": [
       "cha_vik_berserkers",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Viking": [
       "cha_vik_berserkers",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Viking": [
       "cha_vik_armoured_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Viking": [
       "cha_sax_hearth_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Viking": [
       "att_nor_nordic_horse_raiders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Viking": [
       "att_nor_nordic_spear_masters",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Viking": [
       "cha_vik_skirm",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Viking": [
       "cha_vik_berserkers",
-      null
+      "INFANTRY"
     ],
     "onager,Viking": [
       "cha_vik_onager",
@@ -7286,59 +7286,59 @@
     ],
     "light_footmen,Slavic": [
       "cha_slav_ambushers",
-      null
+      "RANGED"
     ],
     "armored_footmen,Slavic": [
       "cha_slav_prvaci",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Slavic": [
       "cha_slav_large_shields",
-      null
+      "INFANTRY"
     ],
     "bowmen,Slavic": [
       "cha_slav_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Slavic": [
       "cha_slav_raiders",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Slavic": [
       "cha_slav_royal_cav",
-      null
+      "CAVALRY"
     ],
     "house_guard,Slavic": [
       "cha_slav_prvaci",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Slavic": [
       "cha_vik_berserkers",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Slavic": [
       "cha_vik_armoured_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Slavic": [
       "cha_slav_royal_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Slavic": [
       "cha_slav_konnica",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Slavic": [
       "cha_gen_armoured_spear",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Slavic": [
       "REB_dediticii",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Slavic": [
       "cha_slav_prvaci",
-      null
+      "INFANTRY"
     ],
     "onager,Slavic": [
       "cha_slav_onager",
@@ -7381,43 +7381,43 @@
     ],
     "light_footmen,Permian": [
       "att_slav_levy_skirmishers",
-      null
+      "RANGED"
     ],
     "armored_footmen,Permian": [
       "NOM_swords",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Permian": [
       "att_nom_hunnic_spears",
-      null
+      "INFANTRY"
     ],
     "bowmen,Permian": [
       "att_nom_steppe_shield_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Permian": [
       "att_nom_steppe_raiders",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Permian": [
       "att_nom_steppe_cataphracts",
-      null
+      "CAVALRY"
     ],
     "house_guard,Permian": [
       "att_slav_chosen_shields",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Permian": [
       "att_slav_followers_veles",
-      null
+      "INFANTRY"
     ],
     "horse_archers,Permian": [
       "att_nom_unnigarde",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Permian": [
       "att_nom_hunnic_devil_archers",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Permian": [
       "ERE_gepids",
@@ -7441,27 +7441,27 @@
     ],
     "accolade_maa_archers,Permian": [
       "att_nom_uar_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Permian": [
       "att_nom_nokkors",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Permian": [
       "att_nom_steppe_lancers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Permian": [
       "HUN_bulgar_spears",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Permian": [
       "att_slav_noble_skirmishers",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Permian": [
       "NOM_axes",
-      null
+      "INFANTRY"
     ],
     "onager,Permian": [
       "att_nom_onager",
@@ -7504,67 +7504,67 @@
     ],
     "light_footmen,Anglo Saxon": [
       "cha_eng_fyrd_javelinmen",
-      null
+      "RANGED"
     ],
     "armored_footmen,Anglo Saxon": [
       "cha_eng_thegns",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Anglo Saxon": [
       "cha_eng_thegn_spearmen",
-      null
+      "INFANTRY"
     ],
     "bowmen,Anglo Saxon": [
       "cha_eng_select_archers",
-      null
+      "RANGED"
     ],
     "crossbowmen,Anglo Saxon": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,Anglo Saxon": [
       "cha_eng_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Anglo Saxon": [
       "cha_eng_royal_horsemen",
-      null
+      "CAVALRY"
     ],
     "house_guard,Anglo Saxon": [
       "cha_eng_royal_companions",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Anglo Saxon": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Anglo Saxon": [
       "cha_eng_select_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Anglo Saxon": [
       "cha_eng_royal_horsemen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Anglo Saxon": [
       "cha_eng_horsemen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Anglo Saxon": [
       "cha_eng_thegn_spearmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Anglo Saxon": [
       "cha_eng_fyrd_axemen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Anglo Saxon": [
       "cha_eng_royal_thegns",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,Anglo Saxon": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "onager,Anglo Saxon": [
       "cha_eng_onager",
@@ -7607,67 +7607,67 @@
     ],
     "light_footmen,English": [
       "cha_eng_fyrd_axemen",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,English": [
       "cha_nor_lancent_armeure",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,English": [
       "cha_nor_lancent",
-      null
+      "INFANTRY"
     ],
     "bowmen,English": [
       "cha_eng_select_archers",
-      null
+      "RANGED"
     ],
     "crossbowmen,English": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,English": [
       "cha_nor_riddarar",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,English": [
       "cha_nor_noblei_chevalers",
-      null
+      "CAVALRY"
     ],
     "house_guard,English": [
       "cha_nor_lancent_armeure",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,English": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,English": [
       "cha_eng_select_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,English": [
       "cha_nor_noblei_chevalers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,English": [
       "cha_eng_horsemen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,English": [
       "cha_eng_thegn_spearmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,English": [
       "cha_eng_fyrd_javelinmen",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,English": [
       "cha_eng_royal_thegns",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,English": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "onager,English": [
       "cha_eng_onager",
@@ -7710,67 +7710,67 @@
     ],
     "light_footmen,Scots": [
       "cha_cel_gaillmhigh",
-      null
+      "RANGED"
     ],
     "armored_footmen,Scots": [
       "cha_eng_thegns",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Scots": [
       "cha_eng_thegn_spearmen",
-      null
+      "INFANTRY"
     ],
     "bowmen,Scots": [
       "cha_cel_pictish_archers",
-      null
+      "RANGED"
     ],
     "crossbowmen,Scots": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,Scots": [
       "cha_cel_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Scots": [
       "cha_cel_pictish_nobles",
-      null
+      "CAVALRY"
     ],
     "house_guard,Scots": [
       "cha_eng_huscarlas",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Scots": [
       "cha_cel_fianna",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Scots": [
       "cha_eng_select_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Scots": [
       "cha_eng_royal_horsemen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Scots": [
       "cha_cel_horsemen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Scots": [
       "cha_cel_armoured_spear",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Scots": [
       "cha_cel_gaillmhigh",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Scots": [
       "cha_cel_fianna",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,Scots": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "onager,Scots": [
       "cha_cel_onager",
@@ -7818,63 +7818,63 @@
     ],
     "light_footmen,Wendish": [
       "REB_dediticii",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,Wendish": [
       "att_ger_germanic_nobles",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Wendish": [
       "att_ger_germanic_spearmen",
-      null
+      "INFANTRY"
     ],
     "bowmen,Wendish": [
       "att_slav_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Wendish": [
       "att_ger_germanic_mounted_warband",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Wendish": [
       "att_nor_saxon_mounted_warband",
-      null
+      "CAVALRY"
     ],
     "house_guard,Wendish": [
       "att_ger_noble_suebi_swordsmen",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Wendish": [
       "att_slav_veles_chosen",
-      null
+      "INFANTRY"
     ],
     "hussar,Wendish": [
       "att_ger_chosen_vandal_raiders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_archers,Wendish": [
       "att_slav_hunters",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Wendish": [
       "cha_slav_royal_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Wendish": [
       "att_ger_germanic_night_raiders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Wendish": [
       "att_ger_germanic_spear_masters",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Wendish": [
       "att_ger_germanic_warband",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Wendish": [
       "att_nor_huscarls",
-      null
+      "INFANTRY"
     ],
     "onager,Wendish": [
       "att_slav_onager",
@@ -7922,59 +7922,59 @@
     ],
     "light_footmen,Norse Gael": [
       "cha_cel_kerns",
-      null
+      "RANGED"
     ],
     "armored_footmen,Norse Gael": [
       "cha_vik_axe_hirdmen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Norse Gael": [
       "cha_cel_spear",
-      null
+      "INFANTRY"
     ],
     "bowmen,Norse Gael": [
       "cha_vik_hunters",
-      null
+      "RANGED"
     ],
     "light_horsemen,Norse Gael": [
       "cha_cel_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Norse Gael": [
       "cha_cel_pictish_nobles",
-      null
+      "CAVALRY"
     ],
     "house_guard,Norse Gael": [
       "cha_cel_kings_warband",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Norse Gael": [
       "cha_vik_berserkers",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Norse Gael": [
       "cha_vik_armoured_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Norse Gael": [
       "cha_sax_hearth_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Norse Gael": [
       "att_nor_nordic_horse_raiders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Norse Gael": [
       "cha_cel_armoured_spear",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Norse Gael": [
       "cha_cel_axemen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Norse Gael": [
       "cha_vik_berserkers",
-      null
+      "INFANTRY"
     ],
     "onager,Norse Gael": [
       "cha_cel_onager",
@@ -8022,59 +8022,59 @@
     ],
     "light_footmen,Danelander": [
       "cha_eng_fyrd_javelinmen",
-      null
+      "RANGED"
     ],
     "armored_footmen,Danelander": [
       "cha_vik_sword_hirdmen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Danelander": [
       "cha_eng_thegn_spearmen",
-      null
+      "INFANTRY"
     ],
     "bowmen,Danelander": [
       "cha_eng_select_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Danelander": [
       "cha_eng_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Danelander": [
       "cha_eng_royal_horsemen",
-      null
+      "CAVALRY"
     ],
     "house_guard,Danelander": [
       "cha_eng_royal_companions",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Danelander": [
       "cha_vik_berserkers",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Danelander": [
       "cha_vik_armoured_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Danelander": [
       "cha_sax_hearth_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Danelander": [
       "att_nor_nordic_horse_raiders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Danelander": [
       "att_nor_nordic_spear_masters",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Danelander": [
       "cha_cel_axemen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Danelander": [
       "cha_vik_berserkers",
-      null
+      "INFANTRY"
     ],
     "onager,Danelander": [
       "cha_eng_onager",
@@ -8117,35 +8117,35 @@
     ],
     "light_footmen,Outremer": [
       "cha_mus_andalusian_skirm",
-      null
+      "RANGED"
     ],
     "armored_footmen,Outremer": [
       "cha_fra_armoured_sword",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Outremer": [
       "cha_fra_mounted_spear",
-      null
+      "INFANTRY"
     ],
     "bowmen,Outremer": [
       "cha_mus_armoured_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Outremer": [
       "cha_mus_berber_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Outremer": [
       "cha_fra_cav",
-      null
+      "CAVALRY"
     ],
     "house_guard,Outremer": [
       "cha_fra_palace_guard",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Outremer": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "handpicked_faithful,Outremer": [
       "att_des_es_athars_chosen",
@@ -8169,27 +8169,27 @@
     ],
     "accolade_maa_archers,Outremer": [
       "cha_fra_mounted_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Outremer": [
       "cha_fra_scola_knights",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Outremer": [
       "cha_fra_horsemen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Outremer": [
       "cha_fra_palace_guard",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Outremer": [
       "cha_fra_skirm",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Outremer": [
       "cha_fra_mounted_swordsmen",
-      null
+      "INFANTRY"
     ],
     "onager,Outremer": [
       "cha_fra_onager",
@@ -8232,59 +8232,59 @@
     ],
     "light_footmen,Teutonic": [
       "BAL_ambushers",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,Teutonic": [
       "cha_sax_sword_veterans",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Teutonic": [
       "cha_sax_spear_veterans",
-      null
+      "INFANTRY"
     ],
     "bowmen,Teutonic": [
       "cha_sax_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Teutonic": [
       "cha_sax_cav",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Teutonic": [
       "cha_sax_hearth_cav",
-      null
+      "CAVALRY"
     ],
     "house_guard,Teutonic": [
       "cha_fra_palace_guard",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Teutonic": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Teutonic": [
       "cha_sax_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Teutonic": [
       "cha_fra_scola_knights",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Teutonic": [
       "cha_sax_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Teutonic": [
       "cha_sax_spear_veterans",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Teutonic": [
       "cha_sax_noble_javelinmen",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Teutonic": [
       "BAL_kursi_retinue",
-      null
+      "INFANTRY"
     ],
     "onager,Teutonic": [
       "cha_sax_onager",
@@ -8327,79 +8327,79 @@
     ],
     "light_footmen,Gothic": [
       "ERE_legio",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,Gothic": [
       "ERE_numerus_daci",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Gothic": [
       "att_ger_germanic_spearmen",
-      null
+      "INFANTRY"
     ],
     "bowmen,Gothic": [
       "att_ger_germanic_archers",
-      null
+      "RANGED"
     ],
     "crossbowmen,Gothic": [
       "att_rom_ballistarii",
-      null
+      "RANGED"
     ],
     "light_horsemen,Gothic": [
       "att_ger_gothic_lancers",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Gothic": [
       "MERC_bucellarii_german",
-      null
+      "CAVALRY"
     ],
     "house_guard,Gothic": [
       "att_rom_numeroi",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Gothic": [
       "att_ger_germanic_nobles",
-      null
+      "INFANTRY"
     ],
     "horse_archers,Gothic": [
       "att_alan_alani_horse_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Gothic": [
       "ERE_boukelaroi_toxotai",
-      null
+      "CAVALRY"
     ],
     "cataphract,Gothic": [
       "att_alan_tank",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_archers,Gothic": [
       "att_ger_elite_germanic_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Gothic": [
       "att_alan_tank",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Gothic": [
       "att_ger_suebi_nobles",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Gothic": [
       "att_rom_western_auxilia_palatina",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Gothic": [
       "att_ger_thracian_warriors",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Gothic": [
       "ERE_bucellarii_pedites",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,Gothic": [
       "att_rom_elite_ballistarii",
-      null
+      "RANGED"
     ],
     "onager,Gothic": [
       "att_ger_onager",
@@ -8442,59 +8442,59 @@
     ],
     "light_footmen,Dalmatian": [
       "cha_lom_skirm",
-      null
+      "RANGED"
     ],
     "armored_footmen,Dalmatian": [
       "cha_lom_gastald_swordsmen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Dalmatian": [
       "cha_lom_guardsmen",
-      null
+      "INFANTRY"
     ],
     "bowmen,Dalmatian": [
       "cha_lom_archers",
-      null
+      "RANGED"
     ],
     "light_horsemen,Dalmatian": [
       "cha_lom_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Dalmatian": [
       "cha_gen_noble_cavalry",
-      null
+      "CAVALRY"
     ],
     "house_guard,Dalmatian": [
       "cha_lom_guardsmen",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Dalmatian": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Dalmatian": [
       "cha_lom_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Dalmatian": [
       "cha_lom_lancers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Dalmatian": [
       "cha_lom_gastald_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Dalmatian": [
       "cha_lom_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Dalmatian": [
       "cha_lom_skirm",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Dalmatian": [
       "cha_lom_gastald_swordsmen",
-      null
+      "INFANTRY"
     ],
     "onager,Dalmatian": [
       "cha_slav_onager",
@@ -8542,75 +8542,75 @@
     ],
     "light_footmen,Romano-Briton": [
       "BRIT_rhyfelwyr_swords",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,Romano-Briton": [
       "BRIT_britones_seniores",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Romano-Briton": [
       "att_rom_comitatensis_spears",
-      null
+      "INFANTRY"
     ],
     "bowmen,Romano-Briton": [
       "BRIT_saethwyr",
-      null
+      "RANGED"
     ],
     "crossbowmen,Romano-Briton": [
       "att_rom_ballistarii",
-      null
+      "RANGED"
     ],
     "light_horsemen,Romano-Briton": [
       "BRIT_equites",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Romano-Briton": [
       "BRIT_miles_equites",
-      null
+      "CAVALRY"
     ],
     "house_guard,Romano-Briton": [
       "ERE_protectores_palatina",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Romano-Briton": [
       "att_rom_protectores_domestici",
-      null
+      "INFANTRY"
     ],
     "longbowmen,Romano-Briton": [
       "BRIT_longbows",
-      null
+      "RANGED"
     ],
     "hobelar,Romano-Briton": [
       "BRIT_arwrweision",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_archers,Romano-Briton": [
       "BRIT_sag_brit",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Romano-Briton": [
       "BRIT_catafractarii",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Romano-Briton": [
       "att_rom_catafractarii",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Romano-Briton": [
       "att_rom_numeroi",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Romano-Briton": [
       "BRIT_exculcatores",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Romano-Briton": [
       "ERE_bucellarii_pedites",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,Romano-Briton": [
       "att_rom_elite_ballistarii",
-      null
+      "RANGED"
     ],
     "onager,Romano-Briton": [
       "att_rom_onager",
@@ -8658,55 +8658,55 @@
     ],
     "light_footmen,Roman African": [
       "MAUR_agher_spears",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,Roman African": [
       "ERE_quinta_macedonica",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Roman African": [
       "ERE_lykokranitai_spears",
-      null
+      "INFANTRY"
     ],
     "bowmen,Roman African": [
       "MAUR_amxzni_sagittarii",
-      null
+      "RANGED"
     ],
     "crossbowmen,Roman African": [
       "att_rom_elite_ballistarii",
-      null
+      "RANGED"
     ],
     "light_horsemen,Roman African": [
       "GHAS_equites_promoti",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Roman African": [
       "MAUR_catafractarii",
-      null
+      "CAVALRY"
     ],
     "house_guard,Roman African": [
       "ERE_protectores_palatina",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Roman African": [
       "REB_heretic_outcasts",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Roman African": [
       "MAUR_ilguman",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Roman African": [
       "att_rom_imperial_dromedarii",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Roman African": [
       "equites_sag_ERE",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Roman African": [
       "att_ger_taifali_cavalry",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Roman African": [
       "att_des_es_athars_chosen",
@@ -8730,31 +8730,31 @@
     ],
     "accolade_maa_archers,Roman African": [
       "att_rom_armoured_sagittarii",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Roman African": [
       "att_rom_clibanarii",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Roman African": [
       "att_ger_light_moorish_cavalry",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Roman African": [
       "ERE_lanciarii_praesentales",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Roman African": [
       "att_des_desert_palatina_defectors",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Roman African": [
       "ERE_dismounted_excubitores_2",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,Roman African": [
       "att_rom_ravenna_elite_ballistarii",
-      null
+      "CAVALRY"
     ],
     "onager,Roman African": [
       "att_des_onager",
@@ -8797,67 +8797,67 @@
     ],
     "light_footmen,Sardinian": [
       "cha_spa_ambushers",
-      null
+      "RANGED"
     ],
     "armored_footmen,Sardinian": [
       "cha_byz_skutatoi_axemen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Sardinian": [
       "cha_gen_armoured_spear",
-      null
+      "INFANTRY"
     ],
     "bowmen,Sardinian": [
       "cha_gen_archers",
-      null
+      "RANGED"
     ],
     "crossbowmen,Sardinian": [
       "att_rom_elite_ballistarii",
-      null
+      "RANGED"
     ],
     "light_horsemen,Sardinian": [
       "cha_gen_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Sardinian": [
       "cha_gen_knights",
-      null
+      "CAVALRY"
     ],
     "house_guard,Sardinian": [
       "att_rom_hetaireia_guards",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Sardinian": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Sardinian": [
       "cha_byz_armoured_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Sardinian": [
       "cha_eng_royal_horsemen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Sardinian": [
       "cha_byz_light_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Sardinian": [
       "cha_byz_skutatoi_spear",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Sardinian": [
       "cha_spa_noble_skirm",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Sardinian": [
       "cha_spa_royal_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,Sardinian": [
       "att_rom_ravenna_elite_ballistarii",
-      null
+      "CAVALRY"
     ],
     "onager,Sardinian": [
       "cha_byz_onager",
@@ -8900,67 +8900,67 @@
     ],
     "light_footmen,Roman": [
       "att_rom_exploratores",
-      null
+      "RANGED"
     ],
     "armored_footmen,Roman": [
       "lanciarii_sen_ERE",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Roman": [
       "att_rom_western_auxilia_palatina",
-      null
+      "INFANTRY"
     ],
     "bowmen,Roman": [
       "att_rom_armoured_sagittarii",
-      null
+      "RANGED"
     ],
     "crossbowmen,Roman": [
       "att_rom_ravenna_elite_ballistarii",
-      null
+      "CAVALRY"
     ],
     "light_horsemen,Roman": [
       "att_rom_scout_equites",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Roman": [
       "ERE_patrikos_obsequium",
-      null
+      "CAVALRY"
     ],
     "house_guard,Roman": [
       "ERE_protectores_palatina",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Roman": [
       "ERE_dismounted_excubitores_2",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,Roman": [
       "att_rom_armoured_sagittarii",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Roman": [
       "ERE_leones_clib",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Roman": [
       "att_rom_equites_dalmatae",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Roman": [
       "att_rom_numeroi",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Roman": [
       "att_rom_praeventores",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Roman": [
       "ERE_dismounted_excubitores_2",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,Roman": [
       "att_rom_ravenna_elite_ballistarii",
-      null
+      "CAVALRY"
     ],
     "onager,Roman": [
       "att_rom_onager",
@@ -9003,51 +9003,51 @@
     ],
     "light_footmen,Copt": [
       "att_des_es_rebellion_militia",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,Copt": [
       "MAUR_amxzni",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Copt": [
       "att_des_shawia_guard",
-      null
+      "INFANTRY"
     ],
     "bowmen,Copt": [
       "att_des_desert_bowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,Copt": [
       "GHAS_hippeis",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Copt": [
       "QUR_banu_judham_lancers",
-      null
+      "CAVALRY"
     ],
     "house_guard,Copt": [
       "att_des_es_noble_al_rahrain",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Copt": [
       "att_des_es_athars_chosen",
-      null
+      "INFANTRY"
     ],
     "camel_rider,Copt": [
       "att_des_es_jamal_al_rumha",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_cameliers,Copt": [
       "att_des_es_armoured_himyarite_shotelai",
-      null
+      "CAVALRY"
     ],
     "horse_archers,Copt": [
       "att_des_es_zodiac_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,Copt": [
       "att_ger_sarmatian_cataphract_archers",
-      null
+      "CAVALRY"
     ],
     "handpicked_faithful,Copt": [
       "att_des_es_athars_chosen",
@@ -9071,27 +9071,27 @@
     ],
     "accolade_maa_archers,Copt": [
       "att_des_elite_nubian_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Copt": [
       "att_rom_clibanarii",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Copt": [
       "GHAS_judham",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Copt": [
       "att_des_es_tanukhid_pikes",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Copt": [
       "att_des_es_spice_guard",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguards,Copt": [
       "att_des_es_sahnegohrim",
-      null
+      "INFANTRY"
     ],
     "onager,Copt": [
       "att_merc_est_onager",
@@ -9139,71 +9139,71 @@
     ],
     "light_footmen,Basque": [
       "bas_levy_axemen",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,Basque": [
       "att_ger_suebi_champions",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,Basque": [
       "bas_noble_spears",
-      null
+      "INFANTRY"
     ],
     "bowmen,Basque": [
       "bas_archers",
-      null
+      "RANGED"
     ],
     "crossbowmen,Basque": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,Basque": [
       "bas_spear_cavalry",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,Basque": [
       "cantabrian_jav_cav",
-      null
+      "CAVALRY"
     ],
     "house_guard,Basque": [
       "att_ger_burgundian_guard",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,Basque": [
       "bas_nobles",
-      null
+      "INFANTRY"
     ],
     "caballero,Basque": [
       "bas_javelin_cavalry",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_archers,Basque": [
       "bas_noble_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,Basque": [
       "att_ger_suebi_nobles",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,Basque": [
       "cantabrian_jav_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,Basque": [
       "VISI_gardingi_spears",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,Basque": [
       "bas_ambushers",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,Basque": [
       "att_ger_burgundian_guard",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,Basque": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "onager,Basque": [
       "att_cel_onager",
@@ -9251,51 +9251,51 @@
     ],
     "light_footmen,New English": [
       "cha_eng_fyrd_axemen",
-      null
+      "INFANTRY"
     ],
     "armored_footmen,New English": [
       "cha_eng_thegns",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,New English": [
       "cha_eng_thegn_spearmen",
-      null
+      "INFANTRY"
     ],
     "bowmen,New English": [
       "cha_avar_foot_archers",
-      null
+      "RANGED"
     ],
     "crossbowmen,New English": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,New English": [
       "cha_avar_lancers",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,New English": [
       "cha_eng_royal_horsemen",
-      null
+      "CAVALRY"
     ],
     "house_guard,New English": [
       "cha_eng_royal_companions",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,New English": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "horse_archers,New English": [
       "cha_avar_noble_archers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,New English": [
       "cha_avar_horse_masters",
-      null
+      "CAVALRY"
     ],
     "cataphract,New English": [
       "att_alan_sarmatian_cataphracts_infantry_destroyer_tier_5",
-      null
+      "CAVALRY"
     ],
     "nomadic_riders,New English": [
       "cha_avar_horse_archers",
@@ -9347,31 +9347,31 @@
     ],
     "accolade_maa_archers,New English": [
       "cha_avar_tribesmen",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,New English": [
       "cha_avar_noble_lancers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,New English": [
       "att_alan_anti_cav_light_tier_4",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,New English": [
       "cha_eng_thegn_spearmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,New English": [
       "cha_eng_fyrd_javelinmen",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguards,New English": [
       "cha_avar_noble_sword",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowers,New English": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "onager,New English": [
       "cha_eng_onager",
@@ -12603,83 +12603,83 @@
     ],
     "light_footmen,e_byzantium": [
       "att_rom_levis_armaturae",
-      null
+      "RANGED"
     ],
     "armored_footmen,e_byzantium": [
       "ERE_bucellarii_pedites",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,e_byzantium": [
       "ERE_quartoparthoi_swords",
-      null
+      "INFANTRY"
     ],
     "bowmen,e_byzantium": [
       "att_rom_armoured_sagittarii",
-      null
+      "RANGED"
     ],
     "crossbowmen,e_byzantium": [
       "att_rom_ballistarii",
-      null
+      "RANGED"
     ],
     "light_horsemen,e_byzantium": [
       "ERE_equites_tertio_dalmatae",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,e_byzantium": [
       "ERE_patrikos_obsequium",
-      null
+      "CAVALRY"
     ],
     "house_guard,e_byzantium": [
       "ERE_protectores_palatina",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,e_byzantium": [
       "ERE_dismounted_excubitores_2",
-      null
+      "INFANTRY"
     ],
     "camel_rider,e_byzantium": [
       "att_rom_imperial_dromedarii",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_camel_riders,e_byzantium": [
       "att_rom_imperial_dromedarii",
-      null
+      "CAVALRY"
     ],
     "horse_archers,e_byzantium": [
       "ERE_equites_toxoto_dalmatae",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_horse_archers,e_byzantium": [
       "ERE_boukelaroi_toxotai",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_archers,e_byzantium": [
       "att_rom_armoured_sagittarii",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,e_byzantium": [
       "ERE_leones_clib",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,e_byzantium": [
       "ERE_limitanei_levy_lancers",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,e_byzantium": [
       "att_rom_numeroi",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,e_byzantium": [
       "att_rom_exculcatores",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguard,e_byzantium": [
       "att_rom_hetaireia_guards",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowmen,e_byzantium": [
       "att_rom_elite_ballistarii",
-      null
+      "RANGED"
     ],
     "GENERAL,e_france": [
       "cha_fra_paladin_guardsmen",
@@ -12691,67 +12691,67 @@
     ],
     "light_footmen,e_france": [
       "cha_fra_skirm",
-      null
+      "RANGED"
     ],
     "armored_footmen,e_france": [
       "cha_fra_mounted_swordsmen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,e_france": [
       "cha_fra_mounted_spear",
-      null
+      "INFANTRY"
     ],
     "bowmen,e_france": [
       "cha_fra_mounted_archers",
-      null
+      "RANGED"
     ],
     "crossbowmen,e_france": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,e_france": [
       "cha_fra_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,e_france": [
       "cha_fra_scola_knights",
-      null
+      "CAVALRY"
     ],
     "house_guard,e_france": [
       "cha_fra_palace_guard",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,e_france": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,e_france": [
       "cha_fra_mounted_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,e_france": [
       "cha_fra_scola_knights",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,e_france": [
       "cha_fra_cheval_javeloz",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,e_france": [
       "cha_fra_palace_guard",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,e_france": [
       "cha_fra_sword",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguard,e_france": [
       "cha_fra_mounted_swordsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowmen,e_france": [
       "att_rom_elite_ballistarii",
-      null
+      "RANGED"
     ],
     "GENERAL,e_outremer": [
       "cha_fra_paladin_guardsmen",
@@ -12763,67 +12763,67 @@
     ],
     "light_footmen,e_outremer": [
       "cha_mus_andalusian_skirm",
-      null
+      "RANGED"
     ],
     "armored_footmen,e_outremer": [
       "cha_fra_mounted_swordsmen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,e_outremer": [
       "cha_fra_mounted_spear",
-      null
+      "INFANTRY"
     ],
     "bowmen,e_outremer": [
       "cha_mus_armoured_archers",
-      null
+      "RANGED"
     ],
     "crossbowmen,e_outremer": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,e_outremer": [
       "cha_mus_berber_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,e_outremer": [
       "cha_fra_scola_knights",
-      null
+      "CAVALRY"
     ],
     "house_guard,e_outremer": [
       "cha_fra_palace_guard",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,e_outremer": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,e_outremer": [
       "cha_fra_mounted_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,e_outremer": [
       "cha_fra_scola_knights",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,e_outremer": [
       "cha_fra_horsemen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,e_outremer": [
       "cha_fra_palace_guard",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,e_outremer": [
       "cha_fra_skirm",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguard,e_outremer": [
       "cha_fra_mounted_swordsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowmen,e_outremer": [
       "att_rom_elite_ballistarii",
-      null
+      "RANGED"
     ],
     "GENERAL,k_france": [
       "cha_fra_paladin_guardsmen",
@@ -12835,67 +12835,67 @@
     ],
     "light_footmen,k_france": [
       "cha_fra_skirm",
-      null
+      "RANGED"
     ],
     "armored_footmen,k_france": [
       "cha_fra_mounted_swordsmen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,k_france": [
       "cha_fra_mounted_spear",
-      null
+      "INFANTRY"
     ],
     "bowmen,k_france": [
       "cha_fra_mounted_archers",
-      null
+      "RANGED"
     ],
     "crossbowmen,k_france": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,k_france": [
       "cha_fra_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,k_france": [
       "cha_fra_scola_knights",
-      null
+      "CAVALRY"
     ],
     "house_guard,k_france": [
       "cha_fra_palace_guard",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,k_france": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,k_france": [
       "cha_fra_mounted_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,k_france": [
       "cha_fra_scola_knights",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,k_france": [
       "cha_fra_cheval_javeloz",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,k_france": [
       "cha_fra_palace_guard",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,k_france": [
       "cha_fra_sword",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguard,k_france": [
       "cha_fra_mounted_swordsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowmen,k_france": [
       "att_rom_elite_ballistarii",
-      null
+      "RANGED"
     ],
     "GENERAL,k_jerusalem": [
       "cha_fra_paladin_guardsmen",
@@ -12907,67 +12907,67 @@
     ],
     "light_footmen,k_jerusalem": [
       "cha_mus_andalusian_skirm",
-      null
+      "RANGED"
     ],
     "armored_footmen,k_jerusalem": [
       "cha_fra_armoured_sword",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,k_jerusalem": [
       "cha_fra_mounted_spear",
-      null
+      "INFANTRY"
     ],
     "bowmen,k_jerusalem": [
       "cha_mus_armoured_archers",
-      null
+      "RANGED"
     ],
     "crossbowmen,k_jerusalem": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,k_jerusalem": [
       "cha_mus_berber_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,k_jerusalem": [
       "cha_fra_scola_cav",
-      null
+      "CAVALRY"
     ],
     "house_guard,k_jerusalem": [
       "cha_fra_palace_guard",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,k_jerusalem": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,k_jerusalem": [
       "cha_fra_mounted_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,k_jerusalem": [
       "cha_fra_scola_knights",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,k_jerusalem": [
       "cha_fra_horsemen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,k_jerusalem": [
       "cha_fra_palace_guard",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,k_jerusalem": [
       "cha_fra_skirm",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguard,k_jerusalem": [
       "cha_fra_mounted_swordsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowmen,k_jerusalem": [
       "att_rom_elite_ballistarii",
-      null
+      "RANGED"
     ],
     "GENERAL,k_papal_state": [
       "cha_gen_guard_cav",
@@ -12979,67 +12979,67 @@
     ],
     "light_footmen,k_papal_state": [
       "cha_spa_skirm",
-      null
+      "RANGED"
     ],
     "armored_footmen,k_papal_state": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,k_papal_state": [
       "cha_gen_spear",
-      null
+      "INFANTRY"
     ],
     "bowmen,k_papal_state": [
       "cha_gen_archers",
-      null
+      "RANGED"
     ],
     "crossbowmen,k_papal_state": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,k_papal_state": [
       "cha_gen_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,k_papal_state": [
       "cha_gen_noble_cav",
-      null
+      "CAVALRY"
     ],
     "house_guard,k_papal_state": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,k_papal_state": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,k_papal_state": [
       "cha_fra_mounted_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,k_papal_state": [
       "cha_gen_knights",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,k_papal_state": [
       "cha_lom_horsemen",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,k_papal_state": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,k_papal_state": [
       "cha_lom_skirm",
-      null
+      "RANGED"
     ],
     "accolade_maa_vanguard,k_papal_state": [
       "cha_pap_guardsmen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowmen,k_papal_state": [
       "att_rom_elite_ballistarii",
-      null
+      "RANGED"
     ],
     "GENERAL,k_danelaw": [
       "cha_vik_warlords_companions",
@@ -13051,67 +13051,67 @@
     ],
     "light_footmen,k_danelaw": [
       "cha_eng_fyrd_javelinmen",
-      null
+      "RANGED"
     ],
     "armored_footmen,k_danelaw": [
       "cha_vik_sword_hirdmen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,k_danelaw": [
       "cha_eng_thegn_spearmen",
-      null
+      "INFANTRY"
     ],
     "bowmen,k_danelaw": [
       "cha_eng_select_archers",
-      null
+      "RANGED"
     ],
     "crossbowmen,k_danelaw": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,k_danelaw": [
       "cha_eng_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,k_danelaw": [
       "cha_eng_royal_horsemen",
-      null
+      "CAVALRY"
     ],
     "house_guard,k_danelaw": [
       "cha_eng_royal_companions",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,k_danelaw": [
       "cha_vik_berserkers",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,k_danelaw": [
       "cha_vik_armoured_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,k_danelaw": [
       "cha_sax_hearth_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,k_danelaw": [
       "att_nor_nordic_horse_raiders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,k_danelaw": [
       "att_nor_nordic_spear_masters",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,k_danelaw": [
       "cha_cel_axemen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguard,k_danelaw": [
       "cha_vik_berserkers",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowmen,k_danelaw": [
       "att_rom_elite_ballistarii",
-      null
+      "RANGED"
     ],
     "GENERAL,k_daneland": [
       "cha_vik_warlords_companions",
@@ -13123,67 +13123,67 @@
     ],
     "light_footmen,k_daneland": [
       "cha_eng_fyrd_javelinmen",
-      null
+      "RANGED"
     ],
     "armored_footmen,k_daneland": [
       "cha_vik_sword_hirdmen",
-      null
+      "INFANTRY"
     ],
     "pikemen_unit,k_daneland": [
       "cha_eng_thegn_spearmen",
-      null
+      "INFANTRY"
     ],
     "bowmen,k_daneland": [
       "cha_eng_select_archers",
-      null
+      "RANGED"
     ],
     "crossbowmen,k_daneland": [
       "cha_cel_pictish_crossbowmen",
-      null
+      "RANGED"
     ],
     "light_horsemen,k_daneland": [
       "cha_eng_horsemen",
-      null
+      "CAVALRY"
     ],
     "armored_horsemen,k_daneland": [
       "cha_eng_royal_horsemen",
-      null
+      "CAVALRY"
     ],
     "house_guard,k_daneland": [
       "cha_eng_royal_companions",
-      null
+      "INFANTRY"
     ],
     "teutonic_knights,k_daneland": [
       "cha_vik_berserkers",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_archers,k_daneland": [
       "cha_vik_armoured_archers",
-      null
+      "RANGED"
     ],
     "accolade_maa_lancers,k_daneland": [
       "cha_sax_hearth_cav",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_outriders,k_daneland": [
       "att_nor_nordic_horse_raiders",
-      null
+      "CAVALRY"
     ],
     "accolade_maa_pikes,k_daneland": [
       "att_nor_nordic_spear_masters",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_skirmishers,k_daneland": [
       "cha_cel_axemen",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_vanguard,k_daneland": [
       "cha_vik_berserkers",
-      null
+      "INFANTRY"
     ],
     "accolade_maa_crossbowmen,k_daneland": [
       "att_rom_elite_ballistarii",
-      null
+      "RANGED"
     ]
   },
   "TITLE_NAMES": {
