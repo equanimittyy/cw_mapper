@@ -1544,67 +1544,67 @@
         ],
         "light_footmen,Gondor": [
             "gon_ringlo_vale_footmen",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Gondor": [
             "gon_sword_infantry",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Gondor": [
             "gon_spear_infantry",
-            null
+            "INFANTRY"
         ],
         "bowmen,Gondor": [
             "gon_archers",
-            null
+            "RANGED"
         ],
         "crossbowmen,Gondor": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,Gondor": [
             "gon_princes_sergeants",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Gondor": [
             "gon_cavalry",
-            null
+            "CAVALRY"
         ],
         "house_guard,Gondor": [
             "gon_fountain_guard",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Gondor": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Gondor": [
             "gon_ithilien_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Gondor": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Gondor": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Gondor": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Gondor": [
             "gon_citadel_guard",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Gondor": [
             "nan_i_faroth_skirmishers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Gondor": [
             "gondor_fiefs_lossarnach",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Dol Amroth": [
             "dol_adrahil",
@@ -1631,67 +1631,67 @@
         ],
         "light_footmen,Dol Amroth": [
             "dol_marinesword",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Dol Amroth": [
             "dol_heavysword",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Dol Amroth": [
             "dol_marinespear",
-            null
+            "INFANTRY"
         ],
         "bowmen,Dol Amroth": [
             "dol_heavyarcher",
-            null
+            "RANGED"
         ],
         "crossbowmen,Dol Amroth": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,Dol Amroth": [
             "dol_sergeantcav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Dol Amroth": [
             "dol_cav",
-            null
+            "CAVALRY"
         ],
         "house_guard,Dol Amroth": [
             "dol_swanpike",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Dol Amroth": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Dol Amroth": [
             "dol_heavyarcher",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Dol Amroth": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Dol Amroth": [
             "dol_swancav",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Dol Amroth": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Dol Amroth": [
             "dol_swanpike",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Dol Amroth": [
             "dol_marineskirm",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Dol Amroth": [
             "dol_wardens",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Anorien": [
             "stan_citadel",
@@ -1718,71 +1718,71 @@
         ],
         "light_footmen,Anorien": [
             "stan_mediumsword",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Anorien": [
             "stan_heavysword",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Anorien": [
             "stan_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,Anorien": [
             "stan_mediumarcher",
-            null
+            "RANGED"
         ],
         "crossbowmen,Anorien": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,Anorien": [
             "stan_sergeantcav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Anorien": [
             "stan_cav",
-            null
+            "CAVALRY"
         ],
         "house_guard,Anorien": [
             "gon_fountain_guard",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,Anorien": [
             "stan_cairandros",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Anorien": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Anorien": [
             "stan_ranger",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Anorien": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Anorien": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Anorien": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Anorien": [
             "stan_veteranspear",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Anorien": [
             "stan_skirm",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Anorien": [
             "stan_mace",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Harondor": [
             "hor_heavycav",
@@ -1809,71 +1809,71 @@
         ],
         "light_footmen,Harondor": [
             "hor_mediumsword",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Harondor": [
             "hor_heavyshock_rev",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Harondor": [
             "hor_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,Harondor": [
             "hor_marksmen_rev",
-            null
+            "RANGED"
         ],
         "crossbowmen,Harondor": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,Harondor": [
             "hor_cav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Harondor": [
             "hor_immortals",
-            null
+            "CAVALRY"
         ],
         "house_guard,Harondor": [
             "hor_guardspear",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,Harondor": [
             "hor_heavysword",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Harondor": [
             "hor_horsearcher",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Harondor": [
             "gon_ithilien_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Harondor": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Harondor": [
             "hor_immortals",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Harondor": [
             "hor_horsearcher",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Harondor": [
             "hor_guardspear",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Harondor": [
             "hor_marksmen_rev",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Harondor": [
             "gon_lossarnach_warriors",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Anfalas": [
             "golasgil",
@@ -1900,71 +1900,71 @@
         ],
         "light_footmen,Anfalas": [
             "aerost_sergeants",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Anfalas": [
             "barrow_guard",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Anfalas": [
             "barad_faen_beacon_guard",
-            null
+            "INFANTRY"
         ],
         "bowmen,Anfalas": [
             "nan_i_faroth_hunters",
-            null
+            "RANGED"
         ],
         "crossbowmen,Anfalas": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,Anfalas": [
             "langstrand_coastal_messengers",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Anfalas": [
             "marshals_of_men_falas",
-            null
+            "CAVALRY"
         ],
         "house_guard,Anfalas": [
             "wardens_of_lond_galen",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,Anfalas": [
             "hammers_of_lond_cirion",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Anfalas": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Anfalas": [
             "nan_i_faroth_hunters",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Anfalas": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Anfalas": [
             "golasgil",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Anfalas": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Anfalas": [
             "wardens_of_lond_galen",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Anfalas": [
             "nan_i_faroth_skirmishers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Anfalas": [
             "hammers_of_lond_cirion",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Lamedon": [
             "lam_angbor",
@@ -1991,71 +1991,71 @@
         ],
         "light_footmen,Lamedon": [
             "lam_mediumsword",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Lamedon": [
             "lam_heavysword",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Lamedon": [
             "lam_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,Lamedon": [
             "lam_heavyarcher",
-            null
+            "RANGED"
         ],
         "crossbowmen,Lamedon": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,Lamedon": [
             "lam_sergeantcav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Lamedon": [
             "lam_cav",
-            null
+            "CAVALRY"
         ],
         "house_guard,Lamedon": [
             "lam_guardspear",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,Lamedon": [
             "lam_chevaliers",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Lamedon": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Lamedon": [
             "gon_ithilien_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Lamedon": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Lamedon": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Lamedon": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Lamedon": [
             "lam_guardspear",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Lamedon": [
             "gon_lebennin_marines",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Lamedon": [
             "lam_chevaliers",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Pinnath Gelin": [
             "hirluin",
@@ -2082,71 +2082,71 @@
         ],
         "light_footmen,Pinnath Gelin": [
             "ram_galen_heavy_macemen",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Pinnath Gelin": [
             "pinnath_gelin_boarspears",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Pinnath Gelin": [
             "ram_galen_watchmen",
-            null
+            "INFANTRY"
         ],
         "bowmen,Pinnath Gelin": [
             "green_crest_trackers",
-            null
+            "RANGED"
         ],
         "crossbowmen,Pinnath Gelin": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,Pinnath Gelin": [
             "mesta_hired_riders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Pinnath Gelin": [
             "men_galen_road_patrol",
-            null
+            "CAVALRY"
         ],
         "house_guard,Pinnath Gelin": [
             "green_hill_guardians",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,Pinnath Gelin": [
             "lords_of_the_mesta",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Pinnath Gelin": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Pinnath Gelin": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Pinnath Gelin": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Pinnath Gelin": [
             "mesta_hired_riders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Pinnath Gelin": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Pinnath Gelin": [
             "green_hill_guardians",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Pinnath Gelin": [
             "leb_marineskirm",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Pinnath Gelin": [
             "lords_of_the_mesta",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Blackroot Vale": [
             "imlad_angren_archers",
@@ -2173,71 +2173,71 @@
         ],
         "light_footmen,Blackroot Vale": [
             "kechel_miners",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Blackroot Vale": [
             "blackroot_vale_vanguard",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Blackroot Vale": [
             "bordermen_of_tarlangs_neck",
-            null
+            "INFANTRY"
         ],
         "bowmen,Blackroot Vale": [
             "nimrods_of_nineryn",
-            null
+            "RANGED"
         ],
         "crossbowmen,Blackroot Vale": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,Blackroot Vale": [
             "gon_princes_sergeants",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Blackroot Vale": [
             "gon_cavalry",
-            null
+            "CAVALRY"
         ],
         "house_guard,Blackroot Vale": [
             "garrison_of_morthondost",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,Blackroot Vale": [
             "keepers_of_the_stone",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Blackroot Vale": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Blackroot Vale": [
             "gon_ithilien_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Blackroot Vale": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Blackroot Vale": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Blackroot Vale": [
             "blackroot_vale_roughriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Blackroot Vale": [
             "gon_fountain_guard",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Blackroot Vale": [
             "blackroot_vale_roughriders",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Blackroot Vale": [
             "gon_lossarnach_warriors",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Lebennin": [
             "leb_guardspear",
@@ -2264,71 +2264,71 @@
         ],
         "light_footmen,Lebennin": [
             "leb_marineraider",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Lebennin": [
             "leb_heavysword",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Lebennin": [
             "leb_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,Lebennin": [
             "leb_marinearcher",
-            null
+            "RANGED"
         ],
         "crossbowmen,Lebennin": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,Lebennin": [
             "leb_mediumcav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Lebennin": [
             "leb_retainercav",
-            null
+            "CAVALRY"
         ],
         "house_guard,Lebennin": [
             "leb_guardsword",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,Lebennin": [
             "leb_guardsword",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Lebennin": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Lebennin": [
             "gon_ithilien_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Lebennin": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Lebennin": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Lebennin": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Lebennin": [
             "gon_fountain_guard",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Lebennin": [
             "gon_lebennin_marines",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Lebennin": [
             "gon_lossarnach_warriors",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Lossarnach": [
             "los_forlong",
@@ -2355,71 +2355,71 @@
         ],
         "light_footmen,Lossarnach": [
             "los_skirm",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Lossarnach": [
             "los_poleaxe",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Lossarnach": [
             "los_spears",
-            null
+            "INFANTRY"
         ],
         "bowmen,Lossarnach": [
             "los_refugearcher",
-            null
+            "RANGED"
         ],
         "crossbowmen,Lossarnach": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,Lossarnach": [
             "los_axecav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Lossarnach": [
             "los_flowercav",
-            null
+            "CAVALRY"
         ],
         "house_guard,Lossarnach": [
             "los_pike",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,Lossarnach": [
             "los_lords",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Lossarnach": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Lossarnach": [
             "los_refugearcher",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Lossarnach": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Lossarnach": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Lossarnach": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Lossarnach": [
             "los_pike",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Lossarnach": [
             "los_axethrowers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Lossarnach": [
             "los_heavyaxe",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Ringl\u00f3 Vale": [
             "rv_cav",
@@ -2446,71 +2446,71 @@
         ],
         "light_footmen,Ringl\u00f3 Vale": [
             "rv_mediumsword",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Ringl\u00f3 Vale": [
             "rv_heavysword",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Ringl\u00f3 Vale": [
             "rv_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,Ringl\u00f3 Vale": [
             "rv_archer",
-            null
+            "RANGED"
         ],
         "crossbowmen,Ringl\u00f3 Vale": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,Ringl\u00f3 Vale": [
             "rv_sergeantcav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Ringl\u00f3 Vale": [
             "rv_cav",
-            null
+            "CAVALRY"
         ],
         "house_guard,Ringl\u00f3 Vale": [
             "rv_sentinalspear",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,Ringl\u00f3 Vale": [
             "rv_sentinalsword",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Ringl\u00f3 Vale": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Ringl\u00f3 Vale": [
             "gon_ithilien_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Ringl\u00f3 Vale": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Ringl\u00f3 Vale": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Ringl\u00f3 Vale": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Ringl\u00f3 Vale": [
             "rv_sentinalspear",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Ringl\u00f3 Vale": [
             "gon_lebennin_marines",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Ringl\u00f3 Vale": [
             "rv_mace",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Rohan": [
             "roh_retinue_house_eorl",
@@ -2537,67 +2537,67 @@
         ],
         "light_footmen,Rohan": [
             "roh_sword_theigns",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Rohan": [
             "roh_eorling_retainers",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Rohan": [
             "roh_eorling_men_at_arms",
-            null
+            "INFANTRY"
         ],
         "bowmen,Rohan": [
             "roh_yeomen_of_the_mark",
-            null
+            "RANGED"
         ],
         "crossbowmen,Rohan": [
             "roh_yeomen_of_the_mark",
-            null
+            "RANGED"
         ],
         "light_horsemen,Rohan": [
             "roh_eored_westfold",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Rohan": [
             "roh_king_company",
-            null
+            "CAVALRY"
         ],
         "house_guard,Rohan": [
             "roh_meduseld_guard",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Rohan": [
             "roh_eored_gap",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Rohan": [
             "roh_erkenbrand",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Rohan": [
             "roh_yeomen_of_the_mark",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Rohan": [
             "roh_retinue_house_eorl",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Rohan": [
             "av_eotheod_horse_archers",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Rohan": [
             "roh_meduseld_guard",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Rohan": [
             "roh_rohan_skirmishers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Rohan": [
             "roh_axe_theigns",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Mordor": [
             "mor_witchking",
@@ -2624,67 +2624,67 @@
         ],
         "light_footmen,Mordor": [
             "mor_morgul_orcs",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Mordor": [
             "mor_uruk_bodyguards",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Mordor": [
             "mor_uruk_spears",
-            null
+            "INFANTRY"
         ],
         "bowmen,Mordor": [
             "mor_uruk_archers",
-            null
+            "RANGED"
         ],
         "crossbowmen,Mordor": [
             "gob_scavenged_crossbows",
-            null
+            "RANGED"
         ],
         "light_horsemen,Mordor": [
             "mor_warg_riders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Mordor": [
             "mor_servants_of_the_eyes",
-            null
+            "CAVALRY"
         ],
         "house_guard,Mordor": [
             "mor_guards_of_the_teeth",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Mordor": [
             "mor_warg_sentries",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Mordor": [
             "mor_uruk_archers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Mordor": [
             "ise_uruk_hai_crossbowmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Mordor": [
             "mor_nazgul",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Mordor": [
             "gun_warg_scouts",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Mordor": [
             "mor_guards_of_the_teeth",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Mordor": [
             "mor_mirkwood_raiders",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Mordor": [
             "gob_mordor_uruks",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Witch King": [
             "mor_witchking",
@@ -2711,67 +2711,67 @@
         ],
         "light_footmen,Witch King": [
             "mor_morgul_orcs",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Witch King": [
             "mor_uruk_bodyguards",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Witch King": [
             "mor_uruk_spears",
-            null
+            "INFANTRY"
         ],
         "bowmen,Witch King": [
             "mor_uruk_archers",
-            null
+            "RANGED"
         ],
         "crossbowmen,Witch King": [
             "gob_scavenged_crossbows",
-            null
+            "RANGED"
         ],
         "light_horsemen,Witch King": [
             "mor_warg_riders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Witch King": [
             "mor_servants_of_the_eyes",
-            null
+            "CAVALRY"
         ],
         "house_guard,Witch King": [
             "mor_guards_of_the_teeth",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Witch King": [
             "mor_warg_sentries",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Witch King": [
             "mor_uruk_archers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Witch King": [
             "ise_uruk_hai_crossbowmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Witch King": [
             "mor_nazgul",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Witch King": [
             "gun_warg_scouts",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Witch King": [
             "mor_guards_of_the_teeth",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Witch King": [
             "mor_mirkwood_raiders",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Witch King": [
             "gob_mordor_uruks",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Orc": [
             "mor_othrod",
@@ -2798,67 +2798,67 @@
         ],
         "light_footmen,Orc": [
             "mor_morgul_orcs",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Orc": [
             "mor_uruk_bodyguards",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Orc": [
             "mor_uruk_spears",
-            null
+            "INFANTRY"
         ],
         "bowmen,Orc": [
             "mor_uruk_archers",
-            null
+            "RANGED"
         ],
         "crossbowmen,Orc": [
             "gob_scavenged_crossbows",
-            null
+            "RANGED"
         ],
         "light_horsemen,Orc": [
             "mor_warg_riders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Orc": [
             "mor_servants_of_the_eyes",
-            null
+            "CAVALRY"
         ],
         "house_guard,Orc": [
             "mor_guards_of_the_teeth",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Orc": [
             "mor_warg_sentries",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Orc": [
             "mor_uruk_archers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Orc": [
             "ise_uruk_hai_crossbowmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Orc": [
             "mor_nazgul",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Orc": [
             "gun_warg_scouts",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Orc": [
             "mor_guards_of_the_teeth",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Orc": [
             "mor_mirkwood_raiders",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Orc": [
             "gob_mordor_uruks",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Dol Guldur": [
             "dg_servants_of_the_eyes",
@@ -2885,67 +2885,67 @@
         ],
         "light_footmen,Dol Guldur": [
             "dg_guldur_blades",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Dol Guldur": [
             "dg_chieftain",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Dol Guldur": [
             "mor_uruk_spears",
-            null
+            "INFANTRY"
         ],
         "bowmen,Dol Guldur": [
             "mor_uruk_archers",
-            null
+            "RANGED"
         ],
         "crossbowmen,Dol Guldur": [
             "gob_scavenged_crossbows",
-            null
+            "RANGED"
         ],
         "light_horsemen,Dol Guldur": [
             "gun_warg_riders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Dol Guldur": [
             "gun_armoured_blade_wargs",
-            null
+            "CAVALRY"
         ],
         "house_guard,Dol Guldur": [
             "dg_guldur_pikes",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Dol Guldur": [
             "mor_warg_sentries",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Dol Guldur": [
             "mor_uruk_archers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Dol Guldur": [
             "ise_uruk_hai_crossbowmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Dol Guldur": [
             "mor_nazgul",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Dol Guldur": [
             "gun_warg_scouts",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Dol Guldur": [
             "mor_guards_of_the_teeth",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Dol Guldur": [
             "mor_mirkwood_raiders",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Dol Guldur": [
             "gob_mordor_uruks",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Kham\u00fbl": [
             "dg_khamul",
@@ -2972,67 +2972,67 @@
         ],
         "light_footmen,Kham\u00fbl": [
             "dg_guldur_blades",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Kham\u00fbl": [
             "dg_chieftain",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Kham\u00fbl": [
             "mor_uruk_spears",
-            null
+            "INFANTRY"
         ],
         "bowmen,Kham\u00fbl": [
             "mor_uruk_archers",
-            null
+            "RANGED"
         ],
         "crossbowmen,Kham\u00fbl": [
             "gob_scavenged_crossbows",
-            null
+            "RANGED"
         ],
         "light_horsemen,Kham\u00fbl": [
             "gun_warg_riders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Kham\u00fbl": [
             "gun_armoured_blade_wargs",
-            null
+            "CAVALRY"
         ],
         "house_guard,Kham\u00fbl": [
             "dg_guldur_pikes",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Kham\u00fbl": [
             "mor_warg_sentries",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Kham\u00fbl": [
             "mor_uruk_archers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Kham\u00fbl": [
             "ise_uruk_hai_crossbowmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Kham\u00fbl": [
             "mor_nazgul",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Kham\u00fbl": [
             "gun_warg_scouts",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Kham\u00fbl": [
             "mor_guards_of_the_teeth",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Kham\u00fbl": [
             "mor_mirkwood_raiders",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Kham\u00fbl": [
             "gob_mordor_uruks",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Isengard": [
             "ise_lurtz",
@@ -3059,67 +3059,67 @@
         ],
         "light_footmen,Isengard": [
             "ise_uruk_hai_raiders",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Isengard": [
             "ise_uruk_hai_infantry",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Isengard": [
             "ise_uruk_hai_pikemen",
-            null
+            "INFANTRY"
         ],
         "bowmen,Isengard": [
             "ise_uruk_hai_crossbowmen",
-            null
+            "RANGED"
         ],
         "crossbowmen,Isengard": [
             "ise_uruk_hai_crossbowmen",
-            null
+            "RANGED"
         ],
         "light_horsemen,Isengard": [
             "ise_warg_riders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Isengard": [
             "gun_armoured_blade_wargs",
-            null
+            "CAVALRY"
         ],
         "house_guard,Isengard": [
             "ise_white_hand_stormer",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Isengard": [
             "gun_warg_scouts",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Isengard": [
             "ise_uruk_hai_crossbowmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Isengard": [
             "ise_uruk_hai_crossbowmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Isengard": [
             "mor_servants_of_the_eyes",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Isengard": [
             "gun_warg_scouts",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Isengard": [
             "ise_uruk_hai_pikemen",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Isengard": [
             "ise_dunland_horse_raider",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Isengard": [
             "ise_berserker",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Isengard Good": [
             "dun_huscarls",
@@ -3146,67 +3146,67 @@
         ],
         "light_footmen,Isengard Good": [
             "dun_pillagers",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Isengard Good": [
             "dun_warlords_champions",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Isengard Good": [
             "dun_orthanc_servants",
-            null
+            "INFANTRY"
         ],
         "bowmen,Isengard Good": [
             "dun_archer_heerban",
-            null
+            "RANGED"
         ],
         "crossbowmen,Isengard Good": [
             "dun_warlord_crossbows",
-            null
+            "RANGED"
         ],
         "light_horsemen,Isengard Good": [
             "dun_elder_riders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Isengard Good": [
             "dun_warlords_cavalry",
-            null
+            "CAVALRY"
         ],
         "house_guard,Isengard Good": [
             "dun_hill_wardens",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Isengard Good": [
             "dun_tribal_raiders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Isengard Good": [
             "dun_archer_heerban",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Isengard Good": [
             "dun_warlord_crossbows",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Isengard Good": [
             "dun_warlords_cavalry",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Isengard Good": [
             "dun_tribal_raiders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Isengard Good": [
             "dun_hill_wardens",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Isengard Good": [
             "dun_slingers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Isengard Good": [
             "dun_axe_heerbann",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Gundabad": [
             "gun_armoured_spear_wargs",
@@ -3233,87 +3233,87 @@
         ],
         "light_footmen,Gundabad": [
             "gun_stalkers",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Gundabad": [
             "gun_berserkers",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Gundabad": [
             "gun_warlords",
-            null
+            "INFANTRY"
         ],
         "bowmen,Gundabad": [
             "gun_traversers",
-            null
+            "RANGED"
         ],
         "crossbowmen,Gundabad": [
             "ise_uruk_hai_crossbowmen",
-            null
+            "RANGED"
         ],
         "light_horsemen,Gundabad": [
             "gun_warg_riders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Gundabad": [
             "gun_armoured_blade_wargs",
-            null
+            "CAVALRY"
         ],
         "house_guard,Gundabad": [
             "gun_citadel_guards",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Gundabad": [
             "gun_warg_scouts",
-            null
+            "CAVALRY"
         ],
         "orc_archers,Gundabad": [
             "tomb_gundabad_night_hunters",
-            null
+            "INFANTRY"
         ],
         "orc_rabble,Gundabad": [
             "tomb_gundabad_warband",
-            null
+            "INFANTRY"
         ],
         "orc_trackers,Gundabad": [
             "gob_goblin_scrappers",
-            null
+            "INFANTRY"
         ],
         "orc_warriors,Gundabad": [
             "tomb_gundabad_blades",
-            null
+            "INFANTRY"
         ],
         "orc_pikemen,Gundabad": [
             "tomb_gundabad_halberd",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_archers,Gundabad": [
             "gun_traversers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Gundabad": [
             "ise_uruk_hai_crossbowmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Gundabad": [
             "gun_armoured_spear_wargs",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Gundabad": [
             "gun_warg_scouts",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Gundabad": [
             "gun_citadel_guards",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Gundabad": [
             "mor_mirkwood_raiders",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Gundabad": [
             "gun_reavers",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Goblins": [
             "gob_goblin_king",
@@ -3340,87 +3340,87 @@
         ],
         "light_footmen,Goblins": [
             "gob_goblin_blackshield_guard",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Goblins": [
             "gob_chieftan_guard",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Goblins": [
             "gob_goblin_blackshield_spears",
-            null
+            "INFANTRY"
         ],
         "bowmen,Goblins": [
             "gob_goblin_heavy_archers",
-            null
+            "RANGED"
         ],
         "crossbowmen,Goblins": [
             "gob_scavenged_crossbows",
-            null
+            "RANGED"
         ],
         "light_horsemen,Goblins": [
             "gun_warg_riders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Goblins": [
             "gun_armoured_blade_wargs",
-            null
+            "CAVALRY"
         ],
         "house_guard,Goblins": [
             "gob_chieftan_guard",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Goblins": [
             "ise_dunland_horse_raider",
-            null
+            "CAVALRY"
         ],
         "orc_rabble,Goblins": [
             "gob_goblin_light_inf",
-            null
+            "INFANTRY"
         ],
         "orc_trackers,Goblins": [
             "gob_goblin_blackshield_guard",
-            null
+            "INFANTRY"
         ],
         "orc_warriors,Goblins": [
             "gob_goblin_blade_warriors",
-            null
+            "INFANTRY"
         ],
         "orc_archers,Goblins": [
             "gob_goblin_heavy_archers",
-            null
+            "INFANTRY"
         ],
         "orc_pikemen,Goblins": [
             "gob_goblin_spear_warriors",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_archers,Goblins": [
             "gob_goblin_heavy_archers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Goblins": [
             "ise_uruk_hai_crossbowmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Goblins": [
             "gun_armoured_blade_wargs",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Goblins": [
             "gun_warg_scouts",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Goblins": [
             "gob_goblin_blackshield_spears",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Goblins": [
             "mor_mirkwood_raiders",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Goblins": [
             "gob_night_raiders",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Dunlending": [
             "dun_huscarls",
@@ -3447,67 +3447,67 @@
         ],
         "light_footmen,Dunlending": [
             "dun_pillagers",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Dunlending": [
             "dun_warlords_champions",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Dunlending": [
             "dun_orthanc_servants",
-            null
+            "INFANTRY"
         ],
         "bowmen,Dunlending": [
             "dun_archer_heerban",
-            null
+            "RANGED"
         ],
         "crossbowmen,Dunlending": [
             "dun_warlord_crossbows",
-            null
+            "RANGED"
         ],
         "light_horsemen,Dunlending": [
             "dun_elder_riders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Dunlending": [
             "dun_warlords_cavalry",
-            null
+            "CAVALRY"
         ],
         "house_guard,Dunlending": [
             "dun_hill_wardens",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Dunlending": [
             "dun_tribal_raiders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Dunlending": [
             "dun_archer_heerban",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Dunlending": [
             "dun_warlord_crossbows",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Dunlending": [
             "dun_warlords_cavalry",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Dunlending": [
             "dun_tribal_raiders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Dunlending": [
             "dun_hill_wardens",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Dunlending": [
             "dun_slingers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Dunlending": [
             "dun_axe_heerbann",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Haradrim": [
             "har_ar_belzagar",
@@ -3534,67 +3534,67 @@
         ],
         "light_footmen,Haradrim": [
             "har_harad_swords",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Haradrim": [
             "har_umbar_ursurpers",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Haradrim": [
             "har_serpent_spearmen",
-            null
+            "INFANTRY"
         ],
         "bowmen,Haradrim": [
             "har_serpent_archers",
-            null
+            "RANGED"
         ],
         "crossbowmen,Haradrim": [
             "har_serpent_archers",
-            null
+            "RANGED"
         ],
         "light_horsemen,Haradrim": [
             "har_harad_camel_riders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Haradrim": [
             "har_serpent_guards",
-            null
+            "CAVALRY"
         ],
         "house_guard,Haradrim": [
             "har_umbar_guards",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Haradrim": [
             "har_harad_horse_archers",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Haradrim": [
             "har_black_serpent",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Haradrim": [
             "har_black_serpent",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Haradrim": [
             "har_mumakil_harad_bow",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Haradrim": [
             "har_mumakil_mahud_bow",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Haradrim": [
             "har_umbar_guards",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Haradrim": [
             "har_corsair_marines",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Haradrim": [
             "har_adunakhori",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Easterlings": [
             "bal_khahar",
@@ -3621,67 +3621,67 @@
         ],
         "light_footmen,Easterlings": [
             "bal_rhunic_warriors",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Easterlings": [
             "bal_loke_rim_macemen",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Easterlings": [
             "bal_loke_rim_halberdiers",
-            null
+            "INFANTRY"
         ],
         "bowmen,Easterlings": [
             "bal_loke_rim_archers",
-            null
+            "RANGED"
         ],
         "crossbowmen,Easterlings": [
             "bal_loke_rim_archers",
-            null
+            "RANGED"
         ],
         "light_horsemen,Easterlings": [
             "bal_haerrim_outriders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Easterlings": [
             "bal_bane_of_the_steppes",
-            null
+            "CAVALRY"
         ],
         "house_guard,Easterlings": [
             "bal_rhunic_warlords",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Easterlings": [
             "bal_khandish_horse_archers",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Easterlings": [
             "bal_variag_bowmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Easterlings": [
             "bal_variag_bowmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Easterlings": [
             "bal_bane_of_the_steppes",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Easterlings": [
             "bal_khandish_horse_archers",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Easterlings": [
             "bal_loke_rim_halberdiers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Easterlings": [
             "bal_feredrim_woodsmen",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Easterlings": [
             "bal_loke_rim_macemen",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Umbar": [
             "har_ar_belzagar",
@@ -3708,71 +3708,67 @@
         ],
         "light_footmen,Umbar": [
             "umb_balik_axemen",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Umbar": [
             "umb_usurpers",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Umbar": [
             "umb_black_haven_guard",
-            null
+            "INFANTRY"
         ],
         "bowmen,Umbar": [
             "umb_black_haven_marksmen",
-            null
+            "RANGED"
         ],
         "crossbowmen,Umbar": [
             "umb_black_haven_marksmen",
-            null
+            "RANGED"
         ],
         "light_horsemen,Umbar": [
             "umb_haradrim_auxillaries",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Umbar": [
             "har_harad_camel_riders",
-            null
+            "CAVALRY"
         ],
         "house_guard,Umbar": [
             "umb_bakulmagan",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Umbar": [
             "har_harad_horse_archers",
-            null
-        ],
-        "Shieldwall Arbalests,Umbar": [
-            "umb_lb_corsair_archers",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Umbar": [
             "umb_black_haven_marksmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Umbar": [
             "umb_black_haven_marksmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Umbar": [
             "har_serpent_guards",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Umbar": [
             "har_harad_horse_archers",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Umbar": [
             "umb_bakulmagan",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Umbar": [
             "har_corsair_marines",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Umbar": [
             "har_adunakhori",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Khand": [
             "kha_wainrider_nobles",
@@ -3799,67 +3795,67 @@
         ],
         "light_footmen,Khand": [
             "kha_khandish_sentries",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Khand": [
             "kha_variag_warriors",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Khand": [
             "kha_wainrider_spear_warriors",
-            null
+            "INFANTRY"
         ],
         "bowmen,Khand": [
             "kha_khandish_bowmen",
-            null
+            "RANGED"
         ],
         "crossbowmen,Khand": [
             "kha_khandish_bowmen",
-            null
+            "RANGED"
         ],
         "light_horsemen,Khand": [
             "kha_khandish_outriders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Khand": [
             "kha_variag_riders",
-            null
+            "CAVALRY"
         ],
         "house_guard,Khand": [
             "kha_eastern_legion",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Khand": [
             "kha_khandish_horse_archers",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Khand": [
             "kha_variag_bowmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Khand": [
             "kha_variag_bowmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Khand": [
             "kha_variag_riders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Khand": [
             "kha_variag_horse_archers",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Khand": [
             "kha_wainrider_spear_warriors",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Khand": [
             "kha_akha_raiders",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Khand": [
             "kha_khandish_raiders",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Dale": [
             "dale_rhovanion_regent",
@@ -3886,67 +3882,67 @@
         ],
         "light_footmen,Dale": [
             "dale_shipmen",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Dale": [
             "dale_swordsmen",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Dale": [
             "dale_spearguards",
-            null
+            "INFANTRY"
         ],
         "bowmen,Dale": [
             "dale_marksmen",
-            null
+            "RANGED"
         ],
         "crossbowmen,Dale": [
             "dale_rhovanion_rangers",
-            null
+            "RANGED"
         ],
         "light_horsemen,Dale": [
             "dale_cavalry_regiment",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Dale": [
             "dale_cavalry_regiment",
-            null
+            "CAVALRY"
         ],
         "house_guard,Dale": [
             "dale_vineland_guard_sword",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Dale": [
             "roh_eored_gap",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Dale": [
             "dale_bardings",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Dale": [
             "dale_rhovanion_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Dale": [
             "dale_cavalry_regiment",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Dale": [
             "av_eotheod_horse_archers",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Dale": [
             "dale_laketown_guards",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Dale": [
             "dale_rivermen",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Dale": [
             "dale_avari_wanderers",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Erebor": [
             "ere_balin",
@@ -3973,63 +3969,63 @@
         ],
         "light_footmen,Erebor": [
             "ere_dwarven_warriors",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Erebor": [
             "ere_axe_guards",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Erebor": [
             "ere_spearguards",
-            null
+            "INFANTRY"
         ],
         "bowmen,Erebor": [
             "ere_iron_hill_crossbow",
-            null
+            "RANGED"
         ],
         "crossbowmen,Erebor": [
             "ere_crossbowmen",
-            null
+            "RANGED"
         ],
         "light_horsemen,Erebor": [
             "ere_merc_cav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Erebor": [
             "tlb_ere_goat_riders",
-            null
+            "CAVALRY"
         ],
         "house_guard,Erebor": [
             "ere_mansion_reclaimers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_archers,Erebor": [
             "ere_crossbowmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Erebor": [
             "ere_crossbowmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Erebor": [
             "tlb_ere_goat_riders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Erebor": [
             "ere_merc_cav",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Erebor": [
             "ere_iron_guardians",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Erebor": [
             "ere_axe_throwers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Erebor": [
             "ere_axe_warriors",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Iron Hill": [
             "tlb_ere_goat_riders",
@@ -4056,63 +4052,63 @@
         ],
         "light_footmen,Iron Hill": [
             "ere_axe_guards",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Iron Hill": [
             "em_ered_mithrin_veterans",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Iron Hill": [
             "ere_spearguards",
-            null
+            "INFANTRY"
         ],
         "bowmen,Iron Hill": [
             "ere_crossbowmen",
-            null
+            "RANGED"
         ],
         "crossbowmen,Iron Hill": [
             "ere_crossbowmen",
-            null
+            "RANGED"
         ],
         "light_horsemen,Iron Hill": [
             "ere_merc_cav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Iron Hill": [
             "tlb_ere_goat_riders",
-            null
+            "CAVALRY"
         ],
         "house_guard,Iron Hill": [
             "ere_iron_guardians",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_archers,Iron Hill": [
             "iro_fortress_guardians",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Iron Hill": [
             "iro_fortress_guardians",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Iron Hill": [
             "tlb_ere_goat_riders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Iron Hill": [
             "ere_merc_cav",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Iron Hill": [
             "ere_iron_guardians",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Iron Hill": [
             "ere_axe_throwers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Iron Hill": [
             "iro_sons_of_mountain",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Ered": [
             "em_dragon_trackers",
@@ -4139,63 +4135,63 @@
         ],
         "light_footmen,Ered": [
             "em_fist_mountain",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Ered": [
             "em_ered_mithrin_veterans",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Ered": [
             "em_bronzewatch_spearmen",
-            null
+            "INFANTRY"
         ],
         "bowmen,Ered": [
             "em_troll_hunters",
-            null
+            "RANGED"
         ],
         "crossbowmen,Ered": [
             "em_troll_hunters",
-            null
+            "RANGED"
         ],
         "light_horsemen,Ered": [
             "ere_merc_cav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Ered": [
             "tlb_ere_goat_riders",
-            null
+            "CAVALRY"
         ],
         "house_guard,Ered": [
             "em_dragon_slayers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_archers,Ered": [
             "em_dragon_trackers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Ered": [
             "em_grey_mountain_scouts",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Ered": [
             "tlb_ere_goat_riders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Ered": [
             "ere_merc_cav",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Ered": [
             "em_frostguard",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Ered": [
             "em_grey_mountain_scouts",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Ered": [
             "em_nobles",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Khazad": [
             "khz_durins_mithril_guard",
@@ -4222,87 +4218,63 @@
         ],
         "light_footmen,Khazad": [
             "ere_miners",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Khazad": [
             "khz_champions_of_mountain",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Khazad": [
             "khz_protectors_azanulbizar",
-            null
+            "INFANTRY"
         ],
         "bowmen,Khazad": [
             "khz_crossbows",
-            null
+            "RANGED"
         ],
         "crossbowmen,Khazad": [
             "khz_crossbows",
-            null
+            "RANGED"
         ],
         "light_horsemen,Khazad": [
             "ere_merc_cav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Khazad": [
             "tlb_ere_goat_riders",
-            null
+            "CAVALRY"
         ],
         "house_guard,Khazad": [
             "khz_veterans_khazad_dum",
-            null
-        ],
-        "khz_legionaries,Khazad": [
-            "khz_legionaries",
-            null
-        ],
-        "khz_durins_gate_guard,Khazad": [
-            "khz_durins_gate_guard",
-            null
-        ],
-        "khz_crossbows,Khazad": [
-            "khz_crossbows",
-            null
-        ],
-        "ere_baruk_guard,Khazad": [
-            "ere_baruk_guard",
-            null
-        ],
-        "ere_merc_cav,Khazad": [
-            "ere_merc_cav",
-            null
-        ],
-        "roh_eored_gap,Khazad": [
-            "roh_eored_gap",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_archers,Khazad": [
             "khz_crossbows",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Khazad": [
             "khz_crossbows",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Khazad": [
             "tlb_ere_goat_riders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Khazad": [
             "ere_merc_cav",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Khazad": [
             "khz_durins_gate_guard",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Khazad": [
             "khz_axe_throwers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Khazad": [
             "khz_durins_mithril_guard",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Dorwinion": [
             "dor_riders_of_the_vinter_court",
@@ -4329,67 +4301,67 @@
         ],
         "light_footmen,Dorwinion": [
             "dor_vineland_men_at_arms",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Dorwinion": [
             "dale_marksmen",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Dorwinion": [
             "dor_dorwinion_vinter_guard",
-            null
+            "INFANTRY"
         ],
         "bowmen,Dorwinion": [
             "dale_marksmen",
-            null
+            "RANGED"
         ],
         "crossbowmen,Dorwinion": [
             "dor_dorwinion_crossbow",
-            null
+            "RANGED"
         ],
         "light_horsemen,Dorwinion": [
             "dor_vineland_vanguard",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Dorwinion": [
             "dale_cavalry_regiment",
-            null
+            "CAVALRY"
         ],
         "house_guard,Dorwinion": [
             "dor_warden",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Dorwinion": [
             "roh_eored_gap",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Dorwinion": [
             "dale_bardings",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Dorwinion": [
             "dor_dorwinion_crossbow",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Dorwinion": [
             "dale_rhovanion_regent",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Dorwinion": [
             "roh_eored_gap",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Dorwinion": [
             "dor_avari_warriors",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Dorwinion": [
             "dale_avari_wanderers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Dorwinion": [
             "dale_avari_wanderers",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Lothlorien": [
             "loth_haldir",
@@ -4416,67 +4388,67 @@
         ],
         "light_footmen,Lothlorien": [
             "Galadhrim_Sword_Infantry",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Lothlorien": [
             "Defenders_Of_Lorien",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Lothlorien": [
             "Galadhrim_Spear_Infantry",
-            null
+            "INFANTRY"
         ],
         "bowmen,Lothlorien": [
             "loth_galad_bow_warriors",
-            null
+            "RANGED"
         ],
         "crossbowmen,Lothlorien": [
             "loth_galad_bow_warriors",
-            null
+            "RANGED"
         ],
         "light_horsemen,Lothlorien": [
             "loth_lor_outriders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Lothlorien": [
             "loth_nimrodel_patrollers",
-            null
+            "CAVALRY"
         ],
         "house_guard,Lothlorien": [
             "koh_celin_amroth_sentinels",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Lothlorien": [
             "loth_nimrodel_patrollers",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Lothlorien": [
-            "Marchwarden",
-            null
+            "loth_galad_bow_warriors",
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Lothlorien": [
-            "Marchwarden",
-            null
+            "loth_galad_bow_warriors",
+            "RANGED"
         ],
         "accolade_maa_lancers,Lothlorien": [
             "loth_nimrodel_patrollers",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Lothlorien": [
             "Lorien_Bow_Cav",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Lothlorien": [
             "koh_celin_amroth_sentinels",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Lothlorien": [
-            "Marchwarden",
-            null
+            "loth_wardens_fences",
+            "RANGED"
         ],
         "accolade_maa_vanguard,Lothlorien": [
             "Lorien_Swords",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Woodland Realm": [
             "exe_wr_thranduil_elk",
@@ -4503,67 +4475,67 @@
         ],
         "light_footmen,Woodland Realm": [
             "wr_lasgalen_swords",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Woodland Realm": [
             "exe_wr_border_guards",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Woodland Realm": [
             "wr_lasgalen_spears",
-            null
+            "INFANTRY"
         ],
         "bowmen,Woodland Realm": [
             "wr_forest_rangers",
-            null
+            "RANGED"
         ],
         "crossbowmen,Woodland Realm": [
             "wr_forest_rangers",
-            null
+            "RANGED"
         ],
         "light_horsemen,Woodland Realm": [
             "wr_forest_riders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Woodland Realm": [
             "exe_wr_lasgalen_riders",
-            null
+            "CAVALRY"
         ],
         "house_guard,Woodland Realm": [
             "wr_lasgalen_bows",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Woodland Realm": [
             "wr_gurthlagor",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Woodland Realm": [
             "wr_lasgalen_lords",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Woodland Realm": [
             "wr_lasgalen_lords",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Woodland Realm": [
             "exe_wr_lasgalen_riders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Woodland Realm": [
             "wr_gurthlagor",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Woodland Realm": [
             "wr_hall_guardians",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Woodland Realm": [
             "wr_lasgalen_bows",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Woodland Realm": [
             "exe_wr_border_guards",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Imladris": [
             "exe_iml_glorfindel",
@@ -4590,67 +4562,67 @@
         ],
         "light_footmen,Imladris": [
             "iml_swordsmen",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Imladris": [
             "iml_guards",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Imladris": [
             "exe_iml_spearmen",
-            null
+            "INFANTRY"
         ],
         "bowmen,Imladris": [
             "exe_iml_warriors",
-            null
+            "RANGED"
         ],
         "crossbowmen,Imladris": [
             "exe_iml_warriors",
-            null
+            "RANGED"
         ],
         "light_horsemen,Imladris": [
             "exe_iml_rivendell_riders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Imladris": [
             "iml_cavalry",
-            null
+            "CAVALRY"
         ],
         "house_guard,Imladris": [
             "exe_iml_eregion_veterans",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Imladris": [
             "wr_gurthlagor",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Imladris": [
             "iml_archers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Imladris": [
             "iml_archers",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Imladris": [
             "iml_horse_rangers",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Imladris": [
             "wr_gurthlagor",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Imladris": [
             "iml_pikemen",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Imladris": [
             "iml_archers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Imladris": [
             "iml_swordsmen",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Lindon": [
             "lin_cavalry",
@@ -4677,67 +4649,67 @@
         ],
         "light_footmen,Lindon": [
             "lin_swordsmen",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Lindon": [
             "lin_swordsmen",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Lindon": [
             "exe_lin_remnants_golden_flower",
-            null
+            "INFANTRY"
         ],
         "bowmen,Lindon": [
             "exe_lin_noldorin_rangers",
-            null
+            "RANGED"
         ],
         "crossbowmen,Lindon": [
             "exe_lin_noldorin_rangers",
-            null
+            "RANGED"
         ],
         "light_horsemen,Lindon": [
             "lin_cavalry",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Lindon": [
             "lin_cavalry",
-            null
+            "CAVALRY"
         ],
         "house_guard,Lindon": [
             "lin_noldor_nobles",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Lindon": [
             "lin_lindon_scouts",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Lindon": [
             "exe_lin_noldorin_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Lindon": [
             "exe_lin_noldorin_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Lindon": [
             "lin_cavalry",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Lindon": [
             "lin_lindon_scouts",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Lindon": [
             "lin_spearmen",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Lindon": [
             "lin_falathrim_seafarers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Lindon": [
             "exe_lin_remnants_golden_flower",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Eregion": [
             "ler_ost-in-edhil_mounted_guard",
@@ -4764,67 +4736,67 @@
         ],
         "light_footmen,Eregion": [
             "ler_eregion_swordsmen",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Eregion": [
             "ler_eregion_hammer_infantry",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Eregion": [
             "ler_ost-in-edhil_defenders",
-            null
+            "INFANTRY"
         ],
         "bowmen,Eregion": [
             "ler_mirdain_remnants",
-            null
+            "RANGED"
         ],
         "crossbowmen,Eregion": [
             "ler_mirdain_remnants",
-            null
+            "RANGED"
         ],
         "light_horsemen,Eregion": [
             "ler_hollin_cavalry",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Eregion": [
             "ler_ost-in-edhil_mounted_guard",
-            null
+            "CAVALRY"
         ],
         "house_guard,Eregion": [
             "ler_celebrimbor_guard_vestige",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Eregion": [
             "lin_lindon_scouts",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Eregion": [
             "ler_mirdain_remnants",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Eregion": [
             "ler_mirdain_remnants",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Eregion": [
             "ler_ost-in-edhil_mounted_guard",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Eregion": [
             "lin_lindon_scouts",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Eregion": [
             "ler_ost-in-edhil_defenders",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Eregion": [
             "lin_falathrim_seafarers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Eregion": [
             "ler_celebrimbor_guard_vestige",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Northern Dunedain": [
             "hirluin",
@@ -4851,67 +4823,67 @@
         ],
         "light_footmen,Northern Dunedain": [
             "ram_galen_heavy_macemen",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Northern Dunedain": [
             "calenhirost_defenders",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Northern Dunedain": [
             "ram_galen_watchmen",
-            null
+            "INFANTRY"
         ],
         "bowmen,Northern Dunedain": [
             "green_crest_trackers",
-            null
+            "RANGED"
         ],
         "crossbowmen,Northern Dunedain": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,Northern Dunedain": [
             "mesta_hired_riders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Northern Dunedain": [
             "men_galen_road_patrol",
-            null
+            "CAVALRY"
         ],
         "house_guard,Northern Dunedain": [
             "lords_of_the_mesta",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Northern Dunedain": [
             "roh_eored_gap",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Northern Dunedain": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Northern Dunedain": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Northern Dunedain": [
             "mesta_hired_riders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Northern Dunedain": [
             "roh_eored_gap",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Northern Dunedain": [
             "green_hill_guardians",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Northern Dunedain": [
             "leb_marineskirm",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Northern Dunedain": [
             "lords_of_the_mesta",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Rhudaur": [
             "rhu_crrothean_hill_riders",
@@ -4938,67 +4910,67 @@
         ],
         "light_footmen,Rhudaur": [
             "rhu_corcurian_axe_hird",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Rhudaur": [
             "rhu_trev_duvardain_reavers",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Rhudaur": [
             "rhu_trev_gallorg_wardens",
-            null
+            "INFANTRY"
         ],
         "bowmen,Rhudaur": [
             "rhu_ettenmoor_marksmen",
-            null
+            "RANGED"
         ],
         "crossbowmen,Rhudaur": [
             "rhu_ettenmoor_marksmen",
-            null
+            "RANGED"
         ],
         "light_horsemen,Rhudaur": [
             "rhu_corcurian_raiders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Rhudaur": [
             "rhu_crrothean_hill_riders",
-            null
+            "CAVALRY"
         ],
         "house_guard,Rhudaur": [
             "rhu_trev_duvardain_reavers",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Rhudaur": [
             "dun_tribal_raiders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Rhudaur": [
             "rhu_ettenmoor_marksmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Rhudaur": [
             "rhu_ettenmoor_marksmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Rhudaur": [
             "rhu_crrothean_hill_riders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Rhudaur": [
             "dun_tribal_raiders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Rhudaur": [
             "rhu_trev_gallorg_wardens",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Rhudaur": [
             "dun_tribal_raiders",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Rhudaur": [
             "rhu_creothean_raiders",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Anduin": [
             "av_eotheod_nobles",
@@ -5025,67 +4997,67 @@
         ],
         "light_footmen,Anduin": [
             "av_vale_axemen",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Anduin": [
             "av_pass_sentries",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Anduin": [
             "av_anduin_sentinels",
-            null
+            "INFANTRY"
         ],
         "bowmen,Anduin": [
             "av_anduin_longbowmen",
-            null
+            "RANGED"
         ],
         "crossbowmen,Anduin": [
             "av_anduin_longbowmen",
-            null
+            "RANGED"
         ],
         "light_horsemen,Anduin": [
             "av_eotheod_cavalry",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Anduin": [
             "av_eotheod_lancers",
-            null
+            "CAVALRY"
         ],
         "house_guard,Anduin": [
             "av_beorning_warriors",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Anduin": [
             "av_eotheod_horse_archers",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Anduin": [
             "av_anduin_longbowmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Anduin": [
             "av_anduin_longbowmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Anduin": [
             "av_eotheod_lancers",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Anduin": [
             "av_eotheod_horse_archers",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Anduin": [
             "av_carrock_wardens",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Anduin": [
             "av_greenwood_rangers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Anduin": [
             "av_beorning_warriors",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Bree Land": [
             "bre_knights_mounted",
@@ -5112,67 +5084,67 @@
         ],
         "light_footmen,Bree Land": [
             "bre_greatswords",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Bree Land": [
             "bre_sword_infantry",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Bree Land": [
             "bre_green_dragon_guard",
-            null
+            "INFANTRY"
         ],
         "bowmen,Bree Land": [
             "bre_archers",
-            null
+            "RANGED"
         ],
         "crossbowmen,Bree Land": [
             "bre_gate_watch",
-            null
+            "RANGED"
         ],
         "light_horsemen,Bree Land": [
             "roh_scouts_of_rohan",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Bree Land": [
             "bre_knights_mounted",
-            null
+            "CAVALRY"
         ],
         "house_guard,Bree Land": [
             "bre_city_watch",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Bree Land": [
             "roh_eored_gap",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Bree Land": [
             "bre_archers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Bree Land": [
             "bre_gate_watch",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Bree Land": [
             "bre_knights_mounted",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Bree Land": [
             "roh_eored_gap",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Bree Land": [
             "bre_city_watch",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Bree Land": [
             "bre_archers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Bree Land": [
             "bre_greatswords",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Numenorean": [
             "gon_silver_swan_knights",
@@ -5199,67 +5171,67 @@
         ],
         "light_footmen,Numenorean": [
             "dol_heavysword",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Numenorean": [
             "dol_swansword",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Numenorean": [
             "dol_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,Numenorean": [
             "dol_marinearcher",
-            null
+            "RANGED"
         ],
         "crossbowmen,Numenorean": [
             "dol_heavyarcher",
-            null
+            "RANGED"
         ],
         "light_horsemen,Numenorean": [
             "dol_sergeantcav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Numenorean": [
             "dol_cav",
-            null
+            "CAVALRY"
         ],
         "house_guard,Numenorean": [
             "dol_swanspear",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Numenorean": [
             "hor_horsearcher",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Numenorean": [
             "gon_ithilien_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Numenorean": [
             "los_archer",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Numenorean": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Numenorean": [
             "hor_horsearcher",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Numenorean": [
             "dol_swanpike",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Numenorean": [
             "dol_marineskirm",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Numenorean": [
             "dol_wardens",
-            null
+            "INFANTRY"
         ],
         "GENERAL,Angmar": [
             "ang_morgomir",
@@ -5286,71 +5258,74 @@
         ],
         "light_footmen,Angmar": [
             "ang_orc_blades",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,Angmar": [
             "ang_goblin_merc_captain",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,Angmar": [
             "ang_orc_pikes",
-            null
+            "INFANTRY"
         ],
         "bowmen,Angmar": [
             "ang_fanatics_of_the_witch_king",
-            null
+            "RANGED"
         ],
         "crossbowmen,Angmar": [
             "ang_gob_merc_archers",
-            null
+            "RANGED"
         ],
         "light_horsemen,Angmar": [
             "ang_rhudaur_cavalry",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,Angmar": [
             "mor_servants_of_the_eyes",
-            null
+            "CAVALRY"
         ],
         "house_guard,Angmar": [
             "ang_orc_spears",
-            null
+            "INFANTRY"
         ],
         "horse_archers,Angmar": [
             "ise_dunland_horse_raider",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,Angmar": [
             "ang_gob_merc_archers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,Angmar": [
             "ang_gob_merc_archers",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,Angmar": [
             "mor_servants_of_the_eyes",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,Angmar": [
             "ise_dunland_horse_raider",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,Angmar": [
             "ang_orc_spears",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,Angmar": [
             "mor_uruk_archers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,Angmar": [
             "ang_acolytes_of_the_witchking",
-            null
+            "INFANTRY"
         ]
     },
     "HERITAGES_AND_CULTURES": {
         "heritage_eastern_adunaic,PARENT_KEY": [
+            "Umbar"
+        ],
+        "heritage_eastern_adunaic,east_adunai_colonial": [
             "Umbar"
         ],
         "heritage_northern_adunaic,PARENT_KEY": [
@@ -5971,6 +5946,15 @@
         "heritage_thani_native,PARENT_KEY": [
             "Haradrim"
         ],
+        "heritage_thani_native,adena": [
+            "Haradrim"
+        ],
+        "heritage_thani_native,drel": [
+            "Haradrim"
+        ],
+        "heritage_thani_native,pel": [
+            "Haradrim"
+        ],
         "heritage_tulwangi,PARENT_KEY": [
             "Umbar"
         ],
@@ -5990,6 +5974,9 @@
             "Umbar"
         ],
         "heritage_harshandatt,PARENT_KEY": [
+            "Khand"
+        ],
+        "heritage_harshandatt,muranian": [
             "Khand"
         ],
         "heritage_periannath,PARENT_KEY": [
@@ -6025,7 +6012,13 @@
         "heritage_magri,PARENT_KEY": [
             "Umbar"
         ],
+        "heritage_magri,mag": [
+            "Umbar"
+        ],
         "heritage_mordorrim,PARENT_KEY": [
+            "Mordor"
+        ],
+        "heritage_mordorrim,mordorrim": [
             "Mordor"
         ],
         "heritage_hadorim,PARENT_KEY": [
@@ -6189,153 +6182,21 @@
         ],
         "heritage_womaw,PARENT_KEY": [
             "Easterlings"
+        ],
+        "heritage_womaw,womaw": [
+            "Easterlings"
+        ],
+        "heritage_womaw,lokhaw": [
+            "Easterlings"
+        ],
+        "heritage_womaw,codyan": [
+            "Easterlings"
+        ],
+        "heritage_womaw,vulmaw": [
+            "Easterlings"
         ]
     },
     "TITLES_AND_MAA": {
-        "GENERAL,c_lannisport": [
-            "Westerlands_Lannisport_MAA_Lance_Cavalry",
-            "GENERAL"
-        ],
-        "KNIGHTS,c_lannisport": [
-            "Westerlands_Lannisport_MAA_Mounted_Swordsmen",
-            "KNIGHTS"
-        ],
-        "light_footmen,c_lannisport": [
-            "Westerlands_Lannisport_MAA_Spearmen",
-            null
-        ],
-        "light_horsemen,c_lannisport": [
-            "Westerlands_Lannisport_MAA_Mounted_Swordsmen",
-            null
-        ],
-        "westerlands_knights,c_lannisport": [
-            "Westerlands_Lannisport_MAA_Lance_Cavalry",
-            null
-        ],
-        "armored_footmen,c_lannisport": [
-            "Westerlands_Lannisport_MAA_Swordsmen",
-            null
-        ],
-        "redcloaks,c_lannisport": [
-            "Westerlands_Lannisport_MAA_Swordsmen",
-            null
-        ],
-        "bloody_balesters,c_lannisport": [
-            "Westerlands_Lannisport_MAA_Longbowmen",
-            null
-        ],
-        "bowmen,c_lannisport": [
-            "Westerlands_Lannisport_MAA_Longbowmen",
-            null
-        ],
-        "crossbowmen,c_lannisport": [
-            "Westerlands_Lannisport_MAA_Longbowmen",
-            null
-        ],
-        "pikemen_unit,c_lannisport": [
-            "Westerlands_Lannisport_MAA_Spearmen",
-            null
-        ],
-        "house_guard,c_lannisport": [
-            "Westerlands_Lannisport_MAA_Spearmen",
-            null
-        ],
-        "accolade_maa_archers,c_lannisport": [
-            "Westerlands_Lannisport_MAA_Longbowmen",
-            null
-        ],
-        "accolade_maa_lancers,c_lannisport": [
-            "Westerlands_Lannisport_MAA_Lance_Cavalry",
-            null
-        ],
-        "accolade_maa_outriders,c_lannisport": [
-            "Westerlands_Lannisport_MAA_Mounted_Swordsmen",
-            null
-        ],
-        "accolade_maa_pikes,c_lannisport": [
-            "Westerlands_Lannisport_MAA_Spearmen",
-            null
-        ],
-        "accolade_maa_skirmishers,c_lannisport": [
-            "Westerlands_Lannisport_MAA_Longbowmen",
-            null
-        ],
-        "accolade_maa_vanguard,c_lannisport": [
-            "Westerlands_Lannisport_MAA_Swordsmen",
-            null
-        ],
-        "accolade_maa_crossbowmen,c_lannisport": [
-            "Westerlands_Lannisport_MAA_Longbowmen",
-            null
-        ],
-        "GENERAL,c_wayleroot": [
-            "Riverlands_Vypren_MAA_Lance_Cavalry",
-            "GENERAL"
-        ],
-        "KNIGHTS,c_wayleroot": [
-            "Riverlands_Vypren_MAA_Mounted_Swordsmen",
-            "KNIGHTS"
-        ],
-        "light_footmen,c_wayleroot": [
-            "Riverlands_Vypren_MAA_Axemen",
-            null
-        ],
-        "light_horsemen,c_wayleroot": [
-            "Riverlands_Vypren_MAA_Mounted_Swordsmen",
-            null
-        ],
-        "westerlands_knights,c_wayleroot": [
-            "Riverlands_Vypren_MAA_Lance_Cavalry",
-            null
-        ],
-        "armored_footmen,c_wayleroot": [
-            "Riverlands_Vypren_MAA_Halberdiers",
-            null
-        ],
-        "bowmen,c_wayleroot": [
-            "Riverlands_Vypren_MAA_Longbowmen",
-            null
-        ],
-        "crossbowmen,c_wayleroot": [
-            "Riverlands_Vypren_MAA_Crossbowmen",
-            null
-        ],
-        "pikemen_unit,c_wayleroot": [
-            "Riverlands_Vypren_MAA_Pikemen",
-            null
-        ],
-        "house_guard,c_wayleroot": [
-            "Riverlands_Vypren_MAA_Billmen",
-            null
-        ],
-        "accolade_maa_archers,c_wayleroot": [
-            "Riverlands_Vypren_MAA_Longbowmen",
-            null
-        ],
-        "accolade_maa_lancers,c_wayleroot": [
-            "Riverlands_Vypren_MAA_Lance_Cavalry",
-            null
-        ],
-        "accolade_maa_outriders,c_wayleroot": [
-            "Riverlands_Vypren_MAA_Mounted_Swordsmen",
-            null
-        ],
-        "accolade_maa_pikes,c_wayleroot": [
-            "Riverlands_Vypren_MAA_Pikemen",
-            null
-        ],
-        "accolade_maa_skirmishers,c_wayleroot": [
-            "Riverlands_Vypren_MAA_Longbowmen",
-            null
-        ],
-        "accolade_maa_vanguard,c_wayleroot": [
-            "Riverlands_Vypren_MAA_Billmen",
-            null
-        ],
-        "accolade_maa_crossbowmen,c_wayleroot": [
-            "Riverlands_Vypren_MAA_Crossbowmen",
-            null
-        ],
         "GENERAL,d_amon_lanc": [
             "dg_khamul",
             "GENERAL"
@@ -6346,67 +6207,67 @@
         ],
         "light_footmen,d_amon_lanc": [
             "dg_guldur_blades",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_amon_lanc": [
             "dg_chieftain",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_amon_lanc": [
             "mor_uruk_spears",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_amon_lanc": [
             "mor_uruk_archers",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_amon_lanc": [
             "gob_scavenged_crossbows",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_amon_lanc": [
             "gun_warg_riders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_amon_lanc": [
             "gun_armoured_blade_wargs",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_amon_lanc": [
             "dg_guldur_pikes",
-            null
+            "INFANTRY"
         ],
         "horse_archers,d_amon_lanc": [
             "mor_warg_sentries",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,d_amon_lanc": [
             "mor_uruk_archers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_amon_lanc": [
             "ise_uruk_hai_crossbowmen",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_amon_lanc": [
             "mor_nazgul",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_amon_lanc": [
             "gun_warg_scouts",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_amon_lanc": [
             "mor_guards_of_the_teeth",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_amon_lanc": [
             "mor_mirkwood_raiders",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_amon_lanc": [
             "gob_mordor_uruks",
-            null
+            "INFANTRY"
         ],
         "GENERAL,d_balins_expedition": [
             "khz_durins_mithril_guard",
@@ -6418,87 +6279,63 @@
         ],
         "light_footmen,d_balins_expedition": [
             "ere_miners",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_balins_expedition": [
             "khz_champions_of_mountain",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_balins_expedition": [
             "khz_protectors_azanulbizar",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_balins_expedition": [
             "khz_crossbows",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_balins_expedition": [
             "khz_crossbows",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_balins_expedition": [
             "ere_merc_cav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_balins_expedition": [
             "tlb_ere_goat_riders",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_balins_expedition": [
             "khz_veterans_khazad_dum",
-            null
-        ],
-        "khz_legionaries,d_balins_expedition": [
-            "khz_legionaries",
-            null
-        ],
-        "khz_durins_gate_guard,d_balins_expedition": [
-            "khz_durins_gate_guard",
-            null
-        ],
-        "khz_crossbows,d_balins_expedition": [
-            "khz_crossbows",
-            null
-        ],
-        "ere_baruk_guard,d_balins_expedition": [
-            "ere_baruk_guard",
-            null
-        ],
-        "ere_merc_cav,d_balins_expedition": [
-            "ere_merc_cav",
-            null
-        ],
-        "roh_eored_gap,d_balins_expedition": [
-            "roh_eored_gap",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_archers,d_balins_expedition": [
             "khz_crossbows",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_balins_expedition": [
             "khz_crossbows",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_balins_expedition": [
             "tlb_ere_goat_riders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_balins_expedition": [
             "ere_merc_cav",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_balins_expedition": [
             "khz_durins_gate_guard",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_balins_expedition": [
             "khz_axe_throwers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_balins_expedition": [
             "khz_durins_mithril_guard",
-            null
+            "INFANTRY"
         ],
         "GENERAL,d_gardhon_fuir": [
             "stan_citadel",
@@ -6510,71 +6347,71 @@
         ],
         "light_footmen,d_gardhon_fuir": [
             "stan_mediumsword",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_gardhon_fuir": [
             "stan_heavysword",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_gardhon_fuir": [
             "stan_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_gardhon_fuir": [
             "stan_mediumarcher",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_gardhon_fuir": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_gardhon_fuir": [
             "stan_sergeantcav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_gardhon_fuir": [
             "stan_cav",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_gardhon_fuir": [
             "gon_fountain_guard",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,d_gardhon_fuir": [
             "stan_cairandros",
-            null
+            "INFANTRY"
         ],
         "horse_archers,d_gardhon_fuir": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,d_gardhon_fuir": [
             "stan_ranger",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_gardhon_fuir": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_gardhon_fuir": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_gardhon_fuir": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_gardhon_fuir": [
             "stan_veteranspear",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_gardhon_fuir": [
             "stan_skirm",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_gardhon_fuir": [
             "stan_mace",
-            null
+            "INFANTRY"
         ],
         "GENERAL,d_entyn_i_onodlo": [
             "stan_citadel",
@@ -6586,71 +6423,71 @@
         ],
         "light_footmen,d_entyn_i_onodlo": [
             "stan_mediumsword",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_entyn_i_onodlo": [
             "stan_heavysword",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_entyn_i_onodlo": [
             "stan_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_entyn_i_onodlo": [
             "stan_mediumarcher",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_entyn_i_onodlo": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_entyn_i_onodlo": [
             "stan_sergeantcav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_entyn_i_onodlo": [
             "stan_cav",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_entyn_i_onodlo": [
             "gon_fountain_guard",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,d_entyn_i_onodlo": [
             "stan_cairandros",
-            null
+            "INFANTRY"
         ],
         "horse_archers,d_entyn_i_onodlo": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,d_entyn_i_onodlo": [
             "stan_ranger",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_entyn_i_onodlo": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_entyn_i_onodlo": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_entyn_i_onodlo": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_entyn_i_onodlo": [
             "stan_veteranspear",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_entyn_i_onodlo": [
             "stan_skirm",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_entyn_i_onodlo": [
             "stan_mace",
-            null
+            "INFANTRY"
         ],
         "GENERAL,d_doranorien": [
             "stan_citadel",
@@ -6662,71 +6499,71 @@
         ],
         "light_footmen,d_doranorien": [
             "stan_mediumsword",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_doranorien": [
             "stan_heavysword",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_doranorien": [
             "stan_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_doranorien": [
             "stan_mediumarcher",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_doranorien": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_doranorien": [
             "stan_sergeantcav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_doranorien": [
             "stan_cav",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_doranorien": [
             "gon_fountain_guard",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,d_doranorien": [
             "stan_cairandros",
-            null
+            "INFANTRY"
         ],
         "horse_archers,d_doranorien": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,d_doranorien": [
             "stan_ranger",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_doranorien": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_doranorien": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_doranorien": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_doranorien": [
             "stan_veteranspear",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_doranorien": [
             "stan_skirm",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_doranorien": [
             "stan_mace",
-            null
+            "INFANTRY"
         ],
         "GENERAL,d_morthond_vale": [
             "imlad_angren_archers",
@@ -6738,71 +6575,71 @@
         ],
         "light_footmen,d_morthond_vale": [
             "kechel_miners",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_morthond_vale": [
             "blackroot_vale_vanguard",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_morthond_vale": [
             "bordermen_of_tarlangs_neck",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_morthond_vale": [
             "nimrods_of_nineryn",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_morthond_vale": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_morthond_vale": [
             "gon_princes_sergeants",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_morthond_vale": [
             "gon_cavalry",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_morthond_vale": [
             "garrison_of_morthondost",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,d_morthond_vale": [
             "keepers_of_the_stone",
-            null
+            "INFANTRY"
         ],
         "horse_archers,d_morthond_vale": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,d_morthond_vale": [
             "gon_ithilien_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_morthond_vale": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_morthond_vale": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_morthond_vale": [
             "blackroot_vale_roughriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_morthond_vale": [
             "gon_fountain_guard",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_morthond_vale": [
             "blackroot_vale_roughriders",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_morthond_vale": [
             "gon_lossarnach_warriors",
-            null
+            "INFANTRY"
         ],
         "GENERAL,d_pinnath_gelin": [
             "hirluin",
@@ -6814,71 +6651,71 @@
         ],
         "light_footmen,d_pinnath_gelin": [
             "ram_galen_heavy_macemen",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_pinnath_gelin": [
             "pinnath_gelin_boarspears",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_pinnath_gelin": [
             "ram_galen_watchmen",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_pinnath_gelin": [
             "green_crest_trackers",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_pinnath_gelin": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_pinnath_gelin": [
             "mesta_hired_riders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_pinnath_gelin": [
             "men_galen_road_patrol",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_pinnath_gelin": [
             "green_hill_guardians",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,d_pinnath_gelin": [
             "lords_of_the_mesta",
-            null
+            "INFANTRY"
         ],
         "horse_archers,d_pinnath_gelin": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,d_pinnath_gelin": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_pinnath_gelin": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_pinnath_gelin": [
             "mesta_hired_riders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_pinnath_gelin": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_pinnath_gelin": [
             "green_hill_guardians",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_pinnath_gelin": [
             "leb_marineskirm",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_pinnath_gelin": [
             "lords_of_the_mesta",
-            null
+            "INFANTRY"
         ],
         "GENERAL,d_arlefnui": [
             "hirluin",
@@ -6890,71 +6727,71 @@
         ],
         "light_footmen,d_arlefnui": [
             "ram_galen_heavy_macemen",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_arlefnui": [
             "pinnath_gelin_boarspears",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_arlefnui": [
             "ram_galen_watchmen",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_arlefnui": [
             "green_crest_trackers",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_arlefnui": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_arlefnui": [
             "mesta_hired_riders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_arlefnui": [
             "men_galen_road_patrol",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_arlefnui": [
             "green_hill_guardians",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,d_arlefnui": [
             "lords_of_the_mesta",
-            null
+            "INFANTRY"
         ],
         "horse_archers,d_arlefnui": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,d_arlefnui": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_arlefnui": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_arlefnui": [
             "mesta_hired_riders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_arlefnui": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_arlefnui": [
             "green_hill_guardians",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_arlefnui": [
             "leb_marineskirm",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_arlefnui": [
             "lords_of_the_mesta",
-            null
+            "INFANTRY"
         ],
         "GENERAL,d_rhandir": [
             "hirluin",
@@ -6966,71 +6803,71 @@
         ],
         "light_footmen,d_rhandir": [
             "ram_galen_heavy_macemen",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_rhandir": [
             "pinnath_gelin_boarspears",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_rhandir": [
             "ram_galen_watchmen",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_rhandir": [
             "green_crest_trackers",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_rhandir": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_rhandir": [
             "mesta_hired_riders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_rhandir": [
             "men_galen_road_patrol",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_rhandir": [
             "green_hill_guardians",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,d_rhandir": [
             "lords_of_the_mesta",
-            null
+            "INFANTRY"
         ],
         "horse_archers,d_rhandir": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,d_rhandir": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_rhandir": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_rhandir": [
             "mesta_hired_riders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_rhandir": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_rhandir": [
             "green_hill_guardians",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_rhandir": [
             "leb_marineskirm",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_rhandir": [
             "lords_of_the_mesta",
-            null
+            "INFANTRY"
         ],
         "GENERAL,d_anfalas": [
             "golasgil",
@@ -7042,71 +6879,71 @@
         ],
         "light_footmen,d_anfalas": [
             "aerost_sergeants",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_anfalas": [
             "barrow_guard",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_anfalas": [
             "barad_faen_beacon_guard",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_anfalas": [
             "nan_i_faroth_hunters",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_anfalas": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_anfalas": [
             "langstrand_coastal_messengers",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_anfalas": [
             "marshals_of_men_falas",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_anfalas": [
             "wardens_of_lond_galen",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,d_anfalas": [
             "hammers_of_lond_cirion",
-            null
+            "INFANTRY"
         ],
         "horse_archers,d_anfalas": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,d_anfalas": [
             "nan_i_faroth_hunters",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_anfalas": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_anfalas": [
             "golasgil",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_anfalas": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_anfalas": [
             "wardens_of_lond_galen",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_anfalas": [
             "nan_i_faroth_skirmishers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_anfalas": [
             "hammers_of_lond_cirion",
-            null
+            "INFANTRY"
         ],
         "GENERAL,d_serelond": [
             "golasgil",
@@ -7118,71 +6955,71 @@
         ],
         "light_footmen,d_serelond": [
             "aerost_sergeants",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_serelond": [
             "barrow_guard",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_serelond": [
             "barad_faen_beacon_guard",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_serelond": [
             "nan_i_faroth_hunters",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_serelond": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_serelond": [
             "langstrand_coastal_messengers",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_serelond": [
             "marshals_of_men_falas",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_serelond": [
             "wardens_of_lond_galen",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,d_serelond": [
             "hammers_of_lond_cirion",
-            null
+            "INFANTRY"
         ],
         "horse_archers,d_serelond": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,d_serelond": [
             "nan_i_faroth_hunters",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_serelond": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_serelond": [
             "golasgil",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_serelond": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_serelond": [
             "wardens_of_lond_galen",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_serelond": [
             "nan_i_faroth_skirmishers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_serelond": [
             "hammers_of_lond_cirion",
-            null
+            "INFANTRY"
         ],
         "GENERAL,d_edhellond": [
             "golasgil",
@@ -7194,71 +7031,71 @@
         ],
         "light_footmen,d_edhellond": [
             "aerost_sergeants",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_edhellond": [
             "barrow_guard",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_edhellond": [
             "barad_faen_beacon_guard",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_edhellond": [
             "nan_i_faroth_hunters",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_edhellond": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_edhellond": [
             "langstrand_coastal_messengers",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_edhellond": [
             "marshals_of_men_falas",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_edhellond": [
             "wardens_of_lond_galen",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,d_edhellond": [
             "hammers_of_lond_cirion",
-            null
+            "INFANTRY"
         ],
         "horse_archers,d_edhellond": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,d_edhellond": [
             "nan_i_faroth_hunters",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_edhellond": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_edhellond": [
             "golasgil",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_edhellond": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_edhellond": [
             "wardens_of_lond_galen",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_edhellond": [
             "nan_i_faroth_skirmishers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_edhellond": [
             "hammers_of_lond_cirion",
-            null
+            "INFANTRY"
         ],
         "GENERAL,d_lossarnach": [
             "los_forlong",
@@ -7270,71 +7107,71 @@
         ],
         "light_footmen,d_lossarnach": [
             "los_skirm",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_lossarnach": [
             "los_poleaxe",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_lossarnach": [
             "los_spears",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_lossarnach": [
             "los_refugearcher",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_lossarnach": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_lossarnach": [
             "los_axecav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_lossarnach": [
             "los_flowercav",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_lossarnach": [
             "los_pike",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,d_lossarnach": [
             "los_lords",
-            null
+            "INFANTRY"
         ],
         "horse_archers,d_lossarnach": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,d_lossarnach": [
             "los_refugearcher",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_lossarnach": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_lossarnach": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_lossarnach": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_lossarnach": [
             "los_pike",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_lossarnach": [
             "los_axethrowers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_lossarnach": [
             "los_heavyaxe",
-            null
+            "INFANTRY"
         ],
         "GENERAL,d_lamedon": [
             "lam_angbor",
@@ -7346,71 +7183,71 @@
         ],
         "light_footmen,d_lamedon": [
             "lam_mediumsword",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_lamedon": [
             "lam_heavysword",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_lamedon": [
             "lam_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_lamedon": [
             "lam_heavyarcher",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_lamedon": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_lamedon": [
             "lam_sergeantcav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_lamedon": [
             "lam_cav",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_lamedon": [
             "lam_guardspear",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,d_lamedon": [
             "lam_chevaliers",
-            null
+            "INFANTRY"
         ],
         "horse_archers,d_lamedon": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,d_lamedon": [
             "gon_ithilien_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_lamedon": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_lamedon": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_lamedon": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_lamedon": [
             "lam_guardspear",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_lamedon": [
             "gon_lebennin_marines",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_lamedon": [
             "lam_chevaliers",
-            null
+            "INFANTRY"
         ],
         "GENERAL,d_glandhir": [
             "lam_angbor",
@@ -7422,71 +7259,71 @@
         ],
         "light_footmen,d_glandhir": [
             "lam_mediumsword",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_glandhir": [
             "lam_heavysword",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_glandhir": [
             "lam_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_glandhir": [
             "lam_heavyarcher",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_glandhir": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_glandhir": [
             "lam_sergeantcav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_glandhir": [
             "lam_cav",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_glandhir": [
             "lam_guardspear",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,d_glandhir": [
             "lam_chevaliers",
-            null
+            "INFANTRY"
         ],
         "horse_archers,d_glandhir": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,d_glandhir": [
             "gon_ithilien_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_glandhir": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_glandhir": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_glandhir": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_glandhir": [
             "lam_guardspear",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_glandhir": [
             "gon_lebennin_marines",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_glandhir": [
             "lam_chevaliers",
-            null
+            "INFANTRY"
         ],
         "GENERAL,d_harithilien": [
             "hor_heavycav",
@@ -7498,71 +7335,71 @@
         ],
         "light_footmen,d_harithilien": [
             "hor_mediumsword",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_harithilien": [
             "hor_heavyshock_rev",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_harithilien": [
             "hor_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_harithilien": [
             "hor_marksmen_rev",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_harithilien": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_harithilien": [
             "hor_cav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_harithilien": [
             "hor_immortals",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_harithilien": [
             "hor_guardspear",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,d_harithilien": [
             "hor_heavysword",
-            null
+            "INFANTRY"
         ],
         "horse_archers,d_harithilien": [
             "hor_horsearcher",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,d_harithilien": [
             "gon_ithilien_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_harithilien": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_harithilien": [
             "hor_immortals",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_harithilien": [
             "hor_horsearcher",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_harithilien": [
             "hor_guardspear",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_harithilien": [
             "hor_marksmen_rev",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_harithilien": [
             "gon_lossarnach_warriors",
-            null
+            "INFANTRY"
         ],
         "GENERAL,d_laergaladrin": [
             "hor_heavycav",
@@ -7574,71 +7411,71 @@
         ],
         "light_footmen,d_laergaladrin": [
             "hor_mediumsword",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_laergaladrin": [
             "hor_heavyshock_rev",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_laergaladrin": [
             "hor_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_laergaladrin": [
             "hor_marksmen_rev",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_laergaladrin": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_laergaladrin": [
             "hor_cav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_laergaladrin": [
             "hor_immortals",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_laergaladrin": [
             "hor_guardspear",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,d_laergaladrin": [
             "hor_heavysword",
-            null
+            "INFANTRY"
         ],
         "horse_archers,d_laergaladrin": [
             "hor_horsearcher",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,d_laergaladrin": [
             "gon_ithilien_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_laergaladrin": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_laergaladrin": [
             "hor_immortals",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_laergaladrin": [
             "hor_horsearcher",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_laergaladrin": [
             "hor_guardspear",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_laergaladrin": [
             "hor_marksmen_rev",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_laergaladrin": [
             "gon_lossarnach_warriors",
-            null
+            "INFANTRY"
         ],
         "GENERAL,d_lebennivet": [
             "leb_guardspear",
@@ -7650,71 +7487,71 @@
         ],
         "light_footmen,d_lebennivet": [
             "leb_marineraider",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_lebennivet": [
             "leb_heavysword",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_lebennivet": [
             "leb_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_lebennivet": [
             "leb_marinearcher",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_lebennivet": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_lebennivet": [
             "leb_mediumcav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_lebennivet": [
             "leb_retainercav",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_lebennivet": [
             "leb_guardsword",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,d_lebennivet": [
             "leb_guardsword",
-            null
+            "INFANTRY"
         ],
         "horse_archers,d_lebennivet": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,d_lebennivet": [
             "gon_ithilien_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_lebennivet": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_lebennivet": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_lebennivet": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_lebennivet": [
             "gon_fountain_guard",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_lebennivet": [
             "gon_lebennin_marines",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_lebennivet": [
             "gon_lossarnach_warriors",
-            null
+            "INFANTRY"
         ],
         "GENERAL,d_pelargir": [
             "leb_guardspear",
@@ -7726,71 +7563,71 @@
         ],
         "light_footmen,d_pelargir": [
             "leb_marineraider",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_pelargir": [
             "leb_heavysword",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_pelargir": [
             "leb_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_pelargir": [
             "leb_marinearcher",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_pelargir": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_pelargir": [
             "leb_mediumcav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_pelargir": [
             "leb_retainercav",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_pelargir": [
             "leb_guardsword",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,d_pelargir": [
             "leb_guardsword",
-            null
+            "INFANTRY"
         ],
         "horse_archers,d_pelargir": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,d_pelargir": [
             "gon_ithilien_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_pelargir": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_pelargir": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_pelargir": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_pelargir": [
             "gon_fountain_guard",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_pelargir": [
             "gon_lebennin_marines",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_pelargir": [
             "gon_lossarnach_warriors",
-            null
+            "INFANTRY"
         ],
         "GENERAL,d_gilrain": [
             "leb_guardspear",
@@ -7802,71 +7639,71 @@
         ],
         "light_footmen,d_gilrain": [
             "leb_marineraider",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_gilrain": [
             "leb_heavysword",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_gilrain": [
             "leb_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_gilrain": [
             "leb_marinearcher",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_gilrain": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_gilrain": [
             "leb_mediumcav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_gilrain": [
             "leb_retainercav",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_gilrain": [
             "leb_guardsword",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,d_gilrain": [
             "leb_guardsword",
-            null
+            "INFANTRY"
         ],
         "horse_archers,d_gilrain": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,d_gilrain": [
             "gon_ithilien_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_gilrain": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_gilrain": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_gilrain": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_gilrain": [
             "gon_fountain_guard",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_gilrain": [
             "gon_lebennin_marines",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_gilrain": [
             "gon_lossarnach_warriors",
-            null
+            "INFANTRY"
         ],
         "GENERAL,d_celosien": [
             "leb_guardspear",
@@ -7878,143 +7715,71 @@
         ],
         "light_footmen,d_celosien": [
             "leb_marineraider",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,d_celosien": [
             "leb_heavysword",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,d_celosien": [
             "leb_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,d_celosien": [
             "leb_marinearcher",
-            null
+            "RANGED"
         ],
         "crossbowmen,d_celosien": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,d_celosien": [
             "leb_mediumcav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,d_celosien": [
             "leb_retainercav",
-            null
+            "CAVALRY"
         ],
         "house_guard,d_celosien": [
             "leb_guardsword",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,d_celosien": [
             "leb_guardsword",
-            null
+            "INFANTRY"
         ],
         "horse_archers,d_celosien": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,d_celosien": [
             "gon_ithilien_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,d_celosien": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,d_celosien": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,d_celosien": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,d_celosien": [
             "gon_fountain_guard",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,d_celosien": [
             "gon_lebennin_marines",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,d_celosien": [
             "gon_lossarnach_warriors",
-            null
-        ],
-        "GENERAL,e_the_iron_throne": [
-            "Stormlands_Baratheon_MAA_Lance_Cavalry",
-            "GENERAL"
-        ],
-        "KNIGHTS,e_the_iron_throne": [
-            "Stormlands_Baratheon_MAA_Mounted_Swordsmen",
-            "KNIGHTS"
-        ],
-        "light_footmen,e_the_iron_throne": [
-            "Stormlands_Baratheon_MAA_Axemen",
-            null
-        ],
-        "light_horsemen,e_the_iron_throne": [
-            "Stormlands_Baratheon_MAA_Mounted_Swordsmen",
-            null
-        ],
-        "armored_horsemen,e_the_iron_throne": [
-            "Stormlands_Baratheon_MAA_Lance_Cavalry",
-            null
-        ],
-        "armored_footmen,e_the_iron_throne": [
-            "Stormlands_Baratheon_MAA_Swordsmen",
-            null
-        ],
-        "goldcloaks,e_the_iron_throne": [
-            "Crownlands_Kings_Landing_Goldcloak_Swordsmen",
-            null
-        ],
-        "bowmen,e_the_iron_throne": [
-            "Stormlands_Baratheon_MAA_Longbowmen",
-            null
-        ],
-        "crossbowmen,e_the_iron_throne": [
-            "Stormlands_Baratheon_MAA_Crossbowmen",
-            null
-        ],
-        "pikemen_unit,e_the_iron_throne": [
-            "Stormlands_Baratheon_MAA_Pikemen",
-            null
-        ],
-        "house_guard,e_the_iron_throne": [
-            "Stormlands_Baratheon_MAA_Billmen",
-            null
-        ],
-        "accolade_maa_archers,e_the_iron_throne": [
-            "Stormlands_Baratheon_MAA_Longbowmen",
-            null
-        ],
-        "accolade_maa_lancers,e_the_iron_throne": [
-            "Stormlands_Baratheon_MAA_Lance_Cavalry",
-            null
-        ],
-        "accolade_maa_outriders,e_the_iron_throne": [
-            "Stormlands_Baratheon_MAA_Mounted_Swordsmen",
-            null
-        ],
-        "accolade_maa_pikes,e_the_iron_throne": [
-            "Stormlands_Baratheon_MAA_Pikemen",
-            null
-        ],
-        "accolade_maa_skirmishers,e_the_iron_throne": [
-            "Stormlands_Baratheon_MAA_Axemen",
-            null
-        ],
-        "accolade_maa_vanguard,e_the_iron_throne": [
-            "Stormlands_Baratheon_MAA_Halberdiers",
-            null
-        ],
-        "accolade_maa_crossbowmen,e_the_iron_throne": [
-            "Stormlands_Baratheon_MAA_Crossbowmen",
-            null
+            "INFANTRY"
         ],
         "GENERAL,k_anorien": [
             "stan_citadel",
@@ -8026,71 +7791,71 @@
         ],
         "light_footmen,k_anorien": [
             "stan_mediumsword",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,k_anorien": [
             "stan_heavysword",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,k_anorien": [
             "stan_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,k_anorien": [
             "stan_mediumarcher",
-            null
+            "RANGED"
         ],
         "crossbowmen,k_anorien": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,k_anorien": [
             "stan_sergeantcav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,k_anorien": [
             "stan_cav",
-            null
+            "CAVALRY"
         ],
         "house_guard,k_anorien": [
             "gon_fountain_guard",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,k_anorien": [
             "stan_cairandros",
-            null
+            "INFANTRY"
         ],
         "horse_archers,k_anorien": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,k_anorien": [
             "stan_ranger",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,k_anorien": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,k_anorien": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,k_anorien": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,k_anorien": [
             "stan_veteranspear",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,k_anorien": [
             "stan_skirm",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,k_anorien": [
             "stan_mace",
-            null
+            "INFANTRY"
         ],
         "GENERAL,k_harondor": [
             "hor_heavycav",
@@ -8102,71 +7867,71 @@
         ],
         "light_footmen,k_harondor": [
             "hor_mediumsword",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,k_harondor": [
             "hor_heavyshock_rev",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,k_harondor": [
             "hor_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,k_harondor": [
             "hor_marksmen_rev",
-            null
+            "RANGED"
         ],
         "crossbowmen,k_harondor": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,k_harondor": [
             "hor_cav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,k_harondor": [
             "hor_immortals",
-            null
+            "CAVALRY"
         ],
         "house_guard,k_harondor": [
             "hor_guardspear",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,k_harondor": [
             "hor_heavysword",
-            null
+            "INFANTRY"
         ],
         "horse_archers,k_harondor": [
             "hor_horsearcher",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,k_harondor": [
             "gon_ithilien_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,k_harondor": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,k_harondor": [
             "hor_immortals",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,k_harondor": [
             "hor_horsearcher",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,k_harondor": [
             "hor_guardspear",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,k_harondor": [
             "hor_marksmen_rev",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,k_harondor": [
             "gon_lossarnach_warriors",
-            null
+            "INFANTRY"
         ],
         "GENERAL,k_anfalas": [
             "golasgil",
@@ -8178,71 +7943,71 @@
         ],
         "light_footmen,k_anfalas": [
             "aerost_sergeants",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,k_anfalas": [
             "barrow_guard",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,k_anfalas": [
             "barad_faen_beacon_guard",
-            null
+            "INFANTRY"
         ],
         "bowmen,k_anfalas": [
             "nan_i_faroth_hunters",
-            null
+            "RANGED"
         ],
         "crossbowmen,k_anfalas": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,k_anfalas": [
             "langstrand_coastal_messengers",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,k_anfalas": [
             "marshals_of_men_falas",
-            null
+            "CAVALRY"
         ],
         "house_guard,k_anfalas": [
             "wardens_of_lond_galen",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,k_anfalas": [
             "hammers_of_lond_cirion",
-            null
+            "INFANTRY"
         ],
         "horse_archers,k_anfalas": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,k_anfalas": [
             "nan_i_faroth_hunters",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,k_anfalas": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,k_anfalas": [
             "golasgil",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,k_anfalas": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,k_anfalas": [
             "wardens_of_lond_galen",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,k_anfalas": [
             "nan_i_faroth_skirmishers",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,k_anfalas": [
             "hammers_of_lond_cirion",
-            null
+            "INFANTRY"
         ],
         "GENERAL,k_lamedon": [
             "lam_angbor",
@@ -8254,71 +8019,71 @@
         ],
         "light_footmen,k_lamedon": [
             "lam_mediumsword",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,k_lamedon": [
             "lam_heavysword",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,k_lamedon": [
             "lam_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,k_lamedon": [
             "lam_heavyarcher",
-            null
+            "RANGED"
         ],
         "crossbowmen,k_lamedon": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,k_lamedon": [
             "lam_sergeantcav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,k_lamedon": [
             "lam_cav",
-            null
+            "CAVALRY"
         ],
         "house_guard,k_lamedon": [
             "lam_guardspear",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,k_lamedon": [
             "lam_chevaliers",
-            null
+            "INFANTRY"
         ],
         "horse_archers,k_lamedon": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,k_lamedon": [
             "gon_ithilien_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,k_lamedon": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,k_lamedon": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,k_lamedon": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,k_lamedon": [
             "lam_guardspear",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,k_lamedon": [
             "gon_lebennin_marines",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,k_lamedon": [
             "lam_chevaliers",
-            null
+            "INFANTRY"
         ],
         "GENERAL,k_pinnath_gelin": [
             "hirluin",
@@ -8330,71 +8095,71 @@
         ],
         "light_footmen,k_pinnath_gelin": [
             "ram_galen_heavy_macemen",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,k_pinnath_gelin": [
             "pinnath_gelin_boarspears",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,k_pinnath_gelin": [
             "ram_galen_watchmen",
-            null
+            "INFANTRY"
         ],
         "bowmen,k_pinnath_gelin": [
             "green_crest_trackers",
-            null
+            "RANGED"
         ],
         "crossbowmen,k_pinnath_gelin": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,k_pinnath_gelin": [
             "mesta_hired_riders",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,k_pinnath_gelin": [
             "men_galen_road_patrol",
-            null
+            "CAVALRY"
         ],
         "house_guard,k_pinnath_gelin": [
             "green_hill_guardians",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,k_pinnath_gelin": [
             "lords_of_the_mesta",
-            null
+            "INFANTRY"
         ],
         "horse_archers,k_pinnath_gelin": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,k_pinnath_gelin": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,k_pinnath_gelin": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,k_pinnath_gelin": [
             "mesta_hired_riders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,k_pinnath_gelin": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,k_pinnath_gelin": [
             "green_hill_guardians",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,k_pinnath_gelin": [
             "leb_marineskirm",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,k_pinnath_gelin": [
             "lords_of_the_mesta",
-            null
+            "INFANTRY"
         ],
         "GENERAL,k_lebennin": [
             "leb_guardspear",
@@ -8406,76 +8171,74 @@
         ],
         "light_footmen,k_lebennin": [
             "leb_marineraider",
-            null
+            "INFANTRY"
         ],
         "armored_footmen,k_lebennin": [
             "leb_heavysword",
-            null
+            "INFANTRY"
         ],
         "pikemen_unit,k_lebennin": [
             "leb_heavyspear",
-            null
+            "INFANTRY"
         ],
         "bowmen,k_lebennin": [
             "leb_marinearcher",
-            null
+            "RANGED"
         ],
         "crossbowmen,k_lebennin": [
             "vigilants_of_pinnornost",
-            null
+            "RANGED"
         ],
         "light_horsemen,k_lebennin": [
             "leb_mediumcav",
-            null
+            "CAVALRY"
         ],
         "armored_horsemen,k_lebennin": [
             "leb_retainercav",
-            null
+            "CAVALRY"
         ],
         "house_guard,k_lebennin": [
             "leb_guardsword",
-            null
+            "INFANTRY"
         ],
         "gondorian_footmen,k_lebennin": [
             "leb_guardsword",
-            null
+            "INFANTRY"
         ],
         "horse_archers,k_lebennin": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_archers,k_lebennin": [
             "gon_ithilien_rangers",
-            null
+            "RANGED"
         ],
         "accolade_maa_crossbowmen,k_lebennin": [
             "saerthondost_arbalesters",
-            null
+            "RANGED"
         ],
         "accolade_maa_lancers,k_lebennin": [
             "gon_silver_swan_knights",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_outriders,k_lebennin": [
             "rendul_outriders",
-            null
+            "CAVALRY"
         ],
         "accolade_maa_pikes,k_lebennin": [
             "gon_fountain_guard",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_skirmishers,k_lebennin": [
             "gon_lebennin_marines",
-            null
+            "INFANTRY"
         ],
         "accolade_maa_vanguard,k_lebennin": [
             "gon_lossarnach_warriors",
-            null
+            "INFANTRY"
         ]
     },
     "TITLE_NAMES": {
-        "c_lannisport": "Lordship of Lannisport",
-        "c_wayleroot": "Lordship of Wayleroot",
         "d_amon_lanc": "Dol Guldur",
         "d_balins_expedition": "Khazad",
         "d_gardhon_fuir": "Anorien",
@@ -8497,7 +8260,6 @@
         "d_pelargir": "Lebennin",
         "d_gilrain": "Lebennin",
         "d_celosien": "Lebennin",
-        "e_the_iron_throne": "The Iron Throne",
         "k_anorien": "Anorien",
         "k_harondor": "Harondor",
         "k_anfalas": "Anfalas",
