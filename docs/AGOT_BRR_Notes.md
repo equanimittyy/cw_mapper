@@ -33,7 +33,7 @@ The original author likely chose these because:
 
 | Category | Status | Notes |
 |---|---|---|
-| Essos split | **NEW — NEEDS USER REVIEW** | Replaced single Essos faction with Free_Cities (33 entries) + Slaver_Cities (31 entries) |
+| Essos split | **USER VERIFIED (2026-04-13)** | Replaced single Essos faction with Free_Cities (32 entries) + Slaver_Cities (32 entries) |
 | Wall Targaryen fix | Done | `handpicked_faithful,Wall` fixed from Dragon to Targaryen |
 | Dragon→Targaryen fixes | Done | 5 Default entries fixed: `royal_crossbowmen`, `marsh_walker`, `sea_snakes`, `outriders`, `crownlands_spears` |
 | Missing Default entries | Done | 6 added: `accolade_maa_crossbowmen`, `accolade_maa_vanguard`, `giant_regiment`, `gold_cloaks`, `iron_bows`, `iron_pikes` |
@@ -45,7 +45,7 @@ The original author likely chose these because:
 
 ---
 
-## Essos Split: Free_Cities + Slaver_Cities Factions (NEEDS USER REVIEW)
+## Essos Split: Free_Cities + Slaver_Cities Factions (USER VERIFIED 2026-04-13)
 
 Originally added a single `Essos` faction using `Essos_Slaver_MAA_*` as base. User flagged that those units are Ghiscari professional heavy infantry, NOT generic sellswords — wrong cultural fit for Free Cities. Split into two factions:
 
@@ -192,7 +192,7 @@ These MAA exist in regional factions but have no Default fallback (crash risk if
 
 Changed from `Riverlands_Tully_MAA_Crossbowmen` (RANGED Attila unit) to `Riverlands_Tully_MAA_Axemen` (INFANTRY). The CK3 MAA is "light infantry" so an infantry Attila unit is correct. Uses the Riverlands-specific unit rather than Essos_Slaver because the MAA is Riverlands-specific.
 
-**USER CHECK:** Verify what `Riverlands_Tully_MAA_Axemen` actually looks like in Attila. It's now the Default fallback for `riverlands_light_infantry` — make sure its visual appearance fits "light infantry" and not heavy axe troops.
+**USER VERIFIED (2026-04-13):** `Riverlands_Tully_MAA_Axemen` is acceptable as the Default fallback for `riverlands_light_infantry`.
 
 ### Faction MAA Size Backfill (256 entries)
 

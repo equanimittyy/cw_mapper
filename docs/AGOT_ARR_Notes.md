@@ -13,7 +13,7 @@
 
 | Category | Status | Notes |
 |---|---|---|
-| Essos split | **NEW — NEEDS USER REVIEW** | Free_Cities (32 entries) + Slaver_Cities (32 entries) copied from BRR |
+| Essos split | **USER VERIFIED (2026-04-13)** | Free_Cities (32 entries) + Slaver_Cities (32 entries) copied from BRR |
 | Missing Default entries | Done | 7 added (same 6 as BRR + `wolfswood_hunters`) |
 | Size/type mismatches | Done | 3 fixed: `westerlands_knights` CAVALRY, `westerosi_sellswords` CAVALRY, `accolade_maa_crossbowers` RANGED |
 | Faction MAA sizes | Done | 174 None-sized entries filled + 1 numeric `400` changed to INFANTRY + 2 `winter_wolves` set to INFANTRY |
@@ -49,7 +49,7 @@
 
 Changed from `Riverlands_Tully_MAA_Crossbowmen` to `Riverlands_Tully_MAA_Axemen` (INFANTRY). Same fix as BRR.
 
-**USER CHECK:** Verify what `Riverlands_Tully_MAA_Axemen` looks like in Attila — should fit "light infantry" visually.
+**USER VERIFIED (2026-04-13):** `Riverlands_Tully_MAA_Axemen` is acceptable.
 
 ### Faction MAA Size Backfill
 
